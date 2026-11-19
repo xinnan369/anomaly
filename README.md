@@ -6,7 +6,8 @@ VICAD-Syn 研究多视角、多光照条件下的工业视觉异常检测。项�
 
 ## 当前状态
 
-当前阶段为项目文档初始化。下一项工作是 [TASK-001 数据集与实验协议审计](instructions/TASK-001.md)，须收到明确指令后启动。
+- **TASK-001 数据集与实验协议审计已完成并通过项目负责人验收（ACCEPTED）。** [审计报告](reports/TASK-001-REPORT.md) · [PR #1](https://github.com/xinnan369/anomaly/pull/1)
+- **当前任务为 TASK-002 官方基线复现与实验环境固化。** 第一阶段 Car/Dinomaly 试运行已完成，交付物已提交至 PR #2，等待 ChatGPT 独立验收，尚未合并。[PR #2](https://github.com/xinnan369/anomaly/pull/2)
 
 ## 项目文档
 
