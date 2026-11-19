@@ -1,5 +1,5 @@
 # 当前任务
 
-[TASK-001](TASK-001.md) 的状态为 **CHANGES REQUESTED - AWAITING RE-REVIEW**（2026-11-19）。
+[TASK-001](TASK-001.md) 已完成，项目负责人正式验收通过（**ACCEPTED**，2026-11-19）。[审计报告](../reports/TASK-001-REPORT.md) · [验收记录](../docs/ACCEPTANCE_LOG.md)
 
-[整改报告](../reports/TASK-001-REPORT.md)记录了十类统计、可复跑证据、研究方案修正建议和待核实问题。当前等待 [PR #1](https://github.com/xinnan369/anomaly/pull/1) 二次验收。
+下一项待授权任务为 **TASK-002 · M²AD 官方基线复现与实验环境固化**。等待 ChatGPT 验收本次文档状态同步，并等待后续明确指令。
