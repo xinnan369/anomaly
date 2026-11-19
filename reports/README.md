@@ -4,8 +4,8 @@
 
 | 任务 | 报告路径 | 状态 |
 | --- | --- | --- |
-| [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) · [整改复跑日志](evidence/TASK-001/test-log.txt) | 经项目负责人授权已合入 main |
-| TASK-002 | [M²AD 官方基线复现与实验环境固化](TASK-002-REPORT.md) | 第一阶段试运行通过，等待 ChatGPT 验收 |
+| [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) · [整改复跑日志](evidence/TASK-001/test-log.txt) | ACCEPTED |
+| TASK-002 | [执行报告](https://github.com/xinnan369/anomaly/blob/d1a1ef2b6a2152a71b7891fccf5c32947aaecb95/reports/TASK-002-REPORT.md) · [环境材料](https://github.com/xinnan369/anomaly/tree/d1a1ef2b6a2152a71b7891fccf5c32947aaecb95/tools/environment) | [PR #2](https://github.com/xinnan369/anomaly/pull/2) 已提交，等待 ChatGPT 独立验收，尚未合并 |
 
 ## 初始化执行记录
 
