@@ -4,7 +4,7 @@
 
 | 任务 | 报告路径 | 状态 |
 | --- | --- | --- |
-| [TASK-001](../instructions/TASK-001.md) | `reports/TASK-001-REPORT.md` | 待授权，报告将在执行后生成 |
+| [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) | COMPLETED - AWAITING CHATGPT REVIEW |
 
 ## 初始化执行记录
 
