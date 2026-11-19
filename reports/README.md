@@ -4,7 +4,8 @@
 
 | 任务 | 报告路径 | 状态 |
 | --- | --- | --- |
-| [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) · [整改复跑日志](evidence/TASK-001/test-log.txt) | CHANGES REQUESTED - AWAITING RE-REVIEW |
+| [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) · [整改复跑日志](evidence/TASK-001/test-log.txt) | 经项目负责人授权已合入 main |
+| TASK-002 | [M²AD 官方基线复现与实验环境固化](TASK-002-REPORT.md) | 第一阶段试运行通过，等待 ChatGPT 验收 |
 
 ## 初始化执行记录
 
