@@ -77,7 +77,7 @@ Dinomaly 运行中通过 ADEval CUDA 类导入；同一环境另用 TASK-001 已
 
 ## 第二阶段执行记录
 
-**状态 PARTIAL（2026-11-19，北京时间）**。全新环境重装、两种模型的 Car 单步复验、官方训练入口预检和发布清单复核均已完成。完整归档仍待校验，正式训练与测试、结果分析及图表待完成。第一阶段的验收范围和历史记录见上文。
+**2026-11-19 首次交付快照（PARTIAL）。** 当时已完成全新环境重装、两种模型的 Car 单步复验、官方训练入口预检和发布清单复核。后续进度见[审查整改与正式实验](#第二阶段审查整改与正式实验)。
 
 ### 1. 研究目标
 
@@ -179,3 +179,36 @@ TASK-001 审计脚本复核官方清单，9 项离线测试通过。每物理实
 ### 15. 原始证据位置与哈希
 
 原始环境、下载、预检及未来正式输出保存在仓库外的 `D:/vicad-syn/task-002-stage2`（WSL `/mnt/d/vicad-syn/task-002-stage2`）。固定源码、权重与 Car 单步样本留在 `inputs/`。训练与评价结果分别在 `runs/<模型>/<类别>/` 和 `evaluations/<模型>/<类别>/`，四类就绪信息在 `data_audit/`，传输日志在 `download.log`。元数据 SHA-256 与发布四类哈希见第 3 节。两次实测骨干字节数为 346,393,545，SHA-256 均为 `73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71`。完整实验检查点尚未生成。仓库提交环境、清单、预检与未完成状态的小型快照。[结果目录](../results/baselines/README.md) · [Meta 预训练权重](https://dl.fbaipublicfiles.com/dinov2/dinov2_vitb14/dinov2_vitb14_reg4_pretrain.pth)
+
+## 第二阶段审查整改与正式实验
+
+**状态 PARTIAL。** RTX 3090 正在执行正式 Car/Dinomaly 基线。八组正式训练及评价尚未完成。上文的下载与试运行状态是提交 `92c4b8415fdc5f503bacc59cadd536c0113d9746` 的历史快照。第一阶段验收通过记录继续有效。[第二阶段审查](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-5974527521)
+
+### 实例身份、标签和回归
+
+- 重新校验固定发布的 `jsons.zip`。10 类测试集 Good 与 NG 的裸实例名交集均为空。Car、Cube、Doll、Ring 每类有 20 个正常和 50 个异常物件，完整预期为 70 个物件组、840 个视角组、8,400 张图像。Holder 的发布版差异仍按 TASK-001 记录。
+- 官方物件键为 `(object_name, cls_name, object_anomaly)`，视角键为 `(object_name, cls_name, view, object_anomaly)`。校验器按完整键生成期望归约，在同类同显示名称内对分数、标签、掩膜与热图作无序一对一匹配。这样既保留重复输出的数量，也要求每行内容符合对应组。官方融合代码保留原样。
+- O-AUROC 使用物件标签。I-AUROC 使用评价尺寸下的联合掩膜是否非空，AUPRO 使用联合掩膜区域。上游融合的视角元数据标签取同视角各光照图像标签的最大值，可能与掩膜存在性不同。诊断保留两者计数和分歧，单一掩膜标签的子组输出空指标。
+- RTX 3090 CUDA 合成回归使用两个同名物件，各有 120 张配置。在同一异常物件含部分可见光照、存在标签与掩膜分歧时验证乱序组、故意篡改物件及视角分数和三项官方指标入口。142 个子组中 119 个因只有单一掩膜标签而留空，5 个子组存在标签分歧。合成值只用于校验程序。[固定上游融合](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/util/m2ad_utils.py) · [固定上游评价](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/util/metric.py) · [发布清单及合成回归证据](../results/baselines/environment/identity-regression.json)
+
+### 数据恢复
+
+前一次下载在 Ring 的字节范围 `5637144576–5704253439` 触发 `ConnectionError`，保留了 84 个已完成的分块。续传使用 `python -B -X utf8 -u tools/environment/prepare_release.py --root <外部目录> --classes Ring --workers 10`，全文日志分别保存在外部数据根的 `download.log` 和 `download-retry-ring.log`。Car、Cube、Doll 的原始完整 ZIP SHA-256、成员 CRC 及清单覆盖均通过。整改时复算了各 ZIP SHA-256、中央目录与磁盘路径集合。官方训练/测试实例身份无交叉，完整归档证据见[恢复与复验证据](../results/baselines/data_audit/restored-archives.json)。
+
+### 正式闭环和日志
+
+在 WSL2 Ubuntu 22.04、Python 3.11.11、RTX 3090 24 GiB 上启动 `CUDA_VISIBLE_DEVICES=0 <锁定的 Python> -B -u tools/environment/run_stage2.py --root /mnt/d/vicad-syn/task-002-stage2`，按 Car/Dinomaly 闭环优先排定八组。Car 的正式配置保持 seed 42、batch 12、100 epoch、官方优化器、调度、损失及权重。第 50 和第 100 epoch 的训练内测试均采用上游空评估。Car 完成训练并通过冻结后的正式评价，才会接续其余七组。
+
+正式运行写出了 `checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth`，使用 `torch.load(..., weights_only=True)` 只读核验了实际中途检查点的字段与步数。冻结入口要求最终检查点由成功训练的 `status.json` 绑定，路径、字节数、SHA-256、配置、模型、类别和固定发布版本均匹配，内部须含 epoch 100 与迭代 30,000。7 项新单元测试验证了实际路径契约、错误的 epoch/步数/哈希、以及结果表与同一冻结权重的对应关系。9 项 TASK-001 审计测试仍通过。[检查点实测及单元测试](../results/baselines/environment/checkpoint-validation.json)
+
+交付时的训练步数、整卡显存、运行命令和下载进度见[机器可读快照](../results/baselines/metrics/formal-execution.json)。完整训练日志与每两秒 GPU 采样保存在外部数据根，仓库只提交实际日志节选与索引。PyTorch 峰值、完成耗时、推理和最终权重哈希须等相应进程结束。[实际日志节选](../results/baselines/metrics/car-dinomaly-train-excerpt.log) · [八组状态与指标表](../results/baselines/metrics/baseline-summary.csv)
+
+### 剩余结果与研究判断
+
+记录时第一组仍在训练，冻结评价、完整指标和论文图表均待产生。正式评价会收集每个预测数组的形状、类型、字节数及 SHA-256，并保留相同冻结检查点的复评路径。单卡串行的耗时由实际日志持续记录。汇总和绘图已在外部数据根排在运行计划之后，日志写入 `logs/finalize-stage2.log`。绘图入口在八组完成前拒绝运行。
+
+现有记录尚不足以给出类别难度、误报光照、视角稳定性、平均融合的局限或 VICAD-Syn 方法效果。正式输出后，以正常物件的逐光照分数分布观察高分倾向，结合逐视角、光照及 120 种配置的诊断比较。高分倾向目前不等同于选定阈值后的误报率。RTX 4090 和 TASK-001 的 Holder 差异仍待后续对应核查。[恢复与结果生成](../tools/environment/README.md#第二阶段完整基线) · [结果证据索引](../results/baselines/README.md)
+
+### 交付自检
+
+7 项本阶段单元测试、9 项原审计测试、CUDA 身份回归和 `git diff --check` 通过。114 个 Markdown 相对链接与锚点、Shell 命令语法、试验配置与实际文件 SHA-256 的对应、阶段二 CSV 空值以及 Git 暂存文件大小和凭据模式均已核查。TASK-001 历史文件与固定上游跟踪文件均无差异。正式评价日志与正式指标的全量对账须等待训练和冻结评价完成。

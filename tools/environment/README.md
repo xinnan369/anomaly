@@ -102,45 +102,40 @@ if ($LASTEXITCODE) { exit $LASTEXITCODE }
 
 ### 按官方配置正式运行
 
-在 WSL 执行以下命令。可使用同一训练命令加 `--preflight` 及指向独立目录的 `--output`，仅用已经生成的官方清单构建数据加载器、模型和评估器，不读取图像。
+在 WSL 的仓库根目录执行。当前项目使用 Python 3.11.11 的锁定 venv，数据和输入位于仓库外。上次传输中断后只续传 Ring，保留其已有完整分块。
+
+```powershell
+$stage = 'D:/vicad-syn/task-002-stage2'
+python -B -X utf8 -u tools/environment/prepare_release.py --root $stage --classes Ring --workers 10 2>&1 |
+    Tee-Object -FilePath "$stage/download-retry-ring.log" -Append
+if ($LASTEXITCODE) { exit $LASTEXITCODE }
+```
+
+以下先复验评价及冻结检查点约束。正式计划先运行 Car/Dinomaly 的完整训练与评价，再运行其余七组。每组开始前要求该类存在就绪记录；训练使用官方 100 epoch、batch 12 和 seed 42。检查点经过配置、权重、路径和结果记录校验，再执行 Synergy 评价。
 
 ```bash
 set -euo pipefail
 stage=/mnt/d/vicad-syn/task-002-stage2
 py="$HOME/.local/venvs/vicad-task-002-stage2/bin/python"
-upstream="$work/upstream"
-mkdir -p "$stage/logs"
-for category in Car Cube Doll Ring; do
-  test -f "$stage/data_audit/$category.json"
-done
-for model in dinomaly inpformer; do
-  for category in Car Cube Doll Ring; do
-    CUDA_VISIBLE_DEVICES=0 "$py" -u -B tools/environment/run_baseline.py \
-      --model "$model" --category "$category" --upstream "$upstream" \
-      --release-root "$stage" --weight "$weight" --output "$stage/runs/$model/$category" \
-      2>&1 | tee "$stage/logs/$model-$category.log"
-  done
-done
-
-# All eight training commands must have succeeded before evaluating.
-shopt -s nullglob
-for model in dinomaly inpformer; do
-  for category in Car Cube Doll Ring; do
-    checkpoints=("$stage/runs/$model/$category"/checkpoints/*/*_ckpt.pth)
-    test "${#checkpoints[@]}" -eq 1
-    CUDA_VISIBLE_DEVICES=0 "$py" -u -B tools/environment/run_baseline.py \
-      --model "$model" --category "$category" --upstream "$upstream" \
-      --release-root "$stage" --weight "$weight" --checkpoint "${checkpoints[0]}" \
-      --output "$stage/evaluations/$model/$category" \
-      2>&1 | tee "$stage/logs/$model-$category-evaluate.log"
-  done
-done
-"$py" -B tools/environment/summarize_baselines.py --runs "$stage/runs" --evaluations "$stage/evaluations" \
-  --output "$stage/metrics/baseline-summary.csv"
+CUDA_VISIBLE_DEVICES=0 "$py" -B tools/environment/check_baseline_metrics.py \
+  --upstream "$stage/inputs/upstream" --cache "$stage/cache"
+"$py" -B -m unittest discover -s tools/environment -p 'test_*.py'
+"$py" -B -m unittest discover -s tools/audit -p 'test_*.py'
+CUDA_VISIBLE_DEVICES=0 "$py" -B -u tools/environment/run_stage2.py --root "$stage"
 ```
 
-已有输出目录时启动器拒绝覆盖。续跑时从首个未完成组合开始，保留旧目录及日志。若评价失败，继续使用同模型、同类别的原冻结检查点，用新 `--output` 目录执行评价命令。脚本核对最终 epoch、迭代数、实验配置并记录检查点哈希；汇总时保留原训练与复评两份证据。若训练尚未完成 100 epoch，保留失败证据，用新输出目录从相同种子和参数重跑。记录显存、报错或中断原因之后再重试。
+可用 `--only-car` 单独执行首组。启动脚本会为同一数据根加锁，按顺序执行训练、冻结评价和核查。第 50 与第 100 epoch 训练内的测试位置均保留上游空评估路径。各组正式测试从 `runs/<模型>/<类别>/checkpoints/<上游实验目录>/['类别']_ckpt.pth` 读取，只接受 `status.json` 绑定的最终检查点及 `epoch=100`、`iter=30000`。备用的 `*_net_100.pth` 记录 SHA-256，用于溯源。
 
-每组训练目录记录 `config.json`、`status.json`、`epochs.json`、`gpu.csv`、官方日志及权重。独立评价目录含 `synergy.json`、`raw/`、`fused/` 和 `diagnostics.csv`。第 50 和第 100 epoch 的训练内评估沿用上游空评估路径，官方测试集只用于冻结检查点的独立评价。关闭逐图批量渲染，保存可审计的原始数组。融合、评估输入和指标实现见 [TASK-001 审计](../../reports/TASK-001-REPORT.md)。
+完整日志在 `logs/`。日常文件包括训练目录的 `config.json`、`status.json`、`epochs.json`、`gpu.csv`，以及独立评价目录的 `synergy.json`、`predictions.json`、`raw/`、`fused/` 和 `diagnostics.csv`。训练中的整卡采样和最终 PyTorch 峰值分别记录。
 
-当前证据见 [第二阶段执行记录](../../reports/TASK-002-REPORT.md#第二阶段执行记录) 和 [结果目录](../../results/baselines/README.md)。
+若评价失败，先将已停止的失败评价目录移动到仓库外的另一个保留目录，再运行相同计划。已通过的训练会复用，评价仍绑定同一冻结检查点。若训练中断或失败，保留日志和整个失败运行目录。当前启动器从固定种子重新执行该组，因为上游检查点没有保存完整随机数和数据加载器状态。通过的前序组合会复用。重试时原日志保存在外部目录，新的执行时间和命令追加到日志。
+
+```bash
+"$py" -B tools/environment/summarize_baselines.py --runs "$stage/runs" \
+  --evaluations "$stage/evaluations" --output "$stage/metrics/baseline-summary.csv"
+"$py" -B tools/environment/plot_baselines.py --root "$stage" --output "$stage/figures"
+```
+
+汇总可在正式训练过程中执行，未达到完整评价的指标留空。绘图命令要求八组均通过。视角和光照表里的 `positive` 表示掩膜非空的样本，`metadata_positive` 和 `mask_label_disagreements` 分别记录原元数据计数与分歧。给定单一掩膜标签的子组保留空指标。正常件分数按光照汇总，用于比较高分倾向；没有在测试集上设定误报阈值。热力图在每类两模型共同的正式输出中按身份顺序选首个有官方标签与非空掩膜的样本，每类两图同尺度。
+
+当前证据见[审查整改与正式实验](../../reports/TASK-002-REPORT.md#第二阶段审查整改与正式实验)和[结果目录](../../results/baselines/README.md)。

@@ -30,6 +30,8 @@ CONFIGS = {
     "dinomaly": "configs/benchmark/dinomaly/dinomaly_100e.py",
     "inpformer": "configs/benchmark/inpformer/inpformer_100e.py",
 }
+FINAL_EPOCH = 100
+FINAL_ITERATION = 30_000
 
 
 def now():
@@ -45,6 +47,38 @@ def write_json(path, data):
     temp = path.with_suffix(".tmp")
     temp.write_text(json.dumps(data, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     temp.replace(path)
+
+
+def read_record(path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def validate_checkpoint(checkpoint, model, category, upstream):
+    """Accept only the recorded final checkpoint produced by the matching upstream trainer."""
+    require(checkpoint.parent.parent.name == "checkpoints"
+            and checkpoint.name == f"{[category]}_ckpt.pth", "unexpected official checkpoint path")
+    run_root = checkpoint.parents[2]
+    source = read_record(run_root / "config.json")
+    status = read_record(run_root / "status.json")
+    require(source["class"] == category and source["cfg_path"] == CONFIGS[model]
+            and source["cfg_sha256"] == digest(upstream / CONFIGS[model])
+            and source["upstream_revision"] == REVISION and source["release_revision"] == RELEASE_REVISION
+            and source["weight_sha256"] == WEIGHT_SHA and source["mode"] == "train"
+            and source["protocol"] == "M2AD-Synergy" and source["seed"] == 42
+            and source["epoch"] == FINAL_EPOCH and source["batch_train"] == 12
+            and source["test_during_training"] is False, "checkpoint provenance does not match this run")
+    completed = status.get("final_checkpoint", {})
+    checksum = digest(checkpoint)
+    require(status["status"] == "PASS" and status["mode"] == "train" and status["model"] == model
+            and status["class"] == category and status["epochs_completed"] == FINAL_EPOCH
+            and status["optimization_steps"] == FINAL_ITERATION
+            and completed.get("path") == checkpoint.relative_to(run_root).as_posix()
+            and completed.get("bytes") == checkpoint.stat().st_size
+            and completed.get("sha256") == checksum, "checkpoint does not match the recorded final training artifact")
+    state = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    require(state["epoch"] == FINAL_EPOCH and state["iter"] == FINAL_ITERATION,
+            "evaluation requires the final checkpoint at epoch 100 and iteration 30000")
+    return checksum
 
 
 def sample_gpu(stop, output):
@@ -79,18 +113,9 @@ def run(args, result):
                 and marker["images"] == 12_000 and marker["split_crc_size_overlap"] == 0,
                 "verified, complete class is required")
     if args.checkpoint:
-        state = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
-        require(state["epoch"] == 100 and state["iter"] == 30_000, "re-evaluation requires the final checkpoint")
-        del state
-        run_root = args.checkpoint.parent.parent.parent
-        source = json.loads((run_root / "config.json").read_text(encoding="utf-8"))
-        require(args.checkpoint.parent.parent.name == "checkpoints" and args.checkpoint.name.endswith("_ckpt.pth")
-                and source["class"] == args.category and source["cfg_path"] == CONFIGS[args.model]
-                and source["upstream_revision"] == REVISION and source["release_revision"] == RELEASE_REVISION
-                and source["weight_sha256"] == WEIGHT_SHA and source["mode"] == "train"
-                and source["test_during_training"] is False, "checkpoint provenance does not match this run")
-        result["evaluation_checkpoint_sha256"] = digest(args.checkpoint)
-        result["epochs_completed"] = 100
+        result["evaluation_checkpoint_sha256"] = validate_checkpoint(args.checkpoint, args.model, args.category,
+                                                                     args.upstream)
+        result["epochs_completed"] = FINAL_EPOCH
     os.chdir(args.upstream)
     sys.path.insert(0, str(args.upstream))
     if not hasattr(collections, "Iterable"):
@@ -113,7 +138,7 @@ def run(args, result):
 
     def setup(cfg, protocol, cls):
         cfg = original_setup(cfg, protocol, cls)
-        require(cfg.trainer.epoch_full == 100 and cfg.batch_train == cfg.batch_test_per == 12
+        require(cfg.trainer.epoch_full == FINAL_EPOCH and cfg.batch_train == cfg.batch_test_per == 12
                 and cfg.seed == 42 and cfg.size == 224 and cfg.use_adeval,
                 "unexpected pinned upstream configuration")
         cfg.trainer.checkpoint = str(args.output / "checkpoints")
@@ -130,7 +155,7 @@ def run(args, result):
             "optimizer": {"lr": cfg.optim.lr, **cfg.optim.kwargs},
             "scheduler": cfg.trainer.scheduler_kwargs, "loss": cfg.loss.loss_terms,
             "clip_grad": cfg.loss.clip_grad, "default_test_interval": cfg.trainer.test_per_epoch,
-            "formal_test_epoch": 100, "test_during_training": False, "bulk_visualization": cfg.vis,
+            "formal_test_epoch": FINAL_EPOCH, "test_during_training": False, "bulk_visualization": cfg.vis,
             "model_kwargs": {key: value for key, value in cfg.model.kwargs.items() if key != "checkpoint_path"},
             "weight_sha256": WEIGHT_SHA, "metrics": cfg.metrics, "use_adeval": cfg.use_adeval,
         })
@@ -161,6 +186,9 @@ def run(args, result):
         def loss(*pos, **kw):
             value, logs = original_compute(*pos, **kw)
             require(bool(torch.isfinite(value)), f"NaN/Inf loss at iteration {trainer.iter}")
+            if trainer.iter % 20 == 0:
+                result["last_observed_iteration"] = trainer.iter
+                write_json(args.output / "status.json", result)
             return value, logs
 
         def save():
@@ -168,13 +196,16 @@ def run(args, result):
             if not epochs or epochs[-1]["epoch"] < trainer.epoch:
                 epochs.append({"epoch": trainer.epoch, "iteration": trainer.iter, "utc": now()})
                 write_json(args.output / "epochs.json", epochs)
+                result.update(epochs_completed=trainer.epoch, optimization_steps=trainer.iter)
+                write_json(args.output / "status.json", result)
 
         def evaluate(*pos, **kw):
             metrics = original_eval(*pos, **kw)
             numbers = {name: float(value) * 100 for name, value in metrics.items()}
             invalid = [name for name, value in numbers.items() if not math.isfinite(value)]
             write_json(args.output / "synergy.json", {
-                "epoch": 100, "class": args.category, "model": args.model,
+                "epoch": FINAL_EPOCH, "class": args.category, "model": args.model,
+                "checkpoint_sha256": result["evaluation_checkpoint_sha256"],
                 "metrics_pct": {key: value if math.isfinite(value) else None for key, value in numbers.items()},
                 "nonfinite": invalid,
             })
@@ -201,17 +232,24 @@ def run(args, result):
                 and set(results["illumination_list"]) == {f"{l:02d}" for l in range(1, 11)},
                 "official configuration coverage mismatch")
         masks = results["imgs_masks"]
-        require(masks.shape == (8400, 1, 224, 224) and masks.min() == 0 and masks.max() == 1,
+        require(results["anomaly_scores"].shape == (8400,) and results["anomaly_maps"].shape == (8400, 224, 224),
+                "unexpected official score or heatmap shape")
+        require(masks.shape == (8400, 1, 224, 224) and np.issubdtype(masks.dtype, np.integer)
+                and masks.min() == 0 and masks.max() == 1,
                 "unexpected official mask shape or labels")
         result["inference_finished_utc"] = now()
         result["inference_through_concatenation_seconds"] = perf_counter() - infer_started
-        save_arrays(args.output / "raw", {**results, "imgs_masks": masks.astype(np.uint8)})
+        evidence = {"raw": save_arrays(args.output / "raw", {**results, "imgs_masks": masks.astype(np.uint8)})}
         fused = original_fuse(**results, fuse=option)
         require(len(fused["object_instance_names"]) == 70 and len(fused["view_instance_names"]) == 840,
                 "unexpected fused object or view count")
-        check_fusion(results, fused)
-        save_arrays(args.output / "fused", fused)
-        result["fusion_crosscheck"] = "PASS"
+        require(fused["object_instance_anomalys"].shape == fused["object_instance_anomaly_scores"].shape == (70,)
+                and fused["view_instance_anomalys"].shape == fused["view_instance_anomaly_scores"].shape == (840,)
+                and fused["view_instance_masks"].shape == fused["view_instance_anomaly_maps"].shape == (840, 224, 224),
+                "unexpected fused label, score, mask or heatmap shape")
+        result["fusion_crosscheck"] = check_fusion(results, fused)
+        evidence["fused"] = save_arrays(args.output / "fused", fused)
+        write_json(args.output / "predictions.json", evidence)
         return fused
 
     infer_started = None
@@ -219,7 +257,7 @@ def run(args, result):
     def final_test(trainer, vis=True):
         nonlocal infer_started
         if not args.checkpoint:
-            if trainer.epoch == 100:
+            if trainer.epoch == FINAL_EPOCH:
                 result["train_finished_utc"] = now()
                 result["train_seconds"] = perf_counter() - training_started
                 result["epochs_completed"] = trainer.epoch
@@ -241,7 +279,7 @@ def run(args, result):
     if args.checkpoint:
         result["diagnostics"] = save_diagnostics(args.output, args.category, use_adeval=True)
     elif not args.preflight:
-        require(epochs and epochs[-1]["epoch"] == 100 and epochs[-1]["iteration"] == 30_000,
+        require(epochs and epochs[-1]["epoch"] == FINAL_EPOCH and epochs[-1]["iteration"] == FINAL_ITERATION,
                 "training did not reach the frozen checkpoint")
 
 
@@ -284,11 +322,11 @@ def main():
             result[name] = max(result.get(name, 0), value)
         weights = list((args.output / "checkpoints").glob("**/*_net_100.pth"))
         if weights:
-            result["weights"] = [{"path": str(path.relative_to(args.output)), "bytes": path.stat().st_size,
+            result["weights"] = [{"path": path.relative_to(args.output).as_posix(), "bytes": path.stat().st_size,
                                   "sha256": digest(path)} for path in weights]
             checkpoint = next(weights[0].parent.glob("*_ckpt.pth"), None)
             if checkpoint:
-                result["final_checkpoint"] = {"path": str(checkpoint.relative_to(args.output)),
+                result["final_checkpoint"] = {"path": checkpoint.relative_to(args.output).as_posix(),
                                               "bytes": checkpoint.stat().st_size, "sha256": digest(checkpoint)}
         result.update(finished_utc=now(), wall_seconds=perf_counter() - started)
         write_json(args.output / "status.json", result)

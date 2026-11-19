@@ -1,0 +1,27 @@
+{
+  "tests": {
+    "command": "python -B -m unittest discover -s tools/environment -p 'test_*.py'",
+    "result": "PASS",
+    "count": 7
+  },
+  "early_official_checkpoint_read": {
+    "relative_checkpoint": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth",
+    "epoch": 2,
+    "iteration": 600,
+    "checkpoint_members": [
+      "epoch",
+      "iter",
+      "metric_recorder",
+      "net",
+      "optimizer",
+      "scaler",
+      "scheduler",
+      "total_time"
+    ],
+    "formal_evaluation": false
+  },
+  "evaluation_limit": {
+    "epoch": 100,
+    "iteration": 30000
+  }
+}
