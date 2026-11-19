@@ -1,0 +1,54 @@
+TASK-001 first-review rerun, 2026-11-19 Asia/Shanghai
+Commands were run from the repository root. <CACHE> and <METRIC_CACHE> replace
+local absolute paths. Outputs below contain only summaries and diagnostics.
+
+Windows 11 / PowerShell 7.6.9 / Python 3.13.2 / requests 2.33.1
+Archive sampling: NumPy 2.3.5, OpenCV 4.13.0.92
+PYTHONDONTWRITEBYTECODE=1
+
+> python -X utf8 -m unittest discover -s tools/audit -p 'test_*.py' -v
+test_counts_complete_objects ... ok
+test_rejects_cross_split_instance ... ok
+test_rejects_duplicate_configuration ... ok
+test_rejects_incomplete_object ... ok
+test_rejects_swapped_official_split ... ok
+test_rejects_corrupt_cached_manifest ... ok
+test_rejects_non_range_response_before_reading ... ok
+test_rejects_oversize_chunk_without_content_length ... ok
+test_rejects_unexpected_content_range_before_reading ... ok
+Ran 9 tests in 0.011s
+OK (exit 0)
+
+> python -X utf8 tools/audit/manifest.py --cache <CACHE>
+PASS (exit 0). See manifest-summary.json.
+Train: 299 objects / 35,880 images. Test: 699 objects / 83,880 images.
+Total: 998 objects / 119,760 images. All object groups have 12 x 10 configurations.
+Full-key, path and class+ID overlap: 0 each. Bare-ID overlap: 8.
+Sorted normal IDs, seed 42 and train ratio 0.6: zero train-ID differences in all 10 classes.
+Paper v1 Fig. 3(a) vs release: Holder NG 50 vs 49. Dice Good 49 in both.
+
+> python -X utf8 tools/audit/archives.py --cache <CACHE> --alignment
+PASS (exit 0). See archive-summary.json.
+10 central directories. Missing image/mask/segment paths, extra file members, and
+train/test CRC32+member-size overlap: 0 in each category. Successful range
+payload: 32,183,557 bytes. Requested bytes including one retry: 32,249,114.
+12 CRC-checked and decoded PNG samples, 1024 x 1024. Four candidate classes,
+one normal object and one view per class. Eight paired estimates, each absolute
+shift component below 0.5 px, response 0.1565–0.6969.
+Selection is deterministic. No random seed for image sampling or metrics.
+
+> python -X utf8 tools/audit/metric_smoke.py --cache <METRIC_CACHE> --device cpu
+PASS (exit 0). See metrics-cpu.json. PyTorch 2.11.0+cpu.
+
+> python tools/audit/metric_smoke.py --cache <METRIC_CACHE> --device cuda
+PASS (exit 0). See metrics-cuda.json. WSL2 Ubuntu 22.04, Python 3.11.11,
+PyTorch 2.2.2+cu121, NumPy 1.26.4, OpenCV 4.9.0, RTX 3090 (CC 8.6).
+Direct WSL fetch of the upstream fusion source failed with ConnectionError.
+Reran against the Windows-populated cache mounted in WSL, with hash verification.
+Both backends: fusion means and union mask PASS. Synthetic I-AUROC / pixel
+AUROC / AUPRO = 1.0 / 1.0 / 1.0 and 1.0 / 0.5 / 0.5, with nstrips=50.
+Both backends emitted an upstream precision-division RuntimeWarning (mem_effic.py:67).
+A preliminary fully reversed CPU fixture produced NaN AUPRO at a flat zero-PRO
+boundary. This upstream interpolation edge case is outside the passing fixtures.
+
+No full image archives, external model weights, or formal training runs.
