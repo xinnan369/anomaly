@@ -4,7 +4,7 @@
 
 | 任务 | 报告路径 | 状态 |
 | --- | --- | --- |
-| [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) | COMPLETED - AWAITING CHATGPT REVIEW |
+| [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) · [整改复跑日志](evidence/TASK-001/test-log.txt) | CHANGES REQUESTED - AWAITING RE-REVIEW |
 
 ## 初始化执行记录
 

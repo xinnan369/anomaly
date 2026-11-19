@@ -1,0 +1,46 @@
+{
+  "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+  "fusion_sha256": "e22c05165b65542d41f7f45828b0eb641614a0f84a7347ec9c1d17e1b855f009",
+  "adeval_version": "1.1.0",
+  "adeval_wheel_sha256": "125caf991037a668a1f072f7e99c81b6bdf86dc8c30cf1699c731d4b79e0bd6e",
+  "nstrips": 50,
+  "device": "cpu",
+  "gpu": null,
+  "compute_capability": null,
+  "environment": {
+    "system": "Windows",
+    "python": "3.13.2",
+    "torch": "2.11.0+cpu",
+    "torch_cuda": null,
+    "numpy": "2.3.5",
+    "opencv": "4.13.0"
+  },
+  "fusion": {
+    "object_scores": {
+      "a": 4.0,
+      "b": 1.6666666666666667
+    },
+    "view_scores": {
+      "a_000": 2.0,
+      "a_030": 8.0,
+      "b_000": 1.5,
+      "b_030": 2.0
+    },
+    "union_mask_assertion": "PASS",
+    "mean_heatmap_assertion": "PASS",
+    "mixed_label_notice": "PASS"
+  },
+  "adeval": {
+    "perfect": {
+      "i_auroc": 1.0,
+      "p_auroc": 1.0,
+      "p_aupro": 1.0
+    },
+    "one_of_two_regions": {
+      "i_auroc": 1.0,
+      "p_auroc": 0.5,
+      "p_aupro": 0.5
+    }
+  },
+  "result": "PASS"
+}

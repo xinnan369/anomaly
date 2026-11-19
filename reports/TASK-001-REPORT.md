@@ -1,19 +1,20 @@
 # TASK-001 · M²AD-Synergy 数据集与实验协议审计
 
-- **状态**　COMPLETED - AWAITING CHATGPT REVIEW
+- **状态**　CHANGES REQUESTED - AWAITING RE-REVIEW
 - **审计日期**　2026-11-19（北京时间）
+- **初审整改**　2026-11-19（北京时间）。四项整改已提交复查，验收结论以原 PR 为准。
 - **审计范围**　官方论文、固定版本代码及发布清单、本地样本抽查和环境验证。
 
 ## 1. 任务执行摘要
 
 M²AD-Synergy 的主协议同时评估**物件级异常检测**和**单视角异常检测与定位**。官方基线把同一物件的全部图像标量取均值用于 O-AUROC，把同一物件、同一角度下的光照分数及热图分别取均值用于 I-AUROC 和 AUPRO。定位热图始终保留各自视角的坐标系。
 
-固定发布清单包含 **998 个实例、119,760 张图**，每实例均有 12 个视角 × 10 种光照。论文和项目主页称有 999 个实例、119,880 张图，两者相差一个完整实例的数量。当前复现实验应以有版本的发布清单为准，同时保留这项差异待核实。Car、Cube、Doll、Ring 均适合做首轮协议验证。当前 Windows 主机有 24 GiB 的 RTX 3090，WSL 中成功执行了 CUDA 张量和合成 AUPRO 检查。
+固定发布清单包含 **998 个实例、119,760 张图**，每实例均有 12 个视角 × 10 种光照。对照预印本 v1 图 3(a) 的物件数，唯一类别差项是 **Holder 异常实例 50→49**，按发布版网格对应总量少 120 张图。缺失实物的身份、差异成因和论文跑分的数据快照仍待作者确认。Car、Cube、Doll、Ring 均适合做首轮协议验证。当前 Windows 主机有 24 GiB 的 RTX 3090，WSL 中成功执行了 CUDA 张量和合成 AUPRO 检查。 [论文图 3(a)](https://arxiv.org/html/2505.10996v1/dataset_statistics.png) · [计数证据](evidence/TASK-001/manifest-summary.json)
 
 | # | 核查项 | 审计结论 |
 | --- | --- | --- |
 | 1 | 官方论文及仓库 | 已核实引用、代码提交及数据发布版本 |
-| 2 | 真实目录 | 已解析官方清单并对照 ZIP 中央目录，抽查覆盖见第 3 节 |
+| 2 | 真实目录 | 已解析官方清单并对照分类 ZIP 中央目录，实测范围见第 8 节 |
 | 3 | 视角、光照及索引 | 已核实全部清单实例均具有完整 12×10 配置 |
 | 4 | 同视角光照对齐 | 论文与配对文件支持同一视角坐标系，已抽样测全局平移，逐图及局部误差待测 |
 | 5 | 数据划分 | 已核实仅 train/test、按正常实例拆分、异常实例全在 test |
@@ -56,14 +57,30 @@ M²AD-Synergy 的主协议同时评估**物件级异常检测**和**单视角异
 
 ## 4. 数据划分与评估协议
 
-**固定发布清单实测。** `train` 有 299 个正常实例和 35,880 张图。`test` 有 200 个正常实例、499 个异常实例和 83,880 张图。清单没有 `val`。生成代码将每类排序后的正常实例以 Python `random.seed(42)` 打乱，取前 `int(N*0.6)` 作为训练，剩余正常加全部异常进入测试。实际应消费已发布清单，避免不同释放版本或重跑结果改变划分。Dice 的训练 Good 为 29，Holder 的测试 NG 为 49，其余对应为 30 和 50。采集论文 §3.1 用于筛选可见性的三个内部子集与这里的无监督 train/test 分工不同。Synergy 读取全部测试记录，只有 Invariant 过滤 `detectable=False`。 [划分生成代码](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/data/gen_metadata/m2ad.py#L91-L145) · [协议选择](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/data/ad_dataset.py#L43-L52)
+**固定发布清单实测。** `train` 有 299 个正常实例和 35,880 张图。`test` 有 200 个正常实例、499 个异常实例和 83,880 张图。清单没有 `val`。生成代码将每类排序后的正常实例以 Python seed 42 打乱，取前 `int(N*0.6)` 作为训练，剩余正常加全部异常进入测试。以清单中的全体正常实例 ID 复算后，十类训练集合的对称差均为 0。采集论文 §3.1 用于筛选可见性的三个内部子集与这里的无监督 train/test 分工不同。Synergy 读取全部测试记录，只有 Invariant 过滤 `detectable=False`。 [划分生成代码](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/data/gen_metadata/m2ad.py#L91-L145) · [协议选择](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/data/ad_dataset.py#L43-L52)
 
-| 类别 | 训练 Good 实例 / 图像 | 测试 Good / NG 实例 | 测试图像 | NG 中 `image_anomaly=1` | 其中 `detectable=False` |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Car | 30 / 3,600 | 20 / 50 | 8,400 | 4,850 | 309 |
-| Cube | 30 / 3,600 | 20 / 50 | 8,400 | 5,530 | 222 |
-| Doll | 30 / 3,600 | 20 / 50 | 8,400 | 5,010 | 280 |
-| Ring | 30 / 3,600 | 20 / 50 | 8,400 | 5,480 | 105 |
+| 类别 | Train Good 实例 / 图像 | Test Good 实例 / 图像 | Test NG 实例 / 图像 |
+| --- | ---: | ---: | ---: |
+| Bird | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| Car | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| Cube | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| Dice | 29 / 3,480 | 20 / 2,400 | 50 / 6,000 |
+| Doll | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| Holder | 30 / 3,600 | 20 / 2,400 | 49 / 5,880 |
+| Motor | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| Ring | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| Teapot | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| Tube | 30 / 3,600 | 20 / 2,400 | 50 / 6,000 |
+| **合计** | **299 / 35,880** | **200 / 24,000** | **499 / 59,880** |
+
+`Test NG` 图像数以异常物件的目录分组，包含其全部配置，包括 `image_anomaly=0` 的图。逐类比较预印本 v1 图 3(a) `#Object` 面板的 Normal 和 All Abnormal 与发布清单之和。Dice 的正常实例在两个来源均为 49，Holder 的异常实例在预印本为 50、在 Hugging Face revision `05abc5d03167354a7ef98541236b5c0bd00abadf` 为 49。其余类别的物件计数相同。这一比较确认的是计数差项。 [论文图 3(a)](https://arxiv.org/html/2505.10996v1/dataset_statistics.png) · [十类统计 JSON](evidence/TASK-001/manifest-summary.json)
+
+| 类别 | NG 中 `image_anomaly=1` | 其中 `detectable=False` |
+| --- | ---: | ---: |
+| Car | 4,850 | 309 |
+| Cube | 5,530 | 222 |
+| Doll | 5,010 | 280 |
+| Ring | 5,480 | 105 |
 
 四类均有完整组合、正常与异常测试物件、定位标注路径以及预印本两档分辨率的五种基线结果。首轮可报告四类各自结果与四类宏平均，完整榜单比较需使用十类相同协议。样本数量按独立物件理解，重复配置之间高度相关。 [预印本表 2–3](https://arxiv.org/html/2505.10996v1#S4)
 
@@ -79,7 +96,7 @@ M²AD-Synergy 的主协议同时评估**物件级异常检测**和**单视角异
 
 ## 5. 数据泄漏风险分析
 
-- **清单实测。** 以 `(cls_name, Good/NG 路径段, object_name)` 为实例键，train/test 交集为 0，图像相对路径交集为 0。当前发布清单中 `(cls_name, object_name)` 的跨集交集也为 0，仅按裸 `object_name` 有 8 个交集。每个实例的 120 个角度与光照记录必须一起进入同一划分。四类的 ZIP 中央目录检查范围及 CRC32+成员长度结果见第 8 节。
+- **清单实测。** 以 `(cls_name, Good/NG 路径段, object_name)` 为实例键，train/test 交集为 0，图像相对路径交集为 0。当前发布清单中 `(cls_name, object_name)` 的跨集交集也为 0，仅按裸 `object_name` 有 8 个交集。每个实例的 120 个角度与光照记录必须一起进入同一划分。十类的 ZIP 中央目录检查范围及 CRC32+成员长度结果见第 8 节。
 - **证据边界。** 路径、作者实例 ID 和 ZIP CRC32+长度可筛查命名泄漏和完全相同的归档成员。它们无法证明 Good 与 NG 没有同一实体改制、近重复或同一批次相关性。正式前需以可用的物理溯源或受控的近重复审计为证据。
 - **校准与调参。** 从官方 train 按实例建立正常验证集，预先锁定划分、 seed、预处理、截断阈值、光照权重、epoch 与统计量。异常率、`image_anomaly`、`object_anomaly`、`detectable`、GT 和 `Good`/`NG` 路径状态都不能进入训练、推理、权重计算或模型选择。盲推理清单应通过脱敏映射提供 `(class, opaque_id, view, light)`，同时避免由 `hole_...` 等缺陷命名泄露标签。正常校准和训练阶段生成的代理扰动是一种拟议实验设计。
 - **官方运行器防误用。** trainer 会展示每个指标历次测试的 Max 及对应 epoch。预先固定次数和检查点，只在冻结后运行官方测试。若将测试 Max 用来选 epoch、方法、权重或分辨率，会产生测试集选择偏差。 [trainer 日志与汇总](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/trainer/_base_trainer.py#L372-L398)
@@ -102,7 +119,7 @@ README 列出 Python 3.9、`timm==0.8.15dev0`、`opencv-python==4.9.0.80`、NumP
 
 - **本地实测。** Windows 11 Pro 10.0.26200，PowerShell 7.6.9，Git 2.53.0.windows.2，Python 3.13.2。RTX 3090 有 24,576 MiB，驱动 610.88，Windows `nvcc` 为 12.6.85。Windows Python 的 torch 2.11.0、torchvision 0.26.0 环境是 CPU build（`torch.version.cuda=None`），缺 sklearn 和 timm。WSL2 Ubuntu 22.04 的已有 Conda 环境使用 Python 3.11.11、torch 2.2.2+cu121，CUDA 可用，设备 capability 8.6，张量求和结果 28，ADEval 合成测试通过。
 - **硬件与数据规格。** NVIDIA 列出 RTX 3090 为 CC 8.6，RTX 4090 为 CC 8.9。预印本报告单 RTX 4090、torch 2.1.2，但本机没有 4090。作者使用相机 3648×5472，README 列出 1024²、256² 发布版本，论文实验用 256/512，Dinomaly 与 INP-Former 用 224/448。公开四类 ZIP 共 67,347,000,143 B（62.72 GiB），十类 ZIP 共 164,429,881,188 B（153.14 GiB），不含元数据 ZIP。C、D、E 盘检查时分别空闲 358.33、371.53、410.62 GiB。 [NVIDIA capability](https://developer.nvidia.com/cuda/gpus) · [官方分辨率和资源](https://arxiv.org/html/2505.10996v1#S4.SS1)
-- **资源估算。** 四类 ZIP 中央目录的解包成员总大小为 67,422,456,045 B。保留四类的 ZIP 和解包文件共约 125.51 GiB，再计文件系统开销、缓存和日志。可预留四类约 150 GiB、十类约 350 GiB，十类值为按压缩量粗估。未压缩单物件 120×3×H×W 的 FP32 输入约为 68.9 MiB（224²）或 275.6 MiB（448²），不含激活、梯度和权重。官方 tester 会先累积单图热图和掩膜，再融合。按一类 8,400 张和 256²、FP32 热图及 8 字节整数掩膜估算，仅原始两组数组约 6.15 GiB RAM，拼接和融合另计。GPU 峰值还受 forward batch、融合实现及逐类评估缓存影响。建议先单类、按视角分组流式处理，读取 `max_memory_allocated`、`max_memory_reserved` 和主机 RSS，再确定安全批量。
+- **资源估算。** 中央目录显示四类与十类解包成员总大小分别为 67,422,456,045 B 和 164,711,135,053 B。保留 ZIP 和解包文件分别约需 125.51 GiB 和 306.54 GiB。初步预留四类约 150 GiB、十类约 350 GiB，余量用于文件系统开销、缓存和日志。未压缩单物件 120×3×H×W 的 FP32 输入约为 68.9 MiB（224²）或 275.6 MiB（448²），不含激活、梯度和权重。官方 tester 会先累积单图热图和掩膜，再融合。按一类 8,400 张和 256²、FP32 热图及 8 字节整数掩膜估算，仅原始两组数组约 6.15 GiB RAM，拼接和融合另计。GPU 峰值还受 forward batch、融合实现及逐类评估缓存影响。建议先单类、按视角分组流式处理，读取 `max_memory_allocated`、`max_memory_reserved` 和主机 RSS，再确定安全批量。
 
 **建议的隔离顺序（尚未安装完整环境）。** 在 Linux 或 WSL2 新建 Python 3.9 环境。先装官方匹配的 CUDA wheels，再独立装数值/指标依赖，最后对照所选方法配置核实其余导入。仓库 README 的 `--index-url` 指向 PyTorch wheel 仓库，该索引仅用来装 torch/torchvision。采用 NumPy 1.26.4 让 ADEval 1.1.0 的 `np.trapz` 路径和旧依赖可用。下列命令只供后续获准的环境复现，无数据与权重下载。 [PyTorch 2.1.2 安装版本](https://pytorch.org/get-started/previous-versions/#v212) · [官方依赖说明](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/README.md#environment-setup)
 
@@ -123,16 +140,27 @@ python -m pip freeze --all
 
 ## 8. 已完成的验证及其日志证据
 
-以下记录本次实际执行。数据抽样与合成数组为固定选择，没有随机种子。官方划分与基线配置中的种子 42 来自源码，本次未运行拆分生成器或训练。
+以下保留初审的命令与证据，并记录整改复跑。图像抽样与合成数组为固定选择，没有随机种子。整改脚本以 seed 42 复算正常实例划分，未运行官方训练或基线。
+
+### 初审整改复跑
+
+| 整改 | 可复查的证据 |
+| --- | --- |
+| 清单统计、实例拆分和防泄漏 | [manifest.py](../tools/audit/manifest.py) 重算固定清单和论文计数，输出 [manifest-summary.json](evidence/TASK-001/manifest-summary.json)。 |
+| ZIP 中央目录、成员完整性与配准抽样 | [archives.py](../tools/audit/archives.py) 检查路径覆盖和跨集 CRC32+大小交集，抽查时额外验证 12 个成员的 CRC、尺寸及 PNG 解码。结果见 [archive-summary.json](evidence/TASK-001/archive-summary.json)。 |
+| 官方融合与 ADEval smoke test | [metric_smoke.py](../tools/audit/metric_smoke.py) 校验固定源码与 wheel 后运行实际实现。合成完美案例和两区仅定位一区的案例，AUPRO 分别为 1.0 与 0.5。查看 [CPU](evidence/TASK-001/metrics-cpu.json) 和 [RTX 3090 CUDA](evidence/TASK-001/metrics-cuda.json) 输出。 |
+| 复跑命令及失败断言 | [审计运行说明](../tools/audit/README.md) 给出依赖、固定资源和预期断言。[执行日志](evidence/TASK-001/test-log.txt)记录实际命令、环境和 9 项离线测试结果。 |
+
+### 初审记录
 
 | 实际命令或调用 | 结果 |
 | --- | --- |
 | `git fetch origin main`、`git switch -c codex/task-001-m2ad-audit origin/main` | 从 `797639dc9c2bba3b8cad86a4feb1df457a364a3f` 创建独立分支 |
 | `git ls-remote https://github.com/hustCYQ/M2AD.git HEAD`、`gh api repos/hustCYQ/M2AD/git/trees/<SHA>?recursive=1`、对固定 SHA 的 Raw 文件用 `curl.exe -fsSL` 获取源码 | 固定代码 SHA 如第 2 节。初始 shallow clone 因包含大体积官网 GIF 取消，静态审计改为逐个获取小源码文件 |
 | `Invoke-RestMethod` 查询 Crossref 标题及 HF 数据集 API，`curl.exe -fsSL --max-time 45 --max-filesize 1500000 <jsons.zip URL>`，`Get-FileHash`，`tar -tf` | DOI、发行 revision、清单文件和哈希见第 2 节 |
-| `python -X utf8 -u audit_release.py <TEMP_DIR> --archives`，同参数运行 `audit_release_retry.py` 和 `audit_release_http.py`（临时脚本，zipfile + OpenCV 4.13.0.92） | 对 TLS 或传输截断错误重试，并改用 Python requests 流式验证 206、Content-Range 和长度。全量核对清单配置、物件键、路径和标签 |
+| 初审使用临时清单和 ZIP 脚本，整改以本仓库 `manifest.py`、`archives.py` 复跑 | 以流式 HTTP 验证 206、Content-Range 和长度。全量核对清单配置、物件键、路径和标签 |
 | `nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv`、`nvcc --version`、`wsl --list --verbose`，Windows Python 查询 `torch.version.cuda`，WSL Python 执行 `torch.arange(8, device=torch.device(0)).sum().item()` | GPU、驱动、CUDA 和结果见第 7 节 |
-| `python -X utf8 metric_smoke.py`，WSL 的 `~/anaconda3/envs/yolov12/bin/python metric_smoke.py --cuda` | 官方融合函数和 ADEval CUDA 合成测试通过。权重和模型未参与 |
+| 初审使用临时融合检查，整改以本仓库 `metric_smoke.py` 分别在 Windows CPU 和 WSL CUDA 复跑 | 官方融合函数和 ADEval 合成测试通过。权重和模型未参与 |
 | `Invoke-RestMethod https://pypi.org/pypi/adeval/1.1.0/json`、用 `curl.exe` 获取 26,044 B 的发布 wheel、`Get-FileHash`、`python -m zipfile -e` | SHA-256 `125caf991037a668a1f072f7e99c81b6bdf86dc8c30cf1699c731d4b79e0bd6e` 与 PyPI 一致，合成测试直接读取解包源码 |
 | `rg --files --hidden --no-ignore --maxdepth 4` 按 M2AD/VICAD 和清单文件名筛查，查看候选数据目录，WSL `find ~ /mnt/d/datasets -maxdepth 4` 按相关名筛查 | 工作区、常用下载/文档目录、D/E 盘有限深度及 WSL 家目录未发现可用的完整已有 M²AD。结论限于查找范围 |
 
@@ -148,7 +176,7 @@ synthetic ADEval CUDA: p_aupro=1.0, i_auroc=1.0, p_auroc=1.0
 
 **复核方法。** 用 `zipfile.ZipFile(...).open("meta_unsupervised.json")` 读取清单，将各 `img_path` 拆成类别、状态、实例和文件名，用正则 `A(\d{3})_I(\d{2})\.png` 提取索引并与字段比较。按完整实例键断言配置集合等于 `{000,030,…,330} × {01,…,10}`，分别构建 train/test 的实例键、简化键及路径集合，取交集。ZIP 审计只请求存档尾部 65,557 B、ZIP64 中央目录所需区段和选定 PNG 成员的压缩区段。请求按字节数设上限，核对区间或返回长度，解码时由 zipfile 核对成员 CRC，比较 train/test 归档成员的 `(CRC32, file_size)`。
 
-**归档实测日志。** 6 个 ZIP 的文件成员均直接以类名为首层。每个 ZIP 的清单图像、非空 mask/seg 路径缺失数和未列成员数均为 0。以下仅列计量成功的 Range 响应，重试及失败流量另计。Dice 和 Holder 用于交叉检查清单例外，二者的归档目录也未发现补齐这 120 张差异的额外成员。
+**归档实测日志。** 整改复跑覆盖 10 个 ZIP。所有文件成员均直接以类名为首层，每个 ZIP 的清单图像、非空 mask/seg 路径缺失数、未列成员数和跨集 CRC32+成员大小交集均为 0。Holder 归档中没有超出清单的额外图像。表中保留初审的六类记录，全十类及请求重试见[复跑摘要](evidence/TASK-001/archive-summary.json)。
 
 | ZIP | 文件成员数 | 解包成员字节数 | 跨集 CRC32+长度交集 | 成功读取范围字节数 |
 | --- | ---: | ---: | ---: | ---: |
@@ -170,10 +198,11 @@ synthetic ADEval CUDA: p_aupro=1.0, i_auroc=1.0, p_auroc=1.0
 
 ## 9. 未完成事项和阻塞问题
 
-1. 需要作者确认论文 999/119,880 与当前固定发布 998/119,760 差异的具体来源。清单本身一致，缺口的物理身份和原论文跑分所用版本未知。
+1. 预印本 v1 图 3(a) 与固定发布物在 Holder NG 上差 1 个实例、总量差 120 张图。需要作者确认物理实例身份、变更原因及论文跑分所用数据快照。本报告保留两个版本的数字。
 2. 完整数据集未在所查本地路径找到。在未获取该版本全量像素、采集标定与实物溯源记录的情况下，逐图可解码性、亚像素局部对齐、跨视角配准和同一实物的近重复泄漏均未验证。
-3. README 提到低分辨率发行版，当前未验证其下载资产、清单一致性和实际空间占用。4090、官方 2.1.2/cu118 组合、五个端到端基线以及正式峰值显存未在本地验证。源码说明缺少完整依赖锁及原论文评估依赖版本。
+3. README 提到低分辨率发行版，当前未验证其下载资产、清单一致性和实际空间占用。4090、官方 2.1.2/cu118 组合、五个端到端基线以及正式峰值显存未在本地验证。本轮 smoke test 已锁定 ADEval 1.1.0 wheel 哈希，原论文评估实际安装的 ADEval 版本及完整依赖锁仍未知。
 4. 已检查当前分支、仓库历史、项目章程和可访问的项目聊天记录。找到四项设计假设和对旧数学方案的提及，但没有可逐式核对的数学原稿或公式版本。第 10 节对可核实的设计假设给出协议审查，原稿级验收须取得原稿后开展。
+5. ADEval 1.1.0 的初步全反排序 CPU 合成例在 FPR 上限附近的零 PRO 区段遇到插值除零并产生 NaN。整改的正式合成用例验证了 1.0 与 0.5，今后实际评估仍需记录非有限指标并排查，不静默填值。 [试跑诊断](evidence/TASK-001/test-log.txt)
 
 ## 10. 对 VICAD-Syn 研究方案的修正建议
 
