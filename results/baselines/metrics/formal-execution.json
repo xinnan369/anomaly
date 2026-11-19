@@ -1,0 +1,43 @@
+{
+  "observed_local": "2026-11-19T20:27:07+08:00",
+  "data_root_windows": "D:/vicad-syn/task-002-stage2",
+  "run_plan_command": "CUDA_VISIBLE_DEVICES=0 <locked venv Python> -B -u tools/environment/run_stage2.py --root /mnt/d/vicad-syn/task-002-stage2",
+  "plan_log": "logs/stage2-plan.log",
+  "completed_official_evaluations": 0,
+  "Car_Dinomaly": {
+    "source_log": "logs/dinomaly-Car-train.log",
+    "gpu_samples": "runs/dinomaly/Car/gpu.csv",
+    "config": "runs/dinomaly/Car/config.json",
+    "progress": "runs/dinomaly/Car/status.json",
+    "epoch_log": "runs/dinomaly/Car/epochs.json",
+    "observed_state": "RUNNING",
+    "last_completed_epoch": 18,
+    "completed_iterations_at_epoch_boundary": 5400,
+    "last_observed_iteration": 5600,
+    "latest_epoch_recorded_utc": "2026-11-19T20:26:23.542989+08:00",
+    "train_started_utc": "2026-11-19T20:05:19.522566+08:00",
+    "args": [
+      "--upstream",
+      "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+      "--weight",
+      "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+      "--release-root",
+      "/mnt/d/vicad-syn/task-002-stage2",
+      "--model",
+      "dinomaly",
+      "--category",
+      "Car",
+      "--output",
+      "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Car"
+    ],
+    "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+    "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+    "config_sha256": "e3abca8d7727e6a07df1a75fb737a9903028b5cccd3c9118d59e59baf58efff9",
+    "backbone_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+    "seed": 42,
+    "OOM_observed": false,
+    "nonfinite_observed": false,
+    "committed_log_excerpt_sha256": "4c77663b9ae75f38101ed8ddd8987b3df46ed5500c7cbc17187a8196953a4957"
+  },
+  "postprocessing_log": "logs/finalize-stage2.log"
+}
