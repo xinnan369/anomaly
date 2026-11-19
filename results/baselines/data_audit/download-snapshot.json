@@ -1,0 +1,23 @@
+{
+  "observed_local": "2026-11-19T16:34:34+08:00",
+  "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "all_required_archive_bytes": 67347000143,
+  "download_root_windows": "D:/vicad-syn/task-002-stage2",
+  "verified_archives": [],
+  "car_total_parts": 244,
+  "car_parts_present": 152,
+  "car_part_bytes_present": 10200547328,
+  "transport_checks": {
+    "wsl_direct_range": {
+      "curl_exit": 7,
+      "error": "Connection refused"
+    },
+    "windows_single_request_8_MiB": {
+      "http_status": 206,
+      "curl_exit": 28,
+      "elapsed_seconds": 35,
+      "received_bytes": 5924549
+    },
+    "windows_active_transfer_workers": 10
+  }
+}

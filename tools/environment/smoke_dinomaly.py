@@ -1,4 +1,4 @@
-"""Run one official Dinomaly update plus disjoint-normal Car inference on RTX CUDA."""
+"""Run one official baseline update plus disjoint-normal Car inference on CUDA."""
 
 import argparse
 import collections
@@ -74,7 +74,8 @@ def run(args):
     from data.utils import get_transforms
     from loss import get_loss_terms
     from model import get_model
-    from model.dinomaly_utils import vit_encoder
+    from model.dinomaly_utils import vit_encoder as dinomaly_encoder
+    from model.inp_former_utils import vit_encoder as inpformer_encoder
     from optim import get_optim
     from trainer.dinomaly_trainer import DinomalyTrainer
     from trainer.inpformer_trainer import INPFormerTrainer
@@ -82,8 +83,11 @@ def run(args):
     import adeval
     import torchvision
 
-    vit_encoder._WEIGHTS_DIR = str(args.weight.parent)
-    cfg = dinomaly_cfg()
+    dinomaly_encoder._WEIGHTS_DIR = inpformer_encoder._WEIGHTS_DIR = str(args.weight.parent)
+    if args.model == "dinomaly":
+        cfg, trainer_class = dinomaly_cfg(), DinomalyTrainer
+    else:
+        cfg, trainer_class = inpformer_cfg(), INPFormerTrainer
     cfg.train_data.cls_names = ["Car"]
     inp_cfg = inpformer_cfg()
     random.seed(cfg.seed)
@@ -114,7 +118,7 @@ def run(args):
     fit = timed("read_fit_batch", lambda: load_batch("fit", 2))
     probe = timed("read_probe_batch", lambda: load_batch("probe", 1))
     require(set(fit["object_name"]).isdisjoint(probe["object_name"]), "loaded objects overlap")
-    runner = DinomalyTrainer.__new__(DinomalyTrainer)
+    runner = trainer_class.__new__(trainer_class)
     runner.cfg = cfg
     runner.net = timed("initialize_model_cuda", lambda: get_model(cfg.model).cuda())
     encoder = runner.net.model.encoder
@@ -126,7 +130,13 @@ def run(args):
     runner.amp_autocast = get_autocast(cfg.trainer.scaler)
     runner.loss_scaler = get_loss_scaler(cfg.trainer.scaler)
     runner.net.train()
-    trainable = next(p for p in runner.net.model.bottleneck.parameters() if p.requires_grad)
+    prototypes = None
+    if args.model == "dinomaly":
+        trainable = next(p for p in runner.net.model.bottleneck.parameters() if p.requires_grad)
+    else:
+        trainable = runner.net.INP[0]
+        prototypes = list(trainable.shape)
+        require(prototypes == [6, 768], "unexpected INP prototype dimensions")
     before = trainable.detach().clone()
     timed("transfer_fit_batch", lambda: runner.set_input(fit))
 
@@ -151,6 +161,7 @@ def run(args):
     maps, scores = timed("probe_inference_and_scoring", infer)
     require(np.isfinite(maps).all() and np.isfinite(scores).all(), "non-finite inference output")
     return {
+        "model": args.model, "prototype_shape": prototypes,
         "revision": REVISION, "weight_sha256": digest, "weight_bytes": args.weight.stat().st_size,
         "gpu": torch.cuda.get_device_name(0), "capability": torch.cuda.get_device_capability(0),
         "torch": torch.__version__, "torchvision": torchvision.__version__, "cuda": torch.version.cuda,
@@ -177,6 +188,7 @@ def main():
     parser.add_argument("--data", required=True, type=lambda path: Path(path).resolve())
     parser.add_argument("--weight", required=True, type=lambda path: Path(path).resolve())
     parser.add_argument("--weight-sha256", required=True)
+    parser.add_argument("--model", choices=("dinomaly", "inpformer"), default="dinomaly")
     args = parser.parse_args()
     print(json.dumps(run(args), indent=2))
 

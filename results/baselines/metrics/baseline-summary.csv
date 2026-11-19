@@ -1,0 +1,9 @@
+model,class,status,train_status,evaluation_status,train_started_utc,train_finished_utc,epochs,mean_epoch_seconds,train_seconds,peak_allocated_bytes,peak_reserved_bytes,peak_device_mib,mean_device_util_pct,inference_seconds,evaluation_peak_allocated_bytes,evaluation_peak_reserved_bytes,parameters,weight_bytes,oom,nonfinite,O-AUROC_pct,I-AUROC_pct,AUPRO_pct,error
+dinomaly,Car,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
+dinomaly,Cube,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
+dinomaly,Doll,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
+dinomaly,Ring,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
+inpformer,Car,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
+inpformer,Cube,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
+inpformer,Doll,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
+inpformer,Ring,NOT_STARTED,NOT_STARTED,NOT_STARTED,,,0,,,,,,,,,,,,,,,,,
