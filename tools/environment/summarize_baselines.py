@@ -10,15 +10,24 @@ from statistics import mean
 
 MODELS = ("dinomaly", "inpformer")
 CLASSES = ("Car", "Cube", "Doll", "Ring")
+DOLL = ("dinomaly", "Doll")
+CLEAN_CONTINUOUS = "CLEAN_CONTINUOUS"
+RECOVERED_DEVIATION = "RECOVERED_DEVIATION"
+FAILED = "FAILED"
+
+
+def run_paths(runs, evaluations, model, cls, doll_attempt=None):
+    if doll_attempt is not None and (model, cls) == DOLL:
+        return doll_attempt / "train", doll_attempt / "evaluation"
+    return runs / model / cls, evaluations / model / cls
 
 
 def read_json(path):
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
 
 
-def row(root, evaluations, model, cls):
-    run = root / model / cls
-    evaluation = evaluations / model / cls
+def row(root, evaluations, model, cls, doll_attempt=None):
+    run, evaluation = run_paths(root, evaluations, model, cls, doll_attempt)
     record = read_json(run / "status.json")
     tested = read_json(evaluation / "status.json")
     if record.get("mode") == "preflight":
@@ -56,8 +65,13 @@ def row(root, evaluations, model, cls):
     status = train_status
     if train_status == "PASS":
         status = {"NOT_STARTED": "TRAINED", "RUNNING": "EVALUATING"}.get(evaluation_status, evaluation_status)
+    provenance = None
+    if train_status == "PASS":
+        provenance = RECOVERED_DEVIATION if (run / "recovery.json").is_file() else CLEAN_CONTINUOUS
+    elif train_status == "FAILED":
+        provenance = FAILED
     return {
-        "model": model, "class": cls, "status": status,
+        "model": model, "class": cls, "status": status, "training_provenance": provenance,
         "train_status": train_status, "evaluation_status": evaluation_status,
         "train_started_utc": record.get("train_started_utc"), "train_finished_utc": record.get("train_finished_utc"),
         "epochs": trained, "iterations": record.get("optimization_steps", epochs[-1]["iteration"] if epochs else None),
@@ -86,11 +100,13 @@ def main():
     parser.add_argument("--runs", type=Path, required=True)
     parser.add_argument("--evaluations", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--doll-attempt", type=Path, help="use this clean attempt, including if it failed")
     args = parser.parse_args()
-    rows = [row(args.runs, args.evaluations, model, cls) for model in MODELS for cls in CLASSES]
+    rows = [row(args.runs, args.evaluations, model, cls, args.doll_attempt)
+            for model in MODELS for cls in CLASSES]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

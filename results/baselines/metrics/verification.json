@@ -1,0 +1,477 @@
+{
+  "status": "PARTIAL",
+  "checked_utc": "2026-11-22T02:40:57+00:00",
+  "runtime": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.2",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.3.5"
+  },
+  "summary_sha256": "f79870ffc713403e83c57baa0536be901a7d0400764c102602118a89f37bf768",
+  "checks": [
+    {
+      "name": "shared_inputs",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "pinned_official_source",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "pretrained_backbone_sha256",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "staged_manifest_matches_pinned_release",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "Car_instance_isolation_and_verified_archive_receipt",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "Cube_instance_isolation_and_verified_archive_receipt",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "Doll_instance_isolation_and_verified_archive_receipt",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "Ring_instance_isolation_and_verified_archive_receipt",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "historical_recovery_preserved",
+          "checked_utc": "2026-11-22T02:40:57+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "dinomaly/Car",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:39:53+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "dinomaly/Cube",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:39:53+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:39:53+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "dinomaly/Doll",
+      "status": "FAIL",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "ValueError: training failed or incomplete: FAILED NonFiniteTrainingError: non-finite decoder_features at iteration 11241: ['de.0']"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "ValueError: no final epoch-100 checkpoint from training"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\vicad-syn\\\\task-002-stage2\\\\doll-clean-20261122-run\\\\evaluation\\\\status.json'"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\vicad-syn\\\\task-002-stage2\\\\doll-clean-20261122-run\\\\evaluation\\\\synergy.json'"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "ValueError: evaluation is blocked without a final checkpoint and evaluation status"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\vicad-syn\\\\task-002-stage2\\\\doll-clean-20261122-run\\\\evaluation\\\\predictions.json'"
+        },
+        {
+          "check": "launch_source_receipt",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "finite_probes_rng_and_full_batch_order",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "ValueError: continuous finite probes incomplete"
+        },
+        {
+          "check": "read_only_repeat_same_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "FAIL",
+          "error": "ValueError: repeat is blocked without a successful formal evaluation"
+        }
+      ]
+    },
+    {
+      "name": "dinomaly/Ring",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:40:15+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "inpformer/Car",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:40:15+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:40:15+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:40:25+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "inpformer/Cube",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:40:25+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:40:25+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:40:35+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "inpformer/Doll",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:40:35+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:40:35+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:40:45+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "inpformer/Ring",
+      "status": "PASS",
+      "checks": [
+        {
+          "check": "training_status_record",
+          "checked_utc": "2026-11-22T02:40:45+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "epochs_30000_steps_no_recorded_recovery",
+          "checked_utc": "2026-11-22T02:40:45+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "final_checkpoint_and_weights",
+          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_status_record",
+          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_metrics_frozen_checkpoint",
+          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "evaluation_checkpoint_argument",
+          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "official_json_and_summary_csv",
+          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "predictions_and_fusion_and_142_diagnostics",
+          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "paired_inputs",
+      "status": "FAIL",
+      "checks": [
+        {
+          "check": "Car_same_raw_identities_labels_masks",
+          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "Cube_same_raw_identities_labels_masks",
+          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "status": "PASS"
+        },
+        {
+          "check": "Doll_same_raw_identities_labels_masks",
+          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "status": "FAIL",
+          "error": "ValueError: cross-model comparison requires both formal evaluations"
+        },
+        {
+          "check": "Ring_same_raw_identities_labels_masks",
+          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "status": "PASS"
+        }
+      ]
+    }
+  ]
+}

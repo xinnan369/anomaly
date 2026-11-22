@@ -2,6 +2,7 @@
 
 import argparse
 import collections
+from contextlib import ExitStack
 from collections.abc import Iterable
 import csv
 from datetime import datetime, timezone
@@ -20,6 +21,7 @@ import numpy as np
 import torch
 
 from baseline_metrics import check_fusion, save_arrays, save_diagnostics
+from training_diagnostics import TrainingDiagnostics
 from prepare_release import ARCHIVE_SHA256, RELEASE_REVISION
 from smoke_dinomaly import REVISION, WEIGHT_NAME, check_upstream, require
 
@@ -134,6 +136,8 @@ def run(args, result):
     original_setup, original_trainer = entry.setup_cfg, entry.get_trainer
     original_test, original_fuse = upstream.BaseTrainer.test, upstream.m2ad_fuse
     epochs = []
+    diagnostics = None
+    resources = ExitStack()
     training_started = None
 
     def setup(cfg, protocol, cls):
@@ -162,7 +166,7 @@ def run(args, result):
         return cfg
 
     def build(cfg):
-        nonlocal training_started
+        nonlocal diagnostics, training_started
         trainer = original_trainer(cfg)
         require(len(trainer.train_set) == 3600 and len(trainer.test_set) == 8400, "official loader count mismatch")
         require(len(trainer.train_loader) == 300 and len(trainer.test_loader) == 700,
@@ -215,6 +219,9 @@ def run(args, result):
         trainer.compute_loss = loss
         trainer.save_checkpoint = save
         trainer.evaluator.run = evaluate
+        if args.diagnose_doll:
+            diagnostics = TrainingDiagnostics(trainer, args.output, args.release_root / "dataset")
+            diagnostics.install(upstream, resources)
         return trainer
 
     def fuse(**results):
@@ -273,7 +280,12 @@ def run(args, result):
     sys.argv = ["run_dataset.py", "--cfg_path", CONFIGS[args.model],
                 "-m", "test" if args.checkpoint else "train", "-s", "M2AD-Synergy"]
     torch.cuda.reset_peak_memory_stats()
-    entry.main()
+    try:
+        with resources:
+            entry.main()
+    finally:
+        if diagnostics is not None:
+            diagnostics.finish()
     result["peak_allocated_bytes"] = torch.cuda.max_memory_allocated()
     result["peak_reserved_bytes"] = torch.cuda.max_memory_reserved()
     if args.checkpoint:
@@ -292,7 +304,10 @@ def main():
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--checkpoint", type=lambda path: Path(path).resolve())
     mode.add_argument("--preflight", action="store_true", help="build the official trainer from the manifest only")
+    mode.add_argument("--diagnose-doll", action="store_true", help="probe a fresh Dinomaly/Doll training run")
     args = parser.parse_args()
+    if args.diagnose_doll and (args.model, args.category) != ("dinomaly", "Doll"):
+        parser.error("--diagnose-doll requires --model dinomaly --category Doll")
     require(not args.output.is_relative_to(Path(__file__).resolve().parents[2]), "write artifacts outside the repository")
     args.output.mkdir(parents=True, exist_ok=False)
     started = perf_counter()

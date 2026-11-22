@@ -1,0 +1,4 @@
+11/22 09:48:00 AM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.143 (0.787)] [data_t 0.002] [optim_t 0.140] [lr 0.003750] [dinomaly_loss 0.414 (0.504)]
+11/22 10:33:06 AM - Train: 37.33% [11200/30000]  [37.3/100.0] [batch_t 0.160 (0.196)] [data_t 0.002] [optim_t 0.158] [lr 0.003750] [dinomaly_loss 0.057 (0.058)]
+    raise NonFiniteTrainingError(f"non-finite {stage} at iteration {self.trainer.iter}: {invalid[:6]}")
+training_diagnostics.NonFiniteTrainingError: non-finite decoder_features at iteration 11241: ['de.0']

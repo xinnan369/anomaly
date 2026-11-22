@@ -1,0 +1,21 @@
+Ran 13 tests in 1.637s
+OK
+Ran 9 tests in 0.006s
+OK
+PASS dinomaly/Car
+PASS dinomaly/Cube
+FAIL dinomaly/Doll: epochs_30000_steps_no_recorded_recovery: training failed or incomplete: FAILED NonFiniteTrainingError: non-finite decoder_features at iteration 11241: ['de.0']
+FAIL dinomaly/Doll: final_checkpoint_and_weights: no final epoch-100 checkpoint from training
+FAIL dinomaly/Doll: evaluation_status_record: [Errno 2] No such file or directory: 'D:\\vicad-syn\\task-002-stage2\\doll-clean-20261122-run\\evaluation\\status.json'
+FAIL dinomaly/Doll: official_metrics_frozen_checkpoint: [Errno 2] No such file or directory: 'D:\\vicad-syn\\task-002-stage2\\doll-clean-20261122-run\\evaluation\\synergy.json'
+FAIL dinomaly/Doll: evaluation_checkpoint_argument: evaluation is blocked without a final checkpoint and evaluation status
+FAIL dinomaly/Doll: predictions_and_fusion_and_142_diagnostics: [Errno 2] No such file or directory: 'D:\\vicad-syn\\task-002-stage2\\doll-clean-20261122-run\\evaluation\\predictions.json'
+FAIL dinomaly/Doll: finite_probes_rng_and_full_batch_order: continuous finite probes incomplete
+FAIL dinomaly/Doll
+FAIL dinomaly/Doll: read_only_repeat_same_frozen_checkpoint: repeat is blocked without a successful formal evaluation
+PASS dinomaly/Ring
+PASS inpformer/Car
+PASS inpformer/Cube
+PASS inpformer/Doll
+PASS inpformer/Ring
+FAIL paired_inputs: Doll_same_raw_identities_labels_masks: cross-model comparison requires both formal evaluations

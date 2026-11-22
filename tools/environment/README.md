@@ -130,16 +130,47 @@ CUDA_VISIBLE_DEVICES=0 "$py" -B -u tools/environment/run_stage2.py --root "$stag
 
 若评价失败，先将已停止的失败评价目录移动到仓库外的另一个保留目录，再运行相同计划。已通过的训练会复用，评价仍绑定同一冻结检查点。若训练中断或失败，保留日志和整个失败运行目录。当前启动器从固定种子重新执行该组，因为上游检查点没有保存完整随机数和数据加载器状态。通过的前序组合会复用。重试时原日志保存在外部目录，新的执行时间和命令追加到日志。
 
-```bash
-"$py" -B tools/environment/summarize_baselines.py --runs "$stage/runs" \
-  --evaluations "$stage/evaluations" --output "$stage/metrics/baseline-summary.csv"
-"$py" -B tools/environment/plot_baselines.py --root "$stage" --output "$stage/figures"
-```
-
-汇总可在正式训练过程中执行，未达到完整评价的指标留空。绘图命令要求八组均通过。视角和光照表里的 `positive` 表示掩膜非空的样本，`metadata_positive` 和 `mask_label_disagreements` 分别记录原元数据计数与分歧。给定单一掩膜标签的子组保留空指标。正常件分数按光照汇总，用于比较高分倾向；没有在测试集上设定误报阈值。热力图在每类两模型共同的正式输出中按身份顺序选首个有官方标签与非空掩膜的样本，每类两图同尺度。
+汇总可在正式训练过程中执行，未达到完整评价的指标留空。正式绘图要求八组均通过连续训练及冻结评价。视角和光照表里的 `positive` 表示掩膜非空的样本，`metadata_positive` 和 `mask_label_disagreements` 分别记录原元数据计数与分歧。给定单一掩膜标签的子组保留空指标。正常件分数按光照汇总，用于比较高分倾向；没有在测试集上设定误报阈值。热力图在每类两模型共同的正式输出中按身份顺序选首个有官方标签与非空掩膜的样本，每类两图同尺度。
 
 当前证据见[审查整改与正式实验](../../reports/TASK-002-REPORT.md#第二阶段审查整改与正式实验)和[结果目录](../../results/baselines/README.md)。
 
-### TASK-002 最终执行记录
+### Dinomaly/Doll 连续复验和正式出图
 
-八组均完成 100 epoch、30,000 步和冻结检查点评价。Dinomaly/Doll 于第 11,241 步触发非有限值检查；保留失败尝试后以第 37 epoch 的原检查点恢复权重、Adam、调度和迭代数，续跑前 300 步开启仅观测的有限值检查。由于原检查点缺少 RNG 和数据加载器状态，续跑不保证复现原样本顺序。记录了实际执行的恢复代码及输入检查点哈希。后续默认同步核验结束的结果、报告与原任务 PR。[Doll 恢复证据](../../results/baselines/evidence/doll-recovery.json) · [实际恢复代码](../../results/baselines/evidence/doll-recovery-script.py.txt) · [最终结果](../../results/baselines/README.md)
+Review [6009448364](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6009448364) 要求从原始骨干开始补做一轮，不加载旧 Doll 检查点。其余七组复用原记录。旧结果保存在外部原位，在交付索引中标记为 RECOVERED_DEVIATION。[原失败和恢复证据](../../results/baselines/evidence/doll-recovery.json)
+
+在 WSL2 中，从仓库根目录执行以下命令。为 attempt 指定一个仓库外的全新路径。脚本依次训练、冻结评价及对同一检查点只读复评。任一步失败即停，保留日志、退出码与现有产物。[本轮实际调用脚本](../../results/baselines/evidence/doll-clean-launch.sh)
+
+```bash
+set -euo pipefail
+stage=/mnt/d/vicad-syn/task-002-stage2
+py="$HOME/.local/venvs/vicad-task-002-stage2/bin/python"
+attempt="$stage/doll-clean-new"
+launch_status=0
+bash results/baselines/evidence/doll-clean-launch.sh "$PWD" "$attempt" "$(git rev-parse HEAD)" || launch_status=$?
+
+"$py" -B tools/environment/summarize_baselines.py --runs "$stage/runs" \
+    --evaluations "$stage/evaluations" --doll-attempt "$attempt" --output "$attempt/baseline-summary.csv"
+verification_status=0
+"$py" -B tools/environment/verify_baselines.py --root "$stage" \
+    --doll-attempt "$attempt" --summary "$attempt/baseline-summary.csv" --output "$attempt/verification" || verification_status=$?
+if (( launch_status == 0 && verification_status == 0 )); then
+    "$py" -B tools/environment/plot_baselines.py --root "$stage" \
+        --doll-attempt "$attempt" --output "$attempt/figures"
+fi
+```
+
+观察器当步记录官方 DataLoader 实际输出路径，监测预处理张量、编码器和解码器输出、损失、梯度裁剪前后、Adam 动量和更新后的参数。遇到非有限值写出阶段、张量名、批次、迭代及随机状态后中断。RNG 快照包括主进程 Python、NumPy、PyTorch CPU 和各 CUDA 设备，在首次采样前及每个 epoch 边界保存。固定配置的图像变换为确定性变换，DataLoader 使用默认生成器和非持久 worker。样本顺序单独记录。RNG 快照仅用于诊断。基线遵循上游的 cuDNN 配置，GPU 算子的逐位确定性仍未保证。
+
+只读复评在独立目录写出相同格式的官方指标、预测和诊断，验证脚本重算文件 SHA-256、验证评估组身份与跨模型掩膜/标签，逐项比较两次指标，并复核检查点 SHA-256。旧归档通过既有的 SHA-256 与 CRC 凭据检查，本轮验证器复核凭据及当前 ZIP 大小。[结果和外部文件索引](../../results/baselines/README.md)
+
+### Doll 数值故障诊断
+
+本轮第 11,241 步在解码器特征出现异常，训练中断。用本轮自己的第 37 epoch 检查点和对应 RNG 状态进行一次有界重放，逐步核对实际批次路径，重放到发生异常的步为止。这是诊断运行，产物不进入正式指标。第 7 个解码块中实际观测到线性注意力归一化分母为零。任何修改分母的保护方案须作为独立的实验偏差评审。[诊断结果](../../results/baselines/evidence/doll-forensic-replay.json)
+
+```bash
+attempt="$stage/doll-clean-20261122-run"
+CUDA_VISIBLE_DEVICES=0 "$py" -B -u tools/environment/diagnose_doll_failure.py \
+    --root "$stage" --attempt "$attempt" --output "$attempt/forensic-new"
+```
+
+最终核验另在 Windows 原生 CPU Python 中执行。传入同一数据根、尝试目录和 CSV 的 Windows 路径即可。JSON 记录了实际 Python、PyTorch 和 NumPy 版本。训练和官方评价环境仍为 WSL2。[最终核验](../../results/baselines/metrics/verification.json)

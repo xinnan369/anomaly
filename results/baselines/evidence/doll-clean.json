@@ -1,0 +1,407 @@
+{
+  "parent_commit": "f224a27e8020c0d98100acd082196846f1cc761b",
+  "launcher_sha256": [
+    "7836d54f0575fbef0747ba5c50948ceb6a0df166babd5a67caffb11fc2ca424a  tools/environment/run_baseline.py",
+    "d4e337f61872846734ab2098f5d077a07556621ac54976a308a1ca209e6b9f3b  tools/environment/training_diagnostics.py",
+    "f6592a19a67ff5808f53f3da5e25ee102780afd852d4b4f326e6dd34f63c1dd4  tools/environment/baseline_metrics.py"
+  ],
+  "training_status": {
+    "model": "dinomaly",
+    "class": "Doll",
+    "status": "FAILED",
+    "started_utc": "2026-11-22T01:46:53.483843+00:00",
+    "mode": "train",
+    "epochs_completed": 37,
+    "oom": false,
+    "nonfinite": true,
+    "argv": [
+      "--upstream",
+      "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+      "--release-root",
+      "/mnt/d/vicad-syn/task-002-stage2",
+      "--weight",
+      "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+      "--model",
+      "dinomaly",
+      "--category",
+      "Doll",
+      "--output",
+      "/mnt/d/vicad-syn/task-002-stage2/doll-clean-20261122-run/train",
+      "--diagnose-doll"
+    ],
+    "parameters": 148008960,
+    "trainable_parameters": 148008960,
+    "optimizer_parameters": 148008960,
+    "train_started_utc": "2026-11-22T01:47:20.517271+00:00",
+    "last_observed_iteration": 11240,
+    "optimization_steps": 11100,
+    "error": "NonFiniteTrainingError: non-finite decoder_features at iteration 11241: ['de.0']",
+    "peak_allocated_bytes": 3305744384,
+    "peak_reserved_bytes": 3770679296,
+    "finished_utc": "2026-11-22T02:33:14.803209+00:00",
+    "wall_seconds": 2753.867452262
+  },
+  "diagnostics": {
+    "diagnostic-environment.json": {
+      "python": "3.11.11 | packaged by conda-forge | (main, Mar  3 2025, 20:43:55) [GCC 13.3.0]",
+      "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+      "torch": "2.2.2+cu121",
+      "cuda": "12.1",
+      "cudnn": 8902,
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "cudnn_benchmark": true,
+      "cudnn_deterministic": false,
+      "deterministic_algorithms": false,
+      "tf32_matmul": false,
+      "tf32_cudnn": true,
+      "workers": 8,
+      "persistent_workers": false,
+      "loader_sampler": "RandomSampler",
+      "sampler_uses_default_generator": true,
+      "training_transform": "Compose(\n    Resize(size=(224, 224), interpolation=bilinear, max_size=None, antialias=True)\n    CenterCrop(size=(224, 224))\n    ToTensor()\n    Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225))\n)"
+    },
+    "finite-diagnostics.json": {
+      "status": "INCOMPLETE",
+      "successful_updates": 11240,
+      "stage_check_counts": {
+        "initial_parameters": 1,
+        "preprocessed_input": 11241,
+        "encoder_features": 11241,
+        "decoder_features": 11241,
+        "loss": 11240,
+        "gradients_before_clip": 11240,
+        "gradients_after_clip": 11240,
+        "adam_moments": 11240,
+        "updated_parameters": 11240
+      }
+    },
+    "first-nonfinite.json": {
+      "stage": "decoder_features",
+      "tensor_names": [
+        "de.0"
+      ],
+      "epoch_completed": 37,
+      "iteration": 11241,
+      "last_successful_update": 11240,
+      "batch_paths": [
+        "Doll/Good/012/A180_I01.png",
+        "Doll/Good/004/A210_I09.png",
+        "Doll/Good/022/A030_I01.png",
+        "Doll/Good/035/A240_I08.png",
+        "Doll/Good/004/A150_I07.png",
+        "Doll/Good/031/A180_I07.png",
+        "Doll/Good/038/A150_I02.png",
+        "Doll/Good/039/A000_I09.png",
+        "Doll/Good/009/A060_I06.png",
+        "Doll/Good/012/A270_I03.png",
+        "Doll/Good/025/A300_I08.png",
+        "Doll/Good/033/A300_I05.png"
+      ],
+      "learning_rates": [
+        0.00375
+      ],
+      "stage_check_counts": {
+        "initial_parameters": 1,
+        "preprocessed_input": 11241,
+        "encoder_features": 11241,
+        "decoder_features": 11241,
+        "loss": 11240,
+        "gradients_before_clip": 11240,
+        "gradients_after_clip": 11240,
+        "adam_moments": 11240,
+        "updated_parameters": 11240
+      }
+    }
+  },
+  "logs": {
+    "train.log": {
+      "path": "doll-clean-20261122-run/train.log",
+      "bytes": 57578,
+      "sha256": "58c873ea1f834a3caab9df0eb3982a80ad47cb7cf8e1298871163ddff4db3668"
+    },
+    "pipeline.log": {
+      "path": "doll-clean-20261122-run/pipeline.log",
+      "bytes": 481,
+      "sha256": "064e2c6ff0c03b64a7e9b4855991a48469b37c78c564e9bf79293234cda1d00f"
+    }
+  },
+  "batch_order": {
+    "path": "doll-clean-20261122-run/train/batch-order.jsonl",
+    "bytes": 4237992,
+    "sha256": "591a75a67e1225040ff1c07420ffeb4f819a409e5f177bffa1a48ddc206fcd02"
+  },
+  "rng_states": [
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-001.pt",
+      "bytes": 14308,
+      "sha256": "534e5fef32e582ea63bc4b5fafd14fe824c00a6543cc56e1a471d2e5c127049a"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-002.pt",
+      "bytes": 14308,
+      "sha256": "ea142f1cb37cf9b46b57d1bb92363498ebe46343a0f875664d8615d158af92ca"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-003.pt",
+      "bytes": 14308,
+      "sha256": "e7173f11f7c2402be17651deaa97f64d7a1f80c4c7b817f0d566383b71bb8aee"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-004.pt",
+      "bytes": 14308,
+      "sha256": "21e7bd74ec1a01595812b7b56af5bc923403d4546ffde6b36c5e487d9d67c07c"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-005.pt",
+      "bytes": 14308,
+      "sha256": "3bc2dea3ac631558fab390dd491905121ebe28ec3b37c88826d289dca853fe1f"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-006.pt",
+      "bytes": 14308,
+      "sha256": "60c930b40564911149a2e85b6e386fc19f43c0da5163c6e0e6006cd70bbda4e1"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-007.pt",
+      "bytes": 14308,
+      "sha256": "29513f7a064d562a55dbe4814a8ddcff38d7c01b82c69f5bc17061d395bf5f76"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-008.pt",
+      "bytes": 14308,
+      "sha256": "8382fa5268b5bc807c82858372704f77a7f853c4c396a1c3cfcde055e960bf23"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-009.pt",
+      "bytes": 14308,
+      "sha256": "17b40e0d35a5da6cec2ea7ff3f264c8a219a510155f670755a8247f9b48e8a8e"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-010.pt",
+      "bytes": 14308,
+      "sha256": "c567209b84a0548fce5bbdffedaf95eaada5ee1c44813e849c26145e2121c059"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-011.pt",
+      "bytes": 14308,
+      "sha256": "67dc6bc6daa4c96fe9fc535b46c7838c10b92609d583c233668306dc4b09e987"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-012.pt",
+      "bytes": 14308,
+      "sha256": "4a3a5492a8e5b72c52aac3d27786011f8453170a1f774c64e9d18125b9538863"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-013.pt",
+      "bytes": 14308,
+      "sha256": "522724841dd382bb91a53084ca0cd572a83aa4b8b5a7ae6f6f1c96cec0a25499"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-014.pt",
+      "bytes": 14308,
+      "sha256": "8d047a8bf5f40e345869de787706282baa8afcf0d68153f87bb95c444161f55f"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-015.pt",
+      "bytes": 14308,
+      "sha256": "fe6ec8f52a96f94e44d72b9210ff7f85eead66f1452b0f2f820eea8e42e11515"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-016.pt",
+      "bytes": 14308,
+      "sha256": "9c27ab70be217094e24cdf53a53ffbe61ecea8456c791a90e2394a70f7b1b6b3"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-017.pt",
+      "bytes": 14308,
+      "sha256": "61ac7cdca5dbd65650eca452c8f0b39dcb71cd13a5eaf07f23f3a478aea4ba4a"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-018.pt",
+      "bytes": 14308,
+      "sha256": "b44c843fe490ab14182dfbc33ad61699ad53ac62382b5c45be8f41fefc8ecf7b"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-019.pt",
+      "bytes": 14308,
+      "sha256": "644c666f65e33e918e8dbaa2069290eeb233f2c276a5463727e2cb6fd404afcc"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-020.pt",
+      "bytes": 14308,
+      "sha256": "fecb4874fea8e78315f1de7da518bf7dddca22ba9732d9d7c4019a8d6177f9e6"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-021.pt",
+      "bytes": 14308,
+      "sha256": "afa3901144ce86be40c1ba7f5d2674894474e0a1429cbb04aaa8a4dcd26dfac6"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-022.pt",
+      "bytes": 14308,
+      "sha256": "aba5fb36da96fe1c0f5e7533ab161170e788793e3aa75efbceedfc6172a22403"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-023.pt",
+      "bytes": 14308,
+      "sha256": "51c6e4ef2617b25ec6fa03424a94c0781259a6a3859ec0269fdce4c87f61aca1"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-024.pt",
+      "bytes": 14308,
+      "sha256": "3b41546dbe61d320d721aca0a785048a8fda6b2b006bf834587d01af6f32f0d9"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-025.pt",
+      "bytes": 14308,
+      "sha256": "90b2d42a10089bfbc62719bc844ad27e8fa169f46df9b435af8483be58f53dea"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-026.pt",
+      "bytes": 14308,
+      "sha256": "0d7391d6da87eb9f4783337487453a26e586f043d9e026cba1d8ff4aad62b91a"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-027.pt",
+      "bytes": 14308,
+      "sha256": "a620b1ed4ca2b9ec93be4e1a1ba39f1fa4060bd93b574e88dbe10675502f5861"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-028.pt",
+      "bytes": 14308,
+      "sha256": "d355b3dcf70576c255a534981ea81974c9601d296799866e7165b468b1ae1f08"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-029.pt",
+      "bytes": 14308,
+      "sha256": "a7a6a6acb4d6261992b5528e4a13bbacefb63320716b4d58542d5ae71b1b313f"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-030.pt",
+      "bytes": 14308,
+      "sha256": "12630bfa2196e52d385644b70527c9488ccd33538ca6ccdadd1bc9c887f2d3e0"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-031.pt",
+      "bytes": 14308,
+      "sha256": "0d857edebf9a19c71821967bf6c8b171f3a4ec7605cabae2d38185d8132eb019"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-032.pt",
+      "bytes": 14308,
+      "sha256": "49d62c573001288a5ff1b645d3c2bf04e7c0b893ba8290008c91c53da289cc45"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-033.pt",
+      "bytes": 14308,
+      "sha256": "d40c9a9e8e4cc073b923642dc59a73f061c0bcae847800dd89d297f33648f778"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-034.pt",
+      "bytes": 14308,
+      "sha256": "bb4ba8367439ab137a6070ae754d2e601408ea8d33dffbb027b38b5be61a1af9"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-035.pt",
+      "bytes": 14308,
+      "sha256": "696eb7edd9206eab2b48d01ed5d57ca496c364cce419e5cc6273f9ff6f06a0e7"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-036.pt",
+      "bytes": 14308,
+      "sha256": "5f234a9a8e2ab0936433f28b0f51ae8644f245340a27b68ed383f12417b6150e"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/epoch-037.pt",
+      "bytes": 14308,
+      "sha256": "492fa154395a3e7f297a58eb598bab06517e2b6623e4319364efe8ac40f38113"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/failure.pt",
+      "bytes": 14232,
+      "sha256": "af2c8492de2d8f42d36a4b3d37a4baae3ad908a3c51a0a57405c1c8c4e6611e4"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/rng/initial.pt",
+      "bytes": 14232,
+      "sha256": "a7a2c697a16411996ad23de23e667a602b5c1326e9a972a9eb56261ba38affff"
+    }
+  ],
+  "training_progress_artifacts": [
+    {
+      "path": "doll-clean-20261122-run/train/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+      "bytes": 737225674,
+      "sha256": "1b2dce65f450af1c0a3d92681c3c54d2dd1a467d8b40d70d4b85aa1f4568879f"
+    },
+    {
+      "path": "doll-clean-20261122-run/train/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_net.pth",
+      "bytes": 245734066,
+      "sha256": "71d083f404137c5acaa4111751c41e9516a96dc80d256bb45d5603d6f9196a66"
+    }
+  ],
+  "failed_bootstrap_log": {
+    "path": "doll-clean-20261122/pipeline.log",
+    "bytes": 212,
+    "sha256": "801e9595233cbfea03f737261c285ca5aa23adedbc17aa197b077a387453f9b3"
+  },
+  "training_epochs": {
+    "path": "doll-clean-20261122-run/train/epochs.json",
+    "bytes": 3510,
+    "sha256": "f9d1aaca9ae58303e9e2c4a37f3603c91fb7a3577964b98c26e9ab52eaafb0cd"
+  },
+  "finalization_log": {
+    "path": "doll-clean-20261122-run/delivery/finalization.log",
+    "bytes": 57768,
+    "sha256": "32e255a2eec2aff46d8eba3088b980e24d616da5184913c79418d34e584c4cb9"
+  },
+  "final_verification_log": {
+    "path": "doll-clean-20261122-run/delivery/publication-check.log",
+    "bytes": 1429,
+    "sha256": "f9c96f12f812c3eaf25c173178ec2e165a5462c9fd04a4ee5960d907039b5653"
+  },
+  "failure_rng": {
+    "path": "doll-clean-20261122-run/train/rng/failure.pt",
+    "bytes": 14232,
+    "sha256": "af2c8492de2d8f42d36a4b3d37a4baae3ad908a3c51a0a57405c1c8c4e6611e4"
+  },
+  "failure_last_successful_update": 11240,
+  "forensic_replay": [
+    {
+      "path": "doll-clean-20261122-run/forensic/forensic-replay.json",
+      "bytes": 7276,
+      "sha256": "0025b6f86421bee2aff1edb7285d0dafe004ab2e99beb07af68d193ce24088a3"
+    },
+    {
+      "path": "doll-clean-20261122-run/forensic.log",
+      "bytes": 12195,
+      "sha256": "3fcb987c7d0ff7d7a76f4b7efe8657c38484f37dc699f35974f48e2c05ea8064"
+    },
+    {
+      "path": "doll-clean-20261122-run/forensic.stderr",
+      "bytes": 504,
+      "sha256": "9af8bd37a634dfc143d9e07da8d318e21183ee48642c5ce63776b40970b65b7c"
+    }
+  ],
+  "executed_source_snapshots": [
+    {
+      "path": "doll-clean-20261122-run/source/baseline_metrics.py",
+      "bytes": 8361,
+      "sha256": "f6592a19a67ff5808f53f3da5e25ee102780afd852d4b4f326e6dd34f63c1dd4"
+    },
+    {
+      "path": "doll-clean-20261122-run/source/run_baseline.py",
+      "bytes": 18760,
+      "sha256": "7836d54f0575fbef0747ba5c50948ceb6a0df166babd5a67caffb11fc2ca424a"
+    },
+    {
+      "path": "doll-clean-20261122-run/source/training_diagnostics.py",
+      "bytes": 7873,
+      "sha256": "d4e337f61872846734ab2098f5d077a07556621ac54976a308a1ca209e6b9f3b"
+    }
+  ],
+  "gpu_environment": {
+    "path": "doll-clean-20261122-run/gpu-environment.csv",
+    "bytes": 84,
+    "sha256": "a6b0a815b09de6819e3c78dac93ac9a423f05bad62a7af8bde643fb884f3da96"
+  }
+}

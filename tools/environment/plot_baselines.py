@@ -3,16 +3,18 @@
 import argparse
 import csv
 from pathlib import Path
+from statistics import mean
 
 import matplotlib
 
 matplotlib.use("Agg")
+matplotlib.rcParams["pdf.fonttype"] = 42
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 import numpy as np
 
 from baseline_metrics import read_arrays
-from summarize_baselines import CLASSES, MODELS, row
+from summarize_baselines import CLEAN_CONTINUOUS, CLASSES, MODELS, row, run_paths
 
 
 LABELS = {"dinomaly": "Dinomaly", "inpformer": "INP-Former"}
@@ -30,7 +32,7 @@ def save_figure(fig, target):
 
 def write_csv(path, rows):
     with path.open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -54,11 +56,12 @@ def grouped_bars(table, fields, output, percent=False):
     save_figure(fig, output)
 
 
-def load_diagnostics(root):
+def load_diagnostics(root, doll_attempt=None):
     rows = {}
     for model in MODELS:
         for cls in CLASSES:
-            path = root / "evaluations" / model / cls / "diagnostics.csv"
+            _, evaluation = run_paths(root / "runs", root / "evaluations", model, cls, doll_attempt)
+            path = evaluation / "diagnostics.csv"
             with path.open(encoding="utf-8", newline="") as stream:
                 records = list(csv.DictReader(stream))
             keys = {(r["scope"], r["view"], r["illumination"]) for r in records}
@@ -99,11 +102,14 @@ def row_keys(arrays):
                     arrays["illumination_list"], strict=True))
 
 
-def plot_heatmaps(root, output):
+def plot_heatmaps(root, output, doll_attempt=None):
     fig, axes = plt.subplots(len(CLASSES), 3, figsize=(7.2, 9.2), layout="constrained")
     chosen, normal_scores = [], []
     for row_index, cls in enumerate(CLASSES):
-        arrays = {model: read_arrays(root / "evaluations" / model / cls / "raw") for model in MODELS}
+        arrays = {}
+        for model in MODELS:
+            _, evaluation = run_paths(root / "runs", root / "evaluations", model, cls, doll_attempt)
+            arrays[model] = read_arrays(evaluation / "raw")
         first = arrays[MODELS[0]]
         keys = row_keys(first)
         candidates = sorted((key, i) for i, key in enumerate(keys)
@@ -149,14 +155,22 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=lambda p: Path(p).resolve(), required=True)
     parser.add_argument("--output", type=lambda p: Path(p).resolve(), required=True)
+    parser.add_argument("--doll-attempt", type=lambda p: Path(p).resolve(), required=True)
     args = parser.parse_args()
-    table = {(model, cls): row(args.root / "runs", args.root / "evaluations", model, cls)
+    table = {(model, cls): row(args.root / "runs", args.root / "evaluations", model, cls, args.doll_attempt)
              for model in MODELS for cls in CLASSES}
-    if any(record["status"] != "PASS" for record in table.values()):
-        raise ValueError("All eight formal training/evaluation records must pass before generating figures")
-    diagnostics = load_diagnostics(args.root)
+    if any(record["status"] != "PASS" or record["training_provenance"] != CLEAN_CONTINUOUS
+           for record in table.values()):
+        raise ValueError("All eight continuous training/evaluation records must pass before generating figures")
+    diagnostics = load_diagnostics(args.root, args.doll_attempt)
     args.output.mkdir(parents=True, exist_ok=False)
-    compared_fields = (*[key for key, _ in METRICS], "train_seconds", "peak_allocated_bytes")
+    metric_fields = [key for key, _ in METRICS]
+    compared_fields = ("training_provenance", *metric_fields, "train_seconds", "peak_allocated_bytes")
+    write_csv(args.output / "macro-average.csv", [
+        {"model": model, "classes": len(CLASSES), "seed": 42,
+         **{key: mean(table[(model, cls)][key] for cls in CLASSES) for key in metric_fields}}
+        for model in MODELS
+    ])
     write_csv(args.output / "model-comparison.csv", [
         {"class": cls, **{f"{model}_{key}": table[(model, cls)][key]
                           for model in MODELS for key in compared_fields}}
@@ -168,7 +182,7 @@ def main():
                  args.output / "training-resources")
     for mode in ("view", "illumination"):
         plot_conditions(diagnostics, mode, args.output / f"{mode}-diagnostics")
-    plot_heatmaps(args.root, args.output)
+    plot_heatmaps(args.root, args.output, args.doll_attempt)
     write_csv(args.output / "diagnostics.csv", [{"model": model, "class": cls, **result}
                                                for (model, cls), results in diagnostics.items() for result in results])
 

@@ -9,7 +9,8 @@
 | 2026-11-19 | TASK-002 第一阶段 | WSL2 环境固化、RTX 3090 CUDA 环境、Car/Dinomaly 单步训练、留出正常实例推理及 ADEval CUDA 合成测试。验收提交 `90fe550c28d00191ac67c0739d6097b6472fdc4b`，Review ID `5970938786`。[审查记录](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-5970938786) · [执行报告与待办](../reports/TASK-002-REPORT.md) | TASK-002 第一阶段：独立验收通过（APPROVED）。任务整体尚未完成，PR #2 保持开放。 |
 | 2026-11-19 | TASK-002 第二阶段执行记录 | 空环境重装、RTX 3090 两种基线单步更新和留出正常实例推理、ADEval CUDA 合成测试，以及固定发布清单复核。[第二阶段记录](../reports/TASK-002-REPORT.md#第二阶段执行记录) · [PR #2](https://github.com/xinnan369/anomaly/pull/2) | PARTIAL。正式实验及可视化待完成，尚未申请第二阶段独立验收。 |
 | 2026-11-19 | TASK-002 第二阶段审查及整改 | Review `5974527521` 要求修复物件身份和重复输出分组，验证冻结检查点，完成 Car/Dinomaly 闭环后再推进七组。身份和检查点回归通过，正式训练已启动。[审查](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-5974527521) · [整改证据](../reports/TASK-002-REPORT.md#第二阶段审查整改与正式实验) | CHANGES_REQUESTED。整改交付仍为 PARTIAL，等待完整实验证据。 |
-
 | 2026-11-22 | TASK-002 第二阶段正式结果交付 | 四类归档凭据、8 组 100 epoch 与冻结检查点评价、指标和诊断、Doll 恢复记录、图表及发布材料已自检。[最终报告](../reports/TASK-002-REPORT.md#第二阶段最终结果) · [PR #2](https://github.com/xinnan369/anomaly/pull/2) | AWAITING RE-REVIEW。第二阶段实验交付完成，独立验收待复查。 |
+| 2026-11-22 | TASK-002 最终整改审查 | [Review 6009448364](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6009448364) 对提交 `f224a27e8020c0d98100acd082196846f1cc761b` 要求 Dinomaly/Doll 新连续运行、冻结复评和八组验证。 | CHANGES_REQUESTED。 |
+| 2026-11-22 | TASK-002 最终整改交付 | 7/8 组连续训练和冻结评价有通过记录，最终整改存在阻塞。[报告](../reports/TASK-002-REPORT.md#第二阶段最终结果) · [核验 JSON](../results/baselines/metrics/verification.json) · [PR #2](https://github.com/xinnan369/anomaly/pull/2) | PARTIAL。 |
 
 执行证据见[报告目录](../reports/README.md)。后续记录验收日期、任务 ID、报告与提交链接、验收结论和待修正项。

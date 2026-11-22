@@ -1,0 +1,358 @@
+{
+  "production_checkpoint": "/mnt/d/vicad-syn/task-002-stage2/doll-clean-20261122-run/train/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+  "production_checkpoint_sha256": "1b2dce65f450af1c0a3d92681c3c54d2dd1a467d8b40d70d4b85aa1f4568879f",
+  "start_epoch": 37,
+  "start_iteration": 11100,
+  "target": 11241,
+  "purpose": "bounded_forensic_replay",
+  "target_paths": [
+    "Doll/Good/012/A180_I01.png",
+    "Doll/Good/004/A210_I09.png",
+    "Doll/Good/022/A030_I01.png",
+    "Doll/Good/035/A240_I08.png",
+    "Doll/Good/004/A150_I07.png",
+    "Doll/Good/031/A180_I07.png",
+    "Doll/Good/038/A150_I02.png",
+    "Doll/Good/039/A000_I09.png",
+    "Doll/Good/009/A060_I06.png",
+    "Doll/Good/012/A270_I03.png",
+    "Doll/Good/025/A300_I08.png",
+    "Doll/Good/033/A300_I05.png"
+  ],
+  "matching_batches": 141,
+  "first_nonfinite": {
+    "stage": "decoder_features",
+    "tensor_names": [
+      "de.0"
+    ],
+    "epoch_completed": 37,
+    "iteration": 11241,
+    "last_successful_update": 11240,
+    "batch_paths": [
+      "Doll/Good/012/A180_I01.png",
+      "Doll/Good/004/A210_I09.png",
+      "Doll/Good/022/A030_I01.png",
+      "Doll/Good/035/A240_I08.png",
+      "Doll/Good/004/A150_I07.png",
+      "Doll/Good/031/A180_I07.png",
+      "Doll/Good/038/A150_I02.png",
+      "Doll/Good/039/A000_I09.png",
+      "Doll/Good/009/A060_I06.png",
+      "Doll/Good/012/A270_I03.png",
+      "Doll/Good/025/A300_I08.png",
+      "Doll/Good/033/A300_I05.png"
+    ],
+    "learning_rates": [
+      0.00375
+    ],
+    "stage_check_counts": {
+      "initial_parameters": 1,
+      "preprocessed_input": 141,
+      "encoder_features": 141,
+      "decoder_features": 141,
+      "loss": 140,
+      "gradients_before_clip": 140,
+      "gradients_after_clip": 140,
+      "adam_moments": 140,
+      "updated_parameters": 140
+    }
+  },
+  "attention_denominator": [
+    {
+      "attention": "model.decoder.0.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 12054.9140625,
+      "maximum_finite": 129392.265625,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.1.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 510.3837585449219,
+      "maximum_finite": 656892.375,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.2.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 3842.041259765625,
+      "maximum_finite": 975248.9375,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.3.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 5457.7255859375,
+      "maximum_finite": 647906.1875,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.4.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 10025.017578125,
+      "maximum_finite": 460483.5625,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.5.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 55.48966979980469,
+      "maximum_finite": 1380755.0,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.6.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 0.0,
+      "maximum_finite": 2082259.5,
+      "zeros": 1,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [
+        [
+          10,
+          4,
+          112
+        ]
+      ],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 1
+    },
+    {
+      "attention": "model.decoder.7.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "minimum_finite": 98382.8359375,
+      "maximum_finite": 1575667.5,
+      "zeros": 0,
+      "nonfinite": 3132,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          10,
+          0,
+          1
+        ],
+        [
+          10,
+          0,
+          2
+        ],
+        [
+          10,
+          0,
+          3
+        ],
+        [
+          10,
+          0,
+          4
+        ],
+        [
+          10,
+          0,
+          5
+        ],
+        [
+          10,
+          0,
+          6
+        ],
+        [
+          10,
+          0,
+          7
+        ],
+        [
+          10,
+          0,
+          8
+        ],
+        [
+          10,
+          0,
+          9
+        ],
+        [
+          10,
+          0,
+          10
+        ],
+        [
+          10,
+          0,
+          11
+        ],
+        [
+          10,
+          0,
+          12
+        ],
+        [
+          10,
+          0,
+          13
+        ],
+        [
+          10,
+          0,
+          14
+        ],
+        [
+          10,
+          0,
+          15
+        ],
+        [
+          10,
+          0,
+          16
+        ],
+        [
+          10,
+          0,
+          17
+        ],
+        [
+          10,
+          0,
+          18
+        ],
+        [
+          10,
+          0,
+          19
+        ],
+        [
+          10,
+          0,
+          20
+        ],
+        [
+          10,
+          0,
+          21
+        ],
+        [
+          10,
+          0,
+          22
+        ],
+        [
+          10,
+          0,
+          23
+        ],
+        [
+          10,
+          0,
+          24
+        ],
+        [
+          10,
+          0,
+          25
+        ],
+        [
+          10,
+          0,
+          26
+        ],
+        [
+          10,
+          0,
+          27
+        ],
+        [
+          10,
+          0,
+          28
+        ],
+        [
+          10,
+          0,
+          29
+        ],
+        [
+          10,
+          0,
+          30
+        ],
+        [
+          10,
+          0,
+          31
+        ]
+      ],
+      "reciprocal_nonfinite": 3132
+    }
+  ],
+  "stage_matches_clean_failure": true
+}

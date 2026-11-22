@@ -1,21 +1,250 @@
 {
-  "verified_local_time": "2026-11-22T09:28:39+08:00",
-  "workspace_source": "2e8815eee68b26082ea76bc7833e130cef328681",
+  "verified_utc": "2026-11-22T02:40:57+00:00",
+  "status": "PARTIAL",
   "official_source": "a606aa0e1614f23dad70da26430dd66095192141",
   "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
-  "storage_root_windows": "D:\\vicad-syn\\task-002-stage2",
-  "raw_and_fused_array_count": 152,
-  "raw_and_fused_bytes": 35753208256,
-  "archive_note": "All four receipt hashes were computed when the release archives were verified. This upload rechecked receipts and local archive sizes.",
-  "Doll_original_checkpoint": {
-    "path": "attempts/dinomaly/Doll-original-nonfinite-20261120/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
-    "bytes": 737225674,
-    "sha256": "509b2b6468497aaa48c41815f810c59051b5b96243a771e15e8afa128545f1c4"
+  "storage_root": "D:\\vicad-syn\\task-002-stage2",
+  "manifest": {
+    "path": "dataset/jsons/meta_unsupervised.json",
+    "bytes": 43547055,
+    "sha256": "7ac578bf7bef5148edccd318a55a73694eb9d216c87b7f9186a45e112ea27e43"
+  },
+  "release_manifest_archive": {
+    "path": "cache/jsons.zip",
+    "bytes": 1100022,
+    "sha256": "bbeaa75c231c981e443c818859a701fcc0daf1769065abd91631f7e676725980"
+  },
+  "pretrained_backbone": {
+    "path": "inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+    "bytes": 346393545,
+    "sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71"
+  },
+  "archive_note": "Previously verified SHA-256 and CRC receipts and current file sizes were checked.",
+  "archive_and_split_checks": {
+    "Car": {
+      "train_images": 3600,
+      "test_images": 8400,
+      "train_instances": 30,
+      "test_instances": 70,
+      "instance_overlap": 0,
+      "path_overlap": 0,
+      "archive_receipt": {
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "category": "Car",
+        "archive_sha256": "27e77cfe0faad99065489ce5c5a785a2450da771372997dc9cfca160e778af36",
+        "archive_bytes": 16318099753,
+        "crc_verified_files": 12970,
+        "images": 12000,
+        "masks": 485,
+        "segments": 485,
+        "counts": {
+          "train_good": {
+            "objects": 30,
+            "images": 3600
+          },
+          "test_good": {
+            "objects": 20,
+            "images": 2400
+          },
+          "test_ng": {
+            "objects": 50,
+            "images": 6000,
+            "positive_images": 4850,
+            "undetectable_positive_images": 309
+          }
+        },
+        "split_crc_size_overlap": 0
+      }
+    },
+    "Cube": {
+      "train_images": 3600,
+      "test_images": 8400,
+      "train_instances": 30,
+      "test_instances": 70,
+      "instance_overlap": 0,
+      "path_overlap": 0,
+      "archive_receipt": {
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "category": "Cube",
+        "archive_sha256": "72b5d96a1281c61d247771387b0a7bc66307c7d6e9c14112ae0553b5b89cafe7",
+        "archive_bytes": 17628365529,
+        "crc_verified_files": 13106,
+        "images": 12000,
+        "masks": 553,
+        "segments": 553,
+        "counts": {
+          "train_good": {
+            "objects": 30,
+            "images": 3600
+          },
+          "test_good": {
+            "objects": 20,
+            "images": 2400
+          },
+          "test_ng": {
+            "objects": 50,
+            "images": 6000,
+            "positive_images": 5530,
+            "undetectable_positive_images": 222
+          }
+        },
+        "split_crc_size_overlap": 0
+      }
+    },
+    "Doll": {
+      "train_images": 3600,
+      "test_images": 8400,
+      "train_instances": 30,
+      "test_instances": 70,
+      "instance_overlap": 0,
+      "path_overlap": 0,
+      "archive_receipt": {
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "category": "Doll",
+        "archive_sha256": "1fd27c8aaf89d6bdde1d5061edcc5e45a5c8d7241c9d287402807a1985f8bcb3",
+        "archive_bytes": 16835932455,
+        "crc_verified_files": 13002,
+        "images": 12000,
+        "masks": 501,
+        "segments": 501,
+        "counts": {
+          "train_good": {
+            "objects": 30,
+            "images": 3600
+          },
+          "test_good": {
+            "objects": 20,
+            "images": 2400
+          },
+          "test_ng": {
+            "objects": 50,
+            "images": 6000,
+            "positive_images": 5010,
+            "undetectable_positive_images": 280
+          }
+        },
+        "split_crc_size_overlap": 0
+      }
+    },
+    "Ring": {
+      "train_images": 3600,
+      "test_images": 8400,
+      "train_instances": 30,
+      "test_instances": 70,
+      "instance_overlap": 0,
+      "path_overlap": 0,
+      "archive_receipt": {
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "category": "Ring",
+        "archive_sha256": "20b2b0f12c338747208a914aa98e4f175eef7fa0e26de8eae0bc1f8ac7a27d7c",
+        "archive_bytes": 16564602406,
+        "crc_verified_files": 13096,
+        "images": 12000,
+        "masks": 548,
+        "segments": 548,
+        "counts": {
+          "train_good": {
+            "objects": 30,
+            "images": 3600
+          },
+          "test_good": {
+            "objects": 20,
+            "images": 2400
+          },
+          "test_ng": {
+            "objects": 50,
+            "images": 6000,
+            "positive_images": 5480,
+            "undetectable_positive_images": 105
+          }
+        },
+        "split_crc_size_overlap": 0
+      }
+    }
+  },
+  "historical_recovered_doll": {
+    "training_provenance": "RECOVERED_DEVIATION",
+    "official_metrics": {
+      "epoch": 100,
+      "class": "Doll",
+      "model": "dinomaly",
+      "checkpoint_sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83",
+      "metrics_pct": {
+        "AUROC_view_sp": 79.73786590263101,
+        "AUROC_view_px": 98.50375613135701,
+        "mF1_view_sp": 71.06382978723403,
+        "mF1_view_px": 36.14983672940613,
+        "AP_view_sp": 81.24387566507713,
+        "AP_view_px": 22.615548491622047,
+        "AUPRO_view": 92.10996019562228,
+        "AUROC_obj_sp": 81.69999999999999,
+        "mF1_obj_sp": 85.47008547008548,
+        "AP_obj_sp": 92.70018177455283
+      },
+      "nonfinite": []
+    },
+    "original_failed_status": {
+      "path": "attempts/dinomaly/Doll-original-nonfinite-20261120/status.json",
+      "bytes": 1041,
+      "sha256": "8cc691b48fbe26a9e963db89b98234a50cdb18e90be138d1d26031f761d8df2b"
+    },
+    "original_checkpoint": {
+      "path": "attempts/dinomaly/Doll-original-nonfinite-20261120/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+      "bytes": 737225674,
+      "sha256": "509b2b6468497aaa48c41815f810c59051b5b96243a771e15e8afa128545f1c4"
+    },
+    "original_log": {
+      "path": "logs/dinomaly-Doll-train.log",
+      "bytes": 57888,
+      "sha256": "8cf283bc6d28d6562f73c642175627289ff35633527c6439c92d647d239ee9ac"
+    },
+    "training_log": {
+      "path": "logs/dinomaly-Doll-resume-20261121.log",
+      "bytes": 87967,
+      "sha256": "598d51e21cac6999bcab700a330ee5403b36b4d81687842c35e005c12d79657e"
+    },
+    "recovery": {
+      "path": "runs/dinomaly/Doll/recovery.json",
+      "bytes": 419,
+      "sha256": "b92f98206741095f1e5cf2d63919fc12e21149fd3ebab2e10c6d2a70d6b9e397"
+    },
+    "checkpoint": {
+      "path": "runs/dinomaly/Doll/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+      "bytes": 737226954,
+      "sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83"
+    },
+    "evaluation": {
+      "path": "evaluations/dinomaly/Doll/synergy.json",
+      "bytes": 574,
+      "sha256": "3ef5a7f5a02ae50c15f4279c31ed2a9009a6464e9ffe11c0c887cd8afce07313"
+    },
+    "prediction_manifest": {
+      "path": "evaluations/dinomaly/Doll/predictions.json",
+      "bytes": 4082,
+      "sha256": "6e46ae8dfda5cbf9467fed8fa138e6e3ab86a43d37a423479dd74f752961ca94"
+    },
+    "evaluation_log": {
+      "path": "logs/dinomaly-Doll-test.log",
+      "bytes": 104188,
+      "sha256": "ea57735ffe2369d7350211d7e93ea4ec0c3702a78a6ae9a0943f58404bb718e8"
+    },
+    "evaluation_status": {
+      "path": "evaluations/dinomaly/Doll/status.json",
+      "bytes": 1560,
+      "sha256": "0b0aedcc5604f13970a1dacc151be34e017a25c0b31c66ce41bb2d3b6bfff88c"
+    },
+    "training_status": {
+      "path": "runs/dinomaly/Doll/status.json",
+      "bytes": 2076,
+      "sha256": "6dfa4fb8972b64652f2792ad400e445e80cb159efaf9c7e5874e22e600f8f611"
+    }
   },
   "runs": [
     {
       "model": "dinomaly",
       "class": "Car",
+      "train_dir": "runs/dinomaly/Car",
+      "evaluation_dir": "evaluations/dinomaly/Car",
       "training": {
         "model": "dinomaly",
         "class": "Car",
@@ -63,54 +292,6 @@
         },
         "finished_utc": "2026-11-19T13:55:47.678412+00:00",
         "wall_seconds": 6644.139124399
-      },
-      "evaluation": {
-        "model": "dinomaly",
-        "class": "Car",
-        "status": "PASS",
-        "started_utc": "2026-11-19T13:55:51.687695+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "dinomaly",
-          "--category",
-          "Car",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Car",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29",
-        "parameters": 148008960,
-        "trainable_parameters": 148008960,
-        "optimizer_parameters": 148008960,
-        "inference_finished_utc": "2026-11-19T14:01:33.675879+00:00",
-        "inference_through_concatenation_seconds": 304.78076511400013,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 361.90388705700025,
-        "peak_allocated_bytes": 1031620608,
-        "peak_reserved_bytes": 1421869056,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-19T14:05:59.173212+00:00",
-        "wall_seconds": 607.4855394800006
       },
       "configuration": {
         "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
@@ -186,6 +367,84 @@
         ],
         "use_adeval": true
       },
+      "training_provenance": "CLEAN_CONTINUOUS",
+      "epoch_log": {
+        "path": "runs/dinomaly/Car/epochs.json",
+        "bytes": 9559,
+        "sha256": "22e401f237ab816cc2343a0bf6ce6fbfc05fb52549a9017da99b7a16994f726c"
+      },
+      "training_logs": [
+        {
+          "path": "logs/dinomaly-Car-train.log",
+          "bytes": 128981,
+          "sha256": "e2102a08d6bbf0da8b8ac2ea94aa4e10cfacff9ad43651df3376cbcad58ca592"
+        }
+      ],
+      "train_gpu_csv": {
+        "path": "runs/dinomaly/Car/gpu.csv",
+        "bytes": 129010,
+        "sha256": "3fa614c3c493c20cea6ccc9a8b1ea48e63ff10550f8440bac31772ac0ae7689b"
+      },
+      "checkpoint": {
+        "path": "runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth",
+        "bytes": 737226486,
+        "sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29"
+      },
+      "weights": [
+        {
+          "path": "runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_net_100.pth",
+          "bytes": 245734378,
+          "sha256": "8beb7ec63c2c1071f6e5099fa362ce036dd8b7dc977834005d6bb7f6fbf81ad2"
+        }
+      ],
+      "evaluation": {
+        "model": "dinomaly",
+        "class": "Car",
+        "status": "PASS",
+        "started_utc": "2026-11-19T13:55:51.687695+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Car",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Car",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29",
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "inference_finished_utc": "2026-11-19T14:01:33.675879+00:00",
+        "inference_through_concatenation_seconds": 304.78076511400013,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 361.90388705700025,
+        "peak_allocated_bytes": 1031620608,
+        "peak_reserved_bytes": 1421869056,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-19T14:05:59.173212+00:00",
+        "wall_seconds": 607.4855394800006
+      },
       "official_metrics": {
         "epoch": 100,
         "class": "Car",
@@ -205,18 +464,6 @@
         },
         "nonfinite": []
       },
-      "checkpoint": {
-        "path": "runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth",
-        "bytes": 737226486,
-        "sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29"
-      },
-      "weights": [
-        {
-          "path": "runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_net_100.pth",
-          "bytes": 245734378,
-          "sha256": "8beb7ec63c2c1071f6e5099fa362ce036dd8b7dc977834005d6bb7f6fbf81ad2"
-        }
-      ],
       "predictions": {
         "raw": {
           "obj_names.npy": {
@@ -384,38 +631,28 @@
           }
         }
       },
-      "training_logs": [
-        {
-          "path": "logs/dinomaly-Car-train.log",
-          "bytes": 128981,
-          "sha256": "e2102a08d6bbf0da8b8ac2ea94aa4e10cfacff9ad43651df3376cbcad58ca592"
-        }
-      ],
       "evaluation_log": {
         "path": "logs/dinomaly-Car-test.log",
         "bytes": 104361,
         "sha256": "12ac87efd14bf22fbeebb824d47d065123a91a5cf9ffdc379e39c34a6f0f624c"
-      },
-      "train_gpu_csv": {
-        "path": "runs/dinomaly/Car/gpu.csv",
-        "bytes": 129010,
-        "sha256": "3fa614c3c493c20cea6ccc9a8b1ea48e63ff10550f8440bac31772ac0ae7689b"
       },
       "evaluation_gpu_csv": {
         "path": "evaluations/dinomaly/Car/gpu.csv",
         "bytes": 12278,
         "sha256": "d0841a4b65a7324751f147fee50d1dd4fcbffa53c5da6f9bb13aca15a962f444"
       },
-      "epoch_log": {
-        "path": "runs/dinomaly/Car/epochs.json",
-        "bytes": 9559,
-        "sha256": "22e401f237ab816cc2343a0bf6ce6fbfc05fb52549a9017da99b7a16994f726c"
+      "diagnostics_csv": {
+        "path": "evaluations/dinomaly/Car/diagnostics.csv",
+        "bytes": 10597,
+        "sha256": "ee096c20928df28bcd1e92600fb7d0651baff18b7c9996c57234b8e3ebe4e846"
       },
-      "report_excerpt": "evidence/dinomaly-Car.log"
+      "diagnostics_rows": 142
     },
     {
       "model": "dinomaly",
       "class": "Cube",
+      "train_dir": "runs/dinomaly/Cube",
+      "evaluation_dir": "evaluations/dinomaly/Cube",
       "training": {
         "model": "dinomaly",
         "class": "Cube",
@@ -463,54 +700,6 @@
         },
         "finished_utc": "2026-11-20T11:57:47.954976+00:00",
         "wall_seconds": 7279.826882820002
-      },
-      "evaluation": {
-        "model": "dinomaly",
-        "class": "Cube",
-        "status": "PASS",
-        "started_utc": "2026-11-20T11:57:50.406625+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "dinomaly",
-          "--category",
-          "Cube",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Cube",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76",
-        "parameters": 148008960,
-        "trainable_parameters": 148008960,
-        "optimizer_parameters": 148008960,
-        "inference_finished_utc": "2026-11-20T12:02:43.648741+00:00",
-        "inference_through_concatenation_seconds": 271.5333760100002,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 333.716053979002,
-        "peak_allocated_bytes": 1031620608,
-        "peak_reserved_bytes": 1421869056,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-20T12:07:12.668875+00:00",
-        "wall_seconds": 562.2622863729994
       },
       "configuration": {
         "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
@@ -586,6 +775,84 @@
         ],
         "use_adeval": true
       },
+      "training_provenance": "CLEAN_CONTINUOUS",
+      "epoch_log": {
+        "path": "runs/dinomaly/Cube/epochs.json",
+        "bytes": 9559,
+        "sha256": "56e9bf1b501c295ebb870ce5197fe5c9ffe1d9250c133eea9233b72c0565a591"
+      },
+      "training_logs": [
+        {
+          "path": "logs/dinomaly-Cube-train.log",
+          "bytes": 129094,
+          "sha256": "f6274d7421adf40c85e4d04905b474a6639f10a158a08fbc53c0324e63fa16c3"
+        }
+      ],
+      "train_gpu_csv": {
+        "path": "runs/dinomaly/Cube/gpu.csv",
+        "bytes": 139207,
+        "sha256": "c0c54b408df89bf238b0c4d078d105055c6949e2a4de5424a1af0b2c3b98a868"
+      },
+      "checkpoint": {
+        "path": "runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_ckpt.pth",
+        "bytes": 737226954,
+        "sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76"
+      },
+      "weights": [
+        {
+          "path": "runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_net_100.pth",
+          "bytes": 245734482,
+          "sha256": "b2df27c2ca8970cb5c3e932b5c7b67430db0f5bc2da2d4e67cd2d5a989b612ad"
+        }
+      ],
+      "evaluation": {
+        "model": "dinomaly",
+        "class": "Cube",
+        "status": "PASS",
+        "started_utc": "2026-11-20T11:57:50.406625+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Cube",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Cube",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76",
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "inference_finished_utc": "2026-11-20T12:02:43.648741+00:00",
+        "inference_through_concatenation_seconds": 271.5333760100002,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 333.716053979002,
+        "peak_allocated_bytes": 1031620608,
+        "peak_reserved_bytes": 1421869056,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-20T12:07:12.668875+00:00",
+        "wall_seconds": 562.2622863729994
+      },
       "official_metrics": {
         "epoch": 100,
         "class": "Cube",
@@ -605,18 +872,6 @@
         },
         "nonfinite": []
       },
-      "checkpoint": {
-        "path": "runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_ckpt.pth",
-        "bytes": 737226954,
-        "sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76"
-      },
-      "weights": [
-        {
-          "path": "runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_net_100.pth",
-          "bytes": 245734482,
-          "sha256": "b2df27c2ca8970cb5c3e932b5c7b67430db0f5bc2da2d4e67cd2d5a989b612ad"
-        }
-      ],
       "predictions": {
         "raw": {
           "obj_names.npy": {
@@ -784,453 +1039,88 @@
           }
         }
       },
-      "training_logs": [
-        {
-          "path": "logs/dinomaly-Cube-train.log",
-          "bytes": 129094,
-          "sha256": "f6274d7421adf40c85e4d04905b474a6639f10a158a08fbc53c0324e63fa16c3"
-        }
-      ],
       "evaluation_log": {
         "path": "logs/dinomaly-Cube-test.log",
         "bytes": 104188,
         "sha256": "f4a7cb1fad5f6666ca8deebc7747d3a867bd3a5030b0dc88d77da9aaf9157547"
-      },
-      "train_gpu_csv": {
-        "path": "runs/dinomaly/Cube/gpu.csv",
-        "bytes": 139207,
-        "sha256": "c0c54b408df89bf238b0c4d078d105055c6949e2a4de5424a1af0b2c3b98a868"
       },
       "evaluation_gpu_csv": {
         "path": "evaluations/dinomaly/Cube/gpu.csv",
         "bytes": 11353,
         "sha256": "7b791f0615138556720e4a830ab3b5386d5b82b8be933c66aecd2834de4c9768"
       },
-      "epoch_log": {
-        "path": "runs/dinomaly/Cube/epochs.json",
-        "bytes": 9559,
-        "sha256": "56e9bf1b501c295ebb870ce5197fe5c9ffe1d9250c133eea9233b72c0565a591"
+      "diagnostics_csv": {
+        "path": "evaluations/dinomaly/Cube/diagnostics.csv",
+        "bytes": 10811,
+        "sha256": "958df307f14059491520f4aa87f4dae5e566ca3b3de05713b1b89661fb1947ad"
       },
-      "report_excerpt": "evidence/dinomaly-Cube.log"
+      "diagnostics_rows": 142
     },
     {
       "model": "dinomaly",
       "class": "Doll",
+      "train_dir": "doll-clean-20261122-run/train",
+      "evaluation_dir": "doll-clean-20261122-run/evaluation",
       "training": {
         "model": "dinomaly",
         "class": "Doll",
-        "status": "PASS",
-        "started_utc": "2026-11-21T03:47:54.157177+00:00",
+        "status": "FAILED",
+        "started_utc": "2026-11-22T01:46:53.483843+00:00",
         "mode": "train",
-        "epochs_completed": 100,
+        "epochs_completed": 37,
         "oom": false,
-        "nonfinite": false,
+        "nonfinite": true,
         "argv": [
           "--upstream",
           "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
           "--release-root",
           "/mnt/d/vicad-syn/task-002-stage2",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
           "--model",
           "dinomaly",
           "--category",
           "Doll",
           "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Doll"
+          "/mnt/d/vicad-syn/task-002-stage2/doll-clean-20261122-run/train",
+          "--diagnose-doll"
         ],
-        "optimization_steps": 30000,
-        "last_observed_iteration": 30000,
-        "recovery": {
-          "starting_epoch": 37,
-          "starting_iteration": 11100,
-          "training_checkpoint_sha256": "509b2b6468497aaa48c41815f810c59051b5b96243a771e15e8afa128545f1c4",
-          "original_attempt": "/mnt/d/vicad-syn/task-002-stage2/attempts/dinomaly/Doll-original-nonfinite-20261120",
-          "rng_and_loader_state_available": false,
-          "diagnostic_through_iteration": 11400,
-          "previous_elapsed_through_saved_checkpoint_seconds": 2659.074193
-        },
         "parameters": 148008960,
         "trainable_parameters": 148008960,
         "optimizer_parameters": 148008960,
-        "train_started_utc": "2026-11-21T03:48:29.304571+00:00",
-        "train_finished_utc": "2026-11-21T05:03:14.266595+00:00",
-        "train_seconds": 6991.024079422998,
-        "peak_allocated_bytes": 3304015872,
-        "peak_reserved_bytes": 3837788160,
-        "resumed_segment_seconds": 4331.949886422997,
-        "weights": [
-          {
-            "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_net_100.pth",
-            "bytes": 245734482,
-            "sha256": "aa69750c4a8219d79c35c0c1fb32e1a211d5d8bd9ce9868cd196584ecc67bdf0"
-          }
-        ],
-        "final_checkpoint": {
-          "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
-          "bytes": 737226954,
-          "sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83"
-        },
-        "finished_utc": "2026-11-21T05:03:28.865130+00:00",
-        "wall_seconds": 4379.367040408004
+        "train_started_utc": "2026-11-22T01:47:20.517271+00:00",
+        "last_observed_iteration": 11240,
+        "optimization_steps": 11100,
+        "error": "NonFiniteTrainingError: non-finite decoder_features at iteration 11241: ['de.0']",
+        "peak_allocated_bytes": 3305744384,
+        "peak_reserved_bytes": 3770679296,
+        "finished_utc": "2026-11-22T02:33:14.803209+00:00",
+        "wall_seconds": 2753.867452262
       },
-      "evaluation": {
-        "model": "dinomaly",
-        "class": "Doll",
-        "status": "PASS",
-        "started_utc": "2026-11-21T05:03:49.282773+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "dinomaly",
-          "--category",
-          "Doll",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Doll",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Doll/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83",
-        "parameters": 148008960,
-        "trainable_parameters": 148008960,
-        "optimizer_parameters": 148008960,
-        "inference_finished_utc": "2026-11-21T05:09:26.323002+00:00",
-        "inference_through_concatenation_seconds": 304.5630061200063,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 357.73173905200383,
-        "peak_allocated_bytes": 1031620608,
-        "peak_reserved_bytes": 1421869056,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-21T05:13:45.821671+00:00",
-        "wall_seconds": 577.6008199979988
-      },
-      "configuration": {
-        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
-        "cfg_path": "configs/benchmark/dinomaly/dinomaly_100e.py",
-        "cfg_sha256": "e3abca8d7727e6a07df1a75fb737a9903028b5cccd3c9118d59e59baf58efff9",
-        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
-        "protocol": "M2AD-Synergy",
-        "class": "Doll",
-        "mode": "train",
-        "seed": 42,
-        "epoch": 100,
-        "size": 224,
-        "batch_train": 12,
-        "batch_test": 12,
-        "optimizer": {
-          "lr": 0.00375,
-          "name": "adam",
-          "betas": [
-            0.5,
-            0.999
-          ]
-        },
-        "scheduler": {
-          "name": "step",
-          "lr_noise": null,
-          "noise_pct": 0.67,
-          "noise_std": 1.0,
-          "noise_seed": 42,
-          "lr_min": 3.75e-05,
-          "warmup_lr": 3.7499999999999997e-06,
-          "warmup_iters": -1,
-          "cooldown_iters": 0,
-          "warmup_epochs": 0,
-          "cooldown_epochs": 0,
-          "use_iters": true,
-          "patience_iters": 0,
-          "patience_epochs": 0,
-          "decay_iters": 0,
-          "decay_epochs": 80,
-          "cycle_decay": 0.1,
-          "decay_rate": 0.1
-        },
-        "loss": [
-          {
-            "type": "DinomalyLoss",
-            "name": "dinomaly_loss",
-            "p": 0.9,
-            "factor": 0.0
-          }
-        ],
-        "clip_grad": 5.0,
-        "default_test_interval": 50,
-        "formal_test_epoch": 100,
-        "test_during_training": false,
-        "bulk_visualization": false,
-        "model_kwargs": {
-          "pretrained": false,
-          "strict": false,
-          "encoder_name": "dinov2reg_vit_base_14"
-        },
-        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
-        "metrics": [
-          "AUROC_obj_sp",
-          "AUROC_view_sp",
-          "AUROC_view_px",
-          "mF1_obj_sp",
-          "mF1_view_sp",
-          "mF1_view_px",
-          "AP_obj_sp",
-          "AP_view_sp",
-          "AP_view_px",
-          "AUPRO_view"
-        ],
-        "use_adeval": true
-      },
-      "official_metrics": {
-        "epoch": 100,
-        "class": "Doll",
-        "model": "dinomaly",
-        "checkpoint_sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83",
-        "metrics_pct": {
-          "AUROC_view_sp": 79.73786590263101,
-          "AUROC_view_px": 98.50375613135701,
-          "mF1_view_sp": 71.06382978723403,
-          "mF1_view_px": 36.14983672940613,
-          "AP_view_sp": 81.24387566507713,
-          "AP_view_px": 22.615548491622047,
-          "AUPRO_view": 92.10996019562228,
-          "AUROC_obj_sp": 81.69999999999999,
-          "mF1_obj_sp": 85.47008547008548,
-          "AP_obj_sp": 92.70018177455283
-        },
-        "nonfinite": []
-      },
-      "checkpoint": {
-        "path": "runs/dinomaly/Doll/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
-        "bytes": 737226954,
-        "sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83"
-      },
-      "weights": [
+      "training_provenance": "FAILED",
+      "source_snapshots": [
         {
-          "path": "runs/dinomaly/Doll/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_net_100.pth",
-          "bytes": 245734482,
-          "sha256": "aa69750c4a8219d79c35c0c1fb32e1a211d5d8bd9ce9868cd196584ecc67bdf0"
-        }
-      ],
-      "predictions": {
-        "raw": {
-          "obj_names.npy": {
-            "shape": [
-              8400
-            ],
-            "dtype": "<U23",
-            "bytes": 772928,
-            "sha256": "539f2b8d5cb3a899c8ccb345c0556fbbe7b5f75c41730974f4d8bd2a168a0455"
-          },
-          "cls_names.npy": {
-            "shape": [
-              8400
-            ],
-            "dtype": "<U4",
-            "bytes": 134528,
-            "sha256": "45b6f6314eebe4f8c0c6c0f7f45bdf676e5d0cef7d5285b43488f6fce9a981ce"
-          },
-          "illumination_list.npy": {
-            "shape": [
-              8400
-            ],
-            "dtype": "<U2",
-            "bytes": 67328,
-            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
-          },
-          "view_list.npy": {
-            "shape": [
-              8400
-            ],
-            "dtype": "<U3",
-            "bytes": 100928,
-            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
-          },
-          "imgs_masks.npy": {
-            "shape": [
-              8400,
-              1,
-              224,
-              224
-            ],
-            "dtype": "uint8",
-            "bytes": 421478528,
-            "sha256": "9f45c9c53cccd193e08eb392744e77c236628f9694ef95379581d9078ccccb29"
-          },
-          "image_anomalys.npy": {
-            "shape": [
-              8400
-            ],
-            "dtype": "int64",
-            "bytes": 67328,
-            "sha256": "410dc104455420c38e0f7908d2c66593321e55807e6485eeace70073cf5d8568"
-          },
-          "object_anomalys.npy": {
-            "shape": [
-              8400
-            ],
-            "dtype": "int64",
-            "bytes": 67328,
-            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
-          },
-          "anomaly_scores.npy": {
-            "shape": [
-              8400
-            ],
-            "dtype": "float64",
-            "bytes": 67328,
-            "sha256": "b86b67d8fe40b90aa5bc4487d3b447d3d91171cae493053278597a52772b75c3"
-          },
-          "anomaly_maps.npy": {
-            "shape": [
-              8400,
-              224,
-              224
-            ],
-            "dtype": "float64",
-            "bytes": 3371827328,
-            "sha256": "467407cf306c5dc3c32da944064063115efa16266635388b47339c77e58423c3"
-          }
-        },
-        "fused": {
-          "view_instance_masks.npy": {
-            "shape": [
-              840,
-              224,
-              224
-            ],
-            "dtype": "int64",
-            "bytes": 337182848,
-            "sha256": "df28e5f116d75e16f8c9df1e599d75580d1c6c96a1d23149a9e9ecc0f9737725"
-          },
-          "view_instance_anomalys.npy": {
-            "shape": [
-              840
-            ],
-            "dtype": "int64",
-            "bytes": 6848,
-            "sha256": "837d07fdc4b7437e8a4754c6e5421807b0d260fa6bd3c5e58d4954cb8066f254"
-          },
-          "view_instance_anomaly_maps.npy": {
-            "shape": [
-              840,
-              224,
-              224
-            ],
-            "dtype": "float64",
-            "bytes": 337182848,
-            "sha256": "138e29745d6aae0aeaaa711e6630a0c6115d054b4903c3912b1f081a1b015d45"
-          },
-          "view_instance_anomaly_scores.npy": {
-            "shape": [
-              840
-            ],
-            "dtype": "float64",
-            "bytes": 6848,
-            "sha256": "82077d99b17228ca3e6ef70e41ec9376907de60a16d9775711a3338c622110ad"
-          },
-          "view_instance_names.npy": {
-            "shape": [
-              840
-            ],
-            "dtype": "<U27",
-            "bytes": 90848,
-            "sha256": "a9925572e12aa07f7bfc32e1e1160a0891f8e63c194426b79599ce9c318d6f02"
-          },
-          "view_instance_cls_names.npy": {
-            "shape": [
-              840
-            ],
-            "dtype": "<U4",
-            "bytes": 13568,
-            "sha256": "49004c9d426f3c2865934be6c6a7ba7e2822d422792d44ef4c94094f8e199603"
-          },
-          "object_instance_names.npy": {
-            "shape": [
-              70
-            ],
-            "dtype": "<U23",
-            "bytes": 6568,
-            "sha256": "20aba24e936f0278e2a56751921ec338519383dfbecb8010757d1d0b19bfafad"
-          },
-          "object_instance_anomalys.npy": {
-            "shape": [
-              70
-            ],
-            "dtype": "int64",
-            "bytes": 688,
-            "sha256": "ecf2a5ecff3b38ff83f002631a79096d4d7728a73a9ef77eb621a30c32c6a679"
-          },
-          "object_instance_anomaly_scores.npy": {
-            "shape": [
-              70
-            ],
-            "dtype": "float64",
-            "bytes": 688,
-            "sha256": "4a19865f373b454a2588347cdb71f656e4f2151b35b2b377ef43cdf5155b8eaa"
-          },
-          "object_instance_cls_names.npy": {
-            "shape": [
-              70
-            ],
-            "dtype": "<U4",
-            "bytes": 1248,
-            "sha256": "b1678dab1b063cb93e4e0dcd51140138feb1fb9ee9b8369631f1e2a5b54e935f"
-          }
-        }
-      },
-      "training_logs": [
-        {
-          "path": "logs/dinomaly-Doll-train.log",
-          "bytes": 57888,
-          "sha256": "8cf283bc6d28d6562f73c642175627289ff35633527c6439c92d647d239ee9ac"
+          "path": "doll-clean-20261122-run/source/run_baseline.py",
+          "bytes": 18760,
+          "sha256": "7836d54f0575fbef0747ba5c50948ceb6a0df166babd5a67caffb11fc2ca424a"
         },
         {
-          "path": "logs/dinomaly-Doll-resume-20261121.log",
-          "bytes": 87967,
-          "sha256": "598d51e21cac6999bcab700a330ee5403b36b4d81687842c35e005c12d79657e"
+          "path": "doll-clean-20261122-run/source/training_diagnostics.py",
+          "bytes": 7873,
+          "sha256": "d4e337f61872846734ab2098f5d077a07556621ac54976a308a1ca209e6b9f3b"
+        },
+        {
+          "path": "doll-clean-20261122-run/source/baseline_metrics.py",
+          "bytes": 8361,
+          "sha256": "f6592a19a67ff5808f53f3da5e25ee102780afd852d4b4f326e6dd34f63c1dd4"
         }
-      ],
-      "evaluation_log": {
-        "path": "logs/dinomaly-Doll-test.log",
-        "bytes": 104188,
-        "sha256": "ea57735ffe2369d7350211d7e93ea4ec0c3702a78a6ae9a0943f58404bb718e8"
-      },
-      "train_gpu_csv": {
-        "path": "runs/dinomaly/Doll/gpu.csv",
-        "bytes": 86537,
-        "sha256": "6f3a703b50b75b06b138bd621bef116dac2c9e80b1b99ec480c5e32d813c89b8"
-      },
-      "evaluation_gpu_csv": {
-        "path": "evaluations/dinomaly/Doll/gpu.csv",
-        "bytes": 12018,
-        "sha256": "4ac4d44c8ff3d94d66e7e0aada74236bd371b11cdfe37920013356ed3fca26e1"
-      },
-      "epoch_log": {
-        "path": "runs/dinomaly/Doll/epochs.json",
-        "bytes": 6052,
-        "sha256": "7a5f57e2fca5daf399d587ca4c013971ed4aab90782763f1e608052762032d8e"
-      },
-      "report_excerpt": "evidence/dinomaly-Doll.log"
+      ]
     },
     {
       "model": "dinomaly",
       "class": "Ring",
+      "train_dir": "runs/dinomaly/Ring",
+      "evaluation_dir": "evaluations/dinomaly/Ring",
       "training": {
         "model": "dinomaly",
         "class": "Ring",
@@ -1279,54 +1169,6 @@
         "finished_utc": "2026-11-21T07:01:50.030451+00:00",
         "wall_seconds": 6224.484853002999
       },
-      "evaluation": {
-        "model": "dinomaly",
-        "class": "Ring",
-        "status": "PASS",
-        "started_utc": "2026-11-21T07:01:51.822404+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "dinomaly",
-          "--category",
-          "Ring",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Ring",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7",
-        "parameters": 148008960,
-        "trainable_parameters": 148008960,
-        "optimizer_parameters": 148008960,
-        "inference_finished_utc": "2026-11-21T07:07:21.435635+00:00",
-        "inference_through_concatenation_seconds": 300.86373512100545,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 347.54518439399544,
-        "peak_allocated_bytes": 1031620608,
-        "peak_reserved_bytes": 1421869056,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-21T07:11:13.053072+00:00",
-        "wall_seconds": 539.5143097719993
-      },
       "configuration": {
         "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
         "cfg_path": "configs/benchmark/dinomaly/dinomaly_100e.py",
@@ -1401,6 +1243,84 @@
         ],
         "use_adeval": true
       },
+      "training_provenance": "CLEAN_CONTINUOUS",
+      "epoch_log": {
+        "path": "runs/dinomaly/Ring/epochs.json",
+        "bytes": 9559,
+        "sha256": "5eee08e036d887b2ec77c46302709e5779c7a1cee185cce62b45e9ba0c2537bd"
+      },
+      "training_logs": [
+        {
+          "path": "logs/dinomaly-Ring-train.log",
+          "bytes": 129131,
+          "sha256": "12933568912fb9f237ae30d211561e024a73b8a4fe6679a4b5cc862014b09602"
+        }
+      ],
+      "train_gpu_csv": {
+        "path": "runs/dinomaly/Ring/gpu.csv",
+        "bytes": 6636,
+        "sha256": "8a3815691aa5713b2e23e03b7f7d9211cf5f4f20e999f8c8bda286393debf532"
+      },
+      "checkpoint": {
+        "path": "runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_ckpt.pth",
+        "bytes": 737226954,
+        "sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7"
+      },
+      "weights": [
+        {
+          "path": "runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_net_100.pth",
+          "bytes": 245734482,
+          "sha256": "e8de9636a5f162942d8fd497b6896c0987e0844b6013ae0591d62598eacdd0bd"
+        }
+      ],
+      "evaluation": {
+        "model": "dinomaly",
+        "class": "Ring",
+        "status": "PASS",
+        "started_utc": "2026-11-21T07:01:51.822404+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Ring",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Ring",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7",
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "inference_finished_utc": "2026-11-21T07:07:21.435635+00:00",
+        "inference_through_concatenation_seconds": 300.86373512100545,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 347.54518439399544,
+        "peak_allocated_bytes": 1031620608,
+        "peak_reserved_bytes": 1421869056,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T07:11:13.053072+00:00",
+        "wall_seconds": 539.5143097719993
+      },
       "official_metrics": {
         "epoch": 100,
         "class": "Ring",
@@ -1420,18 +1340,6 @@
         },
         "nonfinite": []
       },
-      "checkpoint": {
-        "path": "runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_ckpt.pth",
-        "bytes": 737226954,
-        "sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7"
-      },
-      "weights": [
-        {
-          "path": "runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_net_100.pth",
-          "bytes": 245734482,
-          "sha256": "e8de9636a5f162942d8fd497b6896c0987e0844b6013ae0591d62598eacdd0bd"
-        }
-      ],
       "predictions": {
         "raw": {
           "obj_names.npy": {
@@ -1599,38 +1507,28 @@
           }
         }
       },
-      "training_logs": [
-        {
-          "path": "logs/dinomaly-Ring-train.log",
-          "bytes": 129131,
-          "sha256": "12933568912fb9f237ae30d211561e024a73b8a4fe6679a4b5cc862014b09602"
-        }
-      ],
       "evaluation_log": {
         "path": "logs/dinomaly-Ring-test.log",
         "bytes": 104188,
         "sha256": "c344a5c13a544bef31ad8d1c7ba4be48483afa286db2bfcbe2b131887e23f63b"
-      },
-      "train_gpu_csv": {
-        "path": "runs/dinomaly/Ring/gpu.csv",
-        "bytes": 6636,
-        "sha256": "8a3815691aa5713b2e23e03b7f7d9211cf5f4f20e999f8c8bda286393debf532"
       },
       "evaluation_gpu_csv": {
         "path": "evaluations/dinomaly/Ring/gpu.csv",
         "bytes": 11150,
         "sha256": "28bc4fb795dbf6a230cb491fbedb696c66f6da7ad283634f658598a395dd8c86"
       },
-      "epoch_log": {
-        "path": "runs/dinomaly/Ring/epochs.json",
-        "bytes": 9559,
-        "sha256": "5eee08e036d887b2ec77c46302709e5779c7a1cee185cce62b45e9ba0c2537bd"
+      "diagnostics_csv": {
+        "path": "evaluations/dinomaly/Ring/diagnostics.csv",
+        "bytes": 10781,
+        "sha256": "73d829b5cc5cee498ad44db309afaeb7e5347b431276cde411a5d96ba06b0d98"
       },
-      "report_excerpt": "evidence/dinomaly-Ring.log"
+      "diagnostics_rows": 142
     },
     {
       "model": "inpformer",
       "class": "Car",
+      "train_dir": "runs/inpformer/Car",
+      "evaluation_dir": "evaluations/inpformer/Car",
       "training": {
         "model": "inpformer",
         "class": "Car",
@@ -1678,54 +1576,6 @@
         },
         "finished_utc": "2026-11-21T08:56:53.466053+00:00",
         "wall_seconds": 6096.471798993996
-      },
-      "evaluation": {
-        "model": "inpformer",
-        "class": "Car",
-        "status": "PASS",
-        "started_utc": "2026-11-21T08:56:55.263160+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "inpformer",
-          "--category",
-          "Car",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Car",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4",
-        "parameters": 155101536,
-        "trainable_parameters": 68517984,
-        "optimizer_parameters": 155101536,
-        "inference_finished_utc": "2026-11-21T09:03:48.617583+00:00",
-        "inference_through_concatenation_seconds": 388.95290042199485,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 439.8064654189948,
-        "peak_allocated_bytes": 1059737088,
-        "peak_reserved_bytes": 1516240896,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-21T09:07:49.014756+00:00",
-        "wall_seconds": 646.8157773540006
       },
       "configuration": {
         "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
@@ -1801,6 +1651,84 @@
         ],
         "use_adeval": true
       },
+      "training_provenance": "CLEAN_CONTINUOUS",
+      "epoch_log": {
+        "path": "runs/inpformer/Car/epochs.json",
+        "bytes": 9559,
+        "sha256": "7d380af4a21c9ef52be4705affe8650ed007dbcad9d164e19980c9537d52502d"
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Car-train.log",
+          "bytes": 130366,
+          "sha256": "486057ee5378c9c6005b211ec94da748bfc69460f7d9dfc5f06100d5eac7b542"
+        }
+      ],
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Car/gpu.csv",
+        "bytes": 120465,
+        "sha256": "cc788270ab3afdcff507f0077d85566c1bfaee736d8a4b60f189dec7b2872d6d"
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_ckpt.pth",
+        "bytes": 822399946,
+        "sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_net_100.pth",
+          "bytes": 274134548,
+          "sha256": "c14820d69d84622d04c1d3c207d26fc62c9968540e7d87d25b6300aa1e18148c"
+        }
+      ],
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Car",
+        "status": "PASS",
+        "started_utc": "2026-11-21T08:56:55.263160+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Car",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Car",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T09:03:48.617583+00:00",
+        "inference_through_concatenation_seconds": 388.95290042199485,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 439.8064654189948,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T09:07:49.014756+00:00",
+        "wall_seconds": 646.8157773540006
+      },
       "official_metrics": {
         "epoch": 100,
         "class": "Car",
@@ -1820,18 +1748,6 @@
         },
         "nonfinite": []
       },
-      "checkpoint": {
-        "path": "runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_ckpt.pth",
-        "bytes": 822399946,
-        "sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4"
-      },
-      "weights": [
-        {
-          "path": "runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_net_100.pth",
-          "bytes": 274134548,
-          "sha256": "c14820d69d84622d04c1d3c207d26fc62c9968540e7d87d25b6300aa1e18148c"
-        }
-      ],
       "predictions": {
         "raw": {
           "obj_names.npy": {
@@ -1999,38 +1915,28 @@
           }
         }
       },
-      "training_logs": [
-        {
-          "path": "logs/inpformer-Car-train.log",
-          "bytes": 130366,
-          "sha256": "486057ee5378c9c6005b211ec94da748bfc69460f7d9dfc5f06100d5eac7b542"
-        }
-      ],
       "evaluation_log": {
         "path": "logs/inpformer-Car-test.log",
         "bytes": 104386,
         "sha256": "9e9e67c7626ca3ae1c195f7a319a2ba4ac283731818821b6a11e445a645a90c4"
-      },
-      "train_gpu_csv": {
-        "path": "runs/inpformer/Car/gpu.csv",
-        "bytes": 120465,
-        "sha256": "cc788270ab3afdcff507f0077d85566c1bfaee736d8a4b60f189dec7b2872d6d"
       },
       "evaluation_gpu_csv": {
         "path": "evaluations/inpformer/Car/gpu.csv",
         "bytes": 13164,
         "sha256": "6dc56985c44e4d313b9e96ee80ee62cd4edecd557d45d0340d344d3851900ab2"
       },
-      "epoch_log": {
-        "path": "runs/inpformer/Car/epochs.json",
-        "bytes": 9559,
-        "sha256": "7d380af4a21c9ef52be4705affe8650ed007dbcad9d164e19980c9537d52502d"
+      "diagnostics_csv": {
+        "path": "evaluations/inpformer/Car/diagnostics.csv",
+        "bytes": 10609,
+        "sha256": "910247647c4cb194fcc3c0f34939070a8ff68abf2616a414a82bcef2cd6f0305"
       },
-      "report_excerpt": "evidence/inpformer-Car.log"
+      "diagnostics_rows": 142
     },
     {
       "model": "inpformer",
       "class": "Cube",
+      "train_dir": "runs/inpformer/Cube",
+      "evaluation_dir": "evaluations/inpformer/Cube",
       "training": {
         "model": "inpformer",
         "class": "Cube",
@@ -2078,54 +1984,6 @@
         },
         "finished_utc": "2026-11-21T11:11:48.147336+00:00",
         "wall_seconds": 7437.178612885997
-      },
-      "evaluation": {
-        "model": "inpformer",
-        "class": "Cube",
-        "status": "PASS",
-        "started_utc": "2026-11-21T11:11:50.045486+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "inpformer",
-          "--category",
-          "Cube",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Cube",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028",
-        "parameters": 155101536,
-        "trainable_parameters": 68517984,
-        "optimizer_parameters": 155101536,
-        "inference_finished_utc": "2026-11-21T11:18:24.998738+00:00",
-        "inference_through_concatenation_seconds": 372.33424748200923,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 424.3183270590089,
-        "peak_allocated_bytes": 1059737088,
-        "peak_reserved_bytes": 1516240896,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-21T11:22:18.663525+00:00",
-        "wall_seconds": 628.6180601200031
       },
       "configuration": {
         "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
@@ -2201,6 +2059,84 @@
         ],
         "use_adeval": true
       },
+      "training_provenance": "CLEAN_CONTINUOUS",
+      "epoch_log": {
+        "path": "runs/inpformer/Cube/epochs.json",
+        "bytes": 9559,
+        "sha256": "190d068b3796213a17c322f71b0e335a5f8077c852cd034618d5d48cc917fe68"
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Cube-train.log",
+          "bytes": 130111,
+          "sha256": "13cc187ab04f6fbf32f698169fcaf667bba5ea8e161b9708287148865ae93665"
+        }
+      ],
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Cube/gpu.csv",
+        "bytes": 145933,
+        "sha256": "0121b2e48584ff9e8f903bf9d6b4810fc667fb92704bf619495bbd1dc7e2cd3c"
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_ckpt.pth",
+        "bytes": 822400506,
+        "sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_net_100.pth",
+          "bytes": 274134691,
+          "sha256": "67b79bc65b05f752d13bce86d6416df58e9eac27c4072812f0960a1794ed0adb"
+        }
+      ],
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Cube",
+        "status": "PASS",
+        "started_utc": "2026-11-21T11:11:50.045486+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Cube",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Cube",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T11:18:24.998738+00:00",
+        "inference_through_concatenation_seconds": 372.33424748200923,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 424.3183270590089,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T11:22:18.663525+00:00",
+        "wall_seconds": 628.6180601200031
+      },
       "official_metrics": {
         "epoch": 100,
         "class": "Cube",
@@ -2220,18 +2156,6 @@
         },
         "nonfinite": []
       },
-      "checkpoint": {
-        "path": "runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_ckpt.pth",
-        "bytes": 822400506,
-        "sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028"
-      },
-      "weights": [
-        {
-          "path": "runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_net_100.pth",
-          "bytes": 274134691,
-          "sha256": "67b79bc65b05f752d13bce86d6416df58e9eac27c4072812f0960a1794ed0adb"
-        }
-      ],
       "predictions": {
         "raw": {
           "obj_names.npy": {
@@ -2399,38 +2323,28 @@
           }
         }
       },
-      "training_logs": [
-        {
-          "path": "logs/inpformer-Cube-train.log",
-          "bytes": 130111,
-          "sha256": "13cc187ab04f6fbf32f698169fcaf667bba5ea8e161b9708287148865ae93665"
-        }
-      ],
       "evaluation_log": {
         "path": "logs/inpformer-Cube-test.log",
         "bytes": 104217,
         "sha256": "0050c593d33b6ab7df9d7706dd6084f33f595772f236377584c0bdc8b4bd509f"
-      },
-      "train_gpu_csv": {
-        "path": "runs/inpformer/Cube/gpu.csv",
-        "bytes": 145933,
-        "sha256": "0121b2e48584ff9e8f903bf9d6b4810fc667fb92704bf619495bbd1dc7e2cd3c"
       },
       "evaluation_gpu_csv": {
         "path": "evaluations/inpformer/Cube/gpu.csv",
         "bytes": 12665,
         "sha256": "6f93f8c05beb375f4d2a851ae66e2bc697f4716c4369a4ed48c6b52a5a6f2171"
       },
-      "epoch_log": {
-        "path": "runs/inpformer/Cube/epochs.json",
-        "bytes": 9559,
-        "sha256": "190d068b3796213a17c322f71b0e335a5f8077c852cd034618d5d48cc917fe68"
+      "diagnostics_csv": {
+        "path": "evaluations/inpformer/Cube/diagnostics.csv",
+        "bytes": 10800,
+        "sha256": "e031a0bf0b0b28ccebf4d228724221a7219f447219fdf8d8b95ae3b2ef7d2a47"
       },
-      "report_excerpt": "evidence/inpformer-Cube.log"
+      "diagnostics_rows": 142
     },
     {
       "model": "inpformer",
       "class": "Doll",
+      "train_dir": "runs/inpformer/Doll",
+      "evaluation_dir": "evaluations/inpformer/Doll",
       "training": {
         "model": "inpformer",
         "class": "Doll",
@@ -2478,54 +2392,6 @@
         },
         "finished_utc": "2026-11-21T13:14:35.471061+00:00",
         "wall_seconds": 6734.682290016994
-      },
-      "evaluation": {
-        "model": "inpformer",
-        "class": "Doll",
-        "status": "PASS",
-        "started_utc": "2026-11-21T13:14:37.899309+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "inpformer",
-          "--category",
-          "Doll",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Doll",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a",
-        "parameters": 155101536,
-        "trainable_parameters": 68517984,
-        "optimizer_parameters": 155101536,
-        "inference_finished_utc": "2026-11-21T13:20:09.216252+00:00",
-        "inference_through_concatenation_seconds": 307.6946133040037,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 370.71711624000454,
-        "peak_allocated_bytes": 1059737088,
-        "peak_reserved_bytes": 1516240896,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-21T13:24:28.389871+00:00",
-        "wall_seconds": 590.4905877819983
       },
       "configuration": {
         "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
@@ -2601,6 +2467,84 @@
         ],
         "use_adeval": true
       },
+      "training_provenance": "CLEAN_CONTINUOUS",
+      "epoch_log": {
+        "path": "runs/inpformer/Doll/epochs.json",
+        "bytes": 9559,
+        "sha256": "c00e8254a25a6d5a39a0c54a642418579db2340c1bc0fc2237b8c2961d6b7a3c"
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Doll-train.log",
+          "bytes": 130111,
+          "sha256": "aed6188e872f435be802c0ef9315784025dd50a41ac31e48d86a810da821b2ed"
+        }
+      ],
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Doll/gpu.csv",
+        "bytes": 128273,
+        "sha256": "74e3a54a6b52795b70a68b9f635d4d24f29b8bcd2adecbf42133c460f3251ec7"
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_ckpt.pth",
+        "bytes": 822400506,
+        "sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_net_100.pth",
+          "bytes": 274134691,
+          "sha256": "8c3503a3a02f67652a32ed942f4fb3034a64a22950a9df28666e2aea41eb9958"
+        }
+      ],
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Doll",
+        "status": "PASS",
+        "started_utc": "2026-11-21T13:14:37.899309+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Doll",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Doll",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T13:20:09.216252+00:00",
+        "inference_through_concatenation_seconds": 307.6946133040037,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 370.71711624000454,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T13:24:28.389871+00:00",
+        "wall_seconds": 590.4905877819983
+      },
       "official_metrics": {
         "epoch": 100,
         "class": "Doll",
@@ -2620,18 +2564,6 @@
         },
         "nonfinite": []
       },
-      "checkpoint": {
-        "path": "runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_ckpt.pth",
-        "bytes": 822400506,
-        "sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a"
-      },
-      "weights": [
-        {
-          "path": "runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_net_100.pth",
-          "bytes": 274134691,
-          "sha256": "8c3503a3a02f67652a32ed942f4fb3034a64a22950a9df28666e2aea41eb9958"
-        }
-      ],
       "predictions": {
         "raw": {
           "obj_names.npy": {
@@ -2799,38 +2731,28 @@
           }
         }
       },
-      "training_logs": [
-        {
-          "path": "logs/inpformer-Doll-train.log",
-          "bytes": 130111,
-          "sha256": "aed6188e872f435be802c0ef9315784025dd50a41ac31e48d86a810da821b2ed"
-        }
-      ],
       "evaluation_log": {
         "path": "logs/inpformer-Doll-test.log",
         "bytes": 104217,
         "sha256": "ce4efa9ddc51786f5ab4641ff09cf28cbf539b90819a977cb2fba74d12d06ae5"
-      },
-      "train_gpu_csv": {
-        "path": "runs/inpformer/Doll/gpu.csv",
-        "bytes": 128273,
-        "sha256": "74e3a54a6b52795b70a68b9f635d4d24f29b8bcd2adecbf42133c460f3251ec7"
       },
       "evaluation_gpu_csv": {
         "path": "evaluations/inpformer/Doll/gpu.csv",
         "bytes": 11970,
         "sha256": "a4ca8a50e7369885e06fd02d418f0e49ce8a2b3cda33778dda48097aa76dbff1"
       },
-      "epoch_log": {
-        "path": "runs/inpformer/Doll/epochs.json",
-        "bytes": 9559,
-        "sha256": "c00e8254a25a6d5a39a0c54a642418579db2340c1bc0fc2237b8c2961d6b7a3c"
+      "diagnostics_csv": {
+        "path": "evaluations/inpformer/Doll/diagnostics.csv",
+        "bytes": 10766,
+        "sha256": "8851fe8e7094fcb51d9541bdec5008584ba3512278fc7f17a3faddb09fd4637c"
       },
-      "report_excerpt": "evidence/inpformer-Doll.log"
+      "diagnostics_rows": 142
     },
     {
       "model": "inpformer",
       "class": "Ring",
+      "train_dir": "runs/inpformer/Ring",
+      "evaluation_dir": "evaluations/inpformer/Ring",
       "training": {
         "model": "inpformer",
         "class": "Ring",
@@ -2878,54 +2800,6 @@
         },
         "finished_utc": "2026-11-21T15:17:56.111131+00:00",
         "wall_seconds": 6791.466912008007
-      },
-      "evaluation": {
-        "model": "inpformer",
-        "class": "Ring",
-        "status": "PASS",
-        "started_utc": "2026-11-21T15:17:58.023094+00:00",
-        "mode": "test",
-        "epochs_completed": 100,
-        "oom": false,
-        "nonfinite": false,
-        "argv": [
-          "--upstream",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
-          "--weight",
-          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
-          "--release-root",
-          "/mnt/d/vicad-syn/task-002-stage2",
-          "--model",
-          "inpformer",
-          "--category",
-          "Ring",
-          "--output",
-          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Ring",
-          "--checkpoint",
-          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_ckpt.pth"
-        ],
-        "evaluation_checkpoint_sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8",
-        "parameters": 155101536,
-        "trainable_parameters": 68517984,
-        "optimizer_parameters": 155101536,
-        "inference_finished_utc": "2026-11-21T15:24:38.238405+00:00",
-        "inference_through_concatenation_seconds": 379.0405715839879,
-        "fusion_crosscheck": {
-          "objects": 70,
-          "views": 840,
-          "repeated_object_names": 0,
-          "repeated_view_names": 0
-        },
-        "final_evaluation_seconds": 432.93417147899163,
-        "peak_allocated_bytes": 1059737088,
-        "peak_reserved_bytes": 1516240896,
-        "diagnostics": {
-          "rows": 142,
-          "nonfinite_or_undefined": 0,
-          "rows_with_label_disagreements": 142
-        },
-        "finished_utc": "2026-11-21T15:28:31.914778+00:00",
-        "wall_seconds": 632.0165521750023
       },
       "configuration": {
         "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
@@ -3001,6 +2875,84 @@
         ],
         "use_adeval": true
       },
+      "training_provenance": "CLEAN_CONTINUOUS",
+      "epoch_log": {
+        "path": "runs/inpformer/Ring/epochs.json",
+        "bytes": 9552,
+        "sha256": "d35d0f5a0f5bcf153725655790ae57384ed8afe6ac1fd68af1afcdfa05b57d3a"
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Ring-train.log",
+          "bytes": 130483,
+          "sha256": "20240044f74a5932270885066240ae4a37bb2af1dcfb521c0488c22f3dc1c6fb"
+        }
+      ],
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Ring/gpu.csv",
+        "bytes": 134646,
+        "sha256": "79e4c3cbe2c50124447ee9eac1549d1c7f89ff0eb360c887da7cc977ee6e4063"
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_ckpt.pth",
+        "bytes": 822400506,
+        "sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_net_100.pth",
+          "bytes": 274134691,
+          "sha256": "77b8202a140a21044b990924140fdb6d579a7600fc060662672467d1df888f7c"
+        }
+      ],
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Ring",
+        "status": "PASS",
+        "started_utc": "2026-11-21T15:17:58.023094+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Ring",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Ring",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T15:24:38.238405+00:00",
+        "inference_through_concatenation_seconds": 379.0405715839879,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 432.93417147899163,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T15:28:31.914778+00:00",
+        "wall_seconds": 632.0165521750023
+      },
       "official_metrics": {
         "epoch": 100,
         "class": "Ring",
@@ -3020,18 +2972,6 @@
         },
         "nonfinite": []
       },
-      "checkpoint": {
-        "path": "runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_ckpt.pth",
-        "bytes": 822400506,
-        "sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8"
-      },
-      "weights": [
-        {
-          "path": "runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_net_100.pth",
-          "bytes": 274134691,
-          "sha256": "77b8202a140a21044b990924140fdb6d579a7600fc060662672467d1df888f7c"
-        }
-      ],
       "predictions": {
         "raw": {
           "obj_names.npy": {
@@ -3199,34 +3139,22 @@
           }
         }
       },
-      "training_logs": [
-        {
-          "path": "logs/inpformer-Ring-train.log",
-          "bytes": 130483,
-          "sha256": "20240044f74a5932270885066240ae4a37bb2af1dcfb521c0488c22f3dc1c6fb"
-        }
-      ],
       "evaluation_log": {
         "path": "logs/inpformer-Ring-test.log",
         "bytes": 104409,
         "sha256": "b63ade6724faaae6f4c6da108ca4deb80a3cff3de9522bf89b5e6b7f3421ccec"
-      },
-      "train_gpu_csv": {
-        "path": "runs/inpformer/Ring/gpu.csv",
-        "bytes": 134646,
-        "sha256": "79e4c3cbe2c50124447ee9eac1549d1c7f89ff0eb360c887da7cc977ee6e4063"
       },
       "evaluation_gpu_csv": {
         "path": "evaluations/inpformer/Ring/gpu.csv",
         "bytes": 12757,
         "sha256": "796248a35f8c2d22c1796711c2c3bbda246545c65e3d541a3dec26357f6fed3c"
       },
-      "epoch_log": {
-        "path": "runs/inpformer/Ring/epochs.json",
-        "bytes": 9552,
-        "sha256": "d35d0f5a0f5bcf153725655790ae57384ed8afe6ac1fd68af1afcdfa05b57d3a"
+      "diagnostics_csv": {
+        "path": "evaluations/inpformer/Ring/diagnostics.csv",
+        "bytes": 10836,
+        "sha256": "bd67cb94357f2131e17fbab47521216020245db7d9ef746bdfbec3da9abe1c61"
       },
-      "report_excerpt": "evidence/inpformer-Ring.log"
+      "diagnostics_rows": 142
     }
   ]
 }
