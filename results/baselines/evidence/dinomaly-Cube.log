@@ -1,0 +1,7 @@
+# dinomaly-Cube-train.log
+11/20 05:56:59 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.219 (0.325)] [data_t 0.001] [optim_t 0.218] [lr 0.003750] [dinomaly_loss 0.336 (0.484)]
+11/20 07:57:34 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.149 (0.198)] [data_t 0.001] [optim_t 0.148] [lr 0.000375] [dinomaly_loss 0.039 (0.039)]
+11/20 07:57:41 PM - finish training
+# dinomaly-Cube-test.log
+ #objects: 70, #view instances: 840
+|  Cube  |     90.100     |  90.100 (1   epoch)  |     80.449      |  80.449 (1   epoch)   |     99.088      |  99.088 (1   epoch)   |    89.320    | 89.320 (1   epoch) |    70.056     | 70.056 (1   epoch)  |    10.980     | 10.980 (1   epoch)  |   96.189    | 96.189 (1   epoch) |    69.943    | 69.943 (1   epoch) |    5.498     | 5.498 (1   epoch)  |    93.268    | 93.268 (1   epoch) |

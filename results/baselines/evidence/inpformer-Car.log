@@ -1,0 +1,7 @@
+# inpformer-Car-train.log
+11/21 03:11:41 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.121 (0.283)] [data_t 0.001] [optim_t 0.120] [lr 0.003750] [inpformer_loss 0.494 (0.606)]
+11/21 04:56:39 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.124 (0.167)] [data_t 0.001] [optim_t 0.123] [lr 0.000375] [inpformer_loss 0.261 (0.269)]
+11/21 04:56:47 PM - finish training
+# inpformer-Car-test.log
+ #objects: 70, #view instances: 840
+|  Car   |     82.200     |  82.200 (1   epoch)  |     72.108      |  72.108 (1   epoch)   |     96.307      |  96.307 (1   epoch)   |    89.286    | 89.286 (1   epoch) |    51.073     | 51.073 (1   epoch)  |    12.962     | 12.962 (1   epoch)  |   92.534    | 92.534 (1   epoch) |    47.680    | 47.680 (1   epoch) |    4.693     | 4.693 (1   epoch)  |    86.030    | 86.030 (1   epoch) |

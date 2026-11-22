@@ -1,0 +1,7 @@
+# inpformer-Ring-train.log
+11/21 09:25:01 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.125 (0.346)] [data_t 0.001] [optim_t 0.124] [lr 0.003750] [inpformer_loss 0.429 (0.543)]
+11/21 11:17:42 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.131 (0.177)] [data_t 0.001] [optim_t 0.130] [lr 0.000375] [inpformer_loss 0.241 (0.241)]
+11/21 11:17:49 PM - finish training
+# inpformer-Ring-test.log
+ #objects: 70, #view instances: 840
+|  Ring  |     70.200     |  70.200 (1   epoch)  |     70.753      |  70.753 (1   epoch)   |     98.439      |  98.439 (1   epoch)   |    85.217    | 85.217 (1   epoch) |    59.097     | 59.097 (1   epoch)  |     1.888     |  1.888 (1   epoch)  |   86.781    | 86.781 (1   epoch) |    60.993    | 60.993 (1   epoch) |    0.543     | 0.543 (1   epoch)  |    94.408    | 94.408 (1   epoch) |

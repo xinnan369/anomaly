@@ -1,0 +1,5 @@
+class,object,view,illumination
+Car,damage_1_008,030,01
+Cube,damage_1_008,000,01
+Doll,abrasion_1_000,120,01
+Ring,hole_1_005,180,01

@@ -139,3 +139,7 @@ CUDA_VISIBLE_DEVICES=0 "$py" -B -u tools/environment/run_stage2.py --root "$stag
 汇总可在正式训练过程中执行，未达到完整评价的指标留空。绘图命令要求八组均通过。视角和光照表里的 `positive` 表示掩膜非空的样本，`metadata_positive` 和 `mask_label_disagreements` 分别记录原元数据计数与分歧。给定单一掩膜标签的子组保留空指标。正常件分数按光照汇总，用于比较高分倾向；没有在测试集上设定误报阈值。热力图在每类两模型共同的正式输出中按身份顺序选首个有官方标签与非空掩膜的样本，每类两图同尺度。
 
 当前证据见[审查整改与正式实验](../../reports/TASK-002-REPORT.md#第二阶段审查整改与正式实验)和[结果目录](../../results/baselines/README.md)。
+
+### TASK-002 最终执行记录
+
+八组均完成 100 epoch、30,000 步和冻结检查点评价。Dinomaly/Doll 于第 11,241 步触发非有限值检查；保留失败尝试后以第 37 epoch 的原检查点恢复权重、Adam、调度和迭代数，续跑前 300 步开启仅观测的有限值检查。由于原检查点缺少 RNG 和数据加载器状态，续跑不保证复现原样本顺序。记录了实际执行的恢复代码及输入检查点哈希。后续默认同步核验结束的结果、报告与原任务 PR。[Doll 恢复证据](../../results/baselines/evidence/doll-recovery.json) · [实际恢复代码](../../results/baselines/evidence/doll-recovery-script.py.txt) · [最终结果](../../results/baselines/README.md)

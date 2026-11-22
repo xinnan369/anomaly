@@ -1,0 +1,7 @@
+# inpformer-Cube-train.log
+11/21 05:08:19 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.133 (0.331)] [data_t 0.001] [optim_t 0.131] [lr 0.003750] [inpformer_loss 0.439 (0.570)]
+11/21 07:11:32 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.137 (0.184)] [data_t 0.001] [optim_t 0.136] [lr 0.000375] [inpformer_loss 0.278 (0.274)]
+11/21 07:11:41 PM - finish training
+# inpformer-Cube-test.log
+ #objects: 70, #view instances: 840
+|  Cube  |     87.500     |  87.500 (1   epoch)  |     77.232      |  77.232 (1   epoch)   |     99.332      |  99.332 (1   epoch)   |    88.660    | 88.660 (1   epoch) |    67.797     | 67.797 (1   epoch)  |    15.968     | 15.968 (1   epoch)  |   95.190    | 95.190 (1   epoch) |    67.369    | 67.369 (1   epoch) |    9.734     | 9.734 (1   epoch)  |    91.847    | 91.847 (1   epoch) |

@@ -1,0 +1,3232 @@
+{
+  "verified_local_time": "2026-11-22T09:28:39+08:00",
+  "workspace_source": "2e8815eee68b26082ea76bc7833e130cef328681",
+  "official_source": "a606aa0e1614f23dad70da26430dd66095192141",
+  "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "storage_root_windows": "D:\\vicad-syn\\task-002-stage2",
+  "raw_and_fused_array_count": 152,
+  "raw_and_fused_bytes": 35753208256,
+  "archive_note": "All four receipt hashes were computed when the release archives were verified. This upload rechecked receipts and local archive sizes.",
+  "Doll_original_checkpoint": {
+    "path": "attempts/dinomaly/Doll-original-nonfinite-20261120/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+    "bytes": 737225674,
+    "sha256": "509b2b6468497aaa48c41815f810c59051b5b96243a771e15e8afa128545f1c4"
+  },
+  "runs": [
+    {
+      "model": "dinomaly",
+      "class": "Car",
+      "training": {
+        "model": "dinomaly",
+        "class": "Car",
+        "status": "PASS",
+        "started_utc": "2026-11-19T12:05:03.952683+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Car",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Car"
+        ],
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "train_started_utc": "2026-11-19T12:05:19.522566+00:00",
+        "last_observed_iteration": 30000,
+        "optimization_steps": 30000,
+        "train_finished_utc": "2026-11-19T13:55:33.561083+00:00",
+        "train_seconds": 6614.451859762,
+        "peak_allocated_bytes": 3306116096,
+        "peak_reserved_bytes": 3835691008,
+        "weights": [
+          {
+            "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_net_100.pth",
+            "bytes": 245734378,
+            "sha256": "8beb7ec63c2c1071f6e5099fa362ce036dd8b7dc977834005d6bb7f6fbf81ad2"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth",
+          "bytes": 737226486,
+          "sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29"
+        },
+        "finished_utc": "2026-11-19T13:55:47.678412+00:00",
+        "wall_seconds": 6644.139124399
+      },
+      "evaluation": {
+        "model": "dinomaly",
+        "class": "Car",
+        "status": "PASS",
+        "started_utc": "2026-11-19T13:55:51.687695+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Car",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Car",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29",
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "inference_finished_utc": "2026-11-19T14:01:33.675879+00:00",
+        "inference_through_concatenation_seconds": 304.78076511400013,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 361.90388705700025,
+        "peak_allocated_bytes": 1031620608,
+        "peak_reserved_bytes": 1421869056,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-19T14:05:59.173212+00:00",
+        "wall_seconds": 607.4855394800006
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/dinomaly/dinomaly_100e.py",
+        "cfg_sha256": "e3abca8d7727e6a07df1a75fb737a9903028b5cccd3c9118d59e59baf58efff9",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Car",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "DinomalyLoss",
+            "name": "dinomaly_loss",
+            "p": 0.9,
+            "factor": 0.0
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_name": "dinov2reg_vit_base_14"
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Car",
+        "model": "dinomaly",
+        "checkpoint_sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29",
+        "metrics_pct": {
+          "AUROC_view_sp": 85.51626870085458,
+          "AUROC_view_px": 98.9963013293882,
+          "mF1_view_sp": 63.52941176470588,
+          "mF1_view_px": 9.723351906685721,
+          "AP_view_sp": 68.2084005630453,
+          "AP_view_px": 3.6939928101262525,
+          "AUPRO_view": 92.52687700277329,
+          "AUROC_obj_sp": 90.3,
+          "mF1_obj_sp": 90.38461538461539,
+          "AP_obj_sp": 95.90018477654003
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_ckpt.pth",
+        "bytes": 737226486,
+        "sha256": "f409ef36ee709ab0575d3a00153f5fab8cfc1b52f033fcac9d166b3138589a29"
+      },
+      "weights": [
+        {
+          "path": "runs/dinomaly/Car/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Car']_net_100.pth",
+          "bytes": 245734378,
+          "sha256": "8beb7ec63c2c1071f6e5099fa362ce036dd8b7dc977834005d6bb7f6fbf81ad2"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U29",
+            "bytes": 974528,
+            "sha256": "4932f57f2735568257119d464a25b737dc5c04b11d2e33bcf86e00d04b23a4ec"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "6d8b820cc37332d0f383c6e07ca188258987c5aea89184b693bf25ec7b7c3a62"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "f63e3e0e277b1bbb201074fd4d6452a171c7cf68ae5c08e7a4da0a0eb851d6f5"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "c7b93a4a1d8461f45526804de6c2af04b6f7fc8f8a7bea4f5d71a68a8e12eff8"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "2545077188a9bc744ef98069ea29fd619bdc7c9b864488696c7af6fcf4e6a599"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "0afb4186ca379d35578ccdc9b0cfdf1f2a62bf8975de0385d1933065a585d864"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "bec8dd6a5f3675e41e1ba379fbf9630893dae517df5eb7986a1345a04d774921"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "edd9b2e3b4c14cfc347ab3f095b4a706c6e689ce69b65b5abb6a2930cafdee7d"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "8a75cce2bde5584f6e3735075e762af8e62ca592fd10366f8401855e266e2c82"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "2e8dbf9e4da585e41522cbb8d420286b0b851e96fed8f0e03289f7b53b09bcff"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U33",
+            "bytes": 111008,
+            "sha256": "646b6f9eb004f910fff7bda6816516d6c8006c5fcf563077abf2bf253daabfde"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U3",
+            "bytes": 10208,
+            "sha256": "ea0100deb579cc715c6f56deda4f30660a8fe7634eb10a11cebb33fbefe74bd5"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U29",
+            "bytes": 8248,
+            "sha256": "6eab8cd90ac1d07888a8ed24a1c40b8dec5160e67ccf9a60f5870481b0f4ec36"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "f1f6bcac378c86dd4d461a52b98b1216e01322dadf5cb59a57876b5a212920c9"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "c12cb96d05cb72805ca5c0c8042760db0398e901268cb45ec5e70b2cd8af2775"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U3",
+            "bytes": 968,
+            "sha256": "12ea23348ff655452862b344c3d7a2411daea930b5b9232976d5e4ab14483a00"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/dinomaly-Car-train.log",
+          "bytes": 128981,
+          "sha256": "e2102a08d6bbf0da8b8ac2ea94aa4e10cfacff9ad43651df3376cbcad58ca592"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/dinomaly-Car-test.log",
+        "bytes": 104361,
+        "sha256": "12ac87efd14bf22fbeebb824d47d065123a91a5cf9ffdc379e39c34a6f0f624c"
+      },
+      "train_gpu_csv": {
+        "path": "runs/dinomaly/Car/gpu.csv",
+        "bytes": 129010,
+        "sha256": "3fa614c3c493c20cea6ccc9a8b1ea48e63ff10550f8440bac31772ac0ae7689b"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/dinomaly/Car/gpu.csv",
+        "bytes": 12278,
+        "sha256": "d0841a4b65a7324751f147fee50d1dd4fcbffa53c5da6f9bb13aca15a962f444"
+      },
+      "epoch_log": {
+        "path": "runs/dinomaly/Car/epochs.json",
+        "bytes": 9559,
+        "sha256": "22e401f237ab816cc2343a0bf6ce6fbfc05fb52549a9017da99b7a16994f726c"
+      },
+      "report_excerpt": "evidence/dinomaly-Car.log"
+    },
+    {
+      "model": "dinomaly",
+      "class": "Cube",
+      "training": {
+        "model": "dinomaly",
+        "class": "Cube",
+        "status": "PASS",
+        "started_utc": "2026-11-20T09:56:28.128126+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Cube",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Cube"
+        ],
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "train_started_utc": "2026-11-20T09:56:42.711105+00:00",
+        "last_observed_iteration": 30000,
+        "optimization_steps": 30000,
+        "train_finished_utc": "2026-11-20T11:57:34.056940+00:00",
+        "train_seconds": 7251.345839867001,
+        "peak_allocated_bytes": 3306116096,
+        "peak_reserved_bytes": 3835691008,
+        "weights": [
+          {
+            "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_net_100.pth",
+            "bytes": 245734482,
+            "sha256": "b2df27c2ca8970cb5c3e932b5c7b67430db0f5bc2da2d4e67cd2d5a989b612ad"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_ckpt.pth",
+          "bytes": 737226954,
+          "sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76"
+        },
+        "finished_utc": "2026-11-20T11:57:47.954976+00:00",
+        "wall_seconds": 7279.826882820002
+      },
+      "evaluation": {
+        "model": "dinomaly",
+        "class": "Cube",
+        "status": "PASS",
+        "started_utc": "2026-11-20T11:57:50.406625+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Cube",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Cube",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76",
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "inference_finished_utc": "2026-11-20T12:02:43.648741+00:00",
+        "inference_through_concatenation_seconds": 271.5333760100002,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 333.716053979002,
+        "peak_allocated_bytes": 1031620608,
+        "peak_reserved_bytes": 1421869056,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-20T12:07:12.668875+00:00",
+        "wall_seconds": 562.2622863729994
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/dinomaly/dinomaly_100e.py",
+        "cfg_sha256": "e3abca8d7727e6a07df1a75fb737a9903028b5cccd3c9118d59e59baf58efff9",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Cube",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "DinomalyLoss",
+            "name": "dinomaly_loss",
+            "p": 0.9,
+            "factor": 0.0
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_name": "dinov2reg_vit_base_14"
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Cube",
+        "model": "dinomaly",
+        "checkpoint_sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76",
+        "metrics_pct": {
+          "AUROC_view_sp": 80.44929051530994,
+          "AUROC_view_px": 99.08787286886714,
+          "mF1_view_sp": 70.05649717514125,
+          "mF1_view_px": 10.980320408119633,
+          "AP_view_sp": 69.9427099554598,
+          "AP_view_px": 5.49828986990962,
+          "AUPRO_view": 93.26844785283535,
+          "AUROC_obj_sp": 90.10000000000001,
+          "mF1_obj_sp": 89.32038834951457,
+          "AP_obj_sp": 96.18945675006701
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_ckpt.pth",
+        "bytes": 737226954,
+        "sha256": "018b441df6fe42026065306750e15cd56bc96c0904afe9e8870d2b3a63fcff76"
+      },
+      "weights": [
+        {
+          "path": "runs/dinomaly/Cube/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Cube']_net_100.pth",
+          "bytes": 245734482,
+          "sha256": "b2df27c2ca8970cb5c3e932b5c7b67430db0f5bc2da2d4e67cd2d5a989b612ad"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U29",
+            "bytes": 974528,
+            "sha256": "7fb3d567c8bd2bc9406b4a503693d43a2d7e458555bec14e481da69f123f6e46"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U4",
+            "bytes": 134528,
+            "sha256": "d120f360252d67a8fe17138e34413299b0087810b831d14f16614eec26499020"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "05d52feeeb517a1fafbe945235ebc3e15677fa14ee44cbff842e7b861bb79565"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "cea9365609b6be0bf387a12ac7f0ee1cae0d84b287965934184c7f55e3e90e8e"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "2ee2f09f55a97ecdecf924e50a005323cc1dd44e2f4ee59837745a0d7277c8df"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "fd35913ff9776abe29724f5231514abf929b959c1d6f21f8713fab46e6ea160d"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "df5dc04dd2ddb83988e9d0737c9beeec4df182a14f8b4ffdb865e26b2bb8a197"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "fd89d8024396492b026ef30aeb7cb2d0de38bbfcb6566106b3c9ff5dcbef354d"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "65317159c696571bf172f6d384412bc940bfebd8da92308b768fc50d6baac7f1"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "614bdb1b84dc08adec77498c981b318457200f1e82ac25870791566418097384"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U33",
+            "bytes": 111008,
+            "sha256": "800d9e7cab98a2c8ce93e301a0062a15e0bd7c578b0361c37c29b8038fe759ad"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U4",
+            "bytes": 13568,
+            "sha256": "952bd77223aa0690a92de6a78c47c8c9c2f8468cbf7ac1cce07236e683704d1b"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U29",
+            "bytes": 8248,
+            "sha256": "a81989fdc0cfe7237d79504e47cf22f5a3459a6b35aee498fc3d9b30106b201a"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "2990382e4309b6aa9cf588d4bc03a101bb5af094f6fb0cd7c3a6e1a01fb0e8ea"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "307a37933581211b1fad58dc10d3cc4546cfb3f0623f48f484e910dbccb2b1b2"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U4",
+            "bytes": 1248,
+            "sha256": "32c2c140d288069b1adf1d2bf198f49c0a79da5dedb5c7dd8b6f66cd1b678e80"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/dinomaly-Cube-train.log",
+          "bytes": 129094,
+          "sha256": "f6274d7421adf40c85e4d04905b474a6639f10a158a08fbc53c0324e63fa16c3"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/dinomaly-Cube-test.log",
+        "bytes": 104188,
+        "sha256": "f4a7cb1fad5f6666ca8deebc7747d3a867bd3a5030b0dc88d77da9aaf9157547"
+      },
+      "train_gpu_csv": {
+        "path": "runs/dinomaly/Cube/gpu.csv",
+        "bytes": 139207,
+        "sha256": "c0c54b408df89bf238b0c4d078d105055c6949e2a4de5424a1af0b2c3b98a868"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/dinomaly/Cube/gpu.csv",
+        "bytes": 11353,
+        "sha256": "7b791f0615138556720e4a830ab3b5386d5b82b8be933c66aecd2834de4c9768"
+      },
+      "epoch_log": {
+        "path": "runs/dinomaly/Cube/epochs.json",
+        "bytes": 9559,
+        "sha256": "56e9bf1b501c295ebb870ce5197fe5c9ffe1d9250c133eea9233b72c0565a591"
+      },
+      "report_excerpt": "evidence/dinomaly-Cube.log"
+    },
+    {
+      "model": "dinomaly",
+      "class": "Doll",
+      "training": {
+        "model": "dinomaly",
+        "class": "Doll",
+        "status": "PASS",
+        "started_utc": "2026-11-21T03:47:54.157177+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Doll",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Doll"
+        ],
+        "optimization_steps": 30000,
+        "last_observed_iteration": 30000,
+        "recovery": {
+          "starting_epoch": 37,
+          "starting_iteration": 11100,
+          "training_checkpoint_sha256": "509b2b6468497aaa48c41815f810c59051b5b96243a771e15e8afa128545f1c4",
+          "original_attempt": "/mnt/d/vicad-syn/task-002-stage2/attempts/dinomaly/Doll-original-nonfinite-20261120",
+          "rng_and_loader_state_available": false,
+          "diagnostic_through_iteration": 11400,
+          "previous_elapsed_through_saved_checkpoint_seconds": 2659.074193
+        },
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "train_started_utc": "2026-11-21T03:48:29.304571+00:00",
+        "train_finished_utc": "2026-11-21T05:03:14.266595+00:00",
+        "train_seconds": 6991.024079422998,
+        "peak_allocated_bytes": 3304015872,
+        "peak_reserved_bytes": 3837788160,
+        "resumed_segment_seconds": 4331.949886422997,
+        "weights": [
+          {
+            "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_net_100.pth",
+            "bytes": 245734482,
+            "sha256": "aa69750c4a8219d79c35c0c1fb32e1a211d5d8bd9ce9868cd196584ecc67bdf0"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+          "bytes": 737226954,
+          "sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83"
+        },
+        "finished_utc": "2026-11-21T05:03:28.865130+00:00",
+        "wall_seconds": 4379.367040408004
+      },
+      "evaluation": {
+        "model": "dinomaly",
+        "class": "Doll",
+        "status": "PASS",
+        "started_utc": "2026-11-21T05:03:49.282773+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Doll",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Doll",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Doll/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83",
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "inference_finished_utc": "2026-11-21T05:09:26.323002+00:00",
+        "inference_through_concatenation_seconds": 304.5630061200063,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 357.73173905200383,
+        "peak_allocated_bytes": 1031620608,
+        "peak_reserved_bytes": 1421869056,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T05:13:45.821671+00:00",
+        "wall_seconds": 577.6008199979988
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/dinomaly/dinomaly_100e.py",
+        "cfg_sha256": "e3abca8d7727e6a07df1a75fb737a9903028b5cccd3c9118d59e59baf58efff9",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Doll",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "DinomalyLoss",
+            "name": "dinomaly_loss",
+            "p": 0.9,
+            "factor": 0.0
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_name": "dinov2reg_vit_base_14"
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Doll",
+        "model": "dinomaly",
+        "checkpoint_sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83",
+        "metrics_pct": {
+          "AUROC_view_sp": 79.73786590263101,
+          "AUROC_view_px": 98.50375613135701,
+          "mF1_view_sp": 71.06382978723403,
+          "mF1_view_px": 36.14983672940613,
+          "AP_view_sp": 81.24387566507713,
+          "AP_view_px": 22.615548491622047,
+          "AUPRO_view": 92.10996019562228,
+          "AUROC_obj_sp": 81.69999999999999,
+          "mF1_obj_sp": 85.47008547008548,
+          "AP_obj_sp": 92.70018177455283
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/dinomaly/Doll/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+        "bytes": 737226954,
+        "sha256": "3d697c8c7a67b6616d6f7c845d2e77dacbc96580215d044c966d8841516e1d83"
+      },
+      "weights": [
+        {
+          "path": "runs/dinomaly/Doll/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_net_100.pth",
+          "bytes": 245734482,
+          "sha256": "aa69750c4a8219d79c35c0c1fb32e1a211d5d8bd9ce9868cd196584ecc67bdf0"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U23",
+            "bytes": 772928,
+            "sha256": "539f2b8d5cb3a899c8ccb345c0556fbbe7b5f75c41730974f4d8bd2a168a0455"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U4",
+            "bytes": 134528,
+            "sha256": "45b6f6314eebe4f8c0c6c0f7f45bdf676e5d0cef7d5285b43488f6fce9a981ce"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "9f45c9c53cccd193e08eb392744e77c236628f9694ef95379581d9078ccccb29"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "410dc104455420c38e0f7908d2c66593321e55807e6485eeace70073cf5d8568"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "b86b67d8fe40b90aa5bc4487d3b447d3d91171cae493053278597a52772b75c3"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "467407cf306c5dc3c32da944064063115efa16266635388b47339c77e58423c3"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "df28e5f116d75e16f8c9df1e599d75580d1c6c96a1d23149a9e9ecc0f9737725"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "837d07fdc4b7437e8a4754c6e5421807b0d260fa6bd3c5e58d4954cb8066f254"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "138e29745d6aae0aeaaa711e6630a0c6115d054b4903c3912b1f081a1b015d45"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "82077d99b17228ca3e6ef70e41ec9376907de60a16d9775711a3338c622110ad"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U27",
+            "bytes": 90848,
+            "sha256": "a9925572e12aa07f7bfc32e1e1160a0891f8e63c194426b79599ce9c318d6f02"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U4",
+            "bytes": 13568,
+            "sha256": "49004c9d426f3c2865934be6c6a7ba7e2822d422792d44ef4c94094f8e199603"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U23",
+            "bytes": 6568,
+            "sha256": "20aba24e936f0278e2a56751921ec338519383dfbecb8010757d1d0b19bfafad"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "ecf2a5ecff3b38ff83f002631a79096d4d7728a73a9ef77eb621a30c32c6a679"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "4a19865f373b454a2588347cdb71f656e4f2151b35b2b377ef43cdf5155b8eaa"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U4",
+            "bytes": 1248,
+            "sha256": "b1678dab1b063cb93e4e0dcd51140138feb1fb9ee9b8369631f1e2a5b54e935f"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/dinomaly-Doll-train.log",
+          "bytes": 57888,
+          "sha256": "8cf283bc6d28d6562f73c642175627289ff35633527c6439c92d647d239ee9ac"
+        },
+        {
+          "path": "logs/dinomaly-Doll-resume-20261121.log",
+          "bytes": 87967,
+          "sha256": "598d51e21cac6999bcab700a330ee5403b36b4d81687842c35e005c12d79657e"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/dinomaly-Doll-test.log",
+        "bytes": 104188,
+        "sha256": "ea57735ffe2369d7350211d7e93ea4ec0c3702a78a6ae9a0943f58404bb718e8"
+      },
+      "train_gpu_csv": {
+        "path": "runs/dinomaly/Doll/gpu.csv",
+        "bytes": 86537,
+        "sha256": "6f3a703b50b75b06b138bd621bef116dac2c9e80b1b99ec480c5e32d813c89b8"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/dinomaly/Doll/gpu.csv",
+        "bytes": 12018,
+        "sha256": "4ac4d44c8ff3d94d66e7e0aada74236bd371b11cdfe37920013356ed3fca26e1"
+      },
+      "epoch_log": {
+        "path": "runs/dinomaly/Doll/epochs.json",
+        "bytes": 6052,
+        "sha256": "7a5f57e2fca5daf399d587ca4c013971ed4aab90782763f1e608052762032d8e"
+      },
+      "report_excerpt": "evidence/dinomaly-Doll.log"
+    },
+    {
+      "model": "dinomaly",
+      "class": "Ring",
+      "training": {
+        "model": "dinomaly",
+        "class": "Ring",
+        "status": "PASS",
+        "started_utc": "2026-11-21T05:13:47.946424+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Ring",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Ring"
+        ],
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "train_started_utc": "2026-11-21T05:14:00.343548+00:00",
+        "last_observed_iteration": 30000,
+        "optimization_steps": 30000,
+        "train_finished_utc": "2026-11-21T07:01:38.937449+00:00",
+        "train_seconds": 6202.171800930999,
+        "peak_allocated_bytes": 3306116096,
+        "peak_reserved_bytes": 3835691008,
+        "weights": [
+          {
+            "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_net_100.pth",
+            "bytes": 245734482,
+            "sha256": "e8de9636a5f162942d8fd497b6896c0987e0844b6013ae0591d62598eacdd0bd"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_ckpt.pth",
+          "bytes": 737226954,
+          "sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7"
+        },
+        "finished_utc": "2026-11-21T07:01:50.030451+00:00",
+        "wall_seconds": 6224.484853002999
+      },
+      "evaluation": {
+        "model": "dinomaly",
+        "class": "Ring",
+        "status": "PASS",
+        "started_utc": "2026-11-21T07:01:51.822404+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "dinomaly",
+          "--category",
+          "Ring",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/dinomaly/Ring",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7",
+        "parameters": 148008960,
+        "trainable_parameters": 148008960,
+        "optimizer_parameters": 148008960,
+        "inference_finished_utc": "2026-11-21T07:07:21.435635+00:00",
+        "inference_through_concatenation_seconds": 300.86373512100545,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 347.54518439399544,
+        "peak_allocated_bytes": 1031620608,
+        "peak_reserved_bytes": 1421869056,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T07:11:13.053072+00:00",
+        "wall_seconds": 539.5143097719993
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/dinomaly/dinomaly_100e.py",
+        "cfg_sha256": "e3abca8d7727e6a07df1a75fb737a9903028b5cccd3c9118d59e59baf58efff9",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Ring",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "DinomalyLoss",
+            "name": "dinomaly_loss",
+            "p": 0.9,
+            "factor": 0.0
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_name": "dinov2reg_vit_base_14"
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Ring",
+        "model": "dinomaly",
+        "checkpoint_sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7",
+        "metrics_pct": {
+          "AUROC_view_sp": 86.33692696192696,
+          "AUROC_view_px": 94.2843671256088,
+          "mF1_view_sp": 73.96870554765292,
+          "mF1_view_px": 2.160593203618363,
+          "AP_view_sp": 74.49609592019341,
+          "AP_view_px": 0.6295316704309031,
+          "AUPRO_view": 87.71511263824453,
+          "AUROC_obj_sp": 95.79999999999998,
+          "mF1_obj_sp": 95.04950495049505,
+          "AP_obj_sp": 98.42913029352682
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_ckpt.pth",
+        "bytes": 737226954,
+        "sha256": "dd8164004ee5adf83a723969a1b87f3827e5cf2114e0ff22d5524aeb60feafc7"
+      },
+      "weights": [
+        {
+          "path": "runs/dinomaly/Ring/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Ring']_net_100.pth",
+          "bytes": 245734482,
+          "sha256": "e8de9636a5f162942d8fd497b6896c0987e0844b6013ae0591d62598eacdd0bd"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U20",
+            "bytes": 672128,
+            "sha256": "0dc32f3bd54a9d4208a64b3ef2fedb731ec5e180ed18bc030f7b7ce5a4d7e238"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U4",
+            "bytes": 134528,
+            "sha256": "b0ec415f860d846275aae61d23af372b264791a3acf257ac0c71cf3c8060c51f"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "1eb430a7c85279c360b20349c8b22b9887a002b02cb9202b36e3265052972b4b"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "7ac965f703c10cb71e63f32ea473546836f4c1f1d3168f1a7138c0606d721209"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "547ab27b07bd47d1b64384ea833f4f3de80ac137e77e02cf1d7b43290a2183c0"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "d87e573a7c4be9e989c3c1d983c73a6aca485c80a6eb7fb8f02c85b104efc250"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "1a60c6dd75c6fc213b96d848f8ada164984f29bfe2e8b8c5fa7a65c81bc3973d"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "a5e71523873291ce78ffd5ebef8f89feeb69ff01f48c131a8021e81370859eba"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "c81963f157f9e16ffb2a9f1fff0bbb0ac830bfdc0d34a0b1ee530bf85db79939"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "d0c49eb704e8a5b533e8f5f637de2cafe81496fe9b9c5e1442952369391bf0f8"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U24",
+            "bytes": 80768,
+            "sha256": "39c1e2bfc90813ce5e6bbb78deefb67ec76b3adf807efbe3d7acf0c7d2d59826"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U4",
+            "bytes": 13568,
+            "sha256": "5a4e4e2be9a3191881d8a3963edcd82e46498e6e9003dd600848a89555bbe6dc"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U20",
+            "bytes": 5728,
+            "sha256": "6e22e36760a288e77121115b71bd4e2f92f2e4599ba8e89cd08049569a2fbf76"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "95f3e239e4b42f3dc896631a187c0c62f9102697615d905823788f3b073be2bb"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "cae1a0a025939b7cb5b80fac44d20aba6de3d77fee26eb865939b1f3046857d8"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U4",
+            "bytes": 1248,
+            "sha256": "a800d966d5edd13a1bcf58d294fa8f6ba8fcb4c337c1ac6f2edf5011c6c4b6c3"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/dinomaly-Ring-train.log",
+          "bytes": 129131,
+          "sha256": "12933568912fb9f237ae30d211561e024a73b8a4fe6679a4b5cc862014b09602"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/dinomaly-Ring-test.log",
+        "bytes": 104188,
+        "sha256": "c344a5c13a544bef31ad8d1c7ba4be48483afa286db2bfcbe2b131887e23f63b"
+      },
+      "train_gpu_csv": {
+        "path": "runs/dinomaly/Ring/gpu.csv",
+        "bytes": 6636,
+        "sha256": "8a3815691aa5713b2e23e03b7f7d9211cf5f4f20e999f8c8bda286393debf532"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/dinomaly/Ring/gpu.csv",
+        "bytes": 11150,
+        "sha256": "28bc4fb795dbf6a230cb491fbedb696c66f6da7ad283634f658598a395dd8c86"
+      },
+      "epoch_log": {
+        "path": "runs/dinomaly/Ring/epochs.json",
+        "bytes": 9559,
+        "sha256": "5eee08e036d887b2ec77c46302709e5779c7a1cee185cce62b45e9ba0c2537bd"
+      },
+      "report_excerpt": "evidence/dinomaly-Ring.log"
+    },
+    {
+      "model": "inpformer",
+      "class": "Car",
+      "training": {
+        "model": "inpformer",
+        "class": "Car",
+        "status": "PASS",
+        "started_utc": "2026-11-21T07:11:15.136677+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Car",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Car"
+        ],
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "train_started_utc": "2026-11-21T07:11:27.287692+00:00",
+        "last_observed_iteration": 30000,
+        "optimization_steps": 30000,
+        "train_finished_utc": "2026-11-21T08:56:39.175709+00:00",
+        "train_seconds": 6072.844648632003,
+        "peak_allocated_bytes": 3005818880,
+        "peak_reserved_bytes": 3516923904,
+        "weights": [
+          {
+            "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_net_100.pth",
+            "bytes": 274134548,
+            "sha256": "c14820d69d84622d04c1d3c207d26fc62c9968540e7d87d25b6300aa1e18148c"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_ckpt.pth",
+          "bytes": 822399946,
+          "sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4"
+        },
+        "finished_utc": "2026-11-21T08:56:53.466053+00:00",
+        "wall_seconds": 6096.471798993996
+      },
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Car",
+        "status": "PASS",
+        "started_utc": "2026-11-21T08:56:55.263160+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Car",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Car",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T09:03:48.617583+00:00",
+        "inference_through_concatenation_seconds": 388.95290042199485,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 439.8064654189948,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T09:07:49.014756+00:00",
+        "wall_seconds": 646.8157773540006
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/inpformer/inpformer_100e.py",
+        "cfg_sha256": "f4b9cabb6db05763b9cd64b81a4e57e6612f00152d521acc12715c710f45c241",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Car",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "INPFormerLoss",
+            "name": "inpformer_loss",
+            "y": 3
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_arch": "dinov2reg_vit_base_14",
+          "INP_num": 6
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Car",
+        "model": "inpformer",
+        "checkpoint_sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4",
+        "metrics_pct": {
+          "AUROC_view_sp": 72.10776545166402,
+          "AUROC_view_px": 96.30666934911154,
+          "mF1_view_sp": 51.07296137339057,
+          "mF1_view_px": 12.962476547847746,
+          "AP_view_sp": 47.68034831716633,
+          "AP_view_px": 4.692723414754907,
+          "AUPRO_view": 86.0301301817556,
+          "AUROC_obj_sp": 82.2,
+          "mF1_obj_sp": 89.28571428571428,
+          "AP_obj_sp": 92.53354279503228
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_ckpt.pth",
+        "bytes": 822399946,
+        "sha256": "1363593b58215b37534f1e414a4c307c398b79513c9625dad8bfe415605722d4"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Car/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Car']_net_100.pth",
+          "bytes": 274134548,
+          "sha256": "c14820d69d84622d04c1d3c207d26fc62c9968540e7d87d25b6300aa1e18148c"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U29",
+            "bytes": 974528,
+            "sha256": "4932f57f2735568257119d464a25b737dc5c04b11d2e33bcf86e00d04b23a4ec"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "6d8b820cc37332d0f383c6e07ca188258987c5aea89184b693bf25ec7b7c3a62"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "f63e3e0e277b1bbb201074fd4d6452a171c7cf68ae5c08e7a4da0a0eb851d6f5"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "c7b93a4a1d8461f45526804de6c2af04b6f7fc8f8a7bea4f5d71a68a8e12eff8"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "a3c9ae07ca30366c65d7be28cdb043333c07999851bbb2218558e9878f2abe38"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "f3dbd469e890bdadef749757f1d34b30f9756330cf21f0b431db2a7e60aab197"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "90e63865934e90fde8b7a1101d0b8922c54046e1a93ff8c58bc38c7820e55648"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "5589fc45f3fc72509a36d054f9d76056d57ed5155428c0701d75faabb9c72460"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "2567e07a08ca17cd212b26ac12d625806f04ac8d4488bb7c1f0d8de0159e3e92"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "960ab358e1e4d13aefad2ba1fa769a9a89006017203ffcd324df8a40feeaecfb"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U33",
+            "bytes": 111008,
+            "sha256": "54ede77f3acd4f849061dd988373ce6bbce8b0304d9f117b9da2148ba4e5b1cf"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U3",
+            "bytes": 10208,
+            "sha256": "ea0100deb579cc715c6f56deda4f30660a8fe7634eb10a11cebb33fbefe74bd5"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U29",
+            "bytes": 8248,
+            "sha256": "bfa05b202e890fe5711d4fdc5db266c3c2cf3fb72aaa7812dabb08c8e556cd0c"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "e567c8bd0f664b3e5a3e385e57ca9669b59c960b3280b06ad86293a39a1f4059"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "d2af32465cf15886252ad7eb8b7716412d97e40d51f1226976d46de5f2afba51"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U3",
+            "bytes": 968,
+            "sha256": "12ea23348ff655452862b344c3d7a2411daea930b5b9232976d5e4ab14483a00"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Car-train.log",
+          "bytes": 130366,
+          "sha256": "486057ee5378c9c6005b211ec94da748bfc69460f7d9dfc5f06100d5eac7b542"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/inpformer-Car-test.log",
+        "bytes": 104386,
+        "sha256": "9e9e67c7626ca3ae1c195f7a319a2ba4ac283731818821b6a11e445a645a90c4"
+      },
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Car/gpu.csv",
+        "bytes": 120465,
+        "sha256": "cc788270ab3afdcff507f0077d85566c1bfaee736d8a4b60f189dec7b2872d6d"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/inpformer/Car/gpu.csv",
+        "bytes": 13164,
+        "sha256": "6dc56985c44e4d313b9e96ee80ee62cd4edecd557d45d0340d344d3851900ab2"
+      },
+      "epoch_log": {
+        "path": "runs/inpformer/Car/epochs.json",
+        "bytes": 9559,
+        "sha256": "7d380af4a21c9ef52be4705affe8650ed007dbcad9d164e19980c9537d52502d"
+      },
+      "report_excerpt": "evidence/inpformer-Car.log"
+    },
+    {
+      "model": "inpformer",
+      "class": "Cube",
+      "training": {
+        "model": "inpformer",
+        "class": "Cube",
+        "status": "PASS",
+        "started_utc": "2026-11-21T09:07:50.968749+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Cube",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Cube"
+        ],
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "train_started_utc": "2026-11-21T09:08:02.530824+00:00",
+        "last_observed_iteration": 30000,
+        "optimization_steps": 30000,
+        "train_finished_utc": "2026-11-21T11:11:32.713540+00:00",
+        "train_seconds": 7410.182729891996,
+        "peak_allocated_bytes": 3005818880,
+        "peak_reserved_bytes": 3516923904,
+        "weights": [
+          {
+            "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_net_100.pth",
+            "bytes": 274134691,
+            "sha256": "67b79bc65b05f752d13bce86d6416df58e9eac27c4072812f0960a1794ed0adb"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_ckpt.pth",
+          "bytes": 822400506,
+          "sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028"
+        },
+        "finished_utc": "2026-11-21T11:11:48.147336+00:00",
+        "wall_seconds": 7437.178612885997
+      },
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Cube",
+        "status": "PASS",
+        "started_utc": "2026-11-21T11:11:50.045486+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Cube",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Cube",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T11:18:24.998738+00:00",
+        "inference_through_concatenation_seconds": 372.33424748200923,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 424.3183270590089,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T11:22:18.663525+00:00",
+        "wall_seconds": 628.6180601200031
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/inpformer/inpformer_100e.py",
+        "cfg_sha256": "f4b9cabb6db05763b9cd64b81a4e57e6612f00152d521acc12715c710f45c241",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Cube",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "INPFormerLoss",
+            "name": "inpformer_loss",
+            "y": 3
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_arch": "dinov2reg_vit_base_14",
+          "INP_num": 6
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Cube",
+        "model": "inpformer",
+        "checkpoint_sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028",
+        "metrics_pct": {
+          "AUROC_view_sp": 77.23196415235249,
+          "AUROC_view_px": 99.33168409693273,
+          "mF1_view_sp": 67.79661016949152,
+          "mF1_view_px": 15.968417229860046,
+          "AP_view_sp": 67.36862879350554,
+          "AP_view_px": 9.734447317646783,
+          "AUPRO_view": 91.84721030613981,
+          "AUROC_obj_sp": 87.5,
+          "mF1_obj_sp": 88.65979381443299,
+          "AP_obj_sp": 95.18965221023437
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_ckpt.pth",
+        "bytes": 822400506,
+        "sha256": "6673376e9ff0cb871fdddbae441f3053aef63b76df0a2f971c265a0d2a92d028"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Cube/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Cube']_net_100.pth",
+          "bytes": 274134691,
+          "sha256": "67b79bc65b05f752d13bce86d6416df58e9eac27c4072812f0960a1794ed0adb"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U29",
+            "bytes": 974528,
+            "sha256": "7fb3d567c8bd2bc9406b4a503693d43a2d7e458555bec14e481da69f123f6e46"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U4",
+            "bytes": 134528,
+            "sha256": "d120f360252d67a8fe17138e34413299b0087810b831d14f16614eec26499020"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "05d52feeeb517a1fafbe945235ebc3e15677fa14ee44cbff842e7b861bb79565"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "cea9365609b6be0bf387a12ac7f0ee1cae0d84b287965934184c7f55e3e90e8e"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "ed5a624c7dc927c12dd82035ee707ad3c183f49b1254a6d0f6dc1c9ad012a6f4"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "3b4132276d7567be3bb0cf6cd637bc34e3d3fbf104d8e5c672764db10cfd27f5"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "ef1daffe0fcf150390af26cd8ec903a6b9665f9e8103663f00819779e71343c7"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "3d5def75f5d4eff88c33906adcf1043a86089c4917df62c354b0ea518e93332b"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "d0ff229ccdeb79fdd009738d28ef77b01f8d641e8473b4248cedfce23102ac92"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "7f32a12d04f7e485949bfa45b4301241e7790b601d01c6b3f52ae72fb41914df"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U33",
+            "bytes": 111008,
+            "sha256": "92c8c19a0e2fadfa3dfc8eb0e94cf5d4220124eef4d56a931f22882b7aa0a335"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U4",
+            "bytes": 13568,
+            "sha256": "952bd77223aa0690a92de6a78c47c8c9c2f8468cbf7ac1cce07236e683704d1b"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U29",
+            "bytes": 8248,
+            "sha256": "860aa9acc65e22306489ec92bd3991abcd179b884d08540a339dfbeff9e4d06f"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "cb53a2d1a8d2162a8214727dc7b2bc4604644b39b894c3f8a45b5570ba0dad0a"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "cdb5242e46521003aa48d465557383d941c9b13474ccda190e3249196dde0815"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U4",
+            "bytes": 1248,
+            "sha256": "32c2c140d288069b1adf1d2bf198f49c0a79da5dedb5c7dd8b6f66cd1b678e80"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Cube-train.log",
+          "bytes": 130111,
+          "sha256": "13cc187ab04f6fbf32f698169fcaf667bba5ea8e161b9708287148865ae93665"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/inpformer-Cube-test.log",
+        "bytes": 104217,
+        "sha256": "0050c593d33b6ab7df9d7706dd6084f33f595772f236377584c0bdc8b4bd509f"
+      },
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Cube/gpu.csv",
+        "bytes": 145933,
+        "sha256": "0121b2e48584ff9e8f903bf9d6b4810fc667fb92704bf619495bbd1dc7e2cd3c"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/inpformer/Cube/gpu.csv",
+        "bytes": 12665,
+        "sha256": "6f93f8c05beb375f4d2a851ae66e2bc697f4716c4369a4ed48c6b52a5a6f2171"
+      },
+      "epoch_log": {
+        "path": "runs/inpformer/Cube/epochs.json",
+        "bytes": 9559,
+        "sha256": "190d068b3796213a17c322f71b0e335a5f8077c852cd034618d5d48cc917fe68"
+      },
+      "report_excerpt": "evidence/inpformer-Cube.log"
+    },
+    {
+      "model": "inpformer",
+      "class": "Doll",
+      "training": {
+        "model": "inpformer",
+        "class": "Doll",
+        "status": "PASS",
+        "started_utc": "2026-11-21T11:22:20.788795+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Doll",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Doll"
+        ],
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "train_started_utc": "2026-11-21T11:22:31.459423+00:00",
+        "last_observed_iteration": 30000,
+        "optimization_steps": 30000,
+        "train_finished_utc": "2026-11-21T13:14:21.541491+00:00",
+        "train_seconds": 6710.082056661995,
+        "peak_allocated_bytes": 3005818880,
+        "peak_reserved_bytes": 3516923904,
+        "weights": [
+          {
+            "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_net_100.pth",
+            "bytes": 274134691,
+            "sha256": "8c3503a3a02f67652a32ed942f4fb3034a64a22950a9df28666e2aea41eb9958"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_ckpt.pth",
+          "bytes": 822400506,
+          "sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a"
+        },
+        "finished_utc": "2026-11-21T13:14:35.471061+00:00",
+        "wall_seconds": 6734.682290016994
+      },
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Doll",
+        "status": "PASS",
+        "started_utc": "2026-11-21T13:14:37.899309+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Doll",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Doll",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T13:20:09.216252+00:00",
+        "inference_through_concatenation_seconds": 307.6946133040037,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 370.71711624000454,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T13:24:28.389871+00:00",
+        "wall_seconds": 590.4905877819983
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/inpformer/inpformer_100e.py",
+        "cfg_sha256": "f4b9cabb6db05763b9cd64b81a4e57e6612f00152d521acc12715c710f45c241",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Doll",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "INPFormerLoss",
+            "name": "inpformer_loss",
+            "y": 3
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_arch": "dinov2reg_vit_base_14",
+          "INP_num": 6
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Doll",
+        "model": "inpformer",
+        "checkpoint_sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a",
+        "metrics_pct": {
+          "AUROC_view_sp": 75.76939946114982,
+          "AUROC_view_px": 96.96125602230656,
+          "mF1_view_sp": 67.87741203178206,
+          "mF1_view_px": 38.163420655879406,
+          "AP_view_sp": 77.83197481068814,
+          "AP_view_px": 28.524843892572427,
+          "AUPRO_view": 86.2643325132414,
+          "AUROC_obj_sp": 73.2,
+          "mF1_obj_sp": 85.21739130434783,
+          "AP_obj_sp": 89.32344655315949
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_ckpt.pth",
+        "bytes": 822400506,
+        "sha256": "40c0d989d773cb108fcdd903b3cb0244060f8ab202a4b347d5c011f0c93b280a"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Doll/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Doll']_net_100.pth",
+          "bytes": 274134691,
+          "sha256": "8c3503a3a02f67652a32ed942f4fb3034a64a22950a9df28666e2aea41eb9958"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U23",
+            "bytes": 772928,
+            "sha256": "539f2b8d5cb3a899c8ccb345c0556fbbe7b5f75c41730974f4d8bd2a168a0455"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U4",
+            "bytes": 134528,
+            "sha256": "45b6f6314eebe4f8c0c6c0f7f45bdf676e5d0cef7d5285b43488f6fce9a981ce"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "9f45c9c53cccd193e08eb392744e77c236628f9694ef95379581d9078ccccb29"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "410dc104455420c38e0f7908d2c66593321e55807e6485eeace70073cf5d8568"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "bf4592b89c972bea4ddfa7d48cc8510ccda24943f7c52419630b94443d4b2fba"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "ee5a2cc540d2d93f936b326b80e2b6b8d470a3f3d6eda83f2b28ee46c1cb8cda"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "8cadf984a09502a53a2a927800294f558e61808b13143bd73865b182364d9dba"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "a1845f19955888af24eb9014f592f4b5ee80b8217c0e2c32fe6caea728bacf67"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "e92a0c5970b44d88f1fbc41744acb976aaefcbecd378d317f5f954f0c71290a0"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "55c1cc2b045bb497a1e039aca3aaaf69fed0684e9d6e57073f5532e669c02022"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U27",
+            "bytes": 90848,
+            "sha256": "a34fb5052b494ea2d85a75d880aeb57135ec18d8f61aa08b702dab1a5dd8bec2"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U4",
+            "bytes": 13568,
+            "sha256": "49004c9d426f3c2865934be6c6a7ba7e2822d422792d44ef4c94094f8e199603"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U23",
+            "bytes": 6568,
+            "sha256": "aa36426695cb38d92f922353e5144c6cd0c510ba75f317d43ecd56e9d09bae89"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "26b58e40908d6f4ffdf3f730966b0e029a7b645515eceefa803bcf009a08007a"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "3bb5cd7aad756c035472d24f807cfbe4db46b15ae0d06cbbf567de3162d61a9a"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U4",
+            "bytes": 1248,
+            "sha256": "b1678dab1b063cb93e4e0dcd51140138feb1fb9ee9b8369631f1e2a5b54e935f"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Doll-train.log",
+          "bytes": 130111,
+          "sha256": "aed6188e872f435be802c0ef9315784025dd50a41ac31e48d86a810da821b2ed"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/inpformer-Doll-test.log",
+        "bytes": 104217,
+        "sha256": "ce4efa9ddc51786f5ab4641ff09cf28cbf539b90819a977cb2fba74d12d06ae5"
+      },
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Doll/gpu.csv",
+        "bytes": 128273,
+        "sha256": "74e3a54a6b52795b70a68b9f635d4d24f29b8bcd2adecbf42133c460f3251ec7"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/inpformer/Doll/gpu.csv",
+        "bytes": 11970,
+        "sha256": "a4ca8a50e7369885e06fd02d418f0e49ce8a2b3cda33778dda48097aa76dbff1"
+      },
+      "epoch_log": {
+        "path": "runs/inpformer/Doll/epochs.json",
+        "bytes": 9559,
+        "sha256": "c00e8254a25a6d5a39a0c54a642418579db2340c1bc0fc2237b8c2961d6b7a3c"
+      },
+      "report_excerpt": "evidence/inpformer-Doll.log"
+    },
+    {
+      "model": "inpformer",
+      "class": "Ring",
+      "training": {
+        "model": "inpformer",
+        "class": "Ring",
+        "status": "PASS",
+        "started_utc": "2026-11-21T13:24:30.675585+00:00",
+        "mode": "train",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Ring",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Ring"
+        ],
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "train_started_utc": "2026-11-21T13:24:43.543901+00:00",
+        "last_observed_iteration": 30000,
+        "optimization_steps": 30000,
+        "train_finished_utc": "2026-11-21T15:17:42.218871+00:00",
+        "train_seconds": 6764.706310328998,
+        "peak_allocated_bytes": 3005818880,
+        "peak_reserved_bytes": 3516923904,
+        "weights": [
+          {
+            "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_net_100.pth",
+            "bytes": 274134691,
+            "sha256": "77b8202a140a21044b990924140fdb6d579a7600fc060662672467d1df888f7c"
+          }
+        ],
+        "final_checkpoint": {
+          "path": "checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_ckpt.pth",
+          "bytes": 822400506,
+          "sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8"
+        },
+        "finished_utc": "2026-11-21T15:17:56.111131+00:00",
+        "wall_seconds": 6791.466912008007
+      },
+      "evaluation": {
+        "model": "inpformer",
+        "class": "Ring",
+        "status": "PASS",
+        "started_utc": "2026-11-21T15:17:58.023094+00:00",
+        "mode": "test",
+        "epochs_completed": 100,
+        "oom": false,
+        "nonfinite": false,
+        "argv": [
+          "--upstream",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+          "--weight",
+          "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+          "--release-root",
+          "/mnt/d/vicad-syn/task-002-stage2",
+          "--model",
+          "inpformer",
+          "--category",
+          "Ring",
+          "--output",
+          "/mnt/d/vicad-syn/task-002-stage2/evaluations/inpformer/Ring",
+          "--checkpoint",
+          "/mnt/d/vicad-syn/task-002-stage2/runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_ckpt.pth"
+        ],
+        "evaluation_checkpoint_sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8",
+        "parameters": 155101536,
+        "trainable_parameters": 68517984,
+        "optimizer_parameters": 155101536,
+        "inference_finished_utc": "2026-11-21T15:24:38.238405+00:00",
+        "inference_through_concatenation_seconds": 379.0405715839879,
+        "fusion_crosscheck": {
+          "objects": 70,
+          "views": 840,
+          "repeated_object_names": 0,
+          "repeated_view_names": 0
+        },
+        "final_evaluation_seconds": 432.93417147899163,
+        "peak_allocated_bytes": 1059737088,
+        "peak_reserved_bytes": 1516240896,
+        "diagnostics": {
+          "rows": 142,
+          "nonfinite_or_undefined": 0,
+          "rows_with_label_disagreements": 142
+        },
+        "finished_utc": "2026-11-21T15:28:31.914778+00:00",
+        "wall_seconds": 632.0165521750023
+      },
+      "configuration": {
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "cfg_path": "configs/benchmark/inpformer/inpformer_100e.py",
+        "cfg_sha256": "f4b9cabb6db05763b9cd64b81a4e57e6612f00152d521acc12715c710f45c241",
+        "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "protocol": "M2AD-Synergy",
+        "class": "Ring",
+        "mode": "train",
+        "seed": 42,
+        "epoch": 100,
+        "size": 224,
+        "batch_train": 12,
+        "batch_test": 12,
+        "optimizer": {
+          "lr": 0.00375,
+          "name": "adam",
+          "betas": [
+            0.5,
+            0.999
+          ]
+        },
+        "scheduler": {
+          "name": "step",
+          "lr_noise": null,
+          "noise_pct": 0.67,
+          "noise_std": 1.0,
+          "noise_seed": 42,
+          "lr_min": 3.75e-05,
+          "warmup_lr": 3.7499999999999997e-06,
+          "warmup_iters": -1,
+          "cooldown_iters": 0,
+          "warmup_epochs": 0,
+          "cooldown_epochs": 0,
+          "use_iters": true,
+          "patience_iters": 0,
+          "patience_epochs": 0,
+          "decay_iters": 0,
+          "decay_epochs": 80,
+          "cycle_decay": 0.1,
+          "decay_rate": 0.1
+        },
+        "loss": [
+          {
+            "type": "INPFormerLoss",
+            "name": "inpformer_loss",
+            "y": 3
+          }
+        ],
+        "clip_grad": 5.0,
+        "default_test_interval": 50,
+        "formal_test_epoch": 100,
+        "test_during_training": false,
+        "bulk_visualization": false,
+        "model_kwargs": {
+          "pretrained": false,
+          "strict": false,
+          "encoder_arch": "dinov2reg_vit_base_14",
+          "INP_num": 6
+        },
+        "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "metrics": [
+          "AUROC_obj_sp",
+          "AUROC_view_sp",
+          "AUROC_view_px",
+          "mF1_obj_sp",
+          "mF1_view_sp",
+          "mF1_view_px",
+          "AP_obj_sp",
+          "AP_view_sp",
+          "AP_view_px",
+          "AUPRO_view"
+        ],
+        "use_adeval": true
+      },
+      "official_metrics": {
+        "epoch": 100,
+        "class": "Ring",
+        "model": "inpformer",
+        "checkpoint_sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8",
+        "metrics_pct": {
+          "AUROC_view_sp": 70.7525980963481,
+          "AUROC_view_px": 98.43851095385175,
+          "mF1_view_sp": 59.09712722298222,
+          "mF1_view_px": 1.887898572367747,
+          "AP_view_sp": 60.992595262984786,
+          "AP_view_px": 0.5432841282302415,
+          "AUPRO_view": 94.40835682756395,
+          "AUROC_obj_sp": 70.19999999999999,
+          "mF1_obj_sp": 85.21739130434783,
+          "AP_obj_sp": 86.78106960570334
+        },
+        "nonfinite": []
+      },
+      "checkpoint": {
+        "path": "runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_ckpt.pth",
+        "bytes": 822400506,
+        "sha256": "5ab36389530d76ef670808d6fdc55700f8f0106fd8e69ed8d4d32c695e9154c8"
+      },
+      "weights": [
+        {
+          "path": "runs/inpformer/Ring/checkpoints/INPFormerTrainer_configs_benchmark_inpformer_inpformer_100e_exp1/['Ring']_net_100.pth",
+          "bytes": 274134691,
+          "sha256": "77b8202a140a21044b990924140fdb6d579a7600fc060662672467d1df888f7c"
+        }
+      ],
+      "predictions": {
+        "raw": {
+          "obj_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U20",
+            "bytes": 672128,
+            "sha256": "0dc32f3bd54a9d4208a64b3ef2fedb731ec5e180ed18bc030f7b7ce5a4d7e238"
+          },
+          "cls_names.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U4",
+            "bytes": 134528,
+            "sha256": "b0ec415f860d846275aae61d23af372b264791a3acf257ac0c71cf3c8060c51f"
+          },
+          "illumination_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U2",
+            "bytes": 67328,
+            "sha256": "4691593e55c233a80155ec874a042f37ad1f14f8d070724a5566a91a9e2d1510"
+          },
+          "view_list.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "<U3",
+            "bytes": 100928,
+            "sha256": "d46b074878a6255c0cf65601d83159292f7721a0298114c5d7f5b98121d5dc62"
+          },
+          "imgs_masks.npy": {
+            "shape": [
+              8400,
+              1,
+              224,
+              224
+            ],
+            "dtype": "uint8",
+            "bytes": 421478528,
+            "sha256": "1eb430a7c85279c360b20349c8b22b9887a002b02cb9202b36e3265052972b4b"
+          },
+          "image_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "7ac965f703c10cb71e63f32ea473546836f4c1f1d3168f1a7138c0606d721209"
+          },
+          "object_anomalys.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "int64",
+            "bytes": 67328,
+            "sha256": "a717086b1bb6b7e321d09749151713c0e14ade0c6dff385b4d3f93ac0ea77bc4"
+          },
+          "anomaly_scores.npy": {
+            "shape": [
+              8400
+            ],
+            "dtype": "float64",
+            "bytes": 67328,
+            "sha256": "fcc59706abf9c5810d90bc22bbeaa7fc0d4774dcc5371513e02fc33805265acc"
+          },
+          "anomaly_maps.npy": {
+            "shape": [
+              8400,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 3371827328,
+            "sha256": "1327ca8f03f845e3f57e45a84d2a5d1ba1087ef10ade2ac1a262f755ed2db476"
+          }
+        },
+        "fused": {
+          "view_instance_masks.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "int64",
+            "bytes": 337182848,
+            "sha256": "7fff625d7ad42487981cabf5a09d834d8bcaa7638b31ea0e7cfad9175be096de"
+          },
+          "view_instance_anomalys.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "int64",
+            "bytes": 6848,
+            "sha256": "a5ffa3f78da88ded46e6c328edc1fc5e245ded7407d93f130995198345438d0c"
+          },
+          "view_instance_anomaly_maps.npy": {
+            "shape": [
+              840,
+              224,
+              224
+            ],
+            "dtype": "float64",
+            "bytes": 337182848,
+            "sha256": "f5d30eed80e361f16172e7a30ea65f906cfa8d699a2cf0c57cdb89f7c7e46e09"
+          },
+          "view_instance_anomaly_scores.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "float64",
+            "bytes": 6848,
+            "sha256": "f2fb0ea2500b1b474822c68a606561bd88aeb521eb66054325574f778b9055fc"
+          },
+          "view_instance_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U24",
+            "bytes": 80768,
+            "sha256": "ca9203043c078d625a93b72d039535af55a215f771ef9f6891320f6892c74018"
+          },
+          "view_instance_cls_names.npy": {
+            "shape": [
+              840
+            ],
+            "dtype": "<U4",
+            "bytes": 13568,
+            "sha256": "5a4e4e2be9a3191881d8a3963edcd82e46498e6e9003dd600848a89555bbe6dc"
+          },
+          "object_instance_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U20",
+            "bytes": 5728,
+            "sha256": "62b9341475b124875a84f279ead67f6e7c0c84a8bc39eaa840f1c98761c9dd6e"
+          },
+          "object_instance_anomalys.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "int64",
+            "bytes": 688,
+            "sha256": "6b5c65b1c9c55e2c55faa67dca69cce3aff94cf4a251a86a5faef8b24cef3a37"
+          },
+          "object_instance_anomaly_scores.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "float64",
+            "bytes": 688,
+            "sha256": "96380067b91935163caf8880cc734804a7737138d8b64788d37454caecb33082"
+          },
+          "object_instance_cls_names.npy": {
+            "shape": [
+              70
+            ],
+            "dtype": "<U4",
+            "bytes": 1248,
+            "sha256": "a800d966d5edd13a1bcf58d294fa8f6ba8fcb4c337c1ac6f2edf5011c6c4b6c3"
+          }
+        }
+      },
+      "training_logs": [
+        {
+          "path": "logs/inpformer-Ring-train.log",
+          "bytes": 130483,
+          "sha256": "20240044f74a5932270885066240ae4a37bb2af1dcfb521c0488c22f3dc1c6fb"
+        }
+      ],
+      "evaluation_log": {
+        "path": "logs/inpformer-Ring-test.log",
+        "bytes": 104409,
+        "sha256": "b63ade6724faaae6f4c6da108ca4deb80a3cff3de9522bf89b5e6b7f3421ccec"
+      },
+      "train_gpu_csv": {
+        "path": "runs/inpformer/Ring/gpu.csv",
+        "bytes": 134646,
+        "sha256": "79e4c3cbe2c50124447ee9eac1549d1c7f89ff0eb360c887da7cc977ee6e4063"
+      },
+      "evaluation_gpu_csv": {
+        "path": "evaluations/inpformer/Ring/gpu.csv",
+        "bytes": 12757,
+        "sha256": "796248a35f8c2d22c1796711c2c3bbda246545c65e3d541a3dec26357f6fed3c"
+      },
+      "epoch_log": {
+        "path": "runs/inpformer/Ring/epochs.json",
+        "bytes": 9552,
+        "sha256": "d35d0f5a0f5bcf153725655790ae57384ed8afe6ac1fd68af1afcdfa05b57d3a"
+      },
+      "report_excerpt": "evidence/inpformer-Ring.log"
+    }
+  ]
+}

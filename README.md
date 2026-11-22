@@ -7,7 +7,7 @@ VICAD-Syn 研究多视角、多光照条件下的工业视觉异常检测。项�
 ## 当前状态
 
 - **TASK-001 数据集与实验协议审计已完成并通过项目负责人验收（ACCEPTED）。** [审计报告](reports/TASK-001-REPORT.md) · [PR #1](https://github.com/xinnan369/anomaly/pull/1)
-- **TASK-002 第一阶段已独立验收（APPROVED），第二阶段部分完成（PARTIAL）。** 实例身份校验整改及 CUDA 回归已通过，RTX 3090 上的 Car/Dinomaly 正式训练已经启动。八组正式实验仍在推进，RTX 4090 未实测。[整改与实测进度](reports/TASK-002-REPORT.md#第二阶段审查整改与正式实验) · [PR #2](https://github.com/xinnan369/anomaly/pull/2)
+- **TASK-002 第一阶段已独立验收（APPROVED），第二阶段 8/8 组已完成训练和官方评价。** RTX 3090 实测结果已汇总，第二阶段等待独立复查。RTX 4090 未实测。[最终报告](reports/TASK-002-REPORT.md#第二阶段最终结果) · [结果和图表](results/baselines/README.md) · [PR #2](https://github.com/xinnan369/anomaly/pull/2)
 
 ## 项目文档
 

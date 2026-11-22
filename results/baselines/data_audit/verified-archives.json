@@ -1,0 +1,110 @@
+{
+  "Car": {
+    "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+    "category": "Car",
+    "archive_sha256": "27e77cfe0faad99065489ce5c5a785a2450da771372997dc9cfca160e778af36",
+    "archive_bytes": 16318099753,
+    "crc_verified_files": 12970,
+    "images": 12000,
+    "masks": 485,
+    "segments": 485,
+    "counts": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 4850,
+        "undetectable_positive_images": 309
+      }
+    },
+    "split_crc_size_overlap": 0
+  },
+  "Cube": {
+    "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+    "category": "Cube",
+    "archive_sha256": "72b5d96a1281c61d247771387b0a7bc66307c7d6e9c14112ae0553b5b89cafe7",
+    "archive_bytes": 17628365529,
+    "crc_verified_files": 13106,
+    "images": 12000,
+    "masks": 553,
+    "segments": 553,
+    "counts": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5530,
+        "undetectable_positive_images": 222
+      }
+    },
+    "split_crc_size_overlap": 0
+  },
+  "Doll": {
+    "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+    "category": "Doll",
+    "archive_sha256": "1fd27c8aaf89d6bdde1d5061edcc5e45a5c8d7241c9d287402807a1985f8bcb3",
+    "archive_bytes": 16835932455,
+    "crc_verified_files": 13002,
+    "images": 12000,
+    "masks": 501,
+    "segments": 501,
+    "counts": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5010,
+        "undetectable_positive_images": 280
+      }
+    },
+    "split_crc_size_overlap": 0
+  },
+  "Ring": {
+    "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+    "category": "Ring",
+    "archive_sha256": "20b2b0f12c338747208a914aa98e4f175eef7fa0e26de8eae0bc1f8ac7a27d7c",
+    "archive_bytes": 16564602406,
+    "crc_verified_files": 13096,
+    "images": 12000,
+    "masks": 548,
+    "segments": 548,
+    "counts": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5480,
+        "undetectable_positive_images": 105
+      }
+    },
+    "split_crc_size_overlap": 0
+  }
+}

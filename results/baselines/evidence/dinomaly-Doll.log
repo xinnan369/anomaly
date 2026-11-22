@@ -1,0 +1,11 @@
+# dinomaly-Doll-train.log
+11/20 08:07:42 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.139 (0.311)] [data_t 0.001] [optim_t 0.139] [lr 0.003750] [dinomaly_loss 0.414 (0.504)]
+ValueError: NaN/Inf loss at iteration 11241
+# dinomaly-Doll-resume-20261121.log
+Restored official Doll checkpoint at epoch 37, iteration 11100
+Finite diagnostics PASS through iteration 11400
+11/21 01:03:14 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.271 (0.207)] [data_t 0.001] [optim_t 0.270] [lr 0.000375] [dinomaly_loss 0.044 (0.044)]
+11/21 01:03:22 PM - finish training
+# dinomaly-Doll-test.log
+ #objects: 70, #view instances: 840
+|  Doll  |     81.700     |  81.700 (1   epoch)  |     79.738      |  79.738 (1   epoch)   |     98.504      |  98.504 (1   epoch)   |    85.470    | 85.470 (1   epoch) |    71.064     | 71.064 (1   epoch)  |    36.150     | 36.150 (1   epoch)  |   92.700    | 92.700 (1   epoch) |    81.244    | 81.244 (1   epoch) |    22.616    | 22.616 (1   epoch) |    92.110    | 92.110 (1   epoch) |

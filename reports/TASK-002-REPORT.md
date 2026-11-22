@@ -182,7 +182,7 @@ TASK-001 审计脚本复核官方清单，9 项离线测试通过。每物理实
 
 ## 第二阶段审查整改与正式实验
 
-**状态 PARTIAL。** RTX 3090 正在执行正式 Car/Dinomaly 基线。八组正式训练及评价尚未完成。上文的下载与试运行状态是提交 `92c4b8415fdc5f503bacc59cadd536c0113d9746` 的历史快照。第一阶段验收通过记录继续有效。[第二阶段审查](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-5974527521)
+**2026-11-19 整改交付快照（PARTIAL）。** 当时实例身份回归通过，RTX 3090 已开始正式 Car/Dinomaly 基线。下文保留当时的证据，[第二阶段最终结果](#第二阶段最终结果)记录后续完成的八组。第一阶段验收记录继续有效。[第二阶段审查](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-5974527521)
 
 ### 实例身份、标签和回归
 
@@ -212,3 +212,38 @@ TASK-001 审计脚本复核官方清单，9 项离线测试通过。每物理实
 ### 交付自检
 
 7 项本阶段单元测试、9 项原审计测试、CUDA 身份回归和 `git diff --check` 通过。114 个 Markdown 相对链接与锚点、Shell 命令语法、试验配置与实际文件 SHA-256 的对应、阶段二 CSV 空值以及 Git 暂存文件大小和凭据模式均已核查。TASK-001 历史文件与固定上游跟踪文件均无差异。正式评价日志与正式指标的全量对账须等待训练和冻结评价完成。
+
+## 第二阶段最终结果
+
+八组训练及官方 Synergy 评价均通过。最后一组 INP-Former / Ring 于北京时间 2026-11-21 23:17:56 完成训练，23:28:31 完成评价。所有正式训练均含 100 epoch、30,000 步。独立复查仍待完成。[证据索引](../results/baselines/README.md) · [PR #2](https://github.com/xinnan369/anomaly/pull/2)
+
+### 四类别官方指标和资源
+
+| 类别 | 模型 | O-AUROC (%) | I-AUROC (%) | AUPRO (%) | 训练（分钟） | CUDA 峰值已分配（GiB） |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Car | Dinomaly | 90.30 | 85.52 | 92.53 | 110.24 | 3.08 |
+| Cube | Dinomaly | 90.10 | 80.45 | 93.27 | 120.86 | 3.08 |
+| Doll | Dinomaly | 81.70 | 79.74 | 92.11 | 116.52 | 3.08 |
+| Ring | Dinomaly | 95.80 | 86.34 | 87.72 | 103.37 | 3.08 |
+| Car | INP-Former | 82.20 | 72.11 | 86.03 | 101.21 | 2.80 |
+| Cube | INP-Former | 87.50 | 77.23 | 91.85 | 123.50 | 2.80 |
+| Doll | INP-Former | 73.20 | 75.77 | 86.26 | 111.83 | 2.80 |
+| Ring | INP-Former | 70.20 | 70.75 | 94.41 | 112.75 | 2.80 |
+
+四类等权宏平均的 O-AUROC、I-AUROC、AUPRO 分别为 Dinomaly **89.48、83.01、91.41** 和 INP-Former **78.28、73.97、89.64**。Dinomaly 在四类的两项 AUROC 均较高。Ring 的定位 AUPRO 由 INP-Former 领先 **6.69 个百分点**。这些结果来自单个 seed（42）。训练分钟数来自记录的训练时间，分配显存来自 PyTorch，机器整卡峰值另列于总表。Dinomaly/Doll 训练时间仅合计保存检查点之前与成功续跑区段。[指标与资源总表](../results/baselines/metrics/baseline-summary.csv) · [指标图](../results/baselines/figures/official-metrics.png) · [资源图](../results/baselines/figures/training-resources.png)
+
+### 视角、光照和改进机会
+
+- **类别难度随模型和指标变化。** Dinomaly 在 Doll 的两项 AUROC 最低。INP-Former 在 Ring 的两项 AUROC 最低，但同一类别的 AUPRO 为该模型四类最高。物件判别与像素定位应分别分析。[官方指标](../results/baselines/metrics/model-comparison.csv)
+- **视角和光照之间有明显差异。** 例如 INP-Former/Ring 的融合视角 AUROC 在 180° 为 62.67%，在 120° 为 80.30%。它的单光照诊断在 03 号为 59.38%，在 07 号为 77.13%。Dinomaly/Doll 的 120° / 01 号光照为 59.92%，330° / 09 号为 90.75%。这说明视角和光照对应的诊断难度不同，支持把跨光照预测作为待测方向。以上诊断基于不同分组，直接比较时应注意每组的掩膜阳性比例。[视角图](../results/baselines/figures/view-diagnostics.png) · [光照图](../results/baselines/figures/illumination-diagnostics.png) · [1136 条诊断](../results/baselines/metrics/diagnostics.csv)
+- **正常件高分倾向与融合限制。** 八个模型与类别组合中，07 号有 4 组、10 号有 3 组取得组内最高的正常件分数 P95。P95 描述排序中的高分尾部，本次未选择分类阈值。固定平均融合对各视角和光照等权。诊断差异提供了测试加权和鲁棒聚合的理由，其收益仍需在固定划分上以同一模型做对照验证。热力图按预定规则选取有掩膜样本，展示局部差异。[逐光照正常分数](../results/baselines/metrics/normal-scores-by-light.csv) · [热力图](../results/baselines/figures/reference-heatmaps.png)
+
+### 数据、恢复和核验
+
+四类完整 ZIP 通过固定发布 SHA-256、成员 CRC 和清单覆盖验证，训练与测试产品身份无交叉。正式组每类为 3,600 张训练图和 8,400 张测试图，评价得到 70 个物件和 840 个视角组。发布时重新核对四个归档验证凭据和磁盘文件长度，复算固定模型配置、八个训练检查点、八组原始及融合数组的 SHA-256，并对照官方评价 JSON、8 份最终状态和日志。原始大文件留在仓库外，运行索引记录路径、长度、哈希和日志节选。[四类归档凭据](../results/baselines/data_audit/verified-archives.json) · [运行与哈希索引](../results/baselines/metrics/run-index.json)
+
+Dinomaly/Doll 的原任务在第 11,241 步因非有限损失中断。原失败日志与检查点保留。恢复使用第 37 epoch、第 11,100 步的官方检查点，复用模型、Adam 与调度状态。第 11,101–11,400 步通过数值诊断。检查点没有保存随机数与数据加载器状态，恢复运行可能采用不同的样本顺序，短跑未复现异常，首次异常根因未知。最终检查点依然为第 100 epoch、第 30,000 步。[恢复凭据](../results/baselines/evidence/doll-recovery.json) · [原样保存的恢复脚本](../results/baselines/evidence/doll-recovery-script.py.txt) · [失败和续跑日志节选](../results/baselines/evidence/dinomaly-Doll.log)
+
+复现沿用已核验的固定版本和环境。通常执行 `CUDA_VISIBLE_DEVICES=0 <锁定的 Python> -B -u tools/environment/run_stage2.py --root /mnt/d/vicad-syn/task-002-stage2`。Doll 按恢复脚本在单独的外部尝试目录保留失败记录后继续，评价仍由原启动器执行。全部 1136 条诊断均有限且保留掩膜与清单标签分歧计数。RTX 4090 未验证，Holder 差异仍按 TASK-001 记录。[环境与命令](../tools/environment/README.md#第二阶段完整基线)
+
+本次发布前在 Ubuntu 22.04 / WSL2 的锁定环境中复跑 `python -B -m unittest discover -s tools/environment -p "test_*.py"` 和 `python -B -m unittest discover -s tools/audit -p "test_*.py"`，分别通过 7 项和 9 项测试。此轮核验未重新训练模型。

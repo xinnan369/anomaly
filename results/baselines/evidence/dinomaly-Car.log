@@ -1,0 +1,7 @@
+# dinomaly-Car-train.log
+11/19 08:05:36 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.154 (0.341)] [data_t 0.001] [optim_t 0.153] [lr 0.003750] [dinomaly_loss 0.397 (0.505)]
+11/19 09:55:33 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.145 (0.179)] [data_t 0.001] [optim_t 0.144] [lr 0.000375] [dinomaly_loss 0.032 (0.032)]
+11/19 09:55:40 PM - finish training
+# dinomaly-Car-test.log
+ #objects: 70, #view instances: 840
+|  Car   |     90.300     |  90.300 (1   epoch)  |     85.516      |  85.516 (1   epoch)   |     98.996      |  98.996 (1   epoch)   |    90.385    | 90.385 (1   epoch) |    63.529     | 63.529 (1   epoch)  |     9.723     |  9.723 (1   epoch)  |   95.900    | 95.900 (1   epoch) |    68.208    | 68.208 (1   epoch) |    3.694     | 3.694 (1   epoch)  |    92.527    | 92.527 (1   epoch) |
