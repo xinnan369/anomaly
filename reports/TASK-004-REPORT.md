@@ -1,6 +1,6 @@
 # TASK-004 · VICAD-Syn 失效诊断与验证
 
-**状态　执行中，尚待独立验收。** [任务与协议](../instructions/TASK-004.md) · [结果索引](../results/vicad_refinement/README.md)
+**状态　已完成部分独立确认，扩展进行中。** [任务与协议](../instructions/TASK-004.md) · [结果索引](../results/vicad_refinement/README.md)
 
 TASK-003 通过独立验收。它提供可复现的研究原型和真实负结果。PR #4 由批准提交 `4982849e4907e22df1dd036adfdfdb9b4ac3e750` 普通合并到 `498d99652d3153f50a3113c7a8b363d088449c56`。[Review 6022362483](https://github.com/xinnan369/anomaly/pull/4#pullrequestreview-6022362483) · [合并提交](https://github.com/xinnan369/anomaly/commit/498d99652d3153f50a3113c7a8b363d088449c56)
 
@@ -58,6 +58,8 @@ Car A4 的掩膜内外均值为 0.134412 与 0.134098，差值仅 0.000315。A1 
 
 单光照扰动中，四种条件的受扰目标均无预测变化，这与目标排除一致。四光照共同扰动时，中位数把九光照学习预测的带方向响应从 0.244 降至 0.109。所有光照共享扰动时，直接预测、中位数和子集均有较大正投影。强扰动时九光照为 0.829，正常原型为零。这支持共同结构沿预测传播的机制。实际 M²AD 缺陷的具体形态和照明响应未被合成干预全面覆盖。
 
+单光照增益的阴性对照没有结构掩膜。相对同视角干净 P99，v1 和冻结候选的超阈比例均值分别为 1.020% 与 1.015%，与干净对照的约 1.000% 接近。该控制只覆盖登记的单光照增益，尚不能代表更大范围的照明变化。
+
 | 类别 | 第 4 块 AP | 第 8 块 AP | 第 12 块 AP |
 | --- | ---: | ---: | ---: |
 | Car | 56.98% | 55.12% | 49.25% |
@@ -71,4 +73,65 @@ Car A4 的掩膜内外均值为 0.134412 与 0.134098，差值仅 0.000315。A1 
 
 ## 冻结后的正式结果与限制
 
-（按已核验的实验凭据更新。）
+### M²AD-Synergy 评价
+
+指标依次为 O-AUROC / I-AUROC / AUPRO（%）。同一类别同一 seed 的新候选和 v1 A4 复跑共享叶层预测器检查点。已见类别也保留 v1 的已验收原始指标。evaluator 读取完整官方划分，校验物件和视角身份。
+
+| 证据范围 | 类别 | Seed | v1 A4 配对复跑 | 冻结候选 |
+| --- | --- | ---: | --- | --- |
+| exploratory | Car | 42 | 53.70 / 49.83 / 13.20 | 65.10 / 61.62 / 72.12 |
+| exploratory | Cube | 42 | 63.00 / 55.46 / 66.99 | 88.30 / 70.01 / 92.15 |
+| exploratory | Doll | 42 | 60.00 / 49.06 / 35.56 | 50.90 / 55.93 / 74.13 |
+| exploratory | Ring | 42 | 60.50 / 56.51 / 51.06 | 90.10 / 75.05 / 87.29 |
+| confirmatory | Bird | 42 | 60.30 / 52.32 / 45.70 | 70.10 / 63.94 / 83.38 |
+| confirmatory | Bird | 43 | 59.70 / 52.04 / 45.31 | 69.70 / 64.10 / 83.31 |
+| confirmatory | Bird | 44 | 64.30 / 53.00 / 46.06 | 70.90 / 63.91 / 83.48 |
+
+[逐组指标与资源](../results/vicad_refinement/metrics/formal.csv) · [类别均值及样本标准差](../results/vicad_refinement/metrics/formal-summary.csv)
+
+已见类别完成 4/4。与 TASK-002 已验收原版对照，Dinomaly/Doll 故障维持空指标，Dinomaly-stabilized 单列。历史恢复实验继续留在 TASK-002 档案。该段结果属于 exploratory。 [固定基线身份与差值](../results/vicad_refinement/metrics/accepted-baseline-comparison.csv) · [探索性结果图](../results/vicad_refinement/figures/exploratory-official-comparison.pdf)
+
+| 已见类别 | 编码测试图 (s) | 拟合与原型 (s) | 配对预测 (s) | 拟合峰值 (GiB) | 预测峰值 (GiB) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Car | 781.9 | 169.1 | 304.2 | 5.60 | 1.35 |
+| Cube | 685.9 | 142.7 | 325.4 | 5.60 | 1.35 |
+| Doll | 708.7 | 159.0 | 304.0 | 5.60 | 1.35 |
+| Ring | 719.4 | 145.0 | 268.4 | 5.60 | 1.35 |
+
+冻结主干 86,583,552 个参数。叶层预测器 478,656 个可训练参数。每类正常参考原型 FP32 存储 270 MiB。表中编码计入图片读取、三个块的特征计算及缓存写入。预测计入两种评分共享的读盘、残差和信号计算。训练与预测峰值均为当前阶段的 PyTorch 分配峰值。RTX 4090 未实测。
+
+## 独立确认和科学边界
+
+独立确认覆盖 1/6 个此前未用于本项目模型选择的类别。各次冻结运行均使用 42、43、44 三个种子。正选方法和配对 v1 仅改变评分及融合路径，按类别重新在同一发布的正常训练物件上拟合。该设计验证流程向未见类别的迁移，样本覆盖限于 M²AD。样本标准差反映同一测试集上跨训练种子的波动。
+
+| 类别 | 方法 | O-AUROC 均值 ± SD | I-AUROC 均值 ± SD | AUPRO 均值 ± SD |
+| --- | --- | ---: | ---: | ---: |
+| Bird | selected | 70.23 ± 0.61 | 63.98 ± 0.10 | 83.39 ± 0.08 |
+| Bird | v1_A4 | 61.43 ± 2.50 | 52.45 ± 0.49 | 45.69 ± 0.38 |
+
+Bird 的三种子平均改进为 +8.80 / +11.53 / +37.70 个百分点。按 M²AD 预印本表 2 的 224 输入参考，Bird 的 Dinomaly 为 75.1 / 74.9 / 86.9，INP-Former 为 80.0 / 67.2 / 84.1。三项 Bird 平均结果仍低于这两个作者公布的基线。已发表参考单独标记，当前试验没有在确认类另行训练这两个原版基线。Holder 的预印本与固定发布有一件异常物件差异。[作者公开结果](https://arxiv.org/html/2505.10996v1#S3.T2) · [作者参考数据](../results/vicad_refinement/metrics/published-baseline-reference.csv)
+
+已见四类 AUPRO 和 I-AUROC 均随新候选上升。Doll 的 O-AUROC 由 60.00% 降至 50.90%，说明像素定位增益没有自动转化为物件级判别。Bird 为此前未见类别，支持把共同异常传播及正常参考分数作为论文机制贡献。现有范围尚不足以支撑普遍性能领先。后续结论按全部预登记类别和三个指标分别判断。
+
+[确认覆盖与归档状态](../results/vicad_refinement/metrics/confirmatory-coverage.csv) · [各类归档审计](../results/vicad_refinement/evidence/data-transfer.json)
+
+## 环境、命令与自检
+
+Windows 主机使用 Python 下载。拟合、诊断和评价使用 WSL2 Ubuntu 22.04、Python 3.11.11、PyTorch 2.2.2+cu121、CUDA 12.1、ADEval 1.1.0、RTX 3090。首次多层提取发现固定上游的接口只接受末层数量，工程烟测修复后，用同一固定原版 block 循环选取第 4、8、12 块。CPU/CUDA 再核验末层结果逐值相同及主干无梯度。首次运行没有形成代理或正式指标。官方 CUDA ADEval 的中间除法可出现空分母警告，实际报告指标均通过有限性检查。Windows 环境的报告导出因缺少 sklearn 未运行，使用锁定 WSL 环境完成导出。
+
+运行核对覆盖新旧 53 项单元测试、官方融合身份回归、目标光照排除、训练与开发／测试物件隔离、逐组融合身份、冻结时序、检查点和预测关联、相对链接、Git 差异空白及敏感信息与超大文件。阶段命令按下列入口执行。
+
+```bash
+python -B -m vicad_refinement.run develop --inputs /mnt/d/vicad-syn/task-002-stage2 --output /mnt/d/vicad-syn/task-004/run-v2
+python -B -m vicad_refinement.run freeze --inputs /mnt/d/vicad-syn/task-002-stage2 --output /mnt/d/vicad-syn/task-004/run-v2
+python -B -m vicad_refinement.run explore --inputs /mnt/d/vicad-syn/task-002-stage2 --output /mnt/d/vicad-syn/task-004/run-v2 --category Car
+python -B -m vicad_refinement.run confirm --inputs /mnt/d/vicad-syn/task-002-stage2 --output /mnt/d/vicad-syn/task-004/run-v2 --holdout /mnt/d/vicad-syn/task-004/holdout --category Bird
+```
+
+实际逐类探索命令依次替换 Car、Cube、Doll、Ring。使用 Windows Git worktree 时，为冻结命令传入映射至 WSL 的 GIT_DIR 与 GIT_WORK_TREE。原回执存在时从该点恢复。Bird 使用 D 盘归档。Motor、Teapot、Tube、Dice、Holder 的归档准备切换到 C 盘独立数据根，该选择保留 D 盘上的缓存空间与 40 GiB 的预留。以下续传入口以 Bird 为例。
+
+```powershell
+python -B -m tools.vicad_syn.stage_refinement --root D:/vicad-syn/task-004/holdout --manifest-cache D:/vicad-syn/task-002-stage2/cache --category Bird --transport lfs --workers 24
+```
+
+数据版本见 [官方发布](https://huggingface.co/datasets/ChengYuQi99/M2AD/commit/05abc5d03167354a7ef98541236b5c0bd00abadf)、[论文](https://arxiv.org/html/2505.10996v1)及[固定上游](https://github.com/hustCYQ/M2AD/tree/a606aa0e1614f23dad70da26430dd66095192141)。完整实验位于 `D:/vicad-syn/task-004`。原版指标、原预测和模型保持原路径。 [核验清单](../results/vicad_refinement/evidence/verification.json) · [图表、证据和命令索引](../results/vicad_refinement/README.md) · [PR #5](https://github.com/xinnan369/anomaly/pull/5)

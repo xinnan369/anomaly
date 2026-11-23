@@ -9,6 +9,7 @@ from pathlib import Path
 from threading import Lock
 from urllib.parse import urlsplit
 
+from filelock import FileLock
 import requests
 
 from vicad_syn.experiment import check, read_json
@@ -126,6 +127,12 @@ def main():
     protocol = read_json(REGISTRY)
     check(args.category in protocol["confirmatory_order"], "unregistered category")
     checksum = protocol["archive_sha256"][args.category]
+    root.mkdir(parents=True, exist_ok=True)
+    with FileLock(root / "staging.lock"):
+        stage(args, root, checksum)
+
+
+def stage(args, root, checksum):
     marker = root / "data_audit" / f"{args.category}.json"
     if marker.exists():
         audit = read_json(marker)

@@ -1,16 +1,16 @@
 {
   "category": "Bird",
-  "observed_at": "2026-11-23T22:12:30.325001+08:00",
+  "observed_at": "2026-11-24T07:30:54.289618+08:00",
   "required_size": 15506344175,
   "published_sha256": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
   "ranges": {
     ".part": {
-      "bytes": 2617245696,
-      "count": 39
+      "bytes": 0,
+      "count": 0
     },
     ".download": {
-      "bytes": 923009024,
-      "count": 24
+      "bytes": 0,
+      "count": 0
     }
   },
   "network_logs": {
@@ -56,12 +56,12 @@
     },
     "stage-Bird-lfs24.log": {
       "captured_source": {
-        "sha256": "1ad9ca8a4685b0468e2eb4664ea42b4879d34cb36334de4b5382c9dacb521c1f",
-        "bytes": 1378
+        "sha256": "c8a27cb562b170dad69de798c0613551219def77fb67cf92108c3984c8e948b7",
+        "bytes": 5898
       },
       "git_text": {
-        "sha256": "2f1b08b35e135a3112a16531b04dbe4d50de483c003dd6f443731d04ff2a5264",
-        "bytes": 1358
+        "sha256": "e9d74dd871fcd86dd312be153f8eb15da54f6e27ebcccfdd651cbc12888511d8",
+        "bytes": 5806
       }
     }
   },
@@ -72,6 +72,59 @@
     "seconds": 45.403218
   },
   "native_xet": "Zero archive bytes written before the inactive fallback was stopped.",
-  "ready": false,
-  "confirmed": []
+  "ready": true,
+  "confirmed": [
+    "Bird"
+  ],
+  "all_categories": {
+    "Bird": {
+      "order": 1,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 15506344175,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "129783014903a0b6a8760af99ad775fed7607779b0dc59940f77fa6daef042e1"
+    },
+    "Motor": {
+      "order": 2,
+      "passes_archive_audit": false,
+      "passes_confirmation": false,
+      "complete_archive_bytes": null,
+      "complete_range_count": 194,
+      "complete_range_bytes": 13019119616
+    },
+    "Teapot": {
+      "order": 3,
+      "passes_archive_audit": false,
+      "passes_confirmation": false,
+      "complete_archive_bytes": null,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0
+    },
+    "Tube": {
+      "order": 4,
+      "passes_archive_audit": false,
+      "passes_confirmation": false,
+      "complete_archive_bytes": null,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0
+    },
+    "Dice": {
+      "order": 5,
+      "passes_archive_audit": false,
+      "passes_confirmation": false,
+      "complete_archive_bytes": null,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0
+    },
+    "Holder": {
+      "order": 6,
+      "passes_archive_audit": false,
+      "passes_confirmation": false,
+      "complete_archive_bytes": null,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0
+    }
+  }
 }

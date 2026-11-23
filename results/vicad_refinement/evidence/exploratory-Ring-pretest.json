@@ -1,0 +1,9 @@
+{
+  "binding": {
+    "input_freeze_sha256": "41fb52634e61a5023cd8172c83d9982f075eedfc65a6cf807bdca8286b4e503f",
+    "checkpoints": {
+      "42": "eb3e13c930f48a3cbb1f430ec62388ead7912e551be054f1e1e372995939a9bc"
+    }
+  },
+  "utc": "2026-11-23T15:24:12.372619+00:00"
+}

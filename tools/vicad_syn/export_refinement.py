@@ -84,8 +84,18 @@ def verify_formal(run, folder, ticket, registry, allowed, written):
             check(train["steps"] == 12 * ((expected[0] * 12 + 3) // 4), "incorrect optimization steps")
             check(payload == read_json(directory / "evaluation.json"), "seed and aggregate receipts differ")
             check(set(payload["scores"]) == {"v1_A4", "selected"}, "missing paired v1/selected setting")
+            common = ("view_instance_masks.npy", "view_instance_anomalys.npy",
+                      "view_instance_cls_names.npy", "view_instance_names.npy",
+                      "object_instance_anomalys.npy", "object_instance_names.npy")
+            for name in common:
+                check(payload["scores"]["v1_A4"]["fused_and_patch_inputs"][name] ==
+                      payload["scores"]["selected"]["fused_and_patch_inputs"][name],
+                      f"paired candidate changed evaluation masks or identity {name}")
             for name, scores in payload["scores"].items():
                 check_files(directory / name, scores["fused_and_patch_inputs"])
+                patches = np.load(directory / name / "patch-contributions.npy", allow_pickle=False, mmap_mode="r")
+                check(patches.shape == (12*expected[1], 10, 256) and np.isfinite(patches).all(),
+                      "wrong raw prediction structure")
                 check((scores["objects"], scores["views"], scores["images"]) == (expected[1], 12*expected[1], 120*expected[1]),
                       "formal fusion had incomplete groups")
                 results.append({"scope": scope, "category": category, "seed": seed, "setting": name,
@@ -114,7 +124,7 @@ def main():
     development = read_json(run / "development/development.json")
     ticket = read_json(run / "freeze.json")
     output = {"diagnostic_artifacts": {}, "formal_receipts": {}, "stages": {}}
-    for mode in ("localization", "replay"):
+    for mode in ("localization", "replay", "layers"):
         if info := read_json(args.diagnostics / f"{mode}.json"):
             check_files(args.diagnostics, info["outputs"])
             output["diagnostic_artifacts"].update(info["outputs"])

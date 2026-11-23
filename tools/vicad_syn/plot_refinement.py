@@ -216,17 +216,36 @@ def confirmation(source, folder):
     cats = list(dict.fromkeys(row["category"] for row in rows if row["scope"] == "confirmatory"))
     if not cats:
         return
-    fig, axes = plt.subplots(1, 3, figsize=(8.4, 2.6), layout="constrained")
+    reference = Path(__file__).resolve().parents[2] / "results/vicad_refinement/metrics/published-baseline-reference.csv"
+    published = read_csv(reference) if reference.is_file() else []
+    fig, axes = plt.subplots(1, 3, figsize=(9.2, 3.25), layout="constrained")
     for ax, metric in zip(axes, ("O-AUROC", "I-AUROC", "AUPRO"), strict=True):
         for i, category in enumerate(cats):
             seeds = sorted({r["seed"] for r in rows if r["category"] == category})
-            for seed in seeds:
+            for ordinal, seed in enumerate(seeds):
                 paired = {r["setting"]: float(r[metric]) for r in rows
                           if r["category"] == category and r["seed"] == seed and r["scope"] == "confirmatory"}
-                ax.plot([i-.14, i+.14], [paired["v1_A4"], paired["selected"]], "-", color=".65", lw=.7)
-                ax.scatter([i-.14, i+.14], [paired["v1_A4"], paired["selected"]], c=PALETTE[:2], s=12, zorder=3)
+                jitter = (ordinal - (len(seeds)-1)/2) * .024
+                a, b = i-.16+jitter, i+.07+jitter
+                ax.plot([a,b], [paired["v1_A4"], paired["selected"]], "-", color=".68", lw=.7)
+                ax.scatter(a, paired["v1_A4"], color=PALETTE[0], s=12, zorder=3)
+                ax.scatter(b, paired["selected"], color=PALETTE[1], s=12, zorder=3)
+            for entry in published:
+                if entry["category"] != category:
+                    continue
+                marker, offset = ("^", .23) if entry["method"] == "Dinomaly" else ("s", .37)
+                ax.scatter(i+offset, float(entry[metric]), marker=marker, facecolors="none",
+                           edgecolors=".32", linewidths=.8, s=24)
         ax.set(xticks=range(len(cats)), xticklabels=cats, ylabel=f"{metric} (%)")
-    fig.suptitle("Previously unused categories: v1 A4 (blue) and selected candidate (orange)")
+        ax.tick_params(axis="x", labelrotation=24 if len(cats) > 4 else 0)
+    from matplotlib.lines import Line2D
+    labels = [Line2D([], [], marker="o", ls="", color=PALETTE[i], label=tag, ms=5)
+              for i,tag in enumerate(("v1 A4, paired", "Selected"))]
+    if published:
+        labels.extend(Line2D([],[],marker=marker,ls="",markerfacecolor="none",markeredgecolor=".32",label=tag,ms=5)
+                      for marker,tag in (("^","Dinomaly, published"),("s","INP-Former, published")))
+    fig.legend(handles=labels,loc="outside lower center",ncols=4,fontsize=7.2)
+    fig.suptitle("Frozen evaluation on preregistered confirmation categories")
     save(fig, folder, "confirmatory-by-seed")
 
 

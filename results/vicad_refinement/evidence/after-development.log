@@ -4,3 +4,116 @@ Car layer and directional checks completed
 Cube layer and directional checks completed
 Doll layer and directional checks completed
 Ring layer and directional checks completed
+Car/seed-42: epoch 1/12 normal loss=0.176318
+Car/seed-42: epoch 2/12 normal loss=0.164801
+Car/seed-42: epoch 3/12 normal loss=0.154068
+Car/seed-42: epoch 4/12 normal loss=0.148604
+Car/seed-42: epoch 5/12 normal loss=0.145392
+Car/seed-42: epoch 6/12 normal loss=0.143221
+Car/seed-42: epoch 7/12 normal loss=0.141611
+Car/seed-42: epoch 8/12 normal loss=0.140278
+Car/seed-42: epoch 9/12 normal loss=0.139095
+Car/seed-42: epoch 10/12 normal loss=0.138197
+Car/seed-42: epoch 11/12 normal loss=0.137287
+Car/seed-42: epoch 12/12 normal loss=0.136531
+Car/test-features: encoded 600/8400
+Car/test-features: encoded 1200/8400
+Car/test-features: encoded 1800/8400
+Car/test-features: encoded 2400/8400
+Car/test-features: encoded 3000/8400
+Car/test-features: encoded 3600/8400
+Car/test-features: encoded 4200/8400
+Car/test-features: encoded 4800/8400
+Car/test-features: encoded 5400/8400
+Car/test-features: encoded 6000/8400
+Car/test-features: encoded 6600/8400
+Car/test-features: encoded 7200/8400
+Car/test-features: encoded 7800/8400
+Car/test-features: encoded 8400/8400
+Car/42/v1_A4: [53.7, 49.825218571569394, 13.19783131463123]
+Car/42/selected: [65.10000000000001, 61.62239628750598, 72.12153773974073]
+Cube/seed-42: epoch 1/12 normal loss=0.143429
+Cube/seed-42: epoch 2/12 normal loss=0.132502
+Cube/seed-42: epoch 3/12 normal loss=0.125067
+Cube/seed-42: epoch 4/12 normal loss=0.121593
+Cube/seed-42: epoch 5/12 normal loss=0.119398
+Cube/seed-42: epoch 6/12 normal loss=0.117656
+Cube/seed-42: epoch 7/12 normal loss=0.116286
+Cube/seed-42: epoch 8/12 normal loss=0.115097
+Cube/seed-42: epoch 9/12 normal loss=0.114060
+Cube/seed-42: epoch 10/12 normal loss=0.113040
+Cube/seed-42: epoch 11/12 normal loss=0.112259
+Cube/seed-42: epoch 12/12 normal loss=0.111479
+Cube/test-features: encoded 600/8400
+Cube/test-features: encoded 1200/8400
+Cube/test-features: encoded 1800/8400
+Cube/test-features: encoded 2400/8400
+Cube/test-features: encoded 3000/8400
+Cube/test-features: encoded 3600/8400
+Cube/test-features: encoded 4200/8400
+Cube/test-features: encoded 4800/8400
+Cube/test-features: encoded 5400/8400
+Cube/test-features: encoded 6000/8400
+Cube/test-features: encoded 6600/8400
+Cube/test-features: encoded 7200/8400
+Cube/test-features: encoded 7800/8400
+Cube/test-features: encoded 8400/8400
+Cube/42/v1_A4: [63.0, 55.455713218820016, 66.99169539866104]
+Cube/42/selected: [88.3, 70.00926064227035, 92.14874205441306]
+Doll/seed-42: epoch 1/12 normal loss=0.212406
+Doll/seed-42: epoch 2/12 normal loss=0.198374
+Doll/seed-42: epoch 3/12 normal loss=0.187155
+Doll/seed-42: epoch 4/12 normal loss=0.180927
+Doll/seed-42: epoch 5/12 normal loss=0.177228
+Doll/seed-42: epoch 6/12 normal loss=0.174786
+Doll/seed-42: epoch 7/12 normal loss=0.172986
+Doll/seed-42: epoch 8/12 normal loss=0.171602
+Doll/seed-42: epoch 9/12 normal loss=0.170257
+Doll/seed-42: epoch 10/12 normal loss=0.169439
+Doll/seed-42: epoch 11/12 normal loss=0.168592
+Doll/seed-42: epoch 12/12 normal loss=0.167803
+Doll/test-features: encoded 600/8400
+Doll/test-features: encoded 1200/8400
+Doll/test-features: encoded 1800/8400
+Doll/test-features: encoded 2400/8400
+Doll/test-features: encoded 3000/8400
+Doll/test-features: encoded 3600/8400
+Doll/test-features: encoded 4200/8400
+Doll/test-features: encoded 4800/8400
+Doll/test-features: encoded 5400/8400
+Doll/test-features: encoded 6000/8400
+Doll/test-features: encoded 6600/8400
+Doll/test-features: encoded 7200/8400
+Doll/test-features: encoded 7800/8400
+Doll/test-features: encoded 8400/8400
+Doll/42/v1_A4: [60.0, 49.064986699628044, 35.564706993970596]
+Doll/42/selected: [50.9, 55.93105451728479, 74.1275963628083]
+Ring/seed-42: epoch 1/12 normal loss=0.161711
+Ring/seed-42: epoch 2/12 normal loss=0.144231
+Ring/seed-42: epoch 3/12 normal loss=0.135015
+Ring/seed-42: epoch 4/12 normal loss=0.128367
+Ring/seed-42: epoch 5/12 normal loss=0.124277
+Ring/seed-42: epoch 6/12 normal loss=0.121719
+Ring/seed-42: epoch 7/12 normal loss=0.119924
+Ring/seed-42: epoch 8/12 normal loss=0.118613
+Ring/seed-42: epoch 9/12 normal loss=0.117453
+Ring/seed-42: epoch 10/12 normal loss=0.116586
+Ring/seed-42: epoch 11/12 normal loss=0.115546
+Ring/seed-42: epoch 12/12 normal loss=0.114864
+Ring/test-features: encoded 600/8400
+Ring/test-features: encoded 1200/8400
+Ring/test-features: encoded 1800/8400
+Ring/test-features: encoded 2400/8400
+Ring/test-features: encoded 3000/8400
+Ring/test-features: encoded 3600/8400
+Ring/test-features: encoded 4200/8400
+Ring/test-features: encoded 4800/8400
+Ring/test-features: encoded 5400/8400
+Ring/test-features: encoded 6000/8400
+Ring/test-features: encoded 6600/8400
+Ring/test-features: encoded 7200/8400
+Ring/test-features: encoded 7800/8400
+Ring/test-features: encoded 8400/8400
+Ring/42/v1_A4: [60.5, 56.51163073038074, 51.062435711628986]
+Ring/42/selected: [90.10000000000001, 75.05341880341881, 87.29181418333295]
+2026-11-23T23:43:20+08:00

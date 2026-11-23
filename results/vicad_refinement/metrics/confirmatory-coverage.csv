@@ -1,0 +1,7 @@
+order,category,status,train_objects,test_objects,registered_seeds
+1,Bird,CONFIRMED,30,70,42 43 44
+2,Motor,PARTIAL_DOWNLOAD,30,70,42 43 44
+3,Teapot,QUEUED,30,70,42 43 44
+4,Tube,QUEUED,30,70,42 43 44
+5,Dice,QUEUED,29,70,42 43 44
+6,Holder,QUEUED,30,69,42 43 44

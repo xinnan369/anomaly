@@ -1,0 +1,27 @@
+{
+  "category": "Bird",
+  "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "archive_sha256": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
+  "archive_bytes": 15506344175,
+  "crc_verified_files": 12910,
+  "images": 12000,
+  "masks": 455,
+  "segments": 455,
+  "counts": {
+    "train_good": {
+      "objects": 30,
+      "images": 3600
+    },
+    "test_good": {
+      "objects": 20,
+      "images": 2400
+    },
+    "test_ng": {
+      "objects": 50,
+      "images": 6000,
+      "positive_images": 4550,
+      "undetectable_positive_images": 365
+    }
+  },
+  "split_crc_size_overlap": 0
+}

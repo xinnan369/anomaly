@@ -18,3 +18,75 @@ range 3154116608-3221225471: attempt 1 ConnectionError, retained 43778048 bytes
 range 3154116608-3221225471: attempt 2 SSLError, retained 43778048 bytes
 range 2080374784-2147483647: attempt 3 SSLError, retained 28049408 bytes
 range 4093640704-4160749567: attempt 1 ChunkedEncodingError, retained 22282240 bytes
+range 4160749568-4227858431: attempt 1 ChunkedEncodingError, retained 2621440 bytes
+range 2483027968-2550136831: attempt 2 ConnectionError, retained 43515904 bytes
+range 1946157056-2013265919: attempt 2 ChunkedEncodingError, retained 35651584 bytes
+range 2550136832-2617245695: attempt 1 ChunkedEncodingError, retained 52953088 bytes
+range 4362076160-4429185023: attempt 1 ChunkedEncodingError, retained 13107200 bytes
+range 3221225472-3288334335: attempt 1 ChunkedEncodingError, retained 60817408 bytes
+range 1744830464-1811939327: attempt 1 ChunkedEncodingError, retained 65273856 bytes
+range 3892314112-3959422975: attempt 1 ChunkedEncodingError, retained 33292288 bytes
+range 3758096384-3825205247: attempt 1 ChunkedEncodingError, retained 59244544 bytes
+range 3959422976-4026531839: attempt 1 ChunkedEncodingError, retained 12845056 bytes
+Bird: 32/232 complete ranges
+range 4227858432-4294967295: attempt 1 ChunkedEncodingError, retained 18087936 bytes
+Bird: 40/232 complete ranges
+range 3959422976-4026531839: attempt 2 ChunkedEncodingError, retained 14417920 bytes
+range 2751463424-2818572287: attempt 1 ChunkedEncodingError, retained 44564480 bytes
+range 5368709120-5435817983: attempt 1 ChunkedEncodingError, retained 60030976 bytes
+range 6106906624-6174015487: attempt 1 ChunkedEncodingError, retained 7864320 bytes
+range 6106906624-6174015487: attempt 2 ChunkedEncodingError, retained 36438016 bytes
+Bird: 48/232 complete ranges
+Bird: 56/232 complete ranges
+Bird: 64/232 complete ranges
+Bird: 72/232 complete ranges
+Bird: 80/232 complete ranges
+Bird: 88/232 complete ranges
+Bird: 96/232 complete ranges
+range 7516192768-7583301631: attempt 1 ChunkedEncodingError, retained 66060288 bytes
+range 7381975040-7449083903: attempt 1 ChunkedEncodingError, retained 24379392 bytes
+range 9462349824-9529458687: attempt 1 ChunkedEncodingError, retained 262144 bytes
+range 8858370048-8925478911: attempt 1 ChunkedEncodingError, retained 24379392 bytes
+range 8589934592-8657043455: attempt 1 ChunkedEncodingError, retained 23068672 bytes
+range 9462349824-9529458687: attempt 2 ChunkedEncodingError, retained 4456448 bytes
+range 8388608000-8455716863: attempt 1 ChunkedEncodingError, retained 44302336 bytes
+range 9328132096-9395240959: attempt 1 ChunkedEncodingError, retained 23592960 bytes
+range 6777995264-6845104127: attempt 1 ChunkedEncodingError, retained 58720256 bytes
+range 7449083904-7516192767: attempt 1 ChunkedEncodingError, retained 41156608 bytes
+range 8321499136-8388607999: attempt 1 ChunkedEncodingError, retained 38010880 bytes
+range 10200547328-10267656191: attempt 1 ChunkedEncodingError, retained 3670016 bytes
+range 9999220736-10066329599: attempt 1 ChunkedEncodingError, retained 11534336 bytes
+Bird: 104/232 complete ranges
+Bird: 112/232 complete ranges
+range 9663676416-9730785279: attempt 1 ChunkedEncodingError, retained 6029312 bytes
+range 8388608000-8455716863: attempt 2 ChunkedEncodingError, retained 51904512 bytes
+range 7918845952-7985954815: attempt 1 ChunkedEncodingError, retained 46137344 bytes
+range 10871635968-10938744831: attempt 1 ChunkedEncodingError, retained 35651584 bytes
+Bird: 120/232 complete ranges
+Bird: 128/232 complete ranges
+range 10536091648-10603200511: attempt 1 ChunkedEncodingError, retained 66846720 bytes
+Bird: 136/232 complete ranges
+Bird: 144/232 complete ranges
+range 11744051200-11811160063: attempt 1 ChunkedEncodingError, retained 66846720 bytes
+Bird: 152/232 complete ranges
+Bird: 160/232 complete ranges
+Bird: 168/232 complete ranges
+range 14696841216-14763950079: attempt 1 ChunkedEncodingError, retained 10223616 bytes
+range 12817793024-12884901887: attempt 1 ChunkedEncodingError, retained 51642368 bytes
+Bird: 176/232 complete ranges
+Bird: 184/232 complete ranges
+range 12415139840-12482248703: attempt 1 ChunkedEncodingError, retained 61079552 bytes
+range 14831058944-14898167807: attempt 1 ChunkedEncodingError, retained 66846720 bytes
+Bird: 192/232 complete ranges
+Bird: 200/232 complete ranges
+Bird: 208/232 complete ranges
+Bird: 216/232 complete ranges
+Bird: 224/232 complete ranges
+Bird: 232/232 complete ranges
+Bird: CRC-verified and extracted 2000/12910 files
+Bird: CRC-verified and extracted 4000/12910 files
+Bird: CRC-verified and extracted 6000/12910 files
+Bird: CRC-verified and extracted 8000/12910 files
+Bird: CRC-verified and extracted 10000/12910 files
+Bird: CRC-verified and extracted 12000/12910 files
+Bird: complete SHA-256/CRC/path-isolation audit passed
