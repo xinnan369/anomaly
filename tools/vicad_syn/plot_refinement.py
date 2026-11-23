@@ -127,7 +127,7 @@ def development(source, folder):
     save(fig, folder, "normal-development-and-contamination")
 
 
-def example(source, folder):
+def example(source, folder, diagnostics):
     with np.load(source / "Car/synthetic-maps.npz", allow_pickle=False) as records:
         fig, axes = plt.subplots(2, 4, figsize=(7.7, 4.5), layout="constrained")
         scenario = "all_strong"
@@ -138,11 +138,22 @@ def example(source, folder):
         residual = records[f"0_{scenario}_nine_direct"].mean(0).reshape(16, 16)
         stability = records[f"0_{scenario}_stability"].mean(0).reshape(16, 16)
         epistemic = records[f"0_{scenario}_epistemic"].mean(0).reshape(16, 16)
-        weights = records[f"figure_{scenario}_weights"].reshape(16, 16)
+        feature_example = diagnostics / "normal-feature-example.npz"
+        if feature_example.exists():
+            import torch
+            from vicad_refinement.model import patch_weights
+            with np.load(feature_example, allow_pickle=False) as traced:
+                light = int(traced["light_one_based"]) - 1
+            per_light = torch.from_numpy(records[f"0_{scenario}_stability"][None])
+            weights = patch_weights(torch.zeros_like(per_light), (per_light,))[0,light].numpy().reshape(16,16)
+            weight_label = "H  |  Selected patch weight"
+        else:
+            weights = records[f"figure_{scenario}_weights"].reshape(16, 16)
+            weight_label = "H  |  Protected weight"
         panels = [(image, "A  |  Synthetic structure", None), (layers[0], "B  |  Block 4 reference", "magma"),
                   (layers[1], "C  |  Block 8 reference", "magma"), (layers[2], "D  |  Block 12 reference", "magma"),
                   (residual, "E  |  v1 prediction residual", "magma"), (stability, "F  |  Context instability", "magma"),
-                  (epistemic, "G  |  Head disagreement", "magma"), (weights, "H  |  Protected weight", "viridis")]
+                  (epistemic, "G  |  Head disagreement", "magma"), (weights, weight_label, "viridis")]
         shared = (float(layers.min()), float(layers.max()))
         for index, (axis, (arr, name, cmap)) in enumerate(zip(axes.flat, panels, strict=True)):
             im = axis.imshow(arr, cmap=cmap, extent=[0, 224, 224, 0],
@@ -263,7 +274,7 @@ def main():
         feature_prediction(args.diagnostics,args.output)
     if (args.development / "selection.csv").exists():
         development(args.development, args.output)
-        example(args.development, args.output)
+        example(args.development, args.output, args.diagnostics)
     if args.formal and args.formal.exists():
         exploratory(args.formal, args.output)
         confirmation(args.formal, args.output)

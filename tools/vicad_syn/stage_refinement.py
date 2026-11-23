@@ -2,6 +2,7 @@
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
+import json
 import shutil
 import sys
 import time
@@ -143,7 +144,13 @@ def stage(args, root, checksum):
     for directory in (archives, dataset / "jsons", marker.parent):
         directory.mkdir(parents=True, exist_ok=True)
     rows = load_manifest(args.manifest_cache)
-    atomic_json(dataset / "jsons/meta_unsupervised.json", rows)
+    manifest = dataset / "jsons/meta_unsupervised.json"
+    if not manifest.exists():
+        pending = manifest.with_suffix(".json.tmp")
+        pending.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8", newline="\r\n")
+        pending.replace(manifest)
+    expected = read_json(REGISTRY.parents[1] / "configs/experiment.json")["manifest_sha256"]
+    check(sha256(manifest) == expected, "staged manifest diverges from the pinned revision")
     print(f"{args.category}: staging fixed publication via {args.transport}", flush=True)
     archive = download(args.category, archives, checksum, args.workers, args.transport)
     # The original auditor records the expected hash in the receipt.
