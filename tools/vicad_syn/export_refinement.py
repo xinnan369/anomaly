@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -39,7 +40,7 @@ def summarize_mechanism(rows):
     return outputs
 
 
-def verify_formal(run, folder, ticket, args, registry, allowed, written):
+def verify_formal(run, folder, ticket, registry, allowed, written):
     results = []
     for category in allowed:
         category_dir = folder / category
@@ -51,7 +52,10 @@ def verify_formal(run, folder, ticket, args, registry, allowed, written):
         check(receipt["freeze_sha256"] == digest(run / "freeze.json"), "formal result freeze binding differs")
         check((receipt["train_objects"], receipt["test_objects"]) == tuple(expected), "formal result has wrong split sizes")
         check(receipt["pretest_sha256"] == digest(category_dir / "pretest.json"), "changed timestamp gate")
-        ticket_checkpoint = read_json(category_dir / "pretest.json")["binding"]["checkpoints"]
+        gate = read_json(category_dir / "pretest.json")
+        check(gate["binding"]["input_freeze_sha256"] == digest(run / "freeze.json") and
+              datetime.fromisoformat(gate["utc"]) >= datetime.fromisoformat(ticket["sealed_utc"]), "pretest gate chronology differs")
+        ticket_checkpoint = gate["binding"]["checkpoints"]
         for cache_name in ("train", "test"):
             directory = (run / "development" / category / "train-features" if scope == "exploratory"
                          and cache_name == "train" else category_dir / f"{cache_name}-features")
@@ -129,7 +133,7 @@ def main():
         output["freeze_sha256"] = digest(run / "freeze.json")
         for scope, groups in (("exploratory", registry["development_categories"]),
                               ("confirmatory", registry["confirmatory_order"])):
-            formal.extend(verify_formal(run, run / scope, ticket, args, registry, groups, output["formal_receipts"]))
+            formal.extend(verify_formal(run, run / scope, ticket, registry, groups, output["formal_receipts"]))
     if formal:
         csv_write(folder / "formal.csv", formal)
         partitions = sorted({(r["scope"], r["category"], r["setting"]) for r in formal})

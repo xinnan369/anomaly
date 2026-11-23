@@ -34,7 +34,7 @@ def architecture(folder):
         "frozen": (2.7, 2.5, 2.0, "Frozen ViT-B/14 reg4\nRemove CLS + registers"),
         "v1": (5.3, 4.0, 2.1, "v1: block 12\nLOLO feature prediction"),
         "multi": (5.3, 2.5, 2.1, "Blocks 4, 8, 12\nMulti-layer prediction"),
-        "normal": (5.3, 1.0, 2.1, "Official normal objects\nView/light patch prototypes"),
+        "normal": (5.3, 1.0, 2.1, "Train-only normal objects\nView/light patch prior"),
         "global": (8.0, 4.0, 1.8, "v1 global\nlight weighting"),
         "local": (8.0, 1.75, 1.8, "Patch weights\nand score floor"),
     }
@@ -76,7 +76,7 @@ def v1_diagnosis(source, folder):
         axes[2].plot(x, [float(row[key]) for row in data], "o-", label=label, color=PALETTE[i], lw=1)
     axes[2].axhline(.5, color=".6", linestyle=":", lw=.8)
     axes[2].set(xticks=x, xticklabels=categories, ylabel="Patch AUROC (sampled)", title="C  |  Signal discrimination")
-    axes[2].legend(fontsize=6.5)
+    axes[2].legend(loc="lower right", fontsize=6.5)
     save(fig, folder, "v1-localization-mechanisms")
 
     with np.load(source / "Car-v1-example.npz", allow_pickle=False) as run:
@@ -90,7 +90,9 @@ def v1_diagnosis(source, folder):
             if i >= 2:
                 axis.contour(run["mask"], levels=[.5], colors=["#55f0e5"], linewidths=.65)
             axis.set_title(title, loc="left")
-            axis.axis("off")
+            axis.set(xticks=[], yticks=[])
+            for spine in axis.spines.values():
+                spine.set(visible=True, color="#d0d7e2", linewidth=.6)
         fig.colorbar(view, ax=list(axes[2:]), fraction=.055, pad=.03, label="Residual")
         save(fig, folder, "car-v1-patch-resolution")
 
