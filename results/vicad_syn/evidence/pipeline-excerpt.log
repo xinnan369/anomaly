@@ -1,0 +1,90 @@
+Ran 10 tests in 0.466s
+OK
+Ran 19 tests in 1.694s
+OK
+Ran 9 tests in 0.009s
+OK
+CPU and NVIDIA GeForce RTX 3090 smoke passed
+Car/development epoch 1/3 normal loss 0.177958 val 0.170928
+Car/development epoch 2/3 normal loss 0.168089 val 0.162824
+Car/development epoch 3/3 normal loss 0.158271 val 0.154258
+Car/conditioned epoch 1/12 normal loss 0.176318
+Car/conditioned epoch 2/12 normal loss 0.164801
+Car/conditioned epoch 3/12 normal loss 0.154068
+Car/conditioned epoch 4/12 normal loss 0.148604
+Car/conditioned epoch 5/12 normal loss 0.145392
+Car/conditioned epoch 6/12 normal loss 0.143221
+Car/conditioned epoch 7/12 normal loss 0.141611
+Car/conditioned epoch 8/12 normal loss 0.140278
+Car/conditioned epoch 9/12 normal loss 0.139095
+Car/conditioned epoch 10/12 normal loss 0.138197
+Car/conditioned epoch 11/12 normal loss 0.137287
+Car/conditioned epoch 12/12 normal loss 0.136531
+Car/unconditioned epoch 1/12 normal loss 0.206447
+Car/unconditioned epoch 2/12 normal loss 0.200321
+Car/unconditioned epoch 3/12 normal loss 0.197791
+Car/unconditioned epoch 4/12 normal loss 0.195327
+Car/unconditioned epoch 5/12 normal loss 0.193362
+Car/unconditioned epoch 6/12 normal loss 0.192268
+Car/unconditioned epoch 7/12 normal loss 0.191945
+Car/unconditioned epoch 8/12 normal loss 0.190399
+Car/unconditioned epoch 9/12 normal loss 0.188987
+Car/unconditioned epoch 10/12 normal loss 0.188403
+Car/unconditioned epoch 11/12 normal loss 0.187089
+Car/unconditioned epoch 12/12 normal loss 0.186496
+Car/A1: {'O-AUROC': 52.2, 'I-AUROC': 50.20283744948021, 'AUPRO': 13.401770046738411}
+Car/A2: {'O-AUROC': 53.0, 'I-AUROC': 49.882088884507766, 'AUPRO': 13.337271404591759}
+Car/A3: {'O-AUROC': 52.300000000000004, 'I-AUROC': 50.20132090780185, 'AUPRO': 12.972104727827155}
+Car/A4: {'O-AUROC': 53.7, 'I-AUROC': 49.825218571569394, 'AUPRO': 13.197830491922586}
+Car/A0: {'O-AUROC': 52.400000000000006, 'I-AUROC': 52.925029762130436, 'AUPRO': 4.065068886654796}
+Cube/development epoch 1/3 normal loss 0.144192 val 0.140299
+Cube/development epoch 2/3 normal loss 0.134791 val 0.132335
+Cube/development epoch 3/3 normal loss 0.127551 val 0.126379
+Cube/conditioned epoch 1/12 normal loss 0.143429
+Cube/conditioned epoch 2/12 normal loss 0.132502
+Cube/conditioned epoch 3/12 normal loss 0.125067
+Cube/conditioned epoch 4/12 normal loss 0.121593
+Cube/conditioned epoch 5/12 normal loss 0.119398
+Cube/conditioned epoch 6/12 normal loss 0.117656
+Cube/conditioned epoch 7/12 normal loss 0.116286
+Cube/conditioned epoch 8/12 normal loss 0.115097
+Cube/conditioned epoch 9/12 normal loss 0.114060
+Cube/conditioned epoch 10/12 normal loss 0.113040
+Cube/conditioned epoch 11/12 normal loss 0.112259
+Cube/conditioned epoch 12/12 normal loss 0.111479
+Cube/A1: {'O-AUROC': 63.1, 'I-AUROC': 54.82539208364451, 'AUPRO': 67.15125495432713}
+Cube/A4: {'O-AUROC': 63.0, 'I-AUROC': 55.455713218820016, 'AUPRO': 66.99170124613939}
+Doll/development epoch 1/3 normal loss 0.214531 val 0.205077
+Doll/development epoch 2/3 normal loss 0.201232 val 0.197995
+Doll/development epoch 3/3 normal loss 0.191860 val 0.187805
+Doll/conditioned epoch 1/12 normal loss 0.212406
+Doll/conditioned epoch 2/12 normal loss 0.198374
+Doll/conditioned epoch 3/12 normal loss 0.187155
+Doll/conditioned epoch 4/12 normal loss 0.180927
+Doll/conditioned epoch 5/12 normal loss 0.177228
+Doll/conditioned epoch 6/12 normal loss 0.174786
+Doll/conditioned epoch 7/12 normal loss 0.172986
+Doll/conditioned epoch 8/12 normal loss 0.171602
+Doll/conditioned epoch 9/12 normal loss 0.170257
+Doll/conditioned epoch 10/12 normal loss 0.169439
+Doll/conditioned epoch 11/12 normal loss 0.168592
+Doll/conditioned epoch 12/12 normal loss 0.167803
+Doll/A1: {'O-AUROC': 57.599999999999994, 'I-AUROC': 48.92429325753736, 'AUPRO': 36.13003034777131}
+Doll/A4: {'O-AUROC': 60.0, 'I-AUROC': 49.064986699628044, 'AUPRO': 35.56470393686394}
+Ring/development epoch 1/3 normal loss 0.163676 val 0.154735
+Ring/development epoch 2/3 normal loss 0.148063 val 0.142660
+Ring/development epoch 3/3 normal loss 0.138725 val 0.134378
+Ring/conditioned epoch 1/12 normal loss 0.161711
+Ring/conditioned epoch 2/12 normal loss 0.144231
+Ring/conditioned epoch 3/12 normal loss 0.135015
+Ring/conditioned epoch 4/12 normal loss 0.128367
+Ring/conditioned epoch 5/12 normal loss 0.124277
+Ring/conditioned epoch 6/12 normal loss 0.121719
+Ring/conditioned epoch 7/12 normal loss 0.119924
+Ring/conditioned epoch 8/12 normal loss 0.118613
+Ring/conditioned epoch 9/12 normal loss 0.117453
+Ring/conditioned epoch 10/12 normal loss 0.116586
+Ring/conditioned epoch 11/12 normal loss 0.115546
+Ring/conditioned epoch 12/12 normal loss 0.114864
+Ring/A1: {'O-AUROC': 58.60000000000001, 'I-AUROC': 56.86310217560218, 'AUPRO': 51.77348729526855}
+Ring/A4: {'O-AUROC': 60.5, 'I-AUROC': 56.51163073038074, 'AUPRO': 51.062420712135335}

@@ -1,0 +1,22 @@
+{
+  "device": "NVIDIA GeForce RTX 3090",
+  "checkpoint_sha256": "a3f88b6bf9a041f032dd3d8e0835a9b81ebfcf08c4dd2217b0ac3dc1964892e3",
+  "groups": 72,
+  "batch_groups": 4,
+  "split": "normal training features only",
+  "warmups": 1,
+  "timings": {
+    "full_prediction": {
+      "mean_batch_seconds": 0.00761524349998884,
+      "max_incremental_cuda_bytes": 503316480
+    },
+    "context_instability": {
+      "mean_batch_seconds": 0.010711950277760075,
+      "max_incremental_cuda_bytes": 471859200
+    },
+    "epistemic_statistics": {
+      "mean_batch_seconds": 0.0009666614444086008,
+      "max_incremental_cuda_bytes": 220200960
+    }
+  }
+}

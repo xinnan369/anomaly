@@ -1,0 +1,108 @@
+{
+  "manifest": {
+    "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+    "manifest_sha256": "bbeaa75c231c981e443c818859a701fcc0daf1769065abd91631f7e676725980",
+    "classes": {
+      "Bird": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Car": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Cube": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Dice": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Doll": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Holder": {
+        "good_ids": 20,
+        "ng_ids": 49,
+        "shared_bare_ids": [],
+        "official_objects": 69,
+        "official_views": 828,
+        "rows": 8280
+      },
+      "Motor": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Ring": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Teapot": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      },
+      "Tube": {
+        "good_ids": 20,
+        "ng_ids": 50,
+        "shared_bare_ids": [],
+        "official_objects": 70,
+        "official_views": 840,
+        "rows": 8400
+      }
+    }
+  },
+  "regression": {
+    "fixture": "synthetic_only",
+    "raw_rows": 240,
+    "objects": 2,
+    "views": 24,
+    "repeated_object_names": 1,
+    "repeated_view_names": 12,
+    "unordered_outputs_accepted": true,
+    "corrupted_object_and_view_scores_rejected": true,
+    "partly_visible_illumination_verified": true,
+    "mask_metadata_disagreement_verified": true,
+    "synthetic_official_metrics": {
+      "AUROC_obj_sp": 1.0,
+      "AUROC_view_sp": 1.0,
+      "AUPRO_view": 1.0
+    },
+    "rows": 142,
+    "nonfinite_or_undefined": 119,
+    "rows_with_label_disagreements": 5
+  }
+}

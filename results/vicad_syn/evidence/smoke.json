@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "frozen": {
+    "config": {
+      "data_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+      "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+      "backbone": "dinov2_vitb14_reg4_pretrain.pth",
+      "backbone_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+      "manifest_sha256": "7ac578bf7bef5148edccd318a55a73694eb9d216c87b7f9186a45e112ea27e43",
+      "seed": 42,
+      "dev_objects": 24,
+      "dev_epochs": 3,
+      "epochs": 12,
+      "batch_groups": 4,
+      "encode_batch": 24,
+      "workers": 8,
+      "hidden": 96,
+      "heads": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "epsilon": 1e-08,
+      "temperature": 1,
+      "settings": {
+        "Car": [
+          "A0",
+          "A1",
+          "A2",
+          "A3",
+          "A4"
+        ],
+        "Cube": [
+          "A1",
+          "A4"
+        ],
+        "Doll": [
+          "A1",
+          "A4"
+        ],
+        "Ring": [
+          "A1",
+          "A4"
+        ]
+      }
+    },
+    "config_sha256": "7ba923b32acf7f85bda32415e6ce4429fa22612932f68978494a6ca661e012ab",
+    "sources": {
+      "__init__.py": "8ec3530559a364eba8468e40d8ebace10eb55c1ad00e5cc4dec5950ace1189fb",
+      "cli.py": "1a26762a0b22fdd814e3ccc2d9d844fcce5dad0d9cc2a1495fb8c6de5c60679a",
+      "data/cache.py": "4ea9f1a6b4f05ddda6e4ce2c3401372d2ec47ccbb796a6f5c9c6f030f27e24a5",
+      "data/manifest.py": "30412ee9ce13e4f2478cf02f49a53835f2da6f3444c459b5b39c420af17fdcc7",
+      "evaluation/synergy.py": "f5ca8d2a9e578b29e5b47e95dd86cb56fad07bc723526500a825c23c16fbf504",
+      "experiment.py": "2cbb1dadcb727c6dba0275f03e600c8cf5dce4c1ff688922bd05939b93c93c8a",
+      "fusion/weights.py": "a600d0f3dcd5af096876f937012b3db66066b1aba0d1359704ce2497a9279c0f",
+      "models/backbone.py": "f552fb2e2206854f3048882021ceae4825d2213a488b70313fdb64b8b5823822",
+      "models/predictor.py": "3bedb73c030bfe0f75eae3e555d3c4a52d5d494f94dbf0c0501962c2c3c80343",
+      "training/train.py": "b25cd5d3043fd853a1dcd2a7e48fc411f70fd654308c6d11b6cdf4523f04e270",
+      "uncertainty/signals.py": "969a3275fb9c5ac850d894636aad798e6c1dff7f72b3139b634a47222da7a883"
+    }
+  },
+  "device": "NVIDIA GeForce RTX 3090",
+  "torch": "2.2.2+cu121",
+  "python": "3.11.11",
+  "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "records": {
+    "cpu": {
+      "seconds": 1.6118733830000025,
+      "patch_shape": [
+        1,
+        10,
+        256,
+        768
+      ],
+      "encoder_frozen": true,
+      "classification_register_tokens_removed": 5,
+      "predictor_gradients_finite": true,
+      "allocated_bytes": null
+    },
+    "cuda": {
+      "seconds": 0.5503774969999995,
+      "patch_shape": [
+        1,
+        10,
+        256,
+        768
+      ],
+      "encoder_frozen": true,
+      "classification_register_tokens_removed": 5,
+      "predictor_gradients_finite": true,
+      "allocated_bytes": 617149440
+    }
+  },
+  "utc": "2026-11-23T09:08:14.110254+00:00"
+}

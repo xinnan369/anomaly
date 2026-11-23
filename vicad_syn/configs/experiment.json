@@ -1,0 +1,41 @@
+{
+  "data_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+  "backbone": "dinov2_vitb14_reg4_pretrain.pth",
+  "backbone_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+  "manifest_sha256": "7ac578bf7bef5148edccd318a55a73694eb9d216c87b7f9186a45e112ea27e43",
+  "seed": 42,
+  "dev_objects": 24,
+  "dev_epochs": 3,
+  "epochs": 12,
+  "batch_groups": 4,
+  "encode_batch": 24,
+  "workers": 8,
+  "hidden": 96,
+  "heads": 3,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "epsilon": 1e-8,
+  "temperature": 1,
+  "settings": {
+    "Car": [
+      "A0",
+      "A1",
+      "A2",
+      "A3",
+      "A4"
+    ],
+    "Cube": [
+      "A1",
+      "A4"
+    ],
+    "Doll": [
+      "A1",
+      "A4"
+    ],
+    "Ring": [
+      "A1",
+      "A4"
+    ]
+  }
+}
