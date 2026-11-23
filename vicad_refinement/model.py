@@ -16,7 +16,12 @@ class MultiLayerBackbone(FrozenBackbone):
 
     @torch.no_grad()
     def forward(self, images):
-        layers = self.encoder.get_intermediate_layers(images, n=self.blocks)
+        tokens = self.encoder.prepare_tokens_with_masks(images)
+        layers = []
+        for index, block in enumerate(self.encoder.blocks):
+            tokens = block(tokens)
+            if index in self.blocks:
+                layers.append(self.encoder.norm(tokens))
         check(len(layers) == len(self.blocks) and self.encoder.num_register_tokens == 4, "incorrect block output")
         check(all(layer.shape[1:] == (261, 768) for layer in layers), "incorrect token layout")
         return torch.stack([F.normalize(layer[:, 5:].float(), dim=-1) for layer in layers], dim=1)
