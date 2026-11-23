@@ -40,6 +40,19 @@ def summarize_mechanism(rows):
     return outputs
 
 
+def development_cells(rows):
+    cells = {}
+    for row in rows:
+        key = tuple(row[field] for field in ("category", "scenario", "candidate", "fusion"))
+        cells.setdefault(key, []).append(row)
+    output = []
+    for (category, scenario, feature, fusion), items in cells.items():
+        aps = [float(row["pixel_ap"]) for row in items if row["pixel_ap"]]
+        output.append({"category": category, "scenario": scenario, "candidate": feature, "fusion": fusion,
+                       "views": len(items), "mean_pixel_ap": float(np.mean(aps)) if aps else None,
+                       "mean_fraction_above_clean_p99": float(np.mean([float(x["above_clean_p99"]) for x in items]))})
+    return output
+
 def verify_formal(run, folder, ticket, registry, allowed, written):
     results = []
     for category in allowed:
@@ -121,6 +134,7 @@ def main():
         check(development["winner"] == choice, "normal-only winner mismatch")
         csv_write(folder / "development-matrix.csv", rank)
         csv_write(folder / "contamination-summary.csv", summarize_mechanism(all_mechanisms))
+        csv_write(folder / "development-cells.csv", development_cells(codes))
         csv_write(folder / "development-rows.csv", codes)
         csv_write(folder / "contamination-rows.csv", all_mechanisms)
         output["stages"]["development"] = "PASS"
@@ -145,6 +159,18 @@ def main():
                              if len(part)>1 or metric=="mean" else None
                              for key in METRICS for metric,method in (("mean",np.mean),("sample_sd",lambda x: np.std(x,ddof=1)))}})
         csv_write(folder / "formal-summary.csv", means)
+        accepted = load_rows(registry_file.parents[2] / "results/vicad_syn/metrics/baseline-comparison.csv")
+        paired = []
+        for row in formal:
+            if row["scope"] != "exploratory" or row["setting"] != "selected":
+                continue
+            for base in accepted:
+                if base["class"] == row["category"]:
+                    paired.append({"category": row["category"], "reference": base["method"], "identity": base["identity"],
+                                   **{k: base[k] for k in METRICS},
+                                   **{"selected_minus_" + k: row[k] - float(base[k]) if base[k] else None for k in METRICS}})
+        if paired:
+            csv_write(folder / "accepted-baseline-comparison.csv", paired)
     output["sha256"] = {p.name: digest(p) for p in sorted(folder.glob("*.csv"))}
     write_json(folder / "verification.json", output)
 

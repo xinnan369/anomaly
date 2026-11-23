@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from tools.vicad_syn.stage_refinement import get_part
+from tools.vicad_syn.stage_refinement import get_part, lfs_download_source
 
 
 MODULE = "tools.vicad_syn.stage_refinement"
@@ -51,3 +51,19 @@ class TransferTests(unittest.TestCase):
             with patch(MODULE + ".requests.get") as get:
                 self.assertEqual(get_part("mock-archive", 9, (2, 7), location), final)
             get.assert_not_called()
+
+    def test_lfs_url_comes_from_exact_published_oid(self):
+        checksum = "a" * 64
+        item = {"oid": checksum, "size": 98,
+                "actions": {"download": {"href": "https://us.aws.cdn.hf.co/object"}}}
+        reply = MagicMock()
+        reply.json.return_value = {"objects": [item]}
+        with patch(MODULE + ".requests.post") as post:
+            post.return_value.__enter__.return_value = reply
+            source = lfs_download_source(checksum, 98)
+            self.assertEqual(source(), ("https://us.aws.cdn.hf.co/object", {}))
+            self.assertEqual(source(), ("https://us.aws.cdn.hf.co/object", {}))
+            post.assert_called_once()
+            item["oid"] = "b" * 64
+            with self.assertRaisesRegex(ValueError, "different object"):
+                lfs_download_source(checksum, 98)()
