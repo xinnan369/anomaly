@@ -1,0 +1,133 @@
+{
+  "root": "D:/vicad-syn/task-003-v1",
+  "official_inputs": "D:/vicad-syn/task-002-stage2",
+  "config_sha256": "7ba923b32acf7f85bda32415e6ce4429fa22612932f68978494a6ca661e012ab",
+  "external_verification_sha256": "1d6c6f2cfa7b02f98557b1c3cdd4f8cebc564adeea395bf9924f6fa228aa6ae2",
+  "logs": [
+    {
+      "path": "pipeline.log",
+      "bytes": 14972,
+      "sha256": "f5d513fe99d8ce7638be3d5b1a589eafa2ea9c24eec1e73f6041ae67a61b096c"
+    },
+    {
+      "path": "run.sh",
+      "bytes": 753,
+      "sha256": "2318d7c901ff314095cc4427e09c8822d084af3a184e9765b68bcd4d159a329b"
+    },
+    {
+      "path": "finalize.sh",
+      "bytes": 948,
+      "sha256": "178558cf7425d4fa6aa713023dcebd85f5fec4b4c740cf1cb3276d8535e3270b"
+    },
+    {
+      "path": "extension.log",
+      "bytes": 4001,
+      "sha256": "73ce73f2e59a6f5726b77113600224d321b48356c908ef7cce8aa0adfd984c24"
+    },
+    {
+      "path": "run-extension.sh",
+      "bytes": 502,
+      "sha256": "210a166a1cedf5b74f534415ccd5fae4f05e5f788bfcf0ed1ee6926f2bf8d687"
+    },
+    {
+      "path": "frozen-protocol.json",
+      "bytes": 2414,
+      "sha256": "d5b64d44b77b3fccd17732b06344cbc050eecbfc0fb2a09ba26b2dfe45dd97e6"
+    },
+    {
+      "path": "smoke.json",
+      "bytes": 3019,
+      "sha256": "b4623506f32e631e11a78abbf1f7c1f9942f04e9557bea5d0600d28f88647560"
+    },
+    {
+      "path": "identity-synthetic.json",
+      "bytes": 2651,
+      "sha256": "f0370c6988605c938802fc85ca5e23b0dc5b9b355384089b85cc2ad98bb327e3"
+    },
+    {
+      "path": "environment-freeze.txt",
+      "bytes": 1724,
+      "sha256": "878df96da3f868e3b16b40abb4a4bcf3896f9106e6227a7ac1365b76ff7937ef"
+    },
+    {
+      "path": "gpu-environment.csv",
+      "bytes": 86,
+      "sha256": "723c84a90fbac92254416e709d34297be0b966d57842d0658354d1a9814c885d"
+    },
+    {
+      "path": "car-early-mask-check.json",
+      "bytes": 122,
+      "sha256": "3e30f8b69f3828520e64ebf939c241fd09cb61a911dfbbc5a4ced68640c6b73f"
+    },
+    {
+      "path": "final-tests.log",
+      "bytes": 509,
+      "sha256": "c680d534acbb9fbd4b3f040edcb7896cab909262b5d8d21307dc8771950e6886"
+    },
+    {
+      "path": "delivery/finalization.log",
+      "bytes": 133,
+      "sha256": "0306f9bd9b0bf110ae20c3e4aa3c68af40b12be71c3475eac31b9df86bcb364c"
+    },
+    {
+      "path": "delivery/uncertainty-cost.json",
+      "bytes": 642,
+      "sha256": "75f8d487c39f60585eb07cbd406b67346f225bd8cb8fddb9dd31f4c091b94f13"
+    },
+    {
+      "path": "Car/conditioned/epochs.json",
+      "bytes": 2768,
+      "sha256": "59f27f3ca641a96575aa40f665fa595b4b608f6e9e7755395727b503eafb831c"
+    },
+    {
+      "path": "Car/development/epochs.json",
+      "bytes": 738,
+      "sha256": "73c7fa2d9f5ff7b024a0f5691a80191bf0d2c543657e690886e353766d7ce520"
+    },
+    {
+      "path": "Car/unconditioned/epochs.json",
+      "bytes": 2764,
+      "sha256": "eb61f315c8b997c07f0ae5cabed636e8806da9a8e8bd76266abdf8336490f1c3"
+    },
+    {
+      "path": "Cube/conditioned/epochs.json",
+      "bytes": 2768,
+      "sha256": "c8019d04b887d518115c9aae6ab51b848d41b5f03fda78e01371f55c49e758fc"
+    },
+    {
+      "path": "Cube/development/epochs.json",
+      "bytes": 738,
+      "sha256": "c13918c60ff57e54ada75c1ae94d9d3ef4fa8cd4801b6f39e8465cbe761f40cd"
+    },
+    {
+      "path": "Doll/conditioned/epochs.json",
+      "bytes": 2765,
+      "sha256": "5d157ade99b1c36d2970cf1ee25ada7f5d60100d29762bf2c4eda6c4d521ae2b"
+    },
+    {
+      "path": "Doll/development/epochs.json",
+      "bytes": 737,
+      "sha256": "e93e526a72085ae39d08f03ff40bc7e3b7c24d86455dc73410bc7e4f0d0ba967"
+    },
+    {
+      "path": "Ring/conditioned/epochs.json",
+      "bytes": 2763,
+      "sha256": "1696ecea3aaaf50453813ff78a6bcd9cade020cc10e254b8ec95616f498f86bd"
+    },
+    {
+      "path": "Ring/development/epochs.json",
+      "bytes": 733,
+      "sha256": "2fd2289113a8f0eafeb372526b683f3bbc49ae5ff821cf807e06f876fec90646"
+    },
+    {
+      "path": "extension-exit-code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "extension/extension.json",
+      "bytes": 16713,
+      "sha256": "d35fba38284f8daac0b05cf8a8b47e594e5f6be96b2fe2282b58da16768aa10e"
+    }
+  ]
+}

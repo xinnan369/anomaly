@@ -5,7 +5,8 @@
 | 任务 | 报告路径 | 状态 |
 | --- | --- | --- |
 | [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) · [整改复跑日志](evidence/TASK-001/test-log.txt) | ACCEPTED |
-| TASK-002 | [执行报告](TASK-002-REPORT.md) · [最终研究闭环](TASK-002-REPORT.md#第二阶段最终结果) · [结果与证据](../results/baselines/README.md) | 第一阶段独立验收通过（APPROVED）。最终研究闭环 实验完成，待独立验收。[PR #2](https://github.com/xinnan369/anomaly/pull/2) 保持开放。 |
+| TASK-002 | [执行报告](TASK-002-REPORT.md) · [基线结果](../results/baselines/README.md) | ACCEPTED_WITH_EXCEPTION / 有限例外验收通过。[已合并 PR #2](https://github.com/xinnan369/anomaly/pull/2) |
+| TASK-003 | [执行报告](TASK-003-REPORT.md) · [结果与证据](../results/vicad_syn/README.md) | 实验完成，待独立验收。4/4 类正式结果通过，Car 核心消融 A0–A4 完成。 |
 
 ## 初始化执行记录
 

@@ -1,0 +1,17 @@
+{
+  "sealed_utc": "2026-11-23T09:14:32.7662223Z",
+  "purpose": "Prespecified secondary reuse of frozen outputs if core pipeline succeeds",
+  "classes": [
+    "Cube",
+    "Doll",
+    "Ring"
+  ],
+  "settings": [
+    "A2",
+    "A3"
+  ],
+  "order": "Cube A2,A3 then Doll A2,A3 then Ring A2,A3",
+  "uses_frozen_patch_signals": true,
+  "extra_training": false,
+  "A0_scope": "Car only"
+}

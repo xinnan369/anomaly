@@ -1,0 +1,6 @@
+{
+  "frozen_utc": "2026-11-23T09:11:02.181109+00:00",
+  "extension_sealed_utc": "2026-11-23T09:14:32.7662223Z",
+  "first_metric_file_mtime_utc": "2026-11-23T09:22:10.408336+00:00",
+  "description": "Local clock and file mtime are corroboration for the logged execution order."
+}

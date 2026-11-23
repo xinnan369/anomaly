@@ -1,9 +1,9 @@
 # TASK-002 · M²AD 官方基线复现与实验环境固化
 
-- 当前状态　实验完成，待独立验收。[最终研究闭环](#第二阶段最终结果)
+- 当前状态　**ACCEPTED_WITH_EXCEPTION / 有限例外验收通过**。2026-11-23，PR #2 普通合并。Merge SHA 与合并后的 main 均为 d1ddbb9d698114ccb616ad96c23565f7f2b1e275。[正式验收](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6018691109) · [合并提交](https://github.com/xinnan369/anomaly/commit/d1ddbb9d698114ccb616ad96c23565f7f2b1e275)
 - 日期　2026-11-19（北京时间）
 - 范围　第一阶段环境固化和单卡 Car smoke test
-- 状态　TASK-002 第一阶段：独立验收通过（APPROVED）。TASK-002 整体尚未完成，仍为当前任务，PR #2 保持开放。
+- 第一阶段验收状态　独立验收通过（APPROVED）。
 - 验收记录　ChatGPT Review ID `5970938786`，验收提交 `90fe550c28d00191ac67c0739d6097b6472fdc4b`。[审查记录](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-5970938786)
 - 验收范围　仅包括 WSL2 环境固化、RTX 3090 CUDA 环境、Car/Dinomaly 单步训练、留出正常实例推理及 ADEval CUDA 合成测试。
 
@@ -303,7 +303,7 @@ Dinomaly/Doll 的原任务在第 11,241 步因非有限损失中断。原失败�
 
 ## 第二阶段最终结果
 
-**TASK-002 最终研究闭环 · 实验完成，待独立验收。** 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[审查记录 6011031984](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6011031984) · [PR #2](https://github.com/xinnan369/anomaly/pull/2)
+**TASK-002 最终研究闭环 · ACCEPTED_WITH_EXCEPTION / 有限例外验收通过。** 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[审查记录 6011031984](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6011031984) · [PR #2](https://github.com/xinnan369/anomaly/pull/2)
 
 ### 原版 Doll 的数值故障
 
@@ -340,4 +340,4 @@ Doll 原版故障行保持 `OFFICIAL_FAILED`。旧续跑的三项分数为 81.70
 
 重新从磁盘核验七组原版 checkpoint、133 个预测数组和官方指标。版本、清单、训练与测试产品隔离、评价 checkpoint 绑定及各组状态见机器核验。WSL2 的 19 项环境和回归测试、9 项审计测试及 CUDA 官方融合身份回归通过。RTX 4090 尚未验证。完整文件保存在 `D:/vicad-syn/task-002-stage2`，稳定版目录为 `doll-stabilized-20261122`。日志、RNG、批序、检查点及预测文件的路径和 SHA-256 可查。原始训练数据、模型权重和预测数组留在外部存储。[机器核验](../results/baselines/metrics/verification.json) · [运行索引](../results/baselines/metrics/run-index.json) · [结果及图表](../results/baselines/README.md)
 
-建议对 TASK-002 作有限例外结项。七组原版和 Doll 的可复现原版故障给出清楚的证据边界，稳定版另外验证了在相同固定配置下，预先固定的分母下界可以支撑完整训练与评价。该建议待独立验收。
+建议对 TASK-002 作有限例外结项。七组原版和 Doll 的可复现原版故障给出清楚的证据边界，稳定版另外验证了在相同固定配置下，预先固定的分母下界可以支撑完整训练与评价。正式验收同意该有限例外范围。[验收记录](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6018691109)

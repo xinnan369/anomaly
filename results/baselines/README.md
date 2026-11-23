@@ -1,6 +1,6 @@
 # TASK-002 基线与稳定性证据
 
-**实验完成，待独立验收。** 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[最终报告](../../reports/TASK-002-REPORT.md#第二阶段最终结果)
+**ACCEPTED_WITH_EXCEPTION / 有限例外验收通过。** 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[最终报告](../../reports/TASK-002-REPORT.md#第二阶段最终结果)
 
 ## 正式结果
 

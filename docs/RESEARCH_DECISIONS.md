@@ -55,3 +55,12 @@
 - 建议对 TASK-002 作有限例外结项。七组原版和 Doll 的可复现原版故障给出清楚的证据边界，稳定版另外验证了在相同固定配置下，预先固定的分母下界可以支撑完整训练与评价。该建议待独立验收。
 
 [审查记录](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6011031984) · [数值与复验报告](../reports/TASK-002-REPORT.md#第二阶段最终结果)
+
+## 2026-11-23 · TASK-003 固定设计与证据范围
+
+- TASK-002 以有限例外验收结果作为参考。完整连续训练轨迹、原版失败、稳定性变体与历史恢复分别保留。[TASK-002 结果](../results/baselines/README.md)
+- 主干保持冻结。预测严格使用同视角的九个源光照。上下文扰动与独立头参数变化形成不同信号，二者都采用实际测量。
+- A1–A4 复用冻结输出。等权走官方原样融合。加权只影响同视角的光照分数与热图。配置在首个正式测试指标前固定。扩展优先级为 Cube、Doll、Ring 的 A2/A3。
+- 与原版 INP-Former 对照时，O-AUROC 高于 0/4 类、I-AUROC 高于 0/4 类、AUPRO 高于 0/4 类。与有有效指标的原版 Dinomaly 对照时，O-AUROC 高于 0/3 类、I-AUROC 高于 0/3 类、AUPRO 高于 0/3 类。联合可靠性相对等权时，O-AUROC 上升 3/4 类、I-AUROC 上升 2/4 类、AUPRO 上升 0/4 类。分项结果支持评估局部收益，当前一次固定种子实验不足以确认一致提升。个别诊断只作为后续研究假设。详细代价和局限见报告。
+
+[数学定义和执行结果](../reports/TASK-003-REPORT.md) · [条件统计](../results/vicad_syn/metrics/condition-profiles.csv)

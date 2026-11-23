@@ -1,0 +1,9 @@
+{
+  "sample": "Car/NG/damage_1_hole_1_scratch_2_021/A120_I01.png",
+  "criterion": "first view/light in fixed identity order with positive resized mask",
+  "checkpoint_sha256": "a3f88b6bf9a041f032dd3d8e0835a9b81ebfcf08c4dd2217b0ac3dc1964892e3",
+  "projection": "PC1 of target patch features, reused for prediction",
+  "interpolation": "display only, preserve original feature or official evaluation grid",
+  "mask_overlay": "six-pixel padding around visible union mask bounds",
+  "mask_positive_pixels": 9
+}
