@@ -1,0 +1,7 @@
+# dinomaly-Ring-train.log
+11/21 01:14:15 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.136 (0.296)] [data_t 0.001] [optim_t 0.135] [lr 0.003750] [dinomaly_loss 0.354 (0.486)]
+11/21 03:01:38 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.142 (0.174)] [data_t 0.001] [optim_t 0.141] [lr 0.000375] [dinomaly_loss 0.027 (0.027)]
+11/21 03:01:45 PM - finish training
+# dinomaly-Ring-test.log
+ #objects: 70, #view instances: 840
+|  Ring  |     95.800     |  95.800 (1   epoch)  |     86.337      |  86.337 (1   epoch)   |     94.284      |  94.284 (1   epoch)   |    95.050    | 95.050 (1   epoch) |    73.969     | 73.969 (1   epoch)  |     2.161     |  2.161 (1   epoch)  |   98.429    | 98.429 (1   epoch) |    74.496    | 74.496 (1   epoch) |    0.630     | 0.630 (1   epoch)  |    87.715    | 87.715 (1   epoch) |

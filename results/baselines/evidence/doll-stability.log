@@ -1,0 +1,16 @@
+11/22 03:56:56 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.149 (0.259)] [data_t 0.003] [optim_t 0.147] [lr 0.003750] [dinomaly_loss 0.414 (0.504)]
+11/22 04:40:12 PM - Train: 37.33% [11200/30000]  [37.3/100.0] [batch_t 0.155 (0.192)] [data_t 0.002] [optim_t 0.153] [lr 0.003750] [dinomaly_loss 0.057 (0.058)]
+11/22 04:40:22 PM - Train: 37.50% [11250/30000]  [37.5/100.0] [batch_t 0.151 (0.195)] [data_t 0.003] [optim_t 0.148] [lr 0.003750] [dinomaly_loss 0.166 (0.267)]
+11/22 05:48:49 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.165 (0.178)] [data_t 0.005] [optim_t 0.161] [lr 0.000375] [dinomaly_loss 0.044 (0.045)]
+11/22 05:48:56 PM - finish training
+# evaluation
+ #objects: 70, #view instances: 840
+|  Doll  |     82.500     |  82.500 (1   epoch)  |     79.787      |  79.787 (1   epoch)   |     98.515      |  98.515 (1   epoch)   |    86.538    | 86.538 (1   epoch) |    71.061     | 71.061 (1   epoch)  |    37.167     | 37.167 (1   epoch)  |   93.050    | 93.050 (1   epoch) |    81.437    | 81.437 (1   epoch) |    23.480    | 23.480 (1   epoch) |    92.177    | 92.177 (1   epoch) |
+# re-evaluation
+ #objects: 70, #view instances: 840
+|  Doll  |     82.500     |  82.500 (1   epoch)  |     79.787      |  79.787 (1   epoch)   |     98.515      |  98.515 (1   epoch)   |    86.538    | 86.538 (1   epoch) |    71.061     | 71.061 (1   epoch)  |    37.167     | 37.167 (1   epoch)  |   93.050    | 93.050 (1   epoch) |    81.437    | 81.437 (1   epoch) |    23.480    | 23.480 (1   epoch) |    92.177    | 92.177 (1   epoch) |
+Ran 19 tests in 1.058s
+OK
+Ran 9 tests in 0.008s
+OK
+EVIDENCE_COMPLETE Dinomaly-stabilized/Doll

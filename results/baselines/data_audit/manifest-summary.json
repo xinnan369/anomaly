@@ -1,0 +1,241 @@
+{
+  "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "manifest_sha256": "bbeaa75c231c981e443c818859a701fcc0daf1769065abd91631f7e676725980",
+  "classes": {
+    "Bird": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 4550,
+        "undetectable_positive_images": 365
+      }
+    },
+    "Car": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 4850,
+        "undetectable_positive_images": 309
+      }
+    },
+    "Cube": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5530,
+        "undetectable_positive_images": 222
+      }
+    },
+    "Dice": {
+      "train_good": {
+        "objects": 29,
+        "images": 3480
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 4490,
+        "undetectable_positive_images": 320
+      }
+    },
+    "Doll": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5010,
+        "undetectable_positive_images": 280
+      }
+    },
+    "Holder": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 49,
+        "images": 5880,
+        "positive_images": 4770,
+        "undetectable_positive_images": 154
+      }
+    },
+    "Motor": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 6000,
+        "undetectable_positive_images": 107
+      }
+    },
+    "Ring": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5480,
+        "undetectable_positive_images": 105
+      }
+    },
+    "Teapot": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5070,
+        "undetectable_positive_images": 309
+      }
+    },
+    "Tube": {
+      "train_good": {
+        "objects": 30,
+        "images": 3600
+      },
+      "test_good": {
+        "objects": 20,
+        "images": 2400
+      },
+      "test_ng": {
+        "objects": 50,
+        "images": 6000,
+        "positive_images": 5050,
+        "undetectable_positive_images": 774
+      }
+    }
+  },
+  "train": {
+    "objects": 299,
+    "images": 35880
+  },
+  "test": {
+    "objects": 699,
+    "images": 83880
+  },
+  "total": {
+    "objects": 998,
+    "images": 119760
+  },
+  "views": [
+    "000",
+    "030",
+    "060",
+    "090",
+    "120",
+    "150",
+    "180",
+    "210",
+    "240",
+    "270",
+    "300",
+    "330"
+  ],
+  "illuminations": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10"
+  ],
+  "overlaps": {
+    "full_keys": 0,
+    "image_paths": 0,
+    "class_and_id": 0,
+    "bare_id": 8
+  },
+  "official_good_split_replay": {
+    "seed": 42,
+    "train_ratio": 0.6,
+    "train_id_symdiff": {
+      "Bird": 0,
+      "Car": 0,
+      "Cube": 0,
+      "Dice": 0,
+      "Doll": 0,
+      "Holder": 0,
+      "Motor": 0,
+      "Ring": 0,
+      "Teapot": 0,
+      "Tube": 0
+    }
+  },
+  "paper_comparison": {
+    "source": "https://arxiv.org/html/2505.10996v1/dataset_statistics.png",
+    "paper_objects": 999,
+    "paper_images": 119880,
+    "paper_minus_release_objects": 1,
+    "paper_minus_release_images": 120,
+    "different_object_counts_by_class": {
+      "Holder": {
+        "paper_good": 50,
+        "release_good": 50,
+        "paper_ng": 50,
+        "release_ng": 49
+      }
+    }
+  }
+}

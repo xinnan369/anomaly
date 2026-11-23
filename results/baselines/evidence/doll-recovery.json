@@ -1,0 +1,69 @@
+{
+  "failed_attempt": {
+    "model": "dinomaly",
+    "class": "Doll",
+    "status": "FAILED",
+    "started_utc": "2026-11-20T12:07:15.120647+00:00",
+    "mode": "train",
+    "epochs_completed": 37,
+    "oom": false,
+    "nonfinite": true,
+    "argv": [
+      "--upstream",
+      "/mnt/d/vicad-syn/task-002-stage2/inputs/upstream",
+      "--weight",
+      "/mnt/d/vicad-syn/task-002-stage2/inputs/weights/dinov2_vitb14_reg4_pretrain.pth",
+      "--release-root",
+      "/mnt/d/vicad-syn/task-002-stage2",
+      "--model",
+      "dinomaly",
+      "--category",
+      "Doll",
+      "--output",
+      "/mnt/d/vicad-syn/task-002-stage2/runs/dinomaly/Doll"
+    ],
+    "parameters": 148008960,
+    "trainable_parameters": 148008960,
+    "optimizer_parameters": 148008960,
+    "train_started_utc": "2026-11-20T12:07:26.808033+00:00",
+    "last_observed_iteration": 11240,
+    "optimization_steps": 11100,
+    "error": "ValueError: NaN/Inf loss at iteration 11241",
+    "peak_allocated_bytes": 3306116096,
+    "peak_reserved_bytes": 3835691008,
+    "finished_utc": "2026-11-20T12:52:16.853306+00:00",
+    "wall_seconds": 2701.732688344
+  },
+  "recovery": {
+    "starting_epoch": 37,
+    "starting_iteration": 11100,
+    "training_checkpoint_sha256": "509b2b6468497aaa48c41815f810c59051b5b96243a771e15e8afa128545f1c4",
+    "original_attempt": "/mnt/d/vicad-syn/task-002-stage2/attempts/dinomaly/Doll-original-nonfinite-20261120",
+    "rng_and_loader_state_available": false,
+    "diagnostic_through_iteration": 11400,
+    "previous_elapsed_through_saved_checkpoint_seconds": 2659.074193
+  },
+  "diagnostic": {
+    "status": "PASS",
+    "first_iteration": 11101,
+    "last_iteration": 11400,
+    "checks": [
+      "inputs",
+      "encoder and decoder",
+      "loss",
+      "raw and clipped gradients",
+      "updated parameters",
+      "Adam first and second moments"
+    ]
+  },
+  "failed_epoch_log": {
+    "path": "attempts/dinomaly/Doll-original-nonfinite-20261120/epochs.json",
+    "bytes": 3510,
+    "sha256": "70623029e4f0e12d7b443416990467142e9b4ba3b7b4c6ec1c8567dfe03918e3"
+  },
+  "recovery_script": {
+    "path": "resume-doll-20261121.py",
+    "bytes": 9109,
+    "sha256": "6d4dd889978fafa01ea2f3ed64c51c27dc2b10bcb0ed1e87f730e6f6c55068a7"
+  }
+}

@@ -1,0 +1,887 @@
+{
+  "production_checkpoint": "/mnt/d/vicad-syn/task-002-stage2/doll-clean-20261122-run/train/checkpoints/DinomalyTrainer_configs_benchmark_dinomaly_dinomaly_100e_exp1/['Doll']_ckpt.pth",
+  "production_checkpoint_sha256": "1b2dce65f450af1c0a3d92681c3c54d2dd1a467d8b40d70d4b85aa1f4568879f",
+  "start_epoch": 37,
+  "start_iteration": 11100,
+  "target": 11241,
+  "purpose": "bounded_forensic_replay",
+  "target_paths": [
+    "Doll/Good/012/A180_I01.png",
+    "Doll/Good/004/A210_I09.png",
+    "Doll/Good/022/A030_I01.png",
+    "Doll/Good/035/A240_I08.png",
+    "Doll/Good/004/A150_I07.png",
+    "Doll/Good/031/A180_I07.png",
+    "Doll/Good/038/A150_I02.png",
+    "Doll/Good/039/A000_I09.png",
+    "Doll/Good/009/A060_I06.png",
+    "Doll/Good/012/A270_I03.png",
+    "Doll/Good/025/A300_I08.png",
+    "Doll/Good/033/A300_I05.png"
+  ],
+  "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+  "attention_source_sha256": "f972c48485e930438ae38962c0fa6289170dfd6088b8b9e5704f33544ca6cd13",
+  "diagnostic_script_sha256": "bce01760e2dab711ed46bf1a66ebe2c95e74236b7c1ace22e3abb4cbe7f61d9e",
+  "rng_sha256": "492fa154395a3e7f297a58eb598bab06517e2b6623e4319364efe8ac40f38113",
+  "matching_batches": 141,
+  "first_nonfinite": {
+    "stage": "decoder_features",
+    "tensor_names": [
+      "de.0"
+    ],
+    "epoch_completed": 37,
+    "iteration": 11241,
+    "last_successful_update": 11240,
+    "batch_paths": [
+      "Doll/Good/012/A180_I01.png",
+      "Doll/Good/004/A210_I09.png",
+      "Doll/Good/022/A030_I01.png",
+      "Doll/Good/035/A240_I08.png",
+      "Doll/Good/004/A150_I07.png",
+      "Doll/Good/031/A180_I07.png",
+      "Doll/Good/038/A150_I02.png",
+      "Doll/Good/039/A000_I09.png",
+      "Doll/Good/009/A060_I06.png",
+      "Doll/Good/012/A270_I03.png",
+      "Doll/Good/025/A300_I08.png",
+      "Doll/Good/033/A300_I05.png"
+    ],
+    "learning_rates": [
+      0.00375
+    ],
+    "stage_check_counts": {
+      "initial_parameters": 1,
+      "preprocessed_input": 141,
+      "encoder_features": 141,
+      "decoder_features": 141,
+      "loss": 140,
+      "gradients_before_clip": 140,
+      "gradients_after_clip": 140,
+      "adam_moments": 140,
+      "updated_parameters": 140
+    }
+  },
+  "pre_update_state": {
+    "input": {
+      "dtype": "torch.float32",
+      "shape": [
+        12,
+        3,
+        224,
+        224
+      ],
+      "nonfinite": 0,
+      "min": -2.1179039478302,
+      "max": 2.2565577030181885,
+      "zeros": 0
+    },
+    "parameters_nonfinite": [],
+    "previous_gradients_nonfinite": [],
+    "gradient_tensors": 100,
+    "adam_nonfinite": [],
+    "adam_states": 100
+  },
+  "attention_denominator": [
+    {
+      "attention": "model.decoder.0.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 1.0669231414794922e-05,
+        "max": 15.679186820983887,
+        "zeros": 0
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 19.082672119140625,
+        "max": 1367.3482666015625,
+        "zeros": 0
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -11.450643539428711,
+        "max": 14.679186820983887,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -7.675994396209717,
+        "max": 11.944101333618164,
+        "zeros": 0
+      },
+      "zero_origin": [],
+      "minimum_finite": 12054.9140625,
+      "maximum_finite": 129392.265625,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.1.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 38.215415954589844,
+        "zeros": 12785
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 5.216641426086426,
+        "max": 3892.042236328125,
+        "zeros": 0
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -33.22923278808594,
+        "max": 37.215415954589844,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -21.556419372558594,
+        "max": 44.163612365722656,
+        "zeros": 0
+      },
+      "zero_origin": [],
+      "minimum_finite": 510.3837585449219,
+      "maximum_finite": 656892.375,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.2.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 74.542724609375,
+        "zeros": 20372
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 2.7809243202209473,
+        "max": 4212.3740234375,
+        "zeros": 0
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -48.918617248535156,
+        "max": 73.542724609375,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -30.62111473083496,
+        "max": 38.505218505859375,
+        "zeros": 0
+      },
+      "zero_origin": [],
+      "minimum_finite": 3842.041259765625,
+      "maximum_finite": 975248.9375,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.3.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 54.11751937866211,
+        "zeros": 43213
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 10.730779647827148,
+        "max": 3788.460205078125,
+        "zeros": 0
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -48.03364562988281,
+        "max": 53.11751937866211,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -46.48052215576172,
+        "max": 56.16803741455078,
+        "zeros": 0
+      },
+      "zero_origin": [],
+      "minimum_finite": 5457.7255859375,
+      "maximum_finite": 647906.1875,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.4.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 43.669517517089844,
+        "zeros": 12038
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 1.3145778179168701,
+        "max": 2862.60400390625,
+        "zeros": 0
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -34.425697326660156,
+        "max": 42.669517517089844,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -29.863113403320312,
+        "max": 33.654541015625,
+        "zeros": 0
+      },
+      "zero_origin": [],
+      "minimum_finite": 10025.017578125,
+      "maximum_finite": 460483.5625,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.5.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 61.24750518798828,
+        "zeros": 239684
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 10717.234375,
+        "zeros": 27
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -56.08698272705078,
+        "max": 60.24750518798828,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -42.90626525878906,
+        "max": 61.887611389160156,
+        "zeros": 0
+      },
+      "zero_origin": [],
+      "minimum_finite": 55.48966979980469,
+      "maximum_finite": 1380755.0,
+      "zeros": 0,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 0
+    },
+    {
+      "attention": "model.decoder.6.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 53.3057861328125,
+        "zeros": 630402
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 0,
+        "min": 0.0,
+        "max": 12512.9541015625,
+        "zeros": 168
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -68.9528579711914,
+        "max": 52.3057861328125,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 0,
+        "min": -53.153358459472656,
+        "max": 86.0633544921875,
+        "zeros": 0
+      },
+      "zero_origin": [
+        {
+          "coordinate": [
+            10,
+            4,
+            112
+          ],
+          "q_before_elu": {
+            "dtype": "torch.float64",
+            "shape": [
+              64
+            ],
+            "nonfinite": 0,
+            "min": -53.4978141784668,
+            "max": -4.751954078674316,
+            "zeros": 0
+          },
+          "q_before_elu_dtype": "torch.float32",
+          "q_elu_output": {
+            "dtype": "torch.float32",
+            "shape": [
+              64
+            ],
+            "nonfinite": 0,
+            "min": -1.0,
+            "max": -0.9913651943206787,
+            "zeros": 0
+          },
+          "q_after_elu_plus_one": {
+            "dtype": "torch.float32",
+            "shape": [
+              64
+            ],
+            "nonfinite": 0,
+            "min": 0.0,
+            "max": 0.008634805679321289,
+            "zeros": 62
+          },
+          "k_after_elu_plus_one": {
+            "dtype": "torch.float32",
+            "shape": [
+              261,
+              64
+            ],
+            "nonfinite": 0,
+            "min": 0.0,
+            "max": 10.003548622131348,
+            "zeros": 13936
+          },
+          "summed_k": {
+            "dtype": "torch.float32",
+            "shape": [
+              64
+            ],
+            "nonfinite": 0,
+            "min": 0.0,
+            "max": 46.602638244628906,
+            "zeros": 6
+          },
+          "stable_reference_q": {
+            "dtype": "torch.float64",
+            "shape": [
+              64
+            ],
+            "nonfinite": 0,
+            "min": 5.837064716162143e-24,
+            "max": 0.00863480561719167,
+            "zeros": 0
+          },
+          "stable_reference_k_sum": {
+            "dtype": "torch.float64",
+            "shape": [
+              64
+            ],
+            "nonfinite": 0,
+            "min": 9.514143158800193e-10,
+            "max": 46.60264045645772,
+            "zeros": 0
+          },
+          "float64_reference_denom": 3.0087083812846956e-08
+        }
+      ],
+      "minimum_finite": 0.0,
+      "maximum_finite": 2082259.5,
+      "zeros": 1,
+      "nonfinite": 0,
+      "first_zero_coordinates_batch_head_token": [
+        [
+          10,
+          4,
+          112
+        ]
+      ],
+      "first_nonfinite_coordinates_batch_head_token": [],
+      "reciprocal_nonfinite": 1
+    },
+    {
+      "attention": "model.decoder.7.attn",
+      "equation": "...sd,...d->...s",
+      "shape": [
+        12,
+        12,
+        261
+      ],
+      "dtype": "torch.float32",
+      "q": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 768,
+        "min": 0.0,
+        "max": 59.24250793457031,
+        "zeros": 146574
+      },
+      "k_sum": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          64
+        ],
+        "nonfinite": 768,
+        "min": 0.0,
+        "max": 9838.560546875,
+        "zeros": 11
+      },
+      "q_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 768,
+        "min": -65.23405456542969,
+        "max": 58.24250793457031,
+        "zeros": 0
+      },
+      "k_pre_elu": {
+        "dtype": "torch.float32",
+        "shape": [
+          12,
+          12,
+          261,
+          64
+        ],
+        "nonfinite": 768,
+        "min": -57.058265686035156,
+        "max": 57.63593673706055,
+        "zeros": 0
+      },
+      "zero_origin": [],
+      "minimum_finite": 98382.8359375,
+      "maximum_finite": 1575667.5,
+      "zeros": 0,
+      "nonfinite": 3132,
+      "first_zero_coordinates_batch_head_token": [],
+      "first_nonfinite_coordinates_batch_head_token": [
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          10,
+          0,
+          1
+        ],
+        [
+          10,
+          0,
+          2
+        ],
+        [
+          10,
+          0,
+          3
+        ],
+        [
+          10,
+          0,
+          4
+        ],
+        [
+          10,
+          0,
+          5
+        ],
+        [
+          10,
+          0,
+          6
+        ],
+        [
+          10,
+          0,
+          7
+        ],
+        [
+          10,
+          0,
+          8
+        ],
+        [
+          10,
+          0,
+          9
+        ],
+        [
+          10,
+          0,
+          10
+        ],
+        [
+          10,
+          0,
+          11
+        ],
+        [
+          10,
+          0,
+          12
+        ],
+        [
+          10,
+          0,
+          13
+        ],
+        [
+          10,
+          0,
+          14
+        ],
+        [
+          10,
+          0,
+          15
+        ],
+        [
+          10,
+          0,
+          16
+        ],
+        [
+          10,
+          0,
+          17
+        ],
+        [
+          10,
+          0,
+          18
+        ],
+        [
+          10,
+          0,
+          19
+        ],
+        [
+          10,
+          0,
+          20
+        ],
+        [
+          10,
+          0,
+          21
+        ],
+        [
+          10,
+          0,
+          22
+        ],
+        [
+          10,
+          0,
+          23
+        ],
+        [
+          10,
+          0,
+          24
+        ],
+        [
+          10,
+          0,
+          25
+        ],
+        [
+          10,
+          0,
+          26
+        ],
+        [
+          10,
+          0,
+          27
+        ],
+        [
+          10,
+          0,
+          28
+        ],
+        [
+          10,
+          0,
+          29
+        ],
+        [
+          10,
+          0,
+          30
+        ],
+        [
+          10,
+          0,
+          31
+        ]
+      ],
+      "reciprocal_nonfinite": 3132
+    }
+  ],
+  "stage_matches_clean_failure": true
+}

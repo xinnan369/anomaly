@@ -1,0 +1,198 @@
+"""Resume the official Doll run with finite-value diagnostics and retained provenance."""
+
+import collections
+from collections.abc import Iterable
+from datetime import datetime
+import json
+import math
+import os
+from pathlib import Path
+import shutil
+import sys
+
+import torch
+
+ROOT = Path("/mnt/d/vicad-syn/task-002-stage2").resolve()
+SOURCE = ROOT / "source-2e8815eee68b"
+UPSTREAM = ROOT / "inputs/upstream"
+WEIGHT = ROOT / "inputs/weights/dinov2_vitb14_reg4_pretrain.pth"
+RUN = ROOT / "runs/dinomaly/Doll"
+ARCHIVE = ROOT / "attempts/dinomaly/Doll-original-nonfinite-20261120"
+CHECKPOINT_NAME = "['Doll']_ckpt.pth"
+START_EPOCH, START_STEP, PROBE_END = 37, 11100, 11400
+sys.path.insert(0, str(SOURCE / "tools/environment"))
+import run_baseline as official
+
+
+def verified_source():
+    assert RUN.resolve() == RUN and ARCHIVE.resolve() == ARCHIVE, "unexpected run path"
+    original = RUN if RUN.exists() else ARCHIVE
+    status = official.read_record(original / "status.json")
+    assert (status["model"], status["class"], status["status"], status["epochs_completed"]) == (
+        "dinomaly", "Doll", "FAILED", START_EPOCH
+    )
+    assert status["nonfinite"] and status["optimization_steps"] == START_STEP
+    records = official.read_record(original / "epochs.json")
+    assert records[-1]["epoch"] == START_EPOCH and records[-1]["iteration"] == START_STEP
+    checkpoint, = (original / "checkpoints").glob(f"*/{CHECKPOINT_NAME.replace('[', '[[]', 1)}")
+    prior_time = (datetime.fromisoformat(records[-1]["utc"]) - datetime.fromisoformat(status["train_started_utc"])).total_seconds()
+    checksum = official.digest(checkpoint)
+    state = torch.load(checkpoint, map_location="cpu", weights_only=True)
+    assert (state["epoch"], state["iter"]) == (START_EPOCH, START_STEP)
+    assert set(state["optimizer"]) >= {"state", "param_groups"}
+    assert state["scaler"] is None
+    metric_history = state["metric_recorder"]
+    del state
+    if original == RUN:
+        ARCHIVE.parent.mkdir(parents=True, exist_ok=True)
+        assert not ARCHIVE.exists(), "archive destination exists"
+        RUN.rename(ARCHIVE)
+        checkpoint = ARCHIVE / checkpoint.relative_to(RUN)
+    return checkpoint, checksum, prior_time, metric_history
+
+
+def instrument(trainer):
+    original_forward, original_loss = trainer.forward, trainer.compute_loss
+    named_parameters = tuple(trainer.net.named_parameters())
+    raw_flags = {}
+
+    def fail(stage, names):
+        receipt = {"iteration": trainer.iter, "stage": stage, "nonfinite": names,
+                   "train_images": list(trainer.img_path), "epoch_at_start": START_EPOCH}
+        official.write_json(RUN / "nonfinite-diagnostic.json", receipt)
+        raise ValueError(f"NaN/Inf at iteration {trainer.iter} in {stage}: {names[:6]}")
+
+    def probed():
+        return START_STEP < trainer.iter <= PROBE_END
+
+    def inspect(stage, items):
+        named = [(n, torch.isfinite(v.detach()).all()) for n, v in items if v is not None]
+        if not named:
+            return
+        finite = torch.stack([flag for _, flag in named]).tolist()
+        bad = [name for (name, _), ok in zip(named, finite, strict=True) if not ok]
+        if bad:
+            fail(stage, bad)
+
+    def forward(*args, **kwargs):
+        if probed():
+            inspect("input", [("images", trainer.imgs)])
+        result = original_forward(*args, **kwargs)
+        if probed():
+            inspect("forward", [(f"encoder.{i}", v) for i, v in enumerate(trainer.en)] +
+                    [(f"decoder.{i}", v) for i, v in enumerate(trainer.de)])
+        return result
+
+    def loss(*args, **kwargs):
+        value, logs = original_loss(*args, **kwargs)
+        if not bool(torch.isfinite(value)):
+            inspect("forward at loss failure", [(f"encoder.{i}", v) for i, v in enumerate(trainer.en)] +
+                    [(f"decoder.{i}", v) for i, v in enumerate(trainer.de)])
+            fail("loss", ["dinomaly_loss"])
+        return value, logs
+
+    def raw_gradient(name):
+        def observe(gradient):
+            if probed():
+                raw_flags[name] = torch.isfinite(gradient.detach()).all()
+        return observe
+
+    def before_step(optimizer, args, kwargs):
+        if probed():
+            if raw_flags:
+                finite = torch.stack(list(raw_flags.values())).tolist()
+                bad = [name for name, ok in zip(raw_flags, finite, strict=True) if not ok]
+                raw_flags.clear()
+                if bad:
+                    fail("gradient before clipping", bad)
+            inspect("gradient after clipping", [(name, value.grad) for name, value in named_parameters])
+
+    def after_step(optimizer, args, kwargs):
+        if not probed():
+            return
+        updated = [(name, value) for name, value in named_parameters if value.grad is not None]
+        inspect("updated parameters", updated)
+        inspect("Adam moments", [(f"{name}.{key}", value)
+                                 for name, param in updated
+                                 for key, value in optimizer.state[param].items()
+                                 if key in ("exp_avg", "exp_avg_sq")])
+        if trainer.iter == PROBE_END:
+            official.write_json(RUN / "finite-diagnostic.json", {
+                "status": "PASS", "first_iteration": START_STEP + 1, "last_iteration": PROBE_END,
+                "checks": ["inputs", "encoder and decoder", "loss", "raw and clipped gradients",
+                           "updated parameters", "Adam first and second moments"],
+            })
+            print(f"Finite diagnostics PASS through iteration {PROBE_END}", flush=True)
+
+    trainer.forward = forward
+    trainer.compute_loss = loss
+    for name, param in named_parameters:
+        if param.requires_grad:
+            param.register_hook(raw_gradient(name))
+    trainer.optim.register_step_pre_hook(before_step)
+    trainer.optim.register_step_post_hook(after_step)
+
+
+def resume(args, result):
+    checkpoint, checksum, prior_time, metric_history = original_state
+    official.check_upstream(UPSTREAM)
+    os.chdir(UPSTREAM)
+    sys.path.insert(0, str(UPSTREAM))
+    if not hasattr(collections, "Iterable"):
+        collections.Iterable = Iterable
+    import run_dataset as entry
+
+    base_setup, base_init, base_trainer = entry.setup_cfg, entry.init_checkpoint, entry.get_trainer
+
+    provenance = {"starting_epoch": START_EPOCH, "starting_iteration": START_STEP,
+                  "training_checkpoint_sha256": checksum, "original_attempt": str(ARCHIVE),
+                  "rng_and_loader_state_available": False, "diagnostic_through_iteration": PROBE_END,
+                  "previous_elapsed_through_saved_checkpoint_seconds": prior_time}
+    result.update(epochs_completed=START_EPOCH, optimization_steps=START_STEP,
+                  last_observed_iteration=START_STEP, recovery=provenance)
+    official.write_json(RUN / "recovery.json", provenance)
+    official.write_json(RUN / "status.json", result)
+
+    def setup(cfg, protocol, cls):
+        cfg = base_setup(cfg, protocol, cls)
+        cfg.trainer.resume_dir = checkpoint.parent.name
+        cfg.model.kwargs["checkpoint_path"] = CHECKPOINT_NAME
+        return cfg
+
+    def initialize(cfg):
+        work = Path(cfg.trainer.checkpoint) / cfg.trainer.resume_dir
+        work.mkdir(parents=True, exist_ok=False)
+        copied = work / CHECKPOINT_NAME
+        shutil.copy2(checkpoint, copied)
+        if official.digest(copied) != checksum:
+            raise ValueError("Restored checkpoint digest differs from the archived attempt")
+        cfg.tb_dir = str(work / "resumed-events")
+        base_init(cfg)
+
+    def build(cfg):
+        trainer = base_trainer(cfg)
+        if (trainer.epoch, trainer.iter) != (START_EPOCH, START_STEP) or trainer.loss_scaler is not None:
+            raise ValueError("Upstream trainer did not restore the expected epoch, iteration, and precision")
+        trainer.metric_recorder.update(metric_history)
+        if not trainer.optim.state or any(int(value["step"]) != START_STEP
+                                         for value in trainer.optim.state.values() if "step" in value):
+            raise ValueError("Adam optimizer state did not restore at the checkpoint step")
+        instrument(trainer)
+        print(f"Restored official Doll checkpoint at epoch {trainer.epoch}, iteration {trainer.iter}", flush=True)
+        return trainer
+
+    entry.setup_cfg, entry.init_checkpoint, entry.get_trainer = setup, initialize, build
+    original_runner(args, result)
+    if not (RUN / "finite-diagnostic.json").is_file():
+        raise ValueError("Finite-value diagnostic did not complete")
+    result["resumed_segment_seconds"] = result["train_seconds"]
+    result["train_seconds"] += prior_time
+
+
+if __name__ == "__main__":
+    torch.set_num_threads(2)
+    original_state = verified_source()
+    original_runner, official.run = official.run, resume
+    sys.argv = ["resume-doll-20261121.py", "--upstream", str(UPSTREAM), "--weight", str(WEIGHT),
+                "--release-root", str(ROOT), "--model", "dinomaly", "--category", "Doll", "--output", str(RUN)]
+    official.main()

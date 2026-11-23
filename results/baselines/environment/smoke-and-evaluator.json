@@ -1,0 +1,245 @@
+{
+  "dinomaly": {
+    "model": "dinomaly",
+    "prototype_shape": null,
+    "revision": "a606aa0e1614f23dad70da26430dd66095192141",
+    "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+    "weight_bytes": 346393545,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "capability": [
+      8,
+      6
+    ],
+    "torch": "2.2.2+cu121",
+    "torchvision": "0.17.2+cu121",
+    "cuda": "12.1",
+    "cudnn": 8902,
+    "python": "3.11.11",
+    "encoder": {
+      "patch_size": 14,
+      "register_tokens": 4
+    },
+    "adeval_cuda_import": true,
+    "input_shape": [
+      2,
+      3,
+      224,
+      224
+    ],
+    "probe_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "fit_steps": 1,
+    "seed": 42,
+    "lr": 0.00375,
+    "optim": {
+      "name": "adam",
+      "betas": [
+        0.5,
+        0.999
+      ]
+    },
+    "loss_config": [
+      {
+        "type": "DinomalyLoss",
+        "name": "dinomaly_loss",
+        "p": 0.9,
+        "factor": 0.0
+      }
+    ],
+    "precision_scaler": "none",
+    "fit_loss": 1.0221495628356934,
+    "parameter_changed": true,
+    "encoder_gradients": false,
+    "anomaly_map_shape": [
+      1,
+      224,
+      224
+    ],
+    "score_shape": [
+      1
+    ],
+    "finite_inference": true,
+    "seconds": {
+      "read_fit_batch": 0.19766872499997135,
+      "read_probe_batch": 0.1202551920000019,
+      "initialize_model_cuda": 2.9666305009999974,
+      "transfer_fit_batch": 0.00032043199996678595,
+      "forward_and_loss": 0.15239191599999913,
+      "backward_and_optimizer_step": 0.13822732400001314,
+      "probe_inference_and_scoring": 0.017156823999982862
+    },
+    "wall_seconds": 27.456748741000013,
+    "peak_allocated_bytes": 1621356032,
+    "peak_reserved_bytes": 1864368128,
+    "inp_former": {
+      "trainer": "INPFormerTrainer",
+      "input_size": 224,
+      "model": "inpformer",
+      "config": {
+        "pretrained": false,
+        "checkpoint_path": "",
+        "strict": false,
+        "encoder_arch": "dinov2reg_vit_base_14",
+        "INP_num": 6
+      }
+    },
+    "official_test_used": false,
+    "result": "PASS"
+  },
+  "inpformer": {
+    "model": "inpformer",
+    "prototype_shape": [
+      6,
+      768
+    ],
+    "revision": "a606aa0e1614f23dad70da26430dd66095192141",
+    "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+    "weight_bytes": 346393545,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "capability": [
+      8,
+      6
+    ],
+    "torch": "2.2.2+cu121",
+    "torchvision": "0.17.2+cu121",
+    "cuda": "12.1",
+    "cudnn": 8902,
+    "python": "3.11.11",
+    "encoder": {
+      "patch_size": 14,
+      "register_tokens": 4
+    },
+    "adeval_cuda_import": true,
+    "input_shape": [
+      2,
+      3,
+      224,
+      224
+    ],
+    "probe_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "fit_steps": 1,
+    "seed": 42,
+    "lr": 0.00375,
+    "optim": {
+      "name": "adam",
+      "betas": [
+        0.5,
+        0.999
+      ]
+    },
+    "loss_config": [
+      {
+        "type": "INPFormerLoss",
+        "name": "inpformer_loss",
+        "y": 3
+      }
+    ],
+    "precision_scaler": "none",
+    "fit_loss": 1.159235954284668,
+    "parameter_changed": true,
+    "encoder_gradients": false,
+    "anomaly_map_shape": [
+      1,
+      224,
+      224
+    ],
+    "score_shape": [
+      1
+    ],
+    "finite_inference": true,
+    "seconds": {
+      "read_fit_batch": 0.19718296899998222,
+      "read_probe_batch": 0.12320895799996379,
+      "initialize_model_cuda": 3.3121448419999524,
+      "transfer_fit_batch": 0.00026501699994696537,
+      "forward_and_loss": 0.14984976300002018,
+      "backward_and_optimizer_step": 0.12140134599997054,
+      "probe_inference_and_scoring": 0.019999507000079575
+    },
+    "wall_seconds": 12.090444940999987,
+    "peak_allocated_bytes": 1750724608,
+    "peak_reserved_bytes": 1958739968,
+    "inp_former": {
+      "trainer": "INPFormerTrainer",
+      "input_size": 224,
+      "model": "inpformer",
+      "config": {
+        "pretrained": false,
+        "checkpoint_path": "",
+        "strict": false,
+        "encoder_arch": "dinov2reg_vit_base_14",
+        "INP_num": 6
+      }
+    },
+    "official_test_used": false,
+    "result": "PASS"
+  },
+  "adeval_cuda": {
+    "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+    "fusion_sha256": "e22c05165b65542d41f7f45828b0eb641614a0f84a7347ec9c1d17e1b855f009",
+    "adeval_version": "1.1.0",
+    "adeval_wheel_sha256": "125caf991037a668a1f072f7e99c81b6bdf86dc8c30cf1699c731d4b79e0bd6e",
+    "nstrips": 50,
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "compute_capability": [
+      8,
+      6
+    ],
+    "environment": {
+      "system": "Linux",
+      "python": "3.11.11",
+      "torch": "2.2.2+cu121",
+      "torch_cuda": "12.1",
+      "numpy": "1.26.4",
+      "opencv": "4.9.0"
+    },
+    "fusion": {
+      "object_scores": {
+        "a": 4.0,
+        "b": 1.6666666666666667
+      },
+      "view_scores": {
+        "a_000": 2.0,
+        "a_030": 8.0,
+        "b_000": 1.5,
+        "b_030": 2.0
+      },
+      "union_mask_assertion": "PASS",
+      "mean_heatmap_assertion": "PASS",
+      "mixed_label_notice": "PASS"
+    },
+    "adeval": {
+      "perfect": {
+        "i_auroc": 1.0,
+        "p_auroc": 1.0,
+        "p_aupro": 1.0
+      },
+      "one_of_two_regions": {
+        "i_auroc": 1.0,
+        "p_auroc": 0.5,
+        "p_aupro": 0.5
+      }
+    },
+    "result": "PASS"
+  },
+  "baseline_diagnostics_cuda": {
+    "fixture": "synthetic_only",
+    "raw_rows": 240,
+    "fused_objects": 2,
+    "fused_views": 24,
+    "fusion_crosscheck": "PASS",
+    "corrupted_score_rejected": true,
+    "rows": 142,
+    "nonfinite_or_undefined": 0
+  }
+}

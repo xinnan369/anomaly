@@ -1,0 +1,30 @@
+{
+  "python": "3.11.11",
+  "torch": "2.2.2+cu121",
+  "torchvision": "0.17.2+cu121",
+  "cuda": "12.1",
+  "cudnn": 8902,
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "capability": [
+    8,
+    6
+  ],
+  "smoke_sum": 28,
+  "timm": "0.8.15dev0",
+  "adeval": "1.1.0",
+  "numpy": "1.26.4",
+  "opencv": "4.9.0",
+  "venv": "~/.local/venvs/vicad-task-002-stage2",
+  "host": "WSL2 Ubuntu 22.04.5 LTS",
+  "kernel": "5.15.167.4-microsoft-standard-WSL2",
+  "driver": "610.88",
+  "vram_mib": 24576,
+  "torch_cuda_available": true,
+  "initial_package_set_assertion": [
+    "pip",
+    "setuptools"
+  ],
+  "installed_distributions": 87,
+  "freeze_matches_lock": true,
+  "pip_check": "No broken requirements found."
+}

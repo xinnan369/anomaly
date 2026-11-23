@@ -1,0 +1,7 @@
+# inpformer-Doll-train.log
+11/21 07:22:45 PM - Train: 0.17% [50/30000]  [0.2/100.0] [batch_t 0.123 (0.281)] [data_t 0.001] [optim_t 0.122] [lr 0.003750] [inpformer_loss 0.473 (0.570)]
+11/21 09:14:21 PM - Train: 100.00% [30000/30000]  [100.0/100.0] [batch_t 0.131 (0.184)] [data_t 0.001] [optim_t 0.130] [lr 0.000375] [inpformer_loss 0.276 (0.275)]
+11/21 09:14:28 PM - finish training
+# inpformer-Doll-test.log
+ #objects: 70, #view instances: 840
+|  Doll  |     73.200     |  73.200 (1   epoch)  |     75.769      |  75.769 (1   epoch)   |     96.961      |  96.961 (1   epoch)   |    85.217    | 85.217 (1   epoch) |    67.877     | 67.877 (1   epoch)  |    38.163     | 38.163 (1   epoch)  |   89.323    | 89.323 (1   epoch) |    77.832    | 77.832 (1   epoch) |    28.525    | 28.525 (1   epoch) |    86.264    | 86.264 (1   epoch) |
