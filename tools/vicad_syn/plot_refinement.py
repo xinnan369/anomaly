@@ -156,6 +156,35 @@ def example(source, folder):
         save(fig, folder, "car-synthetic-feature-and-reliability")
 
 
+def exploratory(source, folder):
+    rows = [r for r in read_csv(source) if r["scope"] == "exploratory"]
+    if not rows:
+        return
+    baselines = Path(__file__).resolve().parents[2] / "results/vicad_syn/metrics/baseline-comparison.csv"
+    original = read_csv(baselines)
+    cats = list(dict.fromkeys(r["category"] for r in rows))
+    x_positions = np.arange(len(cats))
+    markers = {"v1_A4": ("v1 A4, paired", "o", PALETTE[0]),
+               "selected": ("Selected", "D", PALETTE[1]),
+               "Dinomaly": ("Dinomaly, original", "^", PALETTE[2]),
+               "INP-Former": ("INP-Former, original", "s", PALETTE[3]),
+               "Dinomaly-stabilized": ("Dinomaly-stabilized", "x", "#6f7582")}
+    fig, axes = plt.subplots(1, 3, figsize=(8.4, 3.15), layout="constrained")
+    for ax, metric in zip(axes, ("O-AUROC", "I-AUROC", "AUPRO"), strict=True):
+        for i, (method, (label, marker, color)) in enumerate(markers.items()):
+            if method in ("v1_A4", "selected"):
+                values = {r["category"]: float(r[metric]) for r in rows if r["setting"] == method}
+            else:
+                values = {r["class"]: float(r[metric]) for r in original if r["method"] == method and r[metric]}
+            ax.scatter(x_positions + (i-2)*.10, [values.get(cat, np.nan) for cat in cats],
+                       label=label, marker=marker, color=color, linewidths=0.9, s=24)
+        ax.set(xticks=x_positions, xticklabels=cats, ylabel=f"{metric} (%)", ylim=(0,105))
+        ax.grid(axis="y", alpha=.25)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles,labels,loc="outside lower center",ncols=3,fontsize=7.2)
+    fig.suptitle("Frozen comparison on previously seen categories")
+    save(fig,folder,"exploratory-official-comparison")
+
 def confirmation(source, folder):
     rows = read_csv(source)
     cats = list(dict.fromkeys(row["category"] for row in rows if row["scope"] == "confirmatory"))
@@ -189,6 +218,7 @@ def main():
         development(args.development, args.output)
         example(args.development, args.output)
     if args.formal and args.formal.exists():
+        exploratory(args.formal, args.output)
         confirmation(args.formal, args.output)
 
 

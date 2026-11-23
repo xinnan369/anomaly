@@ -37,12 +37,12 @@ def lfs_download_source(checksum, size):
                     response.raise_for_status()
                     item, = response.json()["objects"]
                 check(item["oid"] == checksum and item["size"] == size, "different object from publisher LFS")
-                action = item["actions"]["download"]
-                parsed = urlsplit(action["href"])
+                candidate = item["actions"]["download"]
+                parsed = urlsplit(candidate["href"])
                 check(parsed.scheme == "https" and parsed.hostname is not None and (
                     parsed.hostname.endswith(".hf.co") or parsed.hostname.endswith(".huggingface.co")
                 ), "unexpected publisher download origin")
-                fetched = time.monotonic()
+                action, fetched = candidate, time.monotonic()
             return action["href"], action.get("header", {})
 
     return source
@@ -118,7 +118,7 @@ def main():
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--manifest-cache", type=Path, required=True)
     parser.add_argument("--category", required=True)
-    parser.add_argument("--workers", type=int, default=12, choices=range(1, 13))
+    parser.add_argument("--workers", type=int, default=12, choices=range(1, 25))
     parser.add_argument("--transport", choices=("resolve", "lfs"), default="resolve")
     args = parser.parse_args()
     root = args.root.resolve()
