@@ -4,7 +4,7 @@ from pathlib import Path
 import torch
 
 from vicad_refinement.development import select, split_development
-from vicad_refinement.model import estimate_prototypes, patch_weights, residuals, weighted_lights
+from vicad_refinement.model import estimate_prototypes, patch_weights, residuals, sources, upsample, weighted_lights
 from vicad_refinement.synthetic import perturb
 from vicad_syn.data.manifest import Group
 from vicad_syn.experiment import read_json
@@ -96,3 +96,18 @@ class RefinementTests(unittest.TestCase):
         self.assertEqual(len(ranking), 24)
         with self.assertRaises(ValueError):
             select(rows[:-1], REGISTRY)
+
+    def test_intermediate_sources_exclude_target_for_all_lights(self):
+        original = torch.arange(10, dtype=torch.float32).reshape(1,10,1,1)
+        ordered = sources(original)
+        self.assertEqual(ordered.shape, (1,10,9,1,1))
+        for light in range(10):
+            self.assertEqual(set(ordered[0,light,:,0,0].tolist()), set(range(10)) - {light})
+
+    def test_constant_global_weights_commute_with_official_resize(self):
+        maps = torch.rand((2,10,256), generator=torch.Generator().manual_seed(43))
+        signals = [maps.flip(1), maps.roll(1, dims=1)]
+        w = light_weights(maps, signals).flatten()
+        after_resize = upsample(maps) * (10 * w)[:,None,None]
+        before_resize = upsample(weighted_lights(maps, *signals, "v1_global", .25))
+        torch.testing.assert_close(before_resize, after_resize, rtol=2e-6, atol=1e-7)
