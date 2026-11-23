@@ -1,13 +1,13 @@
 {
-  "status": "PARTIAL",
-  "checked_utc": "2026-11-22T02:40:57+00:00",
+  "status": "EVIDENCE_COMPLETE",
+  "official_reproduction_status": "PARTIAL",
+  "checked_utc": "2026-11-22T10:04:35+00:00",
   "runtime": {
     "platform": "Windows-11-10.0.26200-SP0",
-    "python": "3.13.2",
-    "torch": "2.11.0+cpu",
-    "numpy": "2.3.5"
+    "python": "3.13.2"
   },
-  "summary_sha256": "f79870ffc713403e83c57baa0536be901a7d0400764c102602118a89f37bf768",
+  "summary_sha256": "1ed8d6bc4dd6f6c043b6fd52b16717890da45fc73883c297214738fb49c9bc1a",
+  "stabilized_csv_sha256": "45c43509ffea1f64c9fbc07c0bc791eca3ff07df0737c5a096d80e8b3fd9707d",
   "checks": [
     {
       "name": "shared_inputs",
@@ -15,42 +15,42 @@
       "checks": [
         {
           "check": "pinned_official_source",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:48+00:00",
           "status": "PASS"
         },
         {
           "check": "pretrained_backbone_sha256",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:48+00:00",
           "status": "PASS"
         },
         {
           "check": "staged_manifest_matches_pinned_release",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:49+00:00",
           "status": "PASS"
         },
         {
           "check": "Car_instance_isolation_and_verified_archive_receipt",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:49+00:00",
           "status": "PASS"
         },
         {
           "check": "Cube_instance_isolation_and_verified_archive_receipt",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:49+00:00",
           "status": "PASS"
         },
         {
           "check": "Doll_instance_isolation_and_verified_archive_receipt",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:49+00:00",
           "status": "PASS"
         },
         {
           "check": "Ring_instance_isolation_and_verified_archive_receipt",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:49+00:00",
           "status": "PASS"
         },
         {
           "check": "historical_recovery_preserved",
-          "checked_utc": "2026-11-22T02:40:57+00:00",
+          "checked_utc": "2026-11-22T08:01:34+00:00",
           "status": "PASS"
         }
       ]
@@ -61,42 +61,42 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:49+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:39:40+00:00",
+          "checked_utc": "2026-11-22T07:58:49+00:00",
           "status": "PASS"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "checked_utc": "2026-11-22T07:58:51+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "checked_utc": "2026-11-22T07:58:51+00:00",
           "status": "PASS"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "checked_utc": "2026-11-22T07:58:51+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "checked_utc": "2026-11-22T07:58:51+00:00",
           "status": "PASS"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:39:42+00:00",
+          "checked_utc": "2026-11-22T07:58:51+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:39:53+00:00",
+          "checked_utc": "2026-11-22T07:59:02+00:00",
           "status": "PASS"
         }
       ]
@@ -107,42 +107,42 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:39:53+00:00",
+          "checked_utc": "2026-11-22T07:59:02+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:39:53+00:00",
+          "checked_utc": "2026-11-22T07:59:02+00:00",
           "status": "PASS"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "checked_utc": "2026-11-22T07:59:04+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "checked_utc": "2026-11-22T07:59:04+00:00",
           "status": "PASS"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "checked_utc": "2026-11-22T07:59:04+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "checked_utc": "2026-11-22T07:59:04+00:00",
           "status": "PASS"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:39:54+00:00",
+          "checked_utc": "2026-11-22T07:59:04+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "PASS"
         }
       ]
@@ -153,64 +153,64 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "ValueError: training failed or incomplete: FAILED NonFiniteTrainingError: non-finite decoder_features at iteration 11241: ['de.0']"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "ValueError: no final epoch-100 checkpoint from training"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\vicad-syn\\\\task-002-stage2\\\\doll-clean-20261122-run\\\\evaluation\\\\status.json'"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\vicad-syn\\\\task-002-stage2\\\\doll-clean-20261122-run\\\\evaluation\\\\synergy.json'"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "ValueError: evaluation is blocked without a final checkpoint and evaluation status"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\vicad-syn\\\\task-002-stage2\\\\doll-clean-20261122-run\\\\evaluation\\\\predictions.json'"
         },
         {
           "check": "launch_source_receipt",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "PASS"
         },
         {
           "check": "finite_probes_rng_and_full_batch_order",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "ValueError: continuous finite probes incomplete"
         },
         {
           "check": "read_only_repeat_same_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "FAIL",
           "error": "ValueError: repeat is blocked without a successful formal evaluation"
         }
@@ -222,42 +222,42 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:40:04+00:00",
+          "checked_utc": "2026-11-22T07:59:17+00:00",
           "status": "PASS"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "checked_utc": "2026-11-22T07:59:19+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "checked_utc": "2026-11-22T07:59:19+00:00",
           "status": "PASS"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "checked_utc": "2026-11-22T07:59:19+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "checked_utc": "2026-11-22T07:59:19+00:00",
           "status": "PASS"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:40:05+00:00",
+          "checked_utc": "2026-11-22T07:59:19+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:40:15+00:00",
+          "checked_utc": "2026-11-22T07:59:31+00:00",
           "status": "PASS"
         }
       ]
@@ -268,42 +268,42 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:40:15+00:00",
+          "checked_utc": "2026-11-22T07:59:31+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:40:15+00:00",
+          "checked_utc": "2026-11-22T07:59:31+00:00",
           "status": "PASS"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "checked_utc": "2026-11-22T07:59:33+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "checked_utc": "2026-11-22T07:59:33+00:00",
           "status": "PASS"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "checked_utc": "2026-11-22T07:59:33+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "checked_utc": "2026-11-22T07:59:33+00:00",
           "status": "PASS"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:40:16+00:00",
+          "checked_utc": "2026-11-22T07:59:33+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:40:25+00:00",
+          "checked_utc": "2026-11-22T07:59:45+00:00",
           "status": "PASS"
         }
       ]
@@ -314,42 +314,42 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:40:25+00:00",
+          "checked_utc": "2026-11-22T07:59:45+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:40:25+00:00",
+          "checked_utc": "2026-11-22T07:59:45+00:00",
           "status": "PASS"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "checked_utc": "2026-11-22T07:59:47+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "checked_utc": "2026-11-22T07:59:47+00:00",
           "status": "PASS"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "checked_utc": "2026-11-22T07:59:47+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "checked_utc": "2026-11-22T07:59:47+00:00",
           "status": "PASS"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:40:26+00:00",
+          "checked_utc": "2026-11-22T07:59:47+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:40:35+00:00",
+          "checked_utc": "2026-11-22T07:59:58+00:00",
           "status": "PASS"
         }
       ]
@@ -360,42 +360,42 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:40:35+00:00",
+          "checked_utc": "2026-11-22T07:59:58+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:40:35+00:00",
+          "checked_utc": "2026-11-22T07:59:58+00:00",
           "status": "PASS"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "checked_utc": "2026-11-22T08:00:00+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "checked_utc": "2026-11-22T08:00:00+00:00",
           "status": "PASS"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "checked_utc": "2026-11-22T08:00:00+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "checked_utc": "2026-11-22T08:00:00+00:00",
           "status": "PASS"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:40:36+00:00",
+          "checked_utc": "2026-11-22T08:00:00+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:40:45+00:00",
+          "checked_utc": "2026-11-22T08:00:12+00:00",
           "status": "PASS"
         }
       ]
@@ -406,42 +406,42 @@
       "checks": [
         {
           "check": "training_status_record",
-          "checked_utc": "2026-11-22T02:40:45+00:00",
+          "checked_utc": "2026-11-22T08:00:12+00:00",
           "status": "PASS"
         },
         {
           "check": "epochs_30000_steps_no_recorded_recovery",
-          "checked_utc": "2026-11-22T02:40:45+00:00",
+          "checked_utc": "2026-11-22T08:00:12+00:00",
           "status": "PASS"
         },
         {
           "check": "final_checkpoint_and_weights",
-          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "checked_utc": "2026-11-22T08:00:14+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_status_record",
-          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "checked_utc": "2026-11-22T08:00:14+00:00",
           "status": "PASS"
         },
         {
           "check": "official_metrics_frozen_checkpoint",
-          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "checked_utc": "2026-11-22T08:00:14+00:00",
           "status": "PASS"
         },
         {
           "check": "evaluation_checkpoint_argument",
-          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "checked_utc": "2026-11-22T08:00:14+00:00",
           "status": "PASS"
         },
         {
           "check": "official_json_and_summary_csv",
-          "checked_utc": "2026-11-22T02:40:46+00:00",
+          "checked_utc": "2026-11-22T08:00:14+00:00",
           "status": "PASS"
         },
         {
           "check": "predictions_and_fusion_and_142_diagnostics",
-          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "checked_utc": "2026-11-22T08:00:38+00:00",
           "status": "PASS"
         }
       ]
@@ -452,26 +452,113 @@
       "checks": [
         {
           "check": "Car_same_raw_identities_labels_masks",
-          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "checked_utc": "2026-11-22T08:00:38+00:00",
           "status": "PASS"
         },
         {
           "check": "Cube_same_raw_identities_labels_masks",
-          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "checked_utc": "2026-11-22T08:00:38+00:00",
           "status": "PASS"
         },
         {
           "check": "Doll_same_raw_identities_labels_masks",
-          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "checked_utc": "2026-11-22T08:00:38+00:00",
           "status": "FAIL",
           "error": "ValueError: cross-model comparison requires both formal evaluations"
         },
         {
           "check": "Ring_same_raw_identities_labels_masks",
-          "checked_utc": "2026-11-22T02:40:54+00:00",
+          "checked_utc": "2026-11-22T08:00:38+00:00",
           "status": "PASS"
         }
       ]
     }
-  ]
+  ],
+  "separation_checks": {
+    "name": "official_and_variant_separation",
+    "status": "PASS",
+    "checks": [
+      {
+        "check": "official_failed_evidence",
+        "checked_utc": "2026-11-22T10:04:22+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "seven_originals_and_one_verified_official_failure",
+        "checked_utc": "2026-11-22T10:04:22+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "variant_and_inpformer_share_doll_test_samples_masks_and_labels",
+        "checked_utc": "2026-11-22T10:04:35+00:00",
+        "status": "PASS"
+      }
+    ]
+  },
+  "stabilized_checks": {
+    "name": "Dinomaly-stabilized/Doll",
+    "status": "PASS",
+    "checks": [
+      {
+        "check": "training_status_record",
+        "checked_utc": "2026-11-22T10:04:22+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "epochs_30000_steps_no_recorded_recovery",
+        "checked_utc": "2026-11-22T10:04:22+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "final_checkpoint_and_weights",
+        "checked_utc": "2026-11-22T10:04:23+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "evaluation_status_record",
+        "checked_utc": "2026-11-22T10:04:23+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "official_metrics_frozen_checkpoint",
+        "checked_utc": "2026-11-22T10:04:23+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "evaluation_checkpoint_argument",
+        "checked_utc": "2026-11-22T10:04:23+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "official_json_and_summary_csv",
+        "checked_utc": "2026-11-22T10:04:23+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "predictions_and_fusion_and_142_diagnostics",
+        "checked_utc": "2026-11-22T10:04:29+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "launch_source_receipt",
+        "checked_utc": "2026-11-22T10:04:29+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "finite_probes_rng_and_full_batch_order",
+        "checked_utc": "2026-11-22T10:04:29+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "read_only_repeat_same_frozen_checkpoint",
+        "checked_utc": "2026-11-22T10:04:35+00:00",
+        "status": "PASS"
+      },
+      {
+        "check": "full_guard_counts_and_forward_sha256",
+        "checked_utc": "2026-11-22T10:04:35+00:00",
+        "status": "PASS"
+      }
+    ]
+  }
 }

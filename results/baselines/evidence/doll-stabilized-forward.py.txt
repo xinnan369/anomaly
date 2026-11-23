@@ -1,0 +1,17 @@
+def forward(self, x, attn_mask=None):
+    B, N, C = x.shape
+    qkv = self.qkv(x).reshape(B, N, 3, self.num_heads, C // self.num_heads).permute(2, 0, 3, 1, 4)
+    q, k, v = qkv[0], qkv[1], qkv[2]
+
+    q = nn.functional.elu(q) + 1.
+    k = nn.functional.elu(k) + 1.
+
+    kv = torch.einsum('...sd,...se->...de', k, v)
+    denom = torch.einsum('...sd,...d->...s', q, k.sum(dim=-2))
+    z = _vicad_stabilized_reciprocal(self, denom)
+    x = torch.einsum('...de,...sd,...s->...se', kv, q, z)
+    x = x.transpose(1, 2).reshape(B, N, C)
+
+    x = self.proj(x)
+    x = self.proj_drop(x)
+    return x, kv

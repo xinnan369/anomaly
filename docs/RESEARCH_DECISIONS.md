@@ -46,3 +46,12 @@
 - 7/8 组连续训练和冻结评价有通过记录，最终整改存在阻塞。物件判别、融合视角判别与像素定位分别比较。后续跨光照预测与可靠性加权仍是待验证假设，测试指标不参与超参数选择。
 
 [审查](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6009448364) · [执行报告](../reports/TASK-002-REPORT.md#第二阶段最终结果)
+
+## 2026-11-23 · TASK-002 分母保护和官方复现边界
+
+- 有界回放验证有限 q/k 在 FP32 舍入后出现精确为零的分母。采用 FP64 稳定公式重算可保留正分母。
+- 训练前固定下界 1e-6。运行时只调整分母的倒数。Dinomaly-stabilized 使用独立 NUMERICALLY_STABILIZED 身份。测试数据用于冻结权重的评价。
+- 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。七组原版保持 OFFICIAL_CLEAN，故障行 OFFICIAL_FAILED，续跑历史 RECOVERED_DEVIATION。整体对比保留缺失项。
+- 建议对 TASK-002 作有限例外结项。七组原版和 Doll 的可复现原版故障给出清楚的证据边界，稳定版另外验证了在相同固定配置下，预先固定的分母下界可以支撑完整训练与评价。该建议待独立验收。
+
+[审查记录](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6011031984) · [数值与复验报告](../reports/TASK-002-REPORT.md#第二阶段最终结果)

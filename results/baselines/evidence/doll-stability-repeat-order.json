@@ -1,0 +1,27 @@
+{
+  "hash_differences": {
+    "raw": [],
+    "fused": [
+      "view_instance_masks.npy",
+      "view_instance_anomalys.npy",
+      "view_instance_anomaly_maps.npy",
+      "view_instance_anomaly_scores.npy",
+      "view_instance_names.npy",
+      "object_instance_names.npy",
+      "object_instance_anomalys.npy",
+      "object_instance_anomaly_scores.npy"
+    ]
+  },
+  "fused_alignment": {
+    "object_instance_names.npy": true,
+    "object_instance_anomalys.npy": true,
+    "object_instance_anomaly_scores.npy": true,
+    "object_instance_cls_names.npy": true,
+    "view_instance_masks.npy": true,
+    "view_instance_anomalys.npy": true,
+    "view_instance_anomaly_maps.npy": true,
+    "view_instance_anomaly_scores.npy": true,
+    "view_instance_names.npy": true,
+    "view_instance_cls_names.npy": true
+  }
+}

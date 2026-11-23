@@ -12,5 +12,7 @@
 | 2026-11-22 | TASK-002 第二阶段正式结果交付 | 四类归档凭据、8 组 100 epoch 与冻结检查点评价、指标和诊断、Doll 恢复记录、图表及发布材料已自检。[最终报告](../reports/TASK-002-REPORT.md#第二阶段最终结果) · [PR #2](https://github.com/xinnan369/anomaly/pull/2) | AWAITING RE-REVIEW。第二阶段实验交付完成，独立验收待复查。 |
 | 2026-11-22 | TASK-002 最终整改审查 | [Review 6009448364](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6009448364) 对提交 `f224a27e8020c0d98100acd082196846f1cc761b` 要求 Dinomaly/Doll 新连续运行、冻结复评和八组验证。 | CHANGES_REQUESTED。 |
 | 2026-11-22 | TASK-002 最终整改交付 | 7/8 组连续训练和冻结评价有通过记录，最终整改存在阻塞。[报告](../reports/TASK-002-REPORT.md#第二阶段最终结果) · [核验 JSON](../results/baselines/metrics/verification.json) · [PR #2](https://github.com/xinnan369/anomaly/pull/2) | PARTIAL。 |
+| 2026-11-22 | TASK-002 最终研究审查 | [Review 6011031984](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6011031984) 接受七组和故障证据作为阶段成果，要求验证零分母来源并单独运行稳定性变体。 | CHANGES_REQUESTED。 |
+| 2026-11-23 | TASK-002 最终研究交付 | 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[报告](../reports/TASK-002-REPORT.md#第二阶段最终结果) · [PR #2](https://github.com/xinnan369/anomaly/pull/2) | 实验完成，待独立验收。 |
 
 执行证据见[报告目录](../reports/README.md)。后续记录验收日期、任务 ID、报告与提交链接、验收结论和待修正项。

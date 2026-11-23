@@ -6,7 +6,9 @@ from pathlib import Path
 
 import torch
 
-from run_baseline import CONFIGS, REVISION, RELEASE_REVISION, WEIGHT_SHA, digest, validate_checkpoint, write_json
+from run_baseline import CONFIGS, REVISION, RELEASE_REVISION, WEIGHT_SHA, digest, read_record, validate_checkpoint, write_json
+
+from stabilized_attention import metadata
 
 
 class CheckpointTest(unittest.TestCase):
@@ -42,6 +44,21 @@ class CheckpointTest(unittest.TestCase):
     def test_exact_final_checkpoint(self):
         self.assertEqual(validate_checkpoint(self.checkpoint, "dinomaly", "Car", self.upstream),
                          digest(self.checkpoint))
+
+    def test_stability_mode_and_patch_hash_cannot_cross(self):
+        require_args = (self.checkpoint, "dinomaly", "Car", self.upstream)
+        with self.assertRaisesRegex(ValueError, "attention mode"):
+            validate_checkpoint(*require_args, attention_mode="stabilized")
+        for name in ("config.json", "status.json"):
+            file = self.run / name
+            write_json(file, {**read_record(file), **metadata("stabilized")})
+        self.assertEqual(validate_checkpoint(*require_args, attention_mode="stabilized"), digest(self.checkpoint))
+        with self.assertRaisesRegex(ValueError, "attention mode"):
+            validate_checkpoint(*require_args)
+        file = self.run / "status.json"
+        write_json(file, {**read_record(file), "stability_patch_sha256": "foreign"})
+        with self.assertRaisesRegex(ValueError, "stability patch"):
+            validate_checkpoint(*require_args, attention_mode="stabilized")
 
     def test_unsafe_path_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "unexpected official checkpoint path"):

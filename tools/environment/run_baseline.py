@@ -22,6 +22,7 @@ import torch
 
 from baseline_metrics import check_fusion, save_arrays, save_diagnostics
 from training_diagnostics import TrainingDiagnostics
+import stabilized_attention as stability
 from prepare_release import ARCHIVE_SHA256, RELEASE_REVISION
 from smoke_dinomaly import REVISION, WEIGHT_NAME, check_upstream, require
 
@@ -55,7 +56,7 @@ def read_record(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def validate_checkpoint(checkpoint, model, category, upstream):
+def validate_checkpoint(checkpoint, model, category, upstream, attention_mode="official"):
     """Accept only the recorded final checkpoint produced by the matching upstream trainer."""
     require(checkpoint.parent.parent.name == "checkpoints"
             and checkpoint.name == f"{[category]}_ckpt.pth", "unexpected official checkpoint path")
@@ -69,6 +70,11 @@ def validate_checkpoint(checkpoint, model, category, upstream):
             and source["protocol"] == "M2AD-Synergy" and source["seed"] == 42
             and source["epoch"] == FINAL_EPOCH and source["batch_train"] == 12
             and source["test_during_training"] is False, "checkpoint provenance does not match this run")
+    expected_variant = stability.metadata(attention_mode)
+    for record in (source, status):
+        binding = {key: record.get(key, "official" if key == "attention_mode" else None)
+                   for key in expected_variant}
+        require(binding == expected_variant, "checkpoint attention mode or stability patch mismatch")
     completed = status.get("final_checkpoint", {})
     checksum = digest(checkpoint)
     require(status["status"] == "PASS" and status["mode"] == "train" and status["model"] == model
@@ -104,6 +110,9 @@ def sample_gpu(stop, output):
 
 def run(args, result):
     check_upstream(args.upstream)
+    attention_mode = getattr(args, "attention_mode", "official")
+    variant = stability.metadata(attention_mode)
+    result.update(variant)
     require(torch.cuda.is_available() and torch.cuda.device_count() == 1, "expose exactly one CUDA device")
     require(args.weight.name == WEIGHT_NAME and digest(args.weight) == WEIGHT_SHA, "backbone SHA-256 mismatch")
     if not args.preflight:
@@ -116,7 +125,7 @@ def run(args, result):
                 "verified, complete class is required")
     if args.checkpoint:
         result["evaluation_checkpoint_sha256"] = validate_checkpoint(args.checkpoint, args.model, args.category,
-                                                                     args.upstream)
+                                                                     args.upstream, attention_mode)
         result["epochs_completed"] = FINAL_EPOCH
     os.chdir(args.upstream)
     sys.path.insert(0, str(args.upstream))
@@ -138,6 +147,8 @@ def run(args, result):
     epochs = []
     diagnostics = None
     resources = ExitStack()
+    guard = None
+    attention_class = None
     training_started = None
 
     def setup(cfg, protocol, cls):
@@ -150,6 +161,7 @@ def run(args, result):
         if args.checkpoint:
             cfg.model.kwargs["checkpoint_path"] = str(args.checkpoint)
         write_json(args.output / "config.json", {
+            **variant,
             "upstream_revision": REVISION, "cfg_path": CONFIGS[args.model],
             "cfg_sha256": digest(args.upstream / CONFIGS[args.model]),
             "release_revision": RELEASE_REVISION, "protocol": protocol, "class": cls,
@@ -168,6 +180,16 @@ def run(args, result):
     def build(cfg):
         nonlocal diagnostics, training_started
         trainer = original_trainer(cfg)
+        if guard is not None:
+            guard.bind(trainer.net, attention_class)
+            forward = trainer.forward
+
+            def checked_forward(*pos, **kw):
+                output = forward(*pos, **kw)
+                guard.assert_valid_batch()
+                return output
+
+            trainer.forward = checked_forward
         require(len(trainer.train_set) == 3600 and len(trainer.test_set) == 8400, "official loader count mismatch")
         require(len(trainer.train_loader) == 300 and len(trainer.test_loader) == 700,
                 "official batch count mismatch")
@@ -208,7 +230,7 @@ def run(args, result):
             numbers = {name: float(value) * 100 for name, value in metrics.items()}
             invalid = [name for name, value in numbers.items() if not math.isfinite(value)]
             write_json(args.output / "synergy.json", {
-                "epoch": FINAL_EPOCH, "class": args.category, "model": args.model,
+                **variant, "epoch": FINAL_EPOCH, "class": args.category, "model": args.model,
                 "checkpoint_sha256": result["evaluation_checkpoint_sha256"],
                 "metrics_pct": {key: value if math.isfinite(value) else None for key, value in numbers.items()},
                 "nonfinite": invalid,
@@ -282,10 +304,27 @@ def run(args, result):
     torch.cuda.reset_peak_memory_stats()
     try:
         with resources:
+            if attention_mode == "stabilized":
+                from model.dinomaly_utils.vision_transformer import LinearAttention2
+
+                attention_class = LinearAttention2
+                guard = stability.GuardCounts(700 if args.checkpoint else FINAL_ITERATION, "cuda")
+                amended = stability.install(attention_class, guard, resources)
+                file = args.output / "patched-forward.py.txt"
+                file.write_text(amended, encoding="utf-8")
+                result["patched_forward_sha256"] = digest(file)
+                result["official_attention_source_sha256"] = digest(args.upstream / stability.UPSTREAM_ATTENTION)
             entry.main()
     finally:
         if diagnostics is not None:
             diagnostics.finish()
+        if guard is not None and guard.layers:
+            guard_record = guard.record()
+            write_json(args.output / "attention-guards.json", guard_record)
+            result["attention_guard_positions"] = guard_record["protected_positions"]
+    if guard is not None:
+        require(guard.calls == (700 if args.checkpoint else FINAL_ITERATION) * 8,
+                "incomplete guarded attention coverage")
     result["peak_allocated_bytes"] = torch.cuda.max_memory_allocated()
     result["peak_reserved_bytes"] = torch.cuda.max_memory_reserved()
     if args.checkpoint:
@@ -305,7 +344,11 @@ def main():
     mode.add_argument("--checkpoint", type=lambda path: Path(path).resolve())
     mode.add_argument("--preflight", action="store_true", help="build the official trainer from the manifest only")
     mode.add_argument("--diagnose-doll", action="store_true", help="probe a fresh Dinomaly/Doll training run")
+    parser.add_argument("--attention-mode", choices=("official", "stabilized"), default="official")
     args = parser.parse_args()
+    if args.attention_mode == "stabilized" and ((args.model, args.category) != ("dinomaly", "Doll")
+            or not (args.diagnose_doll or args.checkpoint)):
+        parser.error("stabilized mode requires Dinomaly/Doll with diagnosis or a frozen checkpoint")
     if args.diagnose_doll and (args.model, args.category) != ("dinomaly", "Doll"):
         parser.error("--diagnose-doll requires --model dinomaly --category Doll")
     require(not args.output.is_relative_to(Path(__file__).resolve().parents[2]), "write artifacts outside the repository")

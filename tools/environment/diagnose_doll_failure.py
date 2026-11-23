@@ -16,7 +16,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools/environment"))
 import run_baseline as official
-from training_diagnostics import NonFiniteTrainingError, TrainingDiagnostics
+from training_diagnostics import NonFiniteTrainingError, TrainingDiagnostics, nonfinite_names
 
 
 class ReplayFinished(Exception):
@@ -53,22 +53,65 @@ def read_batches(log, start, end):
     return batches
 
 
+def tensor_stats(value):
+    value = value.detach()
+    valid = value.isfinite()
+    finite = value[valid]
+    return {"dtype": str(value.dtype), "shape": list(value.shape), "nonfinite": int((~valid).sum()),
+            "min": finite.min().item() if finite.numel() else None,
+            "max": finite.max().item() if finite.numel() else None,
+            "zeros": int((value == 0).sum())}
+
+
+def zero_origin(terms, args, coordinates):
+    (q_raw, q), (k_raw, k) = terms
+    assert torch.equal(q + 1, args[0]) and torch.equal((k + 1).sum(dim=-2), args[1])
+    cases = []
+    for batch, head, token in coordinates:
+        raw_q = q_raw[batch, head, token].double()
+        raw_k = k_raw[batch, head].double()
+        q64 = torch.where(raw_q < 0, raw_q.exp(), raw_q + 1)
+        k64 = torch.where(raw_k < 0, raw_k.exp(), raw_k + 1)
+        cases.append({
+            "coordinate": [batch, head, token],
+            "q_before_elu": tensor_stats(raw_q),
+            "q_before_elu_dtype": str(q_raw.dtype),
+            "q_elu_output": tensor_stats(q[batch, head, token]),
+            "q_after_elu_plus_one": tensor_stats(args[0][batch, head, token]),
+            "k_after_elu_plus_one": tensor_stats((k[batch, head] + 1)),
+            "summed_k": tensor_stats(args[1][batch, head]),
+            "stable_reference_q": tensor_stats(q64),
+            "stable_reference_k_sum": tensor_stats(k64.sum(0)),
+            "float64_reference_denom": torch.dot(q64, k64.sum(0)).item(),
+        })
+    return cases
+
+
 def monitor_attention(net, stack):
     """Observe the actual official attention denominator and its batch/heads."""
     records = []
     original = torch.einsum
     original_div = torch.Tensor.__rtruediv__
+    original_elu = torch.nn.functional.elu
     current = None
+    terms = []
 
     def start(name):
         def pre(module, args):
             nonlocal current
             current = name
+            terms.clear()
         return pre
 
     def clear(*args):
         nonlocal current
         current = None
+
+    def elu(input, *args, **kwargs):
+        output = original_elu(input, *args, **kwargs)
+        if current is not None:
+            terms.append((input.detach(), output.detach()))
+        return output
 
     def einsum(equation, *args):
         value = original(equation, *args)
@@ -78,8 +121,12 @@ def monitor_attention(net, stack):
                 zero = tensor == 0
                 bad = ~tensor.isfinite()
                 finite = tensor[~bad]
+                coords = zero.nonzero().tolist()[:32]
                 records.append({
-                    "attention": current, "equation": equation, "shape": list(tensor.shape),
+                    "attention": current, "equation": equation, "shape": list(tensor.shape), "dtype": str(tensor.dtype),
+                    "q": tensor_stats(args[0]), "k_sum": tensor_stats(args[1]),
+                    "q_pre_elu": tensor_stats(terms[0][0]), "k_pre_elu": tensor_stats(terms[1][0]),
+                    "zero_origin": zero_origin(terms, args, coords) if coords else [],
                     "minimum_finite": finite.min().item() if finite.numel() else None,
                     "maximum_finite": finite.max().item() if finite.numel() else None,
                     "zeros": int(zero.sum()),
@@ -102,6 +149,8 @@ def monitor_attention(net, stack):
             for handle in (module.register_forward_pre_hook(start(name)), module.register_forward_hook(clear)):
                 stack.callback(handle.remove)
     torch.einsum = einsum
+    torch.nn.functional.elu = elu
+    stack.callback(setattr, torch.nn.functional, "elu", original_elu)
     torch.Tensor.__rtruediv__ = right_divide
     stack.callback(setattr, torch, "einsum", original)
     stack.callback(setattr, torch.Tensor, "__rtruediv__", original_div)
@@ -143,6 +192,10 @@ def main():
             record = {"production_checkpoint": str(checkpoint), "production_checkpoint_sha256": official.digest(checkpoint),
                       "start_epoch": epoch, "start_iteration": rng["iteration"], "target": target,
                       "purpose": "bounded_forensic_replay", "target_paths": batches[target],
+                      "upstream_revision": official.REVISION,
+                      "attention_source_sha256": official.digest(upstream / "model/dinomaly_utils/vision_transformer.py"),
+                      "diagnostic_script_sha256": official.digest(Path(__file__)),
+                      "rng_sha256": official.digest(rng_file),
                       "matching_batches": 0, "first_nonfinite": None}
             try:
                 with ExitStack() as resources, ExitStack() as local_probe:
@@ -158,6 +211,18 @@ def main():
                         official.require(actual_paths == paths, f"sample order differs from clean training at {step}")
                         record["matching_batches"] += 1
                         if step == target:
+                            record["pre_update_state"] = {
+                                "input": tensor_stats(batch["img"]),
+                                "parameters_nonfinite": nonfinite_names(trainer.net.named_parameters()),
+                                "previous_gradients_nonfinite": nonfinite_names(
+                                    (name, param.grad) for name, param in trainer.net.named_parameters()),
+                                "gradient_tensors": sum(param.grad is not None for param in trainer.net.parameters()),
+                                "adam_nonfinite": nonfinite_names(
+                                    (f"{observer.names[param]}.{name}", value)
+                                    for param, state in trainer.optim.state.items()
+                                    for name, value in state.items() if isinstance(value, torch.Tensor)),
+                                "adam_states": len(trainer.optim.state),
+                            }
                             record["attention_denominator"] = monitor_attention(trainer.net, local_probe)
                         trainer.set_input(batch, train=True)
                         trainer.optimize_parameters()

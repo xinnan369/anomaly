@@ -1,6 +1,6 @@
 # TASK-002 · M²AD 官方基线复现与实验环境固化
 
-- 当前状态　最终整改 PARTIAL。Dinomaly/Doll 在固定官方配置下复现了数值故障，七组严格结果已核验。[最终整改](#第二阶段最终结果)
+- 当前状态　实验完成，待独立验收。[最终研究闭环](#第二阶段最终结果)
 - 日期　2026-11-19（北京时间）
 - 范围　第一阶段环境固化和单卡 Car smoke test
 - 状态　TASK-002 第一阶段：独立验收通过（APPROVED）。TASK-002 整体尚未完成，仍为当前任务，PR #2 保持开放。
@@ -251,7 +251,9 @@ Dinomaly/Doll 的原任务在第 11,241 步因非有限损失中断。原失败�
 
 本次发布前在 Ubuntu 22.04 / WSL2 的锁定环境中复跑 `python -B -m unittest discover -s tools/environment -p "test_*.py"` 和 `python -B -m unittest discover -s tools/audit -p "test_*.py"`，分别通过 7 项和 9 项测试。此轮核验未重新训练模型。
 
-## 第二阶段最终结果
+## 原版 Doll 连续复验与前次整改
+
+以下保留前次整改记录。当前结论见[第二阶段最终结果](#第二阶段最终结果)。
 
 **TASK-002 最终整改 PARTIAL。** 7/8 组连续训练和冻结评价有通过记录，最终整改存在阻塞。本轮对应 [Review 6009448364](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6009448364)，审查基准提交为 `f224a27e8020c0d98100acd082196846f1cc761b`。第一阶段独立验收记录继续有效。[PR #2](https://github.com/xinnan369/anomaly/pull/2)
 
@@ -298,3 +300,44 @@ Dinomaly/Doll 的原任务在第 11,241 步因非有限损失中断。原失败�
 完整文件保存在仓库外 `D:/vicad-syn/task-002-stage2`。新 Doll 文件位于 `doll-clean-20261122-run`，历史模型和评价仍在既有路径。哈希索引给出七组正式检查点、模型导出、原始与融合数组及运行日志的相对路径与 SHA-256。Doll 专项索引记录第 37 epoch 检查点、批次日志、随机状态和定向重放产物。[Doll 文件索引](../results/baselines/evidence/doll-clean.json)数据集、完整权重和大体积预测只保留在外部。RTX 4090 仍未实测。Holder 发布差异维持 TASK-001 的已验收调查记录。正式结果只有 seed 42。
 
 本轮在锁定 WSL2 环境中通过 13 项环境与新旧回归测试、9 项审计测试和 CUDA 官方融合身份回归。全量磁盘复核使用 Windows 原生 CPU Python，以避免同一批大数组在 WSL 挂载盘上的页读取开销。核验 JSON 记录运行版本。检查点绑定、哈希、指标、文件结构与失败事项由分组核验 JSON 记录。提交前检查 Markdown 相对链接、Git 差异、提交范围、文件大小和凭据模式。[单元测试及核验节选](../results/baselines/evidence/finalization.log) · [CUDA 合成回归](../results/baselines/environment/final-identity-regression.json)
+
+## 第二阶段最终结果
+
+**TASK-002 最终研究闭环 · 实验完成，待独立验收。** 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[审查记录 6011031984](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6011031984) · [PR #2](https://github.com/xinnan369/anomaly/pull/2)
+
+### 原版 Doll 的数值故障
+
+固定 seed 42、RTX 3090 和 WSL2 条件下，两次原版从头训练在第 11,241 步失败。有界回放重新匹配第 37 epoch 后的 141 个批次。故障批次的预处理图像和编码器特征有限。故障前模型参数、100 个梯度张量和 100 份 Adam 状态也均有限。[完整张量与回放证据](../results/baselines/evidence/doll-zero-origin.json)
+
+第 7 个解码块的 `LinearAttention2` 在 FP32 分母张量 `[12, 12, 261]` 的零基坐标 `[10, 4, 112]` 上得到精确零，对应 `Doll/Good/025/A300_I08.png`。原始 q 的 64 个值在 −53.49781 至 −4.75195 范围内。计算 `ELU(x)+1` 时有 62 维舍入为零。k 的 261 个 token 求和后有 6 维为零。两者的正值维度无重叠，取分母倒数产生 1 个非有限值。用同一批 q/k 的原始数值在 FP64 中直接计算负分支 `exp(x)`，得到参考分母 3.008708381e-08。本次故障来自有限负输入在 ELU 计算和随后的加一中丢失小量。该结论对应实测配置与轨迹。[固定上游表达式](https://github.com/hustCYQ/M2AD/blob/a606aa0e1614f23dad70da26430dd66095192141/model/dinomaly_utils/vision_transformer.py#L261-L276)
+
+### Dinomaly-stabilized 与冻结评价
+
+在正式训练前固定 `epsilon = 1e-6`。运行时仅将上游倒数改为 `1.0 / denom.clamp_min(1e-6)`。数据发布、初始化、优化器、损失、学习率调度、变换、种子、batch size 和 epoch 沿用官方设置。使用独立目录，从原始骨干和官方随机初始化开始。GPU 预检使用实际上游模块，安全分母的输出与梯度逐位相同，零分母输入的输出和梯度有限。补丁模块 SHA-256 为 `b7b1d74efd5f0e7e839ad0b8da5dbf5910f504d135cd04842adbfa0be211b4fa`，实际 forward 为 `dd646ff916104659c90f79f54f12824d5616018b2a0947e3ebe67b87b57d1cb9`，上游模块为 `f972c48485e930438ae38962c0fa6289170dfd6088b8b9e5704f33544ca6cd13`。检测到原始分母为负或非有限时，启动器中止更新并保留计数和批次日志。[补丁实现](../tools/environment/stabilized_attention.py) · [实际 forward](../results/baselines/evidence/doll-stabilized-forward.py.txt)
+
+北京时间 2026-11-22 17:48:49 完成 100 epoch 和 30,000 次更新。训练用时 109.41 分钟，PyTorch 峰值已分配 3.09 GiB，峰值预留 3.54 GiB，整卡采样峰值 6,240 MiB。主评价推理至拼接耗时 241.15 秒。第 100 epoch 检查点 SHA-256 为 `9250e4b8162d5eec1bc972925dc815ab04b744729c7b3af8a5876ea074dd5b61`。
+
+训练阶段保护逻辑触发 80 个位置，其中精确零 1 个，全部发生于第 11,241 步的第 7 个解码块。前 11,241 个实际批次路径及其顺序与原版逐批相同。
+
+正式评价和只读复评各覆盖 8,400 张图、70 个物件组、840 个融合视角、142 条诊断。十项指标逐项精确一致。9 个原始数组逐字节一致。8 个融合文件因官方组顺序变化而具有不同哈希，按物件和视角身份对齐后 10 个融合数组逐项完全一致。两次评价使用同一冻结检查点，复评后重新计算了哈希。Doll 稳定版与 INP-Former 的测试身份、标签和掩膜一致。[稳定版诊断](../results/baselines/metrics/stabilized-doll-diagnostics.csv) · [复评数组对齐](../results/baselines/evidence/doll-stability-repeat-order.json)
+
+稳定版 Doll 的 O-AUROC / I-AUROC / AUPRO 分别为 **82.50 / 79.79 / 92.18**（%），原版 INP-Former 为 **73.20 / 75.77 / 86.26**（%），差值分别是 **+9.30 / +4.02 / +5.91** 个百分点。该比较分别描述物件判别、视角判别和像素定位，且两组使用不同算法版本。[Doll 比较图](../results/baselines/figures/doll-variant-metrics.pdf) · [稳定版 CSV](../results/baselines/metrics/stabilized-doll.csv) · [保护计数与证据](../results/baselines/evidence/doll-stability-run.json)
+
+### 七组原版结果与论文口径
+
+每格按 O-AUROC / I-AUROC / AUPRO（%）排列。带分数的七格均为 `OFFICIAL_CLEAN`。
+
+| 类别 | 原版 Dinomaly | 原版 INP-Former |
+| --- | --- | --- |
+| Car | 90.30 / 85.52 / 92.53 | 82.20 / 72.11 / 86.03 |
+| Cube | 90.10 / 80.45 / 93.27 | 87.50 / 77.23 / 91.85 |
+| Doll | OFFICIAL_FAILED，指标留空 | 73.20 / 75.77 / 86.26 |
+| Ring | 95.80 / 86.34 / 87.72 | 70.20 / 70.75 / 94.41 |
+
+Doll 原版故障行保持 `OFFICIAL_FAILED`。旧续跑的三项分数为 81.70 / 79.74 / 92.11，身份为 `RECOVERED_DEVIATION`，用于追溯。稳定版单列为 `NUMERICALLY_STABILIZED`。Car、Cube、Ring 的原版物件和视角判别由 Dinomaly 得分较高。定位 AUPRO 在 Car、Cube 由 Dinomaly 得分较高，在 Ring 由 INP-Former 得分较高。四类完整原版宏平均因缺少一组而无定义。固定种子和设备下的结果不建立跨设备或多种子稳定性。[原版论文图](../results/baselines/figures/official-only-metrics.pdf) · [原版正式表](../results/baselines/metrics/baseline-summary.csv) · [旧续跑结果](../results/baselines/metrics/doll-recovered-history.csv)
+
+### 核验、留存和结项建议
+
+重新从磁盘核验七组原版 checkpoint、133 个预测数组和官方指标。版本、清单、训练与测试产品隔离、评价 checkpoint 绑定及各组状态见机器核验。WSL2 的 19 项环境和回归测试、9 项审计测试及 CUDA 官方融合身份回归通过。RTX 4090 尚未验证。完整文件保存在 `D:/vicad-syn/task-002-stage2`，稳定版目录为 `doll-stabilized-20261122`。日志、RNG、批序、检查点及预测文件的路径和 SHA-256 可查。原始训练数据、模型权重和预测数组留在外部存储。[机器核验](../results/baselines/metrics/verification.json) · [运行索引](../results/baselines/metrics/run-index.json) · [结果及图表](../results/baselines/README.md)
+
+建议对 TASK-002 作有限例外结项。七组原版和 Doll 的可复现原版故障给出清楚的证据边界，稳定版另外验证了在相同固定配置下，预先固定的分母下界可以支撑完整训练与评价。该建议待独立验收。

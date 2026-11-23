@@ -1,25 +1,22 @@
-# TASK-002 第二阶段基线证据
+# TASK-002 基线与稳定性证据
 
-**TASK-002 最终整改 PARTIAL。** 7/8 组连续训练和冻结评价有通过记录，最终整改存在阻塞。[最终报告](../../reports/TASK-002-REPORT.md#第二阶段最终结果)
+**实验完成，待独立验收。** 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[最终报告](../../reports/TASK-002-REPORT.md#第二阶段最终结果)
 
-## 指标与前次图表
+## 正式结果
 
-- [逐组指标与资源总表](metrics/baseline-summary.csv) · [类别对比](metrics/model-comparison.csv)（前次快照）
-- 前次含恢复版的诊断与图表材料 · [视角和光照诊断](metrics/diagnostics.csv) · [正常件逐光照分数](metrics/normal-scores-by-light.csv) · [热力图样本索引](metrics/heatmap-inputs.csv)
-- 前次图表（PNG / PDF） · [官方指标](figures/official-metrics.png) / [PDF](figures/official-metrics.pdf)、[训练资源](figures/training-resources.png) / [PDF](figures/training-resources.pdf)、[视角](figures/view-diagnostics.png) / [PDF](figures/view-diagnostics.pdf)、[光照](figures/illumination-diagnostics.png) / [PDF](figures/illumination-diagnostics.pdf)、[热力图](figures/reference-heatmaps.png) / [PDF](figures/reference-heatmaps.pdf)
+- 原版表含 7 个 OFFICIAL_CLEAN 与 1 个 OFFICIAL_FAILED。Dinomaly/Doll 原版指标留空。[原版 CSV](metrics/baseline-summary.csv) · [类别比较及资源](metrics/model-comparison.csv)
+- NUMERICALLY_STABILIZED 单独记录。旧恢复版保留为 RECOVERED_DEVIATION。[稳定版 CSV](metrics/stabilized-doll.csv) · [恢复版 CSV](metrics/doll-recovered-history.csv)
+- 论文图分开显示原版和变体，所有分数来自固定的单种子协议。[原版指标 PNG](figures/official-only-metrics.png) / [PDF](figures/official-only-metrics.pdf) · [Doll 稳定版与原版 INP-Former PNG](figures/doll-variant-metrics.png) / [PDF](figures/doll-variant-metrics.pdf) · [稳定版诊断](metrics/stabilized-doll-diagnostics.csv)
 
 ## 正式证据
 
-- [八组机器可读核验](metrics/verification.json) · [Doll 连续训练与复评证据](evidence/doll-clean.json) · [日志节选](evidence/doll-clean.log) · [注意力分母诊断](evidence/doll-forensic-replay.json)
-- [Doll 恢复版历史指标](metrics/doll-recovered-history.csv)为 RECOVERED_DEVIATION。原失败、恢复和已有正式评价的文件路径及哈希见索引。新 Doll 无正式评价文件。
-- [官方融合身份回归](environment/final-identity-regression.json) · [单元测试及八组校验日志节选](evidence/finalization.log)
+- [原版舍入与有界回放](evidence/doll-zero-origin.json) · [稳定版运行与文件哈希](evidence/doll-stability-run.json) · [日志节选](evidence/doll-stability.log) · [CUDA 融合身份回归](environment/stability-identity-regression.json)
+- [正式运行和预测数组哈希](metrics/run-index.json) · [逐组核验](metrics/verification.json) · [四类已审计归档](data_audit/verified-archives.json)
+- [原版失败现场](evidence/doll-clean.json) · [旧恢复证据](evidence/doll-recovery.json) · [运行命令](../../tools/environment/README.md#dinomaly-stabilized-数值稳定性实验)
 
-- [八组运行、配置、检查点和数组哈希索引](metrics/run-index.json)。完整日志、权重、数据、原始预测数组及 GPU 采样保存在外部的数据根 `D:/vicad-syn/task-002-stage2`。该索引给出各文件的相对路径与 SHA-256。
-- Dinomaly 日志节选 · [Car](evidence/dinomaly-Car.log)、[Cube](evidence/dinomaly-Cube.log)、[Doll 历史恢复](evidence/dinomaly-Doll.log)、[Ring](evidence/dinomaly-Ring.log)
-- INP-Former 日志节选 · [Car](evidence/inpformer-Car.log)、[Cube](evidence/inpformer-Cube.log)、[Doll](evidence/inpformer-Doll.log)、[Ring](evidence/inpformer-Ring.log)
-- [Doll 原失败和续跑凭据](evidence/doll-recovery.json) · [实际恢复脚本](evidence/doll-recovery-script.py.txt)
-- [四类完整归档凭据](data_audit/verified-archives.json) · [固定发布清单统计](data_audit/manifest-summary.json)
-- [复现与恢复命令](../../tools/environment/README.md#第二阶段完整基线)
+## 旧图表和恢复版快照
+
+前次混有恢复版的图表和诊断留作溯源。论文引用使用上方正式结果。[历史图表与诊断固定快照](https://github.com/xinnan369/anomaly/tree/00dd7f4f01a598337c9650203b3d8b28d8fd850e/results/baselines) · [旧指标图](figures/official-metrics.png) · [旧资源图](figures/training-resources.png) · [旧视角图](figures/view-diagnostics.png) · [旧光照图](figures/illumination-diagnostics.png) · [旧热力图](figures/reference-heatmaps.png)
 
 ## 环境和入口预检
 

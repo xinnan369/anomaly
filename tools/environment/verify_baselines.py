@@ -19,6 +19,7 @@ from prepare_release import ARCHIVE_SHA256, RELEASE_REVISION
 from run_baseline import CONFIGS, REVISION, WEIGHT_NAME, WEIGHT_SHA
 from run_baseline import check_upstream, digest, read_record, require, validate_checkpoint, write_json
 from sources import MANIFEST
+from stabilized_attention import UPSTREAM_ATTENTION, metadata
 from summarize_baselines import (
     CLEAN_CONTINUOUS, CLASSES, DOLL, FAILED, MODELS, RECOVERED_DEVIATION, row, run_paths,
 )
@@ -139,13 +140,17 @@ def check_diagnostics(path):
     return len(rows)
 
 
-def check_metrics(directory, status, final_sha, model, category):
+def check_metrics(directory, status, final_sha, model, category, attention_mode="official"):
     metrics = read_record(directory / "synergy.json")
     require(status["status"] == "PASS" and status["mode"] == "test" and status["epochs_completed"] == 100
             and (status["model"], status["class"]) == (model, category), "evaluation status")
     require(status["evaluation_checkpoint_sha256"] == metrics["checkpoint_sha256"] == final_sha
             and metrics["epoch"] == 100 and (metrics["model"], metrics["class"]) == (model, category),
             "metric evidence is not bound to the final checkpoint")
+    binding = metadata(attention_mode)
+    for record in (status, metrics):
+        require(all(record.get(key, "official" if key == "attention_mode" else None) == value
+                    for key, value in binding.items()), "metric attention mode or patch mismatch")
     scores = metrics["metrics_pct"]
     require(not metrics["nonfinite"] and len(scores) == 10 and set(METRICS.values()) <= scores.keys()
             and all(math.isfinite(value) and 0 <= value <= 100 for value in scores.values()), "official score coverage")
@@ -200,12 +205,14 @@ class Audit:
                 "checks": self.checks}
 
 
-def run_audit(root, model, category, doll_attempt, manifest, summary, split):
+def run_audit(root, model, category, doll_attempt, manifest, summary, split, attention_mode="official"):
     train, test = run_paths(root / "runs", root / "evaluations", model, category, doll_attempt)
     upstream = root / "inputs/upstream"
     clean_doll = (model, category) == DOLL
-    audit = Audit(f"{model}/{category}")
-    index = {"model": model, "class": category, "train_dir": train.relative_to(root).as_posix(),
+    binding = metadata(attention_mode)
+    stabilized = attention_mode == "stabilized"
+    audit = Audit(f"{binding.get('model_identity', model)}/{category}")
+    index = {**binding, "model": model, "class": category, "train_dir": train.relative_to(root).as_posix(),
              "evaluation_dir": test.relative_to(root).as_posix()}
     training = audit.check("training_status_record", lambda: read_record(train / "status.json"))
     if training is not None:
@@ -244,7 +251,7 @@ def run_audit(root, model, category, doll_attempt, manifest, summary, split):
         require(training and "final_checkpoint" in training, "no final epoch-100 checkpoint from training")
         record = training["final_checkpoint"]
         checkpoint = train / record["path"]
-        sha = validate_checkpoint(checkpoint, model, category, upstream)
+        sha = validate_checkpoint(checkpoint, model, category, upstream, attention_mode)
         index["checkpoint"] = file_ref(root, checkpoint, sha)
         index["weights"] = [file_ref(root, train / weight["path"]) for weight in training["weights"]]
         require(index["weights"] and all(
@@ -256,7 +263,7 @@ def run_audit(root, model, category, doll_attempt, manifest, summary, split):
     status = audit.check("evaluation_status_record", lambda: read_record(test / "status.json"))
     if status is not None:
         index["evaluation"] = status
-    scores = audit.check("official_metrics_frozen_checkpoint", lambda: check_metrics(test, status, final_sha, model, category))
+    scores = audit.check("official_metrics_frozen_checkpoint", lambda: check_metrics(test, status, final_sha, model, category, attention_mode))
     if scores is not None:
         index["official_metrics"] = scores
 
@@ -299,8 +306,10 @@ def run_audit(root, model, category, doll_attempt, manifest, summary, split):
     if clean_doll:
         def check_launcher():
             receipt = (doll_attempt / "launcher.sha256").read_text(encoding="utf-8").splitlines()
-            executed = {Path(name).name: sha for sha, name in (line.split(maxsplit=1) for line in receipt)}
+            executed = {PurePosixPath(name).name: sha for sha, name in (line.split(maxsplit=1) for line in receipt)}
             expected_files = {"run_baseline.py", "training_diagnostics.py", "baseline_metrics.py"}
+            if stabilized:
+                expected_files.update({"stabilized_attention.py", "diagnose_doll_failure.py", "check_doll_stability.py"})
             require(set(executed) == expected_files, "launcher source receipt has unexpected files")
             copies = []
             for name, sha in executed.items():
@@ -308,7 +317,8 @@ def run_audit(root, model, category, doll_attempt, manifest, summary, split):
                 snapshot = doll_attempt / "source" / name
                 if snapshot.is_file():
                     require(digest(snapshot) == sha, f"executed source snapshot hash mismatch: {name}")
-                    require(canonical_source(snapshot) == canonical_source(current), f"source differs from executed code: {name}")
+                    if stabilized:
+                        require(canonical_source(snapshot) == canonical_source(current), f"source differs from executed code: {name}")
                     copies.append(file_ref(root, snapshot, sha))
                 else:
                     require(digest(current) == sha, f"current source differs from launcher receipt: {name}")
@@ -333,7 +343,7 @@ def run_audit(root, model, category, doll_attempt, manifest, summary, split):
             require(final_sha is not None and scores is not None, "repeat is blocked without a successful formal evaluation")
             folder = doll_attempt / "re-evaluation"
             repeated_status = read_record(folder / "status.json")
-            repeat = check_metrics(folder, repeated_status, final_sha, model, category)
+            repeat = check_metrics(folder, repeated_status, final_sha, model, category, attention_mode)
             check_eval_argument(repeated_status)
             delta = check_repeat(scores, repeat)
             predictions = read_record(folder / "predictions.json")
@@ -354,7 +364,65 @@ def run_audit(root, model, category, doll_attempt, manifest, summary, split):
         audit.check("finite_probes_rng_and_full_batch_order", check_probes)
         audit.check("read_only_repeat_same_frozen_checkpoint", check_re_evaluation)
 
+    if stabilized:
+        def check_guards():
+            preflight = read_record(doll_attempt / "preflight.json")
+            require(preflight["status"] == "PASS" and preflight["epsilon"] == binding["epsilon"]
+                    and preflight["patch_sha256"] == binding["stability_patch_sha256"],
+                    "pre-training numerical gate does not match")
+            forward_hash = training["patched_forward_sha256"]
+            source_hash = digest(upstream / UPSTREAM_ATTENTION)
+            audit_data = {}
+            for label, folder, batches in (("train", train, 30_000), ("evaluation", test, 700),
+                                            ("repeat", doll_attempt / "re-evaluation", 700)):
+                evaluated = read_record(folder / "status.json")
+                counts, ref = check_guard_record(root, folder, evaluated, batches, binding)
+                require(evaluated["patched_forward_sha256"] == digest(folder / "patched-forward.py.txt") == forward_hash
+                        and evaluated["official_attention_source_sha256"] == source_hash,
+                        f"{label}: executed forward or upstream source hash mismatch")
+                audit_data[label] = {"protected_positions": counts["protected_positions"], "zero_positions": counts["zero_positions"],
+                                     "batches_with_protection": len(counts["batches_with_protection"]),
+                                     "by_layer": counts["by_layer"], "record": ref,
+                                     "patched_forward": file_ref(root, folder / "patched-forward.py.txt", forward_hash)}
+            require(audit_data["evaluation"]["by_layer"] == audit_data["repeat"]["by_layer"],
+                    "evaluation guard counts changed on repeat")
+            index["stability_evidence"] = audit_data
+
+        audit.check("full_guard_counts_and_forward_sha256", check_guards)
+
     return audit.result(), index, raw
+
+
+def check_guard_record(root, folder, status, batches, binding):
+    guard_file = folder / "attention-guards.json"
+    counts = read_record(guard_file)
+    require(counts["model_identity"] == binding["model_identity"] and counts["epsilon"] == binding["epsilon"]
+            and counts["patch_sha256"] == binding["stability_patch_sha256"]
+            and counts["attention_calls"] == batches * 8 and counts["batches_observed"] == batches
+            and counts["nonfinite_denominator_positions"] == counts["negative_positions"] == 0
+            and counts["protected_positions"] == status["attention_guard_positions"],
+            "guard coverage or recorded counts differ")
+    layers = {item["layer"]: item for item in counts["by_layer"]}
+    observed = {name: {"protected": 0, "zero": 0} for name in layers}
+    prior = 0
+    for event in counts["batches_with_protection"]:
+        batch = event["batch"]
+        require(prior < batch <= batches and event["epoch"] == (batch - 1) // 300 + 1,
+                "guard event batch order or epoch differs")
+        prior = batch
+        require(len({row["layer"] for row in event["layers"]}) == len(event["layers"]) > 0,
+                "guard event repeats a layer or has no triggers")
+        for row in event["layers"]:
+            require(0 <= row["zero"] <= row["protected"] and row["protected"] > 0, "invalid guard counts")
+            for name in ("protected", "zero"):
+                observed[row["layer"]][name] += row[name]
+    require(len(layers) == len(counts["by_layer"]) == 8
+            and all(layers[layer][name] == value
+                    for layer, values in observed.items() for name, value in values.items())
+            and sum(row["protected"] for row in layers.values()) == counts["protected_positions"]
+            and sum(row["zero"] for row in layers.values()) == counts["zero_positions"],
+            "guard event sums disagree with layer totals")
+    return counts, file_ref(root, guard_file)
 
 
 def compare_labels(first, second):

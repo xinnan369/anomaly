@@ -174,3 +174,35 @@ CUDA_VISIBLE_DEVICES=0 "$py" -B -u tools/environment/diagnose_doll_failure.py \
 ```
 
 最终核验另在 Windows 原生 CPU Python 中执行。传入同一数据根、尝试目录和 CSV 的 Windows 路径即可。JSON 记录了实际 Python、PyTorch 和 NumPy 版本。训练和官方评价环境仍为 WSL2。[最终核验](../../results/baselines/metrics/verification.json)
+
+### Dinomaly-stabilized 数值稳定性实验
+
+原版 Dinomaly 继续使用默认 `--attention-mode official`。稳定版只接受 Doll，显式指定 `--attention-mode stabilized`，训练时另加 `--diagnose-doll`。正式开始前先确认原版有界回放的 q/k 舍入证据，再在真实固定上游模块上运行数值预检。分母下界固定为 1e-6，启动器记录实际注入 forward、补丁代码、上游源码和运行设置的哈希。两种模式的检查点不能交叉评价。完整批次计数保存在各阶段的 `attention-guards.json`，训练事件按 epoch 和解码层归档，评价事件以批次序号为准。[数值证据与外部文件索引](../../results/baselines/evidence/doll-stability-run.json)
+
+从 WSL2 的仓库根目录执行，使用已锁定的 Python 和固定数据根。源文件按 LF 保存以核对本轮执行的字节级 SHA-256。故障证明若已生成，可直接复用。实际启动脚本调用两次冻结评价，每次使用独立目录，每次均验证最终检查点和补丁绑定。
+
+```
+stage=/mnt/d/vicad-syn/task-002-stage2
+py="$HOME/.local/venvs/vicad-task-002-stage2/bin/python"
+official_attempt="$stage/doll-clean-20261122-run"
+attempt="$stage/doll-stabilized-new"
+if [ ! -f "$official_attempt/forensic-qk/forensic-replay.json" ]; then
+    CUDA_VISIBLE_DEVICES=0 "$py" -B -u tools/environment/diagnose_doll_failure.py \
+        --root "$stage" --attempt "$official_attempt" --output "$official_attempt/forensic-qk"
+fi
+bash tools/environment/run_doll_stabilized.sh "$stage" "$attempt" "$(git rev-parse HEAD)" "$py"
+```
+
+验证器可以从 Windows 原生 CPU Python 使用同一数据路径，以降低 WSL 挂载盘的数组扫描开销。先用 `verify_baselines.py` 核验原版总表，再将其结果交给变体验证器。已知原版 Doll 失败使第一条核验返回 2，仍会输出七组成功和已知阻断。变体验证器审查原版已知阻断清单、变体的完全训练证据及两次评价。它输出单独的变体表和机器核验 JSON，稳定版不具备完整证据时保留空指标。以下是使用 WSL 路径的等价核验命令。
+
+```
+"$py" -B tools/environment/verify_baselines.py --root "$stage" \
+    --doll-attempt "$official_attempt" --summary results/baselines/metrics/baseline-summary.csv \
+    --output "$attempt/official-audit"
+"$py" -B tools/environment/verify_doll_variant.py --root "$stage" --attempt "$attempt" \
+    --official-summary results/baselines/metrics/baseline-summary.csv \
+    --official-audit "$attempt/official-audit" --output "$attempt/variant-audit"
+"$py" -B tools/environment/plot_stability_results.py \
+    --official results/baselines/metrics/baseline-summary.csv \
+    --variant "$attempt/variant-audit/stabilized-doll.csv" --output "$attempt/paper-figures"
+```
