@@ -1,0 +1,102 @@
+{
+  "sealed_utc": "2026-11-23T14:06:50.847065+00:00",
+  "git_sha": "91ec34558507cb6d9a23aeed6dc51ca51d21e50a",
+  "binding": {
+    "registered_sha256": "e6e962cda8bd1bf32ae5ac56e2b90bf3868b6c8711e0b0fb6b1d5203c121905b",
+    "inherited_v1": {
+      "config": {
+        "data_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+        "upstream_revision": "a606aa0e1614f23dad70da26430dd66095192141",
+        "backbone": "dinov2_vitb14_reg4_pretrain.pth",
+        "backbone_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+        "manifest_sha256": "7ac578bf7bef5148edccd318a55a73694eb9d216c87b7f9186a45e112ea27e43",
+        "seed": 42,
+        "dev_objects": 24,
+        "dev_epochs": 3,
+        "epochs": 12,
+        "batch_groups": 4,
+        "encode_batch": 24,
+        "workers": 8,
+        "hidden": 96,
+        "heads": 3,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "epsilon": 1e-08,
+        "temperature": 1,
+        "settings": {
+          "Car": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4"
+          ],
+          "Cube": [
+            "A1",
+            "A4"
+          ],
+          "Doll": [
+            "A1",
+            "A4"
+          ],
+          "Ring": [
+            "A1",
+            "A4"
+          ]
+        }
+      },
+      "config_sha256": "7ba923b32acf7f85bda32415e6ce4429fa22612932f68978494a6ca661e012ab",
+      "sources": {
+        "__init__.py": "8ec3530559a364eba8468e40d8ebace10eb55c1ad00e5cc4dec5950ace1189fb",
+        "cli.py": "1a26762a0b22fdd814e3ccc2d9d844fcce5dad0d9cc2a1495fb8c6de5c60679a",
+        "data/cache.py": "4ea9f1a6b4f05ddda6e4ce2c3401372d2ec47ccbb796a6f5c9c6f030f27e24a5",
+        "data/manifest.py": "30412ee9ce13e4f2478cf02f49a53835f2da6f3444c459b5b39c420af17fdcc7",
+        "evaluation/synergy.py": "f5ca8d2a9e578b29e5b47e95dd86cb56fad07bc723526500a825c23c16fbf504",
+        "experiment.py": "2cbb1dadcb727c6dba0275f03e600c8cf5dce4c1ff688922bd05939b93c93c8a",
+        "fusion/weights.py": "a600d0f3dcd5af096876f937012b3db66066b1aba0d1359704ce2497a9279c0f",
+        "models/backbone.py": "f552fb2e2206854f3048882021ceae4825d2213a488b70313fdb64b8b5823822",
+        "models/predictor.py": "3bedb73c030bfe0f75eae3e555d3c4a52d5d494f94dbf0c0501962c2c3c80343",
+        "training/train.py": "b25cd5d3043fd853a1dcd2a7e48fc411f70fd654308c6d11b6cdf4523f04e270",
+        "uncertainty/signals.py": "969a3275fb9c5ac850d894636aad798e6c1dff7f72b3139b634a47222da7a883"
+      }
+    },
+    "versions": {
+      "vicad_refinement/data.py": "3c174c6725fb414f22d917f78a991de50511704922f55ff2d126014df464049e",
+      "vicad_refinement/development.py": "a71c8bbd9c7903ed4752d8d1425f6782950cace1198c582c566a830afd55fb95",
+      "vicad_refinement/formal.py": "d6d1e40165b83c6087b0fcce636132c50df8ee76e480ae23d22a113af1f7c2b5",
+      "vicad_refinement/model.py": "6b9e05fe9e1396ffe3d66d6006258630a65a95707b217e8c01a3cca67d61d27b",
+      "vicad_refinement/run.py": "06766cefe2c0c0468baeddaa03cd73f71f84b0093d7a8513fbc8b8b7e7f667f9",
+      "vicad_refinement/synthetic.py": "5654bb72f92959e3ac3229bb2061574e44ff636bfc35ca2b7a496e13728aa1f6",
+      "vicad_refinement/training.py": "d4304f2a601d07f2ab0559e43ac63eeed3946ac69126b801036c3f98ebcf8acb"
+    },
+    "heldout": [
+      "Bird",
+      "Motor",
+      "Teapot",
+      "Tube",
+      "Dice",
+      "Holder"
+    ]
+  },
+  "winner": {
+    "candidate": "D_combined",
+    "fusion": "patch_stability",
+    "macro_pixel_ap": 0.6501766319247565,
+    "views": 192
+  },
+  "development_sha256": "32b3abb0cf116117e99ef0f9706add9572d4d31923f0a2e5706a7098ae316a20",
+  "selection_sha256": "e31bf79a81c6884cc5eab2783d5c2d7f919aa461a7f7df7f0b8919bbdec4389d",
+  "confirmatory_order": [
+    "Bird",
+    "Motor",
+    "Teapot",
+    "Tube",
+    "Dice",
+    "Holder"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ]
+}

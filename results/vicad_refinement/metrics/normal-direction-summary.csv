@@ -1,0 +1,17 @@
+scenario,context,views,mean_signed_projection,positive_fraction
+one_weak,nine_direct,48,0.0,0.0
+one_weak,normal_conditional,48,0.0,0.0
+one_weak,nine_median,48,0.0,0.0
+one_weak,four_subset,48,0.0,0.0
+four_strong,nine_direct,48,0.24389291791241297,1.0
+four_strong,normal_conditional,48,0.0,0.0
+four_strong,nine_median,48,0.10897175145099629,1.0
+four_strong,four_subset,48,0.28235614285622074,1.0
+all_weak,nine_direct,48,0.783994876032792,1.0
+all_weak,normal_conditional,48,0.0,0.0
+all_weak,nine_median,48,0.8050853502958594,1.0
+all_weak,four_subset,48,0.7728880737200274,1.0
+all_strong,nine_direct,48,0.8286108870522527,1.0
+all_strong,normal_conditional,48,0.0,0.0
+all_strong,nine_median,48,0.8513132710937018,1.0
+all_strong,four_subset,48,0.8180443517202386,1.0

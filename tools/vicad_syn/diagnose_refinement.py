@@ -58,6 +58,12 @@ def analyze(category, first, combined, source, binding, output):
     raw = np.load(raw_mask, allow_pickle=False, mmap_mode="r")
     positive = np.array([i for i, v in enumerate(raw) if v.any()])
     visible = np.bincount(positive // 10, minlength=len(raw)//10)
+    cross_light_iou = []
+    for i in np.flatnonzero(visible == 10):
+        same_view = raw[i * 10:(i + 1) * 10].reshape(10, 224, 224).astype(bool)
+        intersection = same_view.all(axis=0).sum()
+        union = same_view.any(axis=0).sum()
+        cross_light_iou.append(intersection / union)
     tile_labels = raw[positive].reshape(-1, 16, 14, 16, 14).any(axis=(2, 4)).reshape(-1, 256)
     rng = np.random.default_rng(42)
     with np.load(p, allow_pickle=False) as patch:
@@ -72,6 +78,8 @@ def analyze(category, first, combined, source, binding, output):
     np.savez_compressed(output / f"{category}-v1-example.npz", mask=masks[0],
                         A1=before[0], A4=after[0], tile=tile[0], view_index=exemplar)
     return {"category": category, "positive_views": len(masks), "all_10_lights_positive": int((visible == 10).sum()),
+            "all_lights_intersection_over_union_median": float(np.median(cross_light_iou)),
+            "all_lights_identical_masks": int(np.count_nonzero(np.array(cross_light_iou) == 1)),
             "median_mask_pixels": float(np.median(area)), "mean_mask_pixels": float(area.mean()),
             "occupied_patch_area_precision": float(area.sum()/tile_area.sum()),
             "A1_fg_pixel_mean": means(before, masks)[0], "A1_bg_pixel_mean": means(before, masks)[1],

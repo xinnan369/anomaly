@@ -1,0 +1,77 @@
+{
+  "category": "Bird",
+  "observed_at": "2026-11-23T22:12:30.325001+08:00",
+  "required_size": 15506344175,
+  "published_sha256": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
+  "ranges": {
+    ".part": {
+      "bytes": 2617245696,
+      "count": 39
+    },
+    ".download": {
+      "bytes": 923009024,
+      "count": 24
+    }
+  },
+  "network_logs": {
+    "stage-Bird.log": {
+      "captured_source": {
+        "sha256": "688af98420fa0293d6f1d6652c9df5e1930e3d9919c608c89f44e14bffb32caa",
+        "bytes": 32
+      },
+      "git_text": {
+        "sha256": "688af98420fa0293d6f1d6652c9df5e1930e3d9919c608c89f44e14bffb32caa",
+        "bytes": 32
+      }
+    },
+    "stage-Bird-win.log": {
+      "captured_source": {
+        "sha256": "1b0ce27421d896b2c35a423c105e385ee2259829d0190eb8a402cfcd215a61b9",
+        "bytes": 33
+      },
+      "git_text": {
+        "sha256": "688af98420fa0293d6f1d6652c9df5e1930e3d9919c608c89f44e14bffb32caa",
+        "bytes": 32
+      }
+    },
+    "stage-Bird-resume.log": {
+      "captured_source": {
+        "sha256": "ee05d8e126f20ce92067369486ca68581a80ad221477242f99fc69bd8d19714f",
+        "bytes": 500
+      },
+      "git_text": {
+        "sha256": "ee2258795f79682a08d50fa37089da5251feac6f1a082caba5a3f66b36c53050",
+        "bytes": 492
+      }
+    },
+    "stage-Bird-lfs.log": {
+      "captured_source": {
+        "sha256": "d3d45c790765d70e1eec00e5a47baea0673c59c34734fb81891a9aaafd2958ff",
+        "bytes": 376
+      },
+      "git_text": {
+        "sha256": "eece4c74c123b5dce7b056055259227d690a9d711850c5debaad2258771cf5d1",
+        "bytes": 370
+      }
+    },
+    "stage-Bird-lfs24.log": {
+      "captured_source": {
+        "sha256": "1ad9ca8a4685b0468e2eb4664ea42b4879d34cb36334de4b5382c9dacb521c1f",
+        "bytes": 1378
+      },
+      "git_text": {
+        "sha256": "2f1b08b35e135a3112a16531b04dbe4d50de483c003dd6f443731d04ff2a5264",
+        "bytes": 1358
+      }
+    }
+  },
+  "source_test": {
+    "curl_exit": 28,
+    "range_bytes": 8388608,
+    "received": 8261662,
+    "seconds": 45.403218
+  },
+  "native_xet": "Zero archive bytes written before the inactive fallback was stopped.",
+  "ready": false,
+  "confirmed": []
+}

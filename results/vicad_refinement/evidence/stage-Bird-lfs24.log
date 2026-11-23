@@ -1,0 +1,20 @@
+Bird: staging fixed publication via lfs
+Bird: 8/232 complete ranges
+range 1006632960-1073741823: attempt 1 SSLError, retained 58195968 bytes
+range 1610612736-1677721599: attempt 1 SSLError, retained 55050240 bytes
+range 1677721600-1744830463: attempt 1 SSLError, retained 31457280 bytes
+range 1207959552-1275068415: attempt 1 SSLError, retained 57409536 bytes
+range 2080374784-2147483647: attempt 1 SSLError, retained 0 bytes
+range 1946157056-2013265919: attempt 1 SSLError, retained 4194304 bytes
+range 2483027968-2550136831: attempt 1 ConnectionError, retained 0 bytes
+range 2214592512-2281701375: attempt 1 ChunkedEncodingError, retained 2359296 bytes
+range 1879048192-1946157055: attempt 1 ChunkedEncodingError, retained 6029312 bytes
+Bird: 16/232 complete ranges
+Bird: 24/232 complete ranges
+range 2147483648-2214592511: attempt 1 ChunkedEncodingError, retained 66846720 bytes
+range 1879048192-1946157055: attempt 2 ChunkedEncodingError, retained 18350080 bytes
+range 2080374784-2147483647: attempt 2 ConnectionError, retained 28049408 bytes
+range 3154116608-3221225471: attempt 1 ConnectionError, retained 43778048 bytes
+range 3154116608-3221225471: attempt 2 SSLError, retained 43778048 bytes
+range 2080374784-2147483647: attempt 3 SSLError, retained 28049408 bytes
+range 4093640704-4160749567: attempt 1 ChunkedEncodingError, retained 22282240 bytes

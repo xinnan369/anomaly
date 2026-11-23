@@ -158,7 +158,7 @@ def example(source, folder):
 
 def feature_prediction(source, folder):
     with np.load(source / "normal-feature-example.npz", allow_pickle=False) as data:
-        title = ("A  |  Target light tokens", "B  |  v1 predicted tokens", "C  |  Normal-reference tokens")
+        title = ("A  |  Target light tokens", "B  |  v1 predicted tokens", "C  |  Normal prior tokens")
         entries = [data[name] for name in ("target", "v1_prediction", "normal_reference")]
         joined = np.concatenate(entries)
         joined = joined - joined.mean(0)

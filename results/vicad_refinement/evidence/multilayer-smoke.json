@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "torch": "2.2.2+cu121",
+  "encoder_parameters": 86583552,
+  "results": {
+    "cpu": {
+      "shape": [
+        2,
+        3,
+        256,
+        768
+      ],
+      "frozen": true,
+      "exact_final_layer_equivalence": true
+    },
+    "cuda": {
+      "shape": [
+        2,
+        3,
+        256,
+        768
+      ],
+      "frozen": true,
+      "exact_final_layer_equivalence": true
+    }
+  }
+}
