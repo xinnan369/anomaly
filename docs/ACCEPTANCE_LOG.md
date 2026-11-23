@@ -16,5 +16,6 @@
 | 2026-11-23 | TASK-002 最终研究交付 | 七组原版已复核，原版 Dinomaly/Doll 保留故障结论，稳定版完成冻结评价及复评。[报告](../reports/TASK-002-REPORT.md#第二阶段最终结果) · [PR #2](https://github.com/xinnan369/anomaly/pull/2) | 实验完成，待独立验收。 |
 | 2026-11-23 | TASK-002 最终验收与合并 | 七组 OFFICIAL_CLEAN、Dinomaly/Doll 原版 OFFICIAL_FAILED、Dinomaly-stabilized NUMERICALLY_STABILIZED、历史 RECOVERED_DEVIATION。普通 merge 与当时 main 为 d1ddbb9d698114ccb616ad96c23565f7f2b1e275。[Review 6018691109](https://github.com/xinnan369/anomaly/pull/2#pullrequestreview-6018691109) · [合并提交](https://github.com/xinnan369/anomaly/commit/d1ddbb9d698114ccb616ad96c23565f7f2b1e275) | ACCEPTED_WITH_EXCEPTION / 有限例外验收通过。 |
 | 2026-11-23 | TASK-003 执行交付 | 4/4 类正式结果通过，Car 核心消融 A0–A4 完成。[执行报告](../reports/TASK-003-REPORT.md) · [独立核验材料](../results/vicad_syn/evidence/verification.json) | 实验完成，待独立验收。 |
+| 2026-11-23 | TASK-003 验收与合并 | 验收报告与原型可复现性。四类及 Car 消融为真实负结果。普通合并为 `498d99652d3153f50a3113c7a8b363d088449c56`。[审查](https://github.com/xinnan369/anomaly/pull/4#pullrequestreview-6022362483) · [PR #4](https://github.com/xinnan369/anomaly/pull/4) | ACCEPTED |
 
 执行证据见[报告目录](../reports/README.md)。后续记录验收日期、任务 ID、报告与提交链接、验收结论和待修正项。
