@@ -31,6 +31,7 @@ def compare(folder, root, category, encoder, registry, fixed, device):
     model, proto, receipt = fit(folder / "fit", cache, groups, features, train,
                                registry["seed"], base, fixed, device)
     rows, direction = [], []
+    visual = {}
     for index, group in enumerate(groups):
         if group.identity not in valid or group.view not in registry["development_views"]:
             continue
@@ -55,13 +56,22 @@ def compare(folder, root, category, encoder, registry, fixed, device):
             region = patch_mask(mask).to(device)
             delta = (x[:, :, -1] - leaf0)[0, lights][:, region].flatten()
             energy = delta.square().sum().item()
-            for context, current in context_predictions(x[:, :, -1], model, reference[:, :, -1]).items():
+            predictions = context_predictions(x[:, :, -1], model, reference[:, :, -1])
+            if category == "Car" and scenario == "all_strong" and not visual:
+                light = lights[0]
+                visual = {
+                    "target": x[0, light, -1].cpu().numpy(),
+                    "v1_prediction": predictions["nine_direct"][0, light].cpu().numpy(),
+                    "normal_reference": predictions["normal_conditional"][0, light].cpu().numpy(),
+                    "mask": mask.numpy(), "view": group.view, "object": group.identity, "light_one_based": light + 1,
+                }
+            for context, current in predictions.items():
                 response = (current - pred0[context])[0, lights][:, region].flatten()
                 projection = (response * delta).sum().item() / energy if energy else None
                 direction.append({"category": category, "object": group.identity, "view": group.view,
                                   "scenario": scenario, "context": context, "direction_projection": projection,
                                   "test_role": "normal-only synthetic", "checkpoint_sha256": receipt["checkpoint_sha256"]})
-    return rows, direction
+    return rows, direction, visual
 
 
 def main():
@@ -81,9 +91,11 @@ def main():
         encoder = MultiLayerBackbone(args.inputs / "inputs/weights" / base["backbone"],
                                      base, registry["feature_blocks_one_based"]).to(device)
         for category in registry["development_categories"]:
-            row, cone = compare(args.run / "development" / category, args.inputs, category, encoder, registry, fixed, device)
+            row, cone, example = compare(args.run / "development" / category, args.inputs, category, encoder, registry, fixed, device)
             rows.extend(row)
             direction.extend(cone)
+            if example:
+                np.savez_compressed(args.output / "normal-feature-example.npz", **example)
             print(category, "layer and directional checks completed", flush=True)
     csv_write(args.output / "normal-layer-diagnosis.csv", rows)
     csv_write(args.output / "normal-direction-diagnosis.csv", direction)
@@ -103,7 +115,7 @@ def main():
                                  "positive_fraction": float(np.mean(np.asarray(estimates) > 0))})
     csv_write(args.output / "normal-direction-summary.csv", cone_summary)
     write_json(args.output / "layers.json", {"status": "PASS", "outputs": {
-        p.name: digest(p) for p in sorted(args.output.glob("normal-*.csv"))}})
+        p.name: digest(p) for p in sorted(args.output.glob("normal-*"))}})
 
 
 if __name__ == "__main__":

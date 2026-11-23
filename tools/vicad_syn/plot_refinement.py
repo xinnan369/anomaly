@@ -156,6 +156,32 @@ def example(source, folder):
         save(fig, folder, "car-synthetic-feature-and-reliability")
 
 
+def feature_prediction(source, folder):
+    with np.load(source / "normal-feature-example.npz", allow_pickle=False) as data:
+        title = ("A  |  Target light tokens", "B  |  v1 predicted tokens", "C  |  Normal-reference tokens")
+        entries = [data[name] for name in ("target", "v1_prediction", "normal_reference")]
+        joined = np.concatenate(entries)
+        joined = joined - joined.mean(0)
+        _, _, basis = np.linalg.svd(joined, full_matrices=False)
+        projected = joined @ basis[:3].T
+        limits = np.quantile(projected, [.01, .99], axis=0)
+        colors = ((projected-limits[0])/np.maximum(limits[1]-limits[0], 1e-6)).clip(0,1)
+        mask = data["mask"]
+        fig, axes = plt.subplots(1, 4, figsize=(7.7, 2.5), layout="constrained")
+        for i, axis in enumerate(axes[:3]):
+            axis.imshow(colors[i*256:(i+1)*256].reshape(16,16,3), extent=(0,224,224,0), interpolation="nearest")
+            axis.contour(mask, colors=["white"], levels=[.5], linewidths=.75, origin="upper", extent=(0,224,224,0))
+            axis.set_title(title[i],loc="left")
+            axis.axis("off")
+        residual = ((entries[0]-entries[1])**2).sum(-1).reshape(16,16)
+        heat = axes[3].imshow(residual, cmap="magma", extent=(0,224,224,0), interpolation="nearest")
+        axes[3].contour(mask, colors=["#53ede6"], levels=[.5], linewidths=.75, origin="upper", extent=(0,224,224,0))
+        axes[3].set_title("D  |  v1 token residual",loc="left")
+        axes[3].axis("off")
+        fig.colorbar(heat,ax=axes[3],fraction=.045,pad=.03)
+        fig.suptitle("Car, all-light synthetic perturbation: shared feature PCA")
+        save(fig,folder,"car-feature-prediction")
+
 def exploratory(source, folder):
     rows = [r for r in read_csv(source) if r["scope"] == "exploratory"]
     if not rows:
@@ -214,6 +240,8 @@ def main():
     architecture(args.output)
     if (args.diagnostics / "v1-localization.csv").exists():
         v1_diagnosis(args.diagnostics, args.output)
+    if (args.diagnostics / "normal-feature-example.npz").exists():
+        feature_prediction(args.diagnostics,args.output)
     if (args.development / "selection.csv").exists():
         development(args.development, args.output)
         example(args.development, args.output)
