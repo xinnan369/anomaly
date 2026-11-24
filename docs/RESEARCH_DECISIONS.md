@@ -75,3 +75,5 @@
 - 已验收的实验及基线身份在对照中依旧分别记录。原版 Dinomaly/Doll 失败，稳定化变体与历史恢复是独立身份。不同出处的已发表指标及本地复现注明来源与发布差异。
 
 [任务与预登记](../instructions/TASK-004.md) · [执行报告](../reports/TASK-004-REPORT.md)
+
+正常代理固定选择 D_combined / patch_stability。65.02% 的宏平均像素 AP 用于开发选型。冻结 SHA 为 `91ec34558507cb6d9a23aeed6dc51ca51d21e50a`。已见类别 4/4，独立确认 6/6。根据独立确认结果评估方法贡献。 [冻结证据](../results/vicad_refinement/evidence/freeze.json)

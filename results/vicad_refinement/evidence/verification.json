@@ -15,7 +15,10 @@
     "exploratory/Ring": "1487e95d4863aa5ee725e324296190efce6e4e5f69c751d5c401a5341e1f51e2",
     "confirmatory/Bird": "bda35924f6019b0bbdec4929f9090544a56b16e99eb1f69c91269072d3e03639",
     "confirmatory/Motor": "f823112a7a306f809cee1cb1cbac9a0bdaed4f46c4acce47e200d0d05e196885",
-    "confirmatory/Teapot": "6615e9e5010899cfd2f66ef56ba67ff39f0e021e95ef5c339e6028505ea5599f"
+    "confirmatory/Teapot": "6615e9e5010899cfd2f66ef56ba67ff39f0e021e95ef5c339e6028505ea5599f",
+    "confirmatory/Tube": "8367ef7442a8a9a0e3b80d6890cb2c114df3a0524bd63eb5c21deb3959ab0a14",
+    "confirmatory/Dice": "c17e4c3372b0a3cb25e361e3407af5f9c1c49a69e45b8d1c2afcb7f12ee81b5c",
+    "confirmatory/Holder": "14f27d1790154321062e01ae57e790c456223afe14f5f3eaf3282080640c5b6f"
   },
   "stages": {
     "development": "PASS",
@@ -29,7 +32,7 @@
     "development-cells.csv": "9033c29f09d2615d46305ef0d750cda9e1af1f6152ed10a2ac296dc52deed40e",
     "development-matrix.csv": "e31bf79a81c6884cc5eab2783d5c2d7f919aa461a7f7df7f0b8919bbdec4389d",
     "development-rows.csv": "7794bf63b9de3b7ea5083f34ac0e8cd2c209c886d65930794e80c5645828fe89",
-    "formal-summary.csv": "ad3a3b98dbbcb6761a830e85a02a3a4176399b68b6167c778a0272c2028e7d29",
-    "formal.csv": "cff48fe221f81638e33d8cc31619e6c87469670abb92bfb2ab45d696856163aa"
+    "formal-summary.csv": "c3a10aea8bf51823cf406b3cdd053a4d4791444c6f9871d7adee22120eac4d1c",
+    "formal.csv": "a0a718f5a177cd8e909728802d4712aff9176465bbc30e6e709be6ca2d9f362d"
   }
 }

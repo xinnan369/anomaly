@@ -1,6 +1,6 @@
 {
   "category": "Bird",
-  "observed_at": "2026-11-24T09:35:30.898320+08:00",
+  "observed_at": "2026-11-24T11:15:29.659599+08:00",
   "required_size": 15506344175,
   "published_sha256": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
   "ranges": {
@@ -76,12 +76,12 @@
     },
     "mirror-download.log": {
       "captured_source": {
-        "sha256": "6770d146093acc0c89a7506c5999dc1fbd2495746a2eb044df94bca6e7f62138",
-        "bytes": 276
+        "sha256": "1b7be908f05e81990a19ce576b4b1e3222fb3ca79705aedf5c5a42379f6b422a",
+        "bytes": 523
       },
       "git_text": {
-        "sha256": "e54ecbad1bc74e0ce91e583dfafc64f1bbc1cdf1e08b9a46ae476eda4f64e1b5",
-        "bytes": 273
+        "sha256": "0dc461be9a98247f1cc1705de7011b26ba88b6b1867f5789304edd6b3ba9bfe9",
+        "bytes": 517
       }
     },
     "stage-Tube-mirror.log": {
@@ -96,12 +96,22 @@
     },
     "stage-Dice-mirror.log": {
       "captured_source": {
-        "sha256": "bb1ea0b9be676af0532788506544a82414672740924d48403b487a7610e0fcf4",
-        "bytes": 847
+        "sha256": "63e98f43b768fa01aea0e3df43af17dad238bdc3c85278c0819822d86e65b697",
+        "bytes": 1531
       },
       "git_text": {
-        "sha256": "823126710a5526fe8511e62a17857e64ad03b4134b1104ed4e9b18550eccb434",
-        "bytes": 821
+        "sha256": "53084a714bf86db0b3d3f2f671638ee3492e8ee2e511523eca2886668f444dac",
+        "bytes": 1489
+      }
+    },
+    "stage-Holder-mirror.log": {
+      "captured_source": {
+        "sha256": "57cf51bd13626a882825eb38d76ff76d7dc09ece940304abf21c99207297581c",
+        "bytes": 1500
+      },
+      "git_text": {
+        "sha256": "60400d8e746321c79744baad35d99dbd392db418f9627985dbec742b7645eb17",
+        "bytes": 1459
       }
     }
   },
@@ -116,7 +126,10 @@
   "confirmed": [
     "Bird",
     "Motor",
-    "Teapot"
+    "Teapot",
+    "Tube",
+    "Dice",
+    "Holder"
   ],
   "all_categories": {
     "Bird": {
@@ -149,7 +162,7 @@
     "Tube": {
       "order": 4,
       "passes_archive_audit": true,
-      "passes_confirmation": false,
+      "passes_confirmation": true,
       "complete_archive_bytes": 16709077850,
       "complete_range_count": 0,
       "complete_range_bytes": 0,
@@ -157,19 +170,21 @@
     },
     "Dice": {
       "order": 5,
-      "passes_archive_audit": false,
-      "passes_confirmation": false,
-      "complete_archive_bytes": null,
-      "complete_range_count": 204,
-      "complete_range_bytes": 13690208256
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 16681648758,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "5fc85264e2ccd4cd8dd731d816060c38eb1336b613d683a6df99024db4e95911"
     },
     "Holder": {
       "order": 6,
-      "passes_archive_audit": false,
-      "passes_confirmation": false,
-      "complete_archive_bytes": null,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 17471748248,
       "complete_range_count": 0,
-      "complete_range_bytes": 0
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "d3d0182c99eafe7147cc44c4ac4efcad9e139a1c14065a904b1793b0c8d54a2b"
     }
   }
 }

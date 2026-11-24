@@ -46,5 +46,34 @@
     "workers": 12,
     "route_check_seconds": 15,
     "vpn_rx_plus_tx_pause_bytes": 2097152
+  },
+  "completed_mirror_transfers": {
+    "Tube": {
+      "started_local": "2026-11-24T08:35:15+08:00",
+      "archive_audited_local": "2026-11-24T09:07:45+08:00",
+      "archive_bytes": 16709077850,
+      "archive_sha256": "2cee61f6f72e24c9968995a657a76f0c2de525f854a7a48fb089c517513a1c9b",
+      "crc_verified_files": 13010
+    },
+    "Dice": {
+      "started_local": "2026-11-24T09:07:45+08:00",
+      "archive_audited_local": "2026-11-24T09:46:10+08:00",
+      "archive_bytes": 16681648758,
+      "archive_sha256": "02aa9b6edda16bc408b654e362f8929a75923dd4bb6b7c7073cf91523346d263",
+      "crc_verified_files": 12778
+    },
+    "Holder": {
+      "started_local": "2026-11-24T09:46:10+08:00",
+      "archive_audited_local": "2026-11-24T10:22:55+08:00",
+      "archive_bytes": 17471748248,
+      "archive_sha256": "9d172110971844de022a253dc1f0012117af2c7f48e797056f11a8bdeed0eab3",
+      "crc_verified_files": 12834
+    }
+  },
+  "full_mirror_observation": {
+    "total_archive_bytes": 50862474856,
+    "observed_vpn_received_delta": 0,
+    "observed_vpn_sent_delta": 0,
+    "guard_exit_code": 0
   }
 }

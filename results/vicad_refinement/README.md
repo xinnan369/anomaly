@@ -15,13 +15,16 @@
 
 
 
+
 ## 冻结正式评价
 
-已见类别 4/4，预留类别 3/6。当前为扩展阶段的实测快照。
+**待独立验收。** 已见类别 4/4，独立确认 6/6。
 
-[逐种子指标与成本](metrics/formal.csv) · [类别均值和样本标准差](metrics/formal-summary.csv) · [确认覆盖](metrics/confirmatory-coverage.csv) · [作者参考](metrics/published-baseline-reference.csv)
+[逐种子指标与成本](metrics/formal.csv) · [类别摘要](metrics/formal-summary.csv)
 
-[已见类别对照](figures/exploratory-official-comparison.pdf) · [独立确认图](figures/confirmatory-by-seed.pdf)
+[与已验收基线对照](metrics/accepted-baseline-comparison.csv) · [探索性图 PDF](figures/exploratory-official-comparison.pdf)
+
+[预留类别图 PDF](figures/confirmatory-by-seed.pdf)
 
 ## 复现与文件核验
 
