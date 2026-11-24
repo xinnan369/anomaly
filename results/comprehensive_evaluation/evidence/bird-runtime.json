@@ -1,0 +1,131 @@
+{
+  "sample_selection": "first physical hash in canonical test order; no performance filtering",
+  "category": "Bird",
+  "seed": 42,
+  "checkpoint_sha256": "b1c07fd075a855d629ed2777d5048fedf2ded33c93590ffa02f5de2579533614",
+  "scope": "raw end-to-end includes serial PNG reads and frozen 4/8/12 DINO features; both paths end at fused score map",
+  "conditions": "same process and GPU; workstation can be shared; this is a latency probe, not an isolated hardware benchmark",
+  "frozen_encoder_parameters": 86583552,
+  "encoder_weight_file_bytes": 346393545,
+  "predictor_parameters": 478656,
+  "predictor_tensor_bytes": 1914624,
+  "bn_or_other_parameters": 0,
+  "prototype_bytes": 283115520,
+  "stored_checkpoint_bytes": 285044898,
+  "stored_train_seconds_B6": 130.51395157700063,
+  "stored_train_peak_cuda_bytes_B6": 6019373056,
+  "probes": [
+    {
+      "setting": "B2",
+      "scope": "cache_read_and_score",
+      "images": 10,
+      "seconds": [
+        0.010698534000084692,
+        0.008394028000111575,
+        0.008981272000028184,
+        0.008491628999991008,
+        0.00909209499991448,
+        0.007059189000074184,
+        0.007167359000050055
+      ],
+      "median_seconds": 0.008491628999991008,
+      "peak_additional_allocated_bytes": 82575360
+    },
+    {
+      "setting": "B2",
+      "scope": "png_read_encode_and_score",
+      "images": 10,
+      "seconds": [
+        1.7958675600000333,
+        1.904660267999816,
+        2.0888713079998524
+      ],
+      "median_seconds": 1.904660267999816,
+      "peak_additional_allocated_bytes": 153163776
+    },
+    {
+      "setting": "B6",
+      "scope": "cache_read_and_score",
+      "images": 10,
+      "seconds": [
+        0.05049729200004549,
+        0.1389506809998693,
+        0.036213603999840416,
+        0.040722725000023274,
+        0.035623509999823,
+        0.03573759300002166,
+        0.03809627800001181
+      ],
+      "median_seconds": 0.03809627800001181,
+      "peak_additional_allocated_bytes": 177192960
+    },
+    {
+      "setting": "B6",
+      "scope": "png_read_encode_and_score",
+      "images": 10,
+      "seconds": [
+        1.9190746259998832,
+        1.8654920349999884,
+        2.207936421999875
+      ],
+      "median_seconds": 1.9190746259998832,
+      "peak_additional_allocated_bytes": 177192960
+    },
+    {
+      "setting": "B2",
+      "scope": "cache_read_and_score",
+      "images": 120,
+      "seconds": [
+        0.1446578130000944,
+        0.15736087000004773,
+        0.15726872499999445,
+        0.1679904610000449,
+        0.14074419100006708,
+        0.1396583409998584,
+        0.15097662099992704
+      ],
+      "median_seconds": 0.15097662099992704,
+      "peak_additional_allocated_bytes": 213497856
+    },
+    {
+      "setting": "B2",
+      "scope": "png_read_encode_and_score",
+      "images": 120,
+      "seconds": [
+        22.184328308999966,
+        185.04698821399984,
+        22.635478610000064
+      ],
+      "median_seconds": 22.635478610000064,
+      "peak_additional_allocated_bytes": 420773376
+    },
+    {
+      "setting": "B6",
+      "scope": "cache_read_and_score",
+      "images": 120,
+      "seconds": [
+        0.46321755399981157,
+        0.4641062379998857,
+        0.42681971799993335,
+        0.4102985179999905,
+        0.5006908730001669,
+        0.396516758999951,
+        0.41432368799996766
+      ],
+      "median_seconds": 0.42681971799993335,
+      "peak_additional_allocated_bytes": 309760000
+    },
+    {
+      "setting": "B6",
+      "scope": "png_read_encode_and_score",
+      "images": 120,
+      "seconds": [
+        22.60841901699996,
+        135.548356947,
+        70.27722133099996
+      ],
+      "median_seconds": 70.27722133099996,
+      "peak_additional_allocated_bytes": 420773376
+    }
+  ]
+}

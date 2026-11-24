@@ -1,0 +1,438 @@
+{
+  "checked_utc": "2026-11-24T11:48:25.796026+00:00",
+  "release": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "manifest_sha256": "7ac578bf7bef5148edccd318a55a73694eb9d216c87b7f9186a45e112ea27e43",
+  "freeze_sha256": "41fb52634e61a5023cd8172c83d9982f075eedfc65a6cf807bdca8286b4e503f",
+  "weight_sha256": "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71",
+  "weight_bytes": 346393545,
+  "output_free_bytes": 505247694848,
+  "data_files_checked": "exact paths and nonzero lengths; archived CRC from existing receipts",
+  "categories": {
+    "Bird": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 12910,
+      "extracted_bytes": 15559984045,
+      "root": "E:\\date\\task-004-bird",
+      "historical_archive_sha256": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
+      "historical_archive_bytes": 15506344175,
+      "crc_receipt_sha256": "129783014903a0b6a8760af99ad775fed7607779b0dc59940f77fa6daef042e1",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "6e1030fcc1807363ee4d1d0ec77a4b7e36cc6aacb10040506a5dbaa1a9d631f6"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "79a315d284a9f2fcc2c627ad696315095a9e718b2d353398f8c26708f0371a69"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "b1c07fd075a855d629ed2777d5048fedf2ded33c93590ffa02f5de2579533614",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        },
+        "43": {
+          "sha256": "e9ad8c244383974abc3d21f7f8ce946e29b1eba01188b7af630245095a8140ec",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        },
+        "44": {
+          "sha256": "8056bd0fad53a8650eed13ffeac73defa1a98f1ee826ad5df979bc7a581b76b5",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Motor": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 13200,
+      "extracted_bytes": 15012444810,
+      "root": "E:\\date\\task-004-holdout",
+      "historical_archive_sha256": "eeffdb29450b5ffc5cb9bbc85afa5010ee633eefb87c4515c0f20b74f93e3e0f",
+      "historical_archive_bytes": 14955220087,
+      "crc_receipt_sha256": "96668abce274d7207689b573f55c83d40fbae8e3ac21e9e4f43cd99433fb80a2",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "1df82581fd79418f2e9cf070983aac1b3735ea0712c592bcc63df48a1dc82664"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "1753cd74c775fce9b508cac15c421c66dc089591668df3364a442030f1f39cb0"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "6ce53fbc0f79076a9fe332e9c1cc99662864d5da3d0ec774aed2e46f562c552d",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219464848,
+            "selected": 219464848
+          }
+        },
+        "43": {
+          "sha256": "288698b7a8054b3a4026a36d77ba6d389063e290385f3a9bb5e678448d47e0ad",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219464848,
+            "selected": 219464848
+          }
+        },
+        "44": {
+          "sha256": "d33d32f7fe091c93c9b3ef2adde470abb40e690c61f0e4d4b1ba6877e1418ac9",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219464848,
+            "selected": 219464848
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Teapot": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 13014,
+      "extracted_bytes": 15793148079,
+      "root": "E:\\date\\task-004-holdout",
+      "historical_archive_sha256": "a64815a83adcc40db75407a64fc1dd7a6882f76553953c67ce24c4abaeca5ac7",
+      "historical_archive_bytes": 15758841927,
+      "crc_receipt_sha256": "e1458da014ffb28be07c4aa58106958d76db044fb0c11369a500b21e4f5d6ec2",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "68c08cc892880a3dd24e7002fbac6491b449be568b72f6360009134b00b8b155"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "101864b795bfd54fe2bf6a03adbb08d0c4703dd67dc234ecad1bbcf3030bb463"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "88ea1327f09ce5118b27844c5f7ca3b8f52d544257323b5332e641c584390849",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219457568,
+            "selected": 219457568
+          }
+        },
+        "43": {
+          "sha256": "83d15d316dd279f03051dc0f2494ef1bc0cdd669abcbf379b0718616621d74da",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219457568,
+            "selected": 219457568
+          }
+        },
+        "44": {
+          "sha256": "b5107a64757f441dbd45e619434d14ece5d04a8a0a5098438afd5461c676c3b8",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219457568,
+            "selected": 219457568
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Tube": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 13010,
+      "extracted_bytes": 16719836252,
+      "root": "E:\\date\\task-004-holdout",
+      "historical_archive_sha256": "2cee61f6f72e24c9968995a657a76f0c2de525f854a7a48fb089c517513a1c9b",
+      "historical_archive_bytes": 16709077850,
+      "crc_receipt_sha256": "5aec0cffc7c4609d2bacc81b0929e081e1f7038b0e0ff560c9f9fb0fb1f072cc",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "601b4d252a5bda57ee2da4ca021f4eaece077fe5a39200921f956a2fd1219bad"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "a4712bd0914c6bda7b7ad661f0484e4a8d17cd51a78832182944e6914dcfb7a7"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "3a53fbbcd4abd6618bd5252eb71ebd014d959b0559588c96a4dece1a75538bcf",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        },
+        "43": {
+          "sha256": "8017f5dd68cefe9bb148ca85438cce44a875e7d5a4d96af9d715f36bfd6ccd9c",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        },
+        "44": {
+          "sha256": "3ef83c585079f51aab919b5039d1971b887f543ba484f023e99d56448a67276b",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Dice": {
+      "train_objects": 29,
+      "test_objects": 70,
+      "train_images": 3480,
+      "test_images": 8400,
+      "exact_member_paths": 12778,
+      "extracted_bytes": 16707805277,
+      "root": "E:\\date\\task-004-holdout",
+      "historical_archive_sha256": "02aa9b6edda16bc408b654e362f8929a75923dd4bb6b7c7073cf91523346d263",
+      "historical_archive_bytes": 16681648758,
+      "crc_receipt_sha256": "5fc85264e2ccd4cd8dd731d816060c38eb1336b613d683a6df99024db4e95911",
+      "feature_caches": {
+        "train": {
+          "bytes": 4105175168,
+          "prior_sha256": "d881dbf6fcf08b836622a6a6eed895ebc2c46bcdb14239352d97e996e356f1e2"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "709b3acaf86565d357868d9c452455ddaebef0733dc4d9416e38bf9333ecb09b"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "8b04f7725f84f77ff4627bae584e37cb1f52159f0afddbaff4d3841f8292be1f",
+          "bytes": 285044770,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        },
+        "43": {
+          "sha256": "8038d193a1ab3da29abf7c827c21a18a390b0b8c07c935af5f17d86571a686c1",
+          "bytes": 285044770,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        },
+        "44": {
+          "sha256": "d4710f5cc4a44d7fa991a7d66fa0955f1e356695ec5c126bce14d5cd747a37be",
+          "bytes": 285044770,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Holder": {
+      "train_objects": 30,
+      "test_objects": 69,
+      "train_images": 3600,
+      "test_images": 8280,
+      "exact_member_paths": 12834,
+      "extracted_bytes": 17495460545,
+      "root": "E:\\date\\task-004-holdout",
+      "historical_archive_sha256": "9d172110971844de022a253dc1f0012117af2c7f48e797056f11a8bdeed0eab3",
+      "historical_archive_bytes": 17471748248,
+      "crc_receipt_sha256": "d3d0182c99eafe7147cc44c4ac4efcad9e139a1c14065a904b1793b0c8d54a2b",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "5a166ab2ab281fb3e9f6c1a493d0c35fc6c14b2eaf6f23ec7ce4ac3e322d0fd6"
+        },
+        "test": {
+          "bytes": 9767485568,
+          "prior_sha256": "9b2aa19494f0c5187fd04ca03ce7f98349d5ec97fdd5f9238a74c4147a1db629"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "5b66c42336276eef209238bf64e05c9e938897ed6a050efad0838318b9f305ad",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 216333244,
+            "selected": 216333244
+          }
+        },
+        "43": {
+          "sha256": "ee48bb871afb1cf7c594a803db926c4e5b41a7b94a2097ac59e6604dbd5ce277",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 216333244,
+            "selected": 216333244
+          }
+        },
+        "44": {
+          "sha256": "d4828c62bca5f7514030655aa6f41366c6264a0ae2883f4b08afa005c66a2bdf",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 216333244,
+            "selected": 216333244
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Car": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 12970,
+      "extracted_bytes": 16347837495,
+      "root": "E:\\date\\task-002-stage2",
+      "historical_archive_sha256": "27e77cfe0faad99065489ce5c5a785a2450da771372997dc9cfca160e778af36",
+      "historical_archive_bytes": 16318099753,
+      "crc_receipt_sha256": "ca8193de02f52658a8aa8ef1eef0ef5fbb9db6d4a60b41a68966f0e3835d45fc",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "48072c788b46dd5ad3a84f9695ca0a3b8bdcdb7b96844875e8ca1f2abc0cd1e3"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "c75b40186467371d53460a77c0a2fb2b7a0a786645b859a92948869926377121"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "c17ae8331d1c1ddb2fde217d4be65360a4de5495634b68fdfb64b5ab6904ee2a",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219483048,
+            "selected": 219483048
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Cube": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 13106,
+      "extracted_bytes": 17642663742,
+      "root": "E:\\date\\task-002-stage2",
+      "historical_archive_sha256": "72b5d96a1281c61d247771387b0a7bc66307c7d6e9c14112ae0553b5b89cafe7",
+      "historical_archive_bytes": 17628365529,
+      "crc_receipt_sha256": "f63a7c7bb42a2b9e2fb1c965376bba5265aab2e5b813eac2d0ce3adbf7417c45",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "f9622a752b73d90ae0a4a46a5f211e07349dcbcf887c3b271391b61e0d4a0c07"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "dddbfd6e5ad9a7f7512ac072a86916b2dc47bd786b146a862a43041ba23b0ff9"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "3b41ad31f7a6b834a6926f9a16481138e31983d0bbe611eeb67f43cfb5973eee",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219486688,
+            "selected": 219486688
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Doll": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 13002,
+      "extracted_bytes": 16853767408,
+      "root": "E:\\date\\task-002-stage2",
+      "historical_archive_sha256": "1fd27c8aaf89d6bdde1d5061edcc5e45a5c8d7241c9d287402807a1985f8bcb3",
+      "historical_archive_bytes": 16835932455,
+      "crc_receipt_sha256": "0e8097dd0c49834109f0c7fe737605fc21e9a451bed48c62e45e50c4d518f7bc",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "94ff7f251a3f128394e78b3f0260401b2bf97f7fc1f1e28d28ad791516063ea2"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "b05aeb367a1c4f0259eb3050a1206f0f2436d6b62e9859ace4c5a828d6ac8c0f"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "07280943d8ac3b9a1dd255ec028225081e8aebf7c6cf2333b83d8c51732c3979",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219464848,
+            "selected": 219464848
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    "Ring": {
+      "train_objects": 30,
+      "test_objects": 70,
+      "train_images": 3600,
+      "test_images": 8400,
+      "exact_member_paths": 13096,
+      "extracted_bytes": 16578187400,
+      "root": "E:\\date\\task-002-stage2",
+      "historical_archive_sha256": "20b2b0f12c338747208a914aa98e4f175eef7fa0e26de8eae0bc1f8ac7a27d7c",
+      "historical_archive_bytes": 16564602406,
+      "crc_receipt_sha256": "a80641b4ca98f1432c66f3a1654f107d675d2f5723169b9d82baff54612c7cde",
+      "feature_caches": {
+        "train": {
+          "bytes": 4246732928,
+          "prior_sha256": "f5d57e7dd7f99f087845f6f1665dd48c65f97eee0da732e2be12ff40dcd6b420"
+        },
+        "test": {
+          "bytes": 9909043328,
+          "prior_sha256": "55b4d75a4993d41e78b3a16e7fabfecf1e51162bbcf2ca25238fcddeabfdbb87"
+        }
+      },
+      "checkpoints": {
+        "42": {
+          "sha256": "eb3e13c930f48a3cbb1f430ec62388ead7912e551be054f1e1e372995939a9bc",
+          "bytes": 285044898,
+          "prediction_bytes": {
+            "v1_A4": 219453928,
+            "selected": 219453928
+          }
+        }
+      },
+      "status": "PASS"
+    }
+  }
+}

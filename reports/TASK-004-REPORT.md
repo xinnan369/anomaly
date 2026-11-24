@@ -1,6 +1,6 @@
 # TASK-004 · VICAD-Syn 失效诊断与验证
 
-**状态　整改完成，待独立复验及项目负责人决定。** [任务与协议](../instructions/TASK-004.md) · [结果索引](../results/vicad_refinement/README.md)
+**状态　ACCEPTED_WITH_DOCUMENTED_HISTORICAL_EXCEPTION。** [最终验收](../docs/ACCEPTANCE_LOG.md) [任务与协议](../instructions/TASK-004.md) · [结果索引](../results/vicad_refinement/README.md)
 
 TASK-003 通过独立验收。它提供可复现的研究原型和真实负结果。PR #4 由批准提交 `4982849e4907e22df1dd036adfdfdb9b4ac3e750` 普通合并到 `498d99652d3153f50a3113c7a8b363d088449c56`。[Review 6022362483](https://github.com/xinnan369/anomaly/pull/4#pullrequestreview-6022362483) · [合并提交](https://github.com/xinnan369/anomaly/commit/498d99652d3153f50a3113c7a8b363d088449c56)
 
@@ -73,7 +73,7 @@ Car A4 的掩膜内外均值为 0.134412 与 0.134098，差值仅 0.000315。A1 
 
 ## 数据下载与流量复核
 
-本轮在 Windows 和 WSL 检查项目下载进程，未发现运行项。未启动下载、探测或新训练。本地原始发布数据、缓存、断点和既有科学结果保留。六类归档完整载荷合计 97,082,881,045 字节。历史传输的新增、重复和 VPN 供应商计费字节均不可从现存日志完整复原。Teapot 235 段全部来自已有本地缓存，离线组装新增下载为 0 字节。HF-Mirror 的三个数据端点为境外 CDN，保存的 WLAN 和 VPN 接口观测只描述本机网络行为。六类事前审批均未能核实。负责人对历史事实的处置单独待定。[历史事实审计](TASK-004-DOWNLOAD-AUDIT.md) · [本轮零下载计划](../results/vicad_refinement/evidence/rectification-local-plan.json) · [审批入口使用说明](../tools/DOWNLOADS.md)
+本轮在 Windows 和 WSL 检查项目下载进程，未发现运行项。未启动下载、探测或新训练。本地原始发布数据、缓存、断点和既有科学结果保留。六类归档完整载荷合计 97,082,881,045 字节。历史传输的新增、重复和 VPN 供应商计费字节均不可从现存日志完整复原。Teapot 235 段全部来自已有本地缓存，离线组装新增下载为 0 字节。HF-Mirror 的三个数据端点为境外 CDN，保存的 WLAN 和 VPN 接口观测只描述本机网络行为。六类事前审批均未能核实。负责人随后同意保留已有数据和实验成果，继续保留事前审批未能核实的结论。[历史事实审计](TASK-004-DOWNLOAD-AUDIT.md) · [本轮零下载计划](../results/vicad_refinement/evidence/rectification-local-plan.json) · [审批入口使用说明](../tools/DOWNLOADS.md)
 
 ## 冻结后的正式结果与限制
 

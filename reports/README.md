@@ -7,7 +7,8 @@
 | [TASK-001](../instructions/TASK-001.md) | [M²AD-Synergy 数据集与实验协议审计](TASK-001-REPORT.md) · [整改复跑日志](evidence/TASK-001/test-log.txt) | ACCEPTED |
 | TASK-002 | [执行报告](TASK-002-REPORT.md) · [基线结果](../results/baselines/README.md) | ACCEPTED_WITH_EXCEPTION / 有限例外验收通过。[已合并 PR #2](https://github.com/xinnan369/anomaly/pull/2) |
 | TASK-003 | [执行报告](TASK-003-REPORT.md) · [结果与证据](../results/vicad_syn/README.md) | ACCEPTED。完整原型和真实负结果。 |
-| [TASK-004](../instructions/TASK-004.md) | [执行报告](TASK-004-REPORT.md) · [下载事实审计](TASK-004-DOWNLOAD-AUDIT.md) · [结果索引](../results/vicad_refinement/README.md) | 待独立复验及负责人决定 |
+| [TASK-004](../instructions/TASK-004.md) | [执行报告](TASK-004-REPORT.md) · [下载事实审计](TASK-004-DOWNLOAD-AUDIT.md) · [结果索引](../results/vicad_refinement/README.md) | ACCEPTED_WITH_DOCUMENTED_HISTORICAL_EXCEPTION |
+| [TASK-005](../instructions/TASK-005.md) | [执行报告](TASK-005-REPORT.md) · [结果索引](../results/comprehensive_evaluation/README.md) | PARTIAL |
 
 ## 初始化执行记录
 
