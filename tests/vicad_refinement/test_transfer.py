@@ -1,9 +1,10 @@
+import hashlib
 import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from tools.vicad_syn.stage_refinement import get_part, lfs_download_source
+from tools.vicad_syn.stage_refinement import download, get_part, lfs_download_source, mirror_get
 
 
 MODULE = "tools.vicad_syn.stage_refinement"
@@ -67,3 +68,34 @@ class TransferTests(unittest.TestCase):
             item["oid"] = "b" * 64
             with self.assertRaisesRegex(ValueError, "different object"):
                 lfs_download_source(checksum, 98)()
+
+
+    def test_mirror_disables_proxy_and_rejects_unverified_redirect(self):
+        mirror = "https://hf-mirror.com/object"
+        first = MagicMock()
+        first.is_redirect = True
+        first.headers = {"Location": "https://unverified.invalid/object"}
+        with patch(MODULE + ".requests.Session") as factory:
+            session = factory.return_value.__enter__.return_value
+            session.get.return_value.__enter__.return_value = first
+            with self.assertRaisesRegex(ValueError, "unexpected mirror redirect"):
+                with mirror_get(mirror, stream=True):
+                    self.fail("unverified host reached")
+            self.assertFalse(session.trust_env)
+            session.get.assert_called_once_with(mirror, allow_redirects=False, stream=True)
+
+    def test_offline_assembly_uses_complete_ranges_without_network(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            parts = root / "Demo-05abc5d03167354a7ef98541236b5c0bd00abadf.parts"
+            parts.mkdir()
+            (parts/"000000000000.part").write_bytes(b"ab")
+            with (patch.dict(MODULE + ".ARCHIVES", {"Demo":3}),
+                  patch(MODULE + ".CHUNK", 2),
+                  patch(MODULE + ".requests.get") as get):
+                with self.assertRaisesRegex(ValueError, "complete local range"):
+                    download("Demo", root, hashlib.sha256(b"abc").hexdigest(), 1, "local")
+                (parts/"000000000002.part").write_bytes(b"c")
+                archive = download("Demo", root, hashlib.sha256(b"abc").hexdigest(), 1, "local")
+                self.assertEqual(archive.read_bytes(), b"abc")
+                get.assert_not_called()

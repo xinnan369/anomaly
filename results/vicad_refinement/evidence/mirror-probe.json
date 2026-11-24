@@ -1,0 +1,36 @@
+{
+  "checked_on": "2026-11-24 Asia/Shanghai",
+  "revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "mirror": "https://hf-mirror.com/datasets/ChengYuQi99/M2AD",
+  "redirect_host": "cas-bridge.xethub.hf.co",
+  "explicit_proxy_disabled": true,
+  "observed_windows_routes": {
+    "hf-mirror.com": "WLAN",
+    "cas-bridge.xethub.hf.co": "WLAN"
+  },
+  "samples": {
+    "Tube": {
+      "response": 206,
+      "archive_bytes": 16709077850
+    },
+    "Dice": {
+      "response": 206,
+      "archive_bytes": 16681648758
+    },
+    "Holder": {
+      "response": 206,
+      "archive_bytes": 17471748248
+    }
+  },
+  "tube_probe": {
+    "body_bytes": 1048576,
+    "seconds": 4.11,
+    "vpn_adapter": "vgate0",
+    "vpn_received_delta": 0,
+    "vpn_sent_delta": 0
+  },
+  "modelscope_exact_dataset_probe": {
+    "http_status": 404
+  },
+  "policy": "Use the verified mirror with proxy inheritance disabled. No automatic fallback. Pause if the confirmed route changes or the VPN adapter shows material traffic."
+}

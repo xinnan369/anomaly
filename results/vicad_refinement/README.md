@@ -23,6 +23,8 @@
 
 ## 复现与文件核验
 
+- [国内镜像的直连与断点请求凭据](evidence/mirror-probe.json)
+
 - [实验工件和日志哈希](evidence/external-artifacts.json) · [验证清单](evidence/verification.json) · [冻结时间及提交](evidence/freeze.json) · [官方归档传输](evidence/data-transfer.json)
 - [CPU/CUDA 实测](evidence/multilayer-smoke.json) · [测试日志](evidence/test-log.txt) · [官方融合身份回归](evidence/identity.json) · [运行环境](evidence/environment-runtime.json)
 - 完整预测数组、原始图像、缓存和权重保持在仓库外。训练透过正常样本拟合，合成指标与已见测试集的探索性指标都独立于确认结果。

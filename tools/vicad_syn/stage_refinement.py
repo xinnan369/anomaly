@@ -2,13 +2,14 @@
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import contextmanager
 import json
 import shutil
 import sys
 import time
 from pathlib import Path
 from threading import Lock
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 from filelock import FileLock
 import requests
@@ -17,9 +18,11 @@ from vicad_syn.experiment import check, read_json
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "environment"))
 from prepare_release import CHUNK, ARCHIVES, atomic_json, extract_and_audit, load_manifest, sha256
-from sources import RELEASE_REVISION, RELEASE_URL
+from sources import MANIFEST, RELEASE_REVISION, RELEASE_URL
 
 REGISTRY = Path(__file__).resolve().parents[2] / "vicad_syn/refinement/protocol.json"
+MIRROR = RELEASE_URL.replace("https://huggingface.co/", "https://hf-mirror.com/", 1)
+MIRROR_DOWNLOAD_HOSTS = {"hf-mirror.com", "cas-bridge.xethub.hf.co"}
 LFS = "https://huggingface.co/datasets/ChengYuQi99/M2AD.git/info/lfs/objects/batch"
 
 
@@ -49,7 +52,26 @@ def lfs_download_source(checksum, size):
 
     return source
 
-def get_part(url, total, bounds, location):
+@contextmanager
+def mirror_get(target, **kwargs):
+    """Follow only known HTTPS download hosts without inheriting proxy settings."""
+    with requests.Session() as session:
+        session.trust_env = False
+        for _ in range(5):
+            parsed = urlsplit(target)
+            check(parsed.scheme == "https" and parsed.hostname in MIRROR_DOWNLOAD_HOSTS,
+                  "unexpected mirror redirect host")
+            with session.get(target, allow_redirects=False, **kwargs) as response:
+                if response.is_redirect:
+                    target = urljoin(target, response.headers["Location"])
+                    continue
+                yield response
+                return
+    raise ValueError("too many mirror redirects")
+
+
+def get_part(url, total, bounds, location, get=None):
+    get = requests.get if get is None else get
     start, stop = bounds
     path = location / f"{start:012d}.part"
     partial = path.with_suffix(".download")
@@ -66,7 +88,7 @@ def get_part(url, total, bounds, location):
         try:
             target, extra = url() if callable(url) else (url, {})
             headers = {**extra, "Range": f"bytes={offset}-{stop - 1}", "Accept-Encoding": "identity"}
-            with requests.get(target, headers=headers, stream=True, timeout=(20, 50)) as response:
+            with get(target, headers=headers, stream=True, timeout=(20, 50)) as response:
                 response.raise_for_status()
                 check(response.status_code == 206 and response.headers.get("Content-Range") ==
                       f"bytes {offset}-{stop - 1}/{total}", "unexpected HTTP content range")
@@ -95,13 +117,24 @@ def download(category, archives, checksum, workers, transport):
     parts = archives / f"{category}-{RELEASE_REVISION}.parts"
     parts.mkdir(exist_ok=True)
     spans = [(i, min(i + CHUNK, total)) for i in range(0, total, CHUNK)]
-    url = lfs_download_source(checksum, total) if transport == "lfs" else f"{RELEASE_URL}/{category}.zip"
-    with ThreadPoolExecutor(max_workers=workers) as pool:
+    if transport == "local":
         finished = []
-        for number, part in enumerate(pool.map(lambda span: get_part(url, total, span, parts), spans), 1):
+        for start, stop in spans:
+            part = parts / f"{start:012d}.part"
+            check(part.is_file() and part.stat().st_size == stop - start,
+                  f"offline mode requires the complete local range {start}-{stop - 1}")
             finished.append(part)
-            if number % 8 == 0 or number == len(spans):
-                print(f"{category}: {number}/{len(spans)} complete ranges", flush=True)
+        print(f"{category}: found {len(finished)} complete local ranges", flush=True)
+    else:
+        base = MIRROR if transport == "mirror" else RELEASE_URL
+        url = lfs_download_source(checksum, total) if transport == "lfs" else f"{base}/{category}.zip"
+        get = mirror_get if transport == "mirror" else None
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            finished = []
+            for number, part in enumerate(pool.map(lambda span: get_part(url, total, span, parts, get), spans), 1):
+                finished.append(part)
+                if number % 8 == 0 or number == len(spans):
+                    print(f"{category}: {number}/{len(spans)} complete ranges", flush=True)
     pending = archive.with_suffix(".assembling")
     with pending.open("wb") as sink:
         for part in finished:
@@ -121,8 +154,12 @@ def main():
     parser.add_argument("--manifest-cache", type=Path, required=True)
     parser.add_argument("--category", required=True)
     parser.add_argument("--workers", type=int, default=12, choices=range(1, 25))
-    parser.add_argument("--transport", choices=("resolve", "lfs"), default="resolve")
+    parser.add_argument("--transport", choices=("mirror", "local", "resolve", "lfs"), default="mirror")
+    parser.add_argument("--allow-upstream", action="store_true",
+                        help="allow the publisher endpoint after approval for non-mirror traffic")
     args = parser.parse_args()
+    if args.transport in {"resolve", "lfs"} and not args.allow_upstream:
+        parser.error("publisher transport requires explicit upstream traffic approval")
     root = args.root.resolve()
     check(not root.is_relative_to(REGISTRY.parents[2]), "stage data outside Git")
     protocol = read_json(REGISTRY)
@@ -143,6 +180,9 @@ def stage(args, root, checksum):
     archives, dataset = root / "archives", root / "dataset"
     for directory in (archives, dataset / "jsons", marker.parent):
         directory.mkdir(parents=True, exist_ok=True)
+    if args.transport in {"mirror", "local"}:
+        check((args.manifest_cache / MANIFEST.name).is_file(),
+              "reuse the locally verified manifest archive for mirror or offline staging")
     rows = load_manifest(args.manifest_cache)
     manifest = dataset / "jsons/meta_unsupervised.json"
     if not manifest.exists():

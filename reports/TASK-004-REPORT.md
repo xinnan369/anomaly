@@ -71,6 +71,12 @@ Car A4 的掩膜内外均值为 0.134412 与 0.134098，差值仅 0.000315。A1 
 
 [污染方向](../results/vicad_refinement/metrics/normal-direction-summary.csv) · [逐层定位](../results/vicad_refinement/metrics/normal-layer-summary.csv) · [机制图](../results/vicad_refinement/figures/normal-development-and-contamination.pdf)
 
+## 数据下载与流量复核
+
+首轮官方传输中断前，Bird 和 Motor 完整归档加 Teapot 可复用分块共落盘 46,220,406,189 字节。该值为本地载荷，实际 VPN 流量未从供应商核验。Teapot 的 235 个分块通过离线模式合并和审计，避免重复传输。
+
+2026-11-24 对同一 release 检查了 HF-Mirror 和精确 ModelScope 路径。ModelScope 返回 HTTP 404。HF-Mirror 上三个未下载类别均返回 HTTP 206 及匹配的全档大小，最终端点为 Hugging Face CDN。Windows 对镜像与该 CDN 均使用 WLAN。Tube 的 1 MiB 实测中，VPN 接口 vgate0 的接收和发送增量均为 0。这是当时的本机接口观测。大文件续传禁用客户端代理继承，监测本机路由和 VPN 接口，并关闭自动回退。实验配置与数据版本未变。[HF-Mirror](https://hf-mirror.com/) · [探测证据](../results/vicad_refinement/evidence/mirror-probe.json)
+
 ## 冻结后的正式结果与限制
 
 ### M²AD-Synergy 评价
