@@ -1,0 +1,8 @@
+Bird: staging fixed publication
+range 671088640-738197503: attempt 1 SSLError, retained 65011712 bytes
+range 1006632960-1073741823: attempt 1 SSLError, retained 9437184 bytes
+range 1476395008-1543503871: attempt 1 SSLError, retained 12582912 bytes
+range 603979776-671088639: attempt 1 SSLError, retained 31457280 bytes
+range 1275068416-1342177279: attempt 1 SSLError, retained 2097152 bytes
+range 1073741824-1140850687: attempt 1 SSLError, retained 12582912 bytes
+Bird: 8/232 complete ranges

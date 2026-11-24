@@ -1,0 +1,27 @@
+{
+  "category": "Tube",
+  "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "archive_sha256": "2cee61f6f72e24c9968995a657a76f0c2de525f854a7a48fb089c517513a1c9b",
+  "archive_bytes": 16709077850,
+  "crc_verified_files": 13010,
+  "images": 12000,
+  "masks": 505,
+  "segments": 505,
+  "counts": {
+    "train_good": {
+      "objects": 30,
+      "images": 3600
+    },
+    "test_good": {
+      "objects": 20,
+      "images": 2400
+    },
+    "test_ng": {
+      "objects": 50,
+      "images": 6000,
+      "positive_images": 5050,
+      "undetectable_positive_images": 774
+    }
+  },
+  "split_crc_size_overlap": 0
+}

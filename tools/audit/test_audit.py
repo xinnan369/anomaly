@@ -1,12 +1,16 @@
 """Offline regression checks for manifest validation and HTTP download bounds."""
 
+import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
 
 from manifest import CONFIGURATIONS, check_manifest
-from sources import ARCHIVES, MANIFEST, read_https, verified_resource
+from sources import ARCHIVES, MANIFEST, verified_resource
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from tools.download_policy import validate_range
 
 
 def rows(object_id):
@@ -64,29 +68,22 @@ class ResourceTests(unittest.TestCase):
                 verified_resource(cache, MANIFEST)
 
     def test_rejects_non_range_response_before_reading(self):
-        with patch("sources.requests.get") as get:
-            response = get.return_value.__enter__.return_value
-            response.status_code = 200
-            with self.assertRaisesRegex(ValueError, "ignored the byte range"):
-                read_https("https://example.invalid/test.zip", 10, (0, 9, 100))
-            response.iter_content.assert_not_called()
+        response = Mock(status_code=200)
+        with self.assertRaisesRegex(ValueError, "ignored the byte range"):
+            validate_range(response, 0, 10, 100)
+        response.iter_content.assert_not_called()
 
     def test_rejects_unexpected_content_range_before_reading(self):
-        with patch("sources.requests.get") as get:
-            response = get.return_value.__enter__.return_value
-            response.status_code = 206
-            response.headers = {"Content-Range": "bytes 1-10/100"}
-            with self.assertRaisesRegex(ValueError, "unexpected Content-Range"):
-                read_https("https://example.invalid/test.zip", 10, (0, 9, 100))
-            response.iter_content.assert_not_called()
+        response = Mock(status_code=206, headers={"Content-Range": "bytes 1-10/100"})
+        with self.assertRaisesRegex(ValueError, "unexpected Content-Range"):
+            validate_range(response, 0, 10, 100)
+        response.iter_content.assert_not_called()
 
-    def test_rejects_oversize_chunk_without_content_length(self):
-        with patch("sources.requests.get") as get:
-            response = get.return_value.__enter__.return_value
-            response.headers = {}
-            response.iter_content = Mock(return_value=iter([b"elevenbytes"]))
-            with self.assertRaisesRegex(ValueError, "exceeds byte limit"):
-                read_https("https://example.invalid/test.zip", 10)
+    def test_rejects_unknown_body_length_before_reading(self):
+        response = Mock(status_code=206, headers={"Content-Range": "bytes 0-9/100"})
+        with self.assertRaisesRegex(ValueError, "unexpected Content-Length"):
+            validate_range(response, 0, 10, 100)
+        response.iter_content.assert_not_called()
 
 
 if __name__ == "__main__":

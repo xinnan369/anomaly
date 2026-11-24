@@ -1,0 +1,27 @@
+{
+  "category": "Holder",
+  "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "archive_sha256": "9d172110971844de022a253dc1f0012117af2c7f48e797056f11a8bdeed0eab3",
+  "archive_bytes": 17471748248,
+  "crc_verified_files": 12834,
+  "images": 11880,
+  "masks": 477,
+  "segments": 477,
+  "counts": {
+    "train_good": {
+      "objects": 30,
+      "images": 3600
+    },
+    "test_good": {
+      "objects": 20,
+      "images": 2400
+    },
+    "test_ng": {
+      "objects": 49,
+      "images": 5880,
+      "positive_images": 4770,
+      "undetectable_positive_images": 154
+    }
+  },
+  "split_crc_size_overlap": 0
+}

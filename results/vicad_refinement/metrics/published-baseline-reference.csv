@@ -1,0 +1,13 @@
+category,method,source_role,input_px,O-AUROC,I-AUROC,AUPRO,source
+Bird,Dinomaly,authors_published_synergy,224,75.1,74.9,86.9,https://arxiv.org/html/2505.10996v1#S3.T2
+Bird,INP-Former,authors_published_synergy,224,80.0,67.2,84.1,https://arxiv.org/html/2505.10996v1#S3.T2
+Motor,Dinomaly,authors_published_synergy,224,95.4,85.4,94.2,https://arxiv.org/html/2505.10996v1#S3.T2
+Motor,INP-Former,authors_published_synergy,224,83.7,61.1,91.9,https://arxiv.org/html/2505.10996v1#S3.T2
+Teapot,Dinomaly,authors_published_synergy,224,99.9,94.6,94.3,https://arxiv.org/html/2505.10996v1#S3.T2
+Teapot,INP-Former,authors_published_synergy,224,91.6,79.1,92.4,https://arxiv.org/html/2505.10996v1#S3.T2
+Tube,Dinomaly,authors_published_synergy,224,97.2,83.3,77.0,https://arxiv.org/html/2505.10996v1#S3.T2
+Tube,INP-Former,authors_published_synergy,224,78.0,64.1,85.9,https://arxiv.org/html/2505.10996v1#S3.T2
+Dice,Dinomaly,authors_published_synergy,224,98.1,93.0,85.7,https://arxiv.org/html/2505.10996v1#S3.T2
+Dice,INP-Former,authors_published_synergy,224,93.3,83.7,87.7,https://arxiv.org/html/2505.10996v1#S3.T2
+Holder,Dinomaly,authors_published_synergy,224,99.7,85.8,90.0,https://arxiv.org/html/2505.10996v1#S3.T2
+Holder,INP-Former,authors_published_synergy,224,99.2,76.4,81.0,https://arxiv.org/html/2505.10996v1#S3.T2

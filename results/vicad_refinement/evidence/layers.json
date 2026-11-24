@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "outputs": {
+    "normal-direction-diagnosis.csv": "faeba7aa7ddae6c0b8c8e5aa460f1e4aa43ba47275d356e6c3831ecb37dfac6e",
+    "normal-direction-summary.csv": "7d49a779b36a2238840fd29a88b302ab50655dfbabebe9a838fc0c6047da94d5",
+    "normal-feature-example.npz": "c5f3f8a512e4883c2b1d414892fa82f5467a1cb70b457d86b1232a4622668991",
+    "normal-layer-diagnosis.csv": "6e12e821eb075fe313f16eaec0f820d6e9052588493b0bf6a2f7178c29d74fa8",
+    "normal-layer-summary.csv": "c183914f86996abd8dab45d7223d84ac5cc083c6c2e6cf547cb68a81de4a4a39"
+  }
+}

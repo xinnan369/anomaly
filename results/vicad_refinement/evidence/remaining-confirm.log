@@ -1,0 +1,348 @@
+2026-11-24T07:19:00.0458503+08:00 staging Motor with 399444594688 C bytes and 164557905920 D bytes free
+Motor: staging fixed publication via lfs
+Motor: 8/223 complete ranges
+Motor: 16/223 complete ranges
+Motor: 24/223 complete ranges
+Motor: 32/223 complete ranges
+Motor: 40/223 complete ranges
+Motor: 48/223 complete ranges
+Motor: 56/223 complete ranges
+Motor: 64/223 complete ranges
+Motor: 72/223 complete ranges
+Motor: 80/223 complete ranges
+Motor: 88/223 complete ranges
+Motor: 96/223 complete ranges
+Motor: 104/223 complete ranges
+Motor: 112/223 complete ranges
+Motor: 120/223 complete ranges
+Motor: 128/223 complete ranges
+Motor: 136/223 complete ranges
+Motor: 144/223 complete ranges
+Motor: 152/223 complete ranges
+Motor: 160/223 complete ranges
+Motor: 168/223 complete ranges
+Motor: 176/223 complete ranges
+Motor: 184/223 complete ranges
+Motor: 192/223 complete ranges
+Motor: 200/223 complete ranges
+Motor: 208/223 complete ranges
+Motor: 216/223 complete ranges
+Motor: 223/223 complete ranges
+Motor: CRC-verified and extracted 2000/13200 files
+Motor: CRC-verified and extracted 4000/13200 files
+Motor: CRC-verified and extracted 6000/13200 files
+Motor: CRC-verified and extracted 8000/13200 files
+Motor: CRC-verified and extracted 10000/13200 files
+Motor: CRC-verified and extracted 12000/13200 files
+Motor: complete SHA-256/CRC/path-isolation audit passed
+2026-11-24T07:34:06.0960584+08:00 confirmed archive receipt for Motor
+Motor/train-features: encoded 600/3600
+Motor/train-features: encoded 1200/3600
+Motor/train-features: encoded 1800/3600
+Motor/train-features: encoded 2400/3600
+Motor/train-features: encoded 3000/3600
+Motor/train-features: encoded 3600/3600
+Motor/seed-42: epoch 1/12 normal loss=0.189333
+Motor/seed-42: epoch 2/12 normal loss=0.175706
+Motor/seed-42: epoch 3/12 normal loss=0.162915
+Motor/seed-42: epoch 4/12 normal loss=0.156921
+Motor/seed-42: epoch 5/12 normal loss=0.153617
+Motor/seed-42: epoch 6/12 normal loss=0.150948
+Motor/seed-42: epoch 7/12 normal loss=0.148896
+Motor/seed-42: epoch 8/12 normal loss=0.147070
+Motor/seed-42: epoch 9/12 normal loss=0.145492
+Motor/seed-42: epoch 10/12 normal loss=0.144331
+Motor/seed-42: epoch 11/12 normal loss=0.143123
+Motor/seed-42: epoch 12/12 normal loss=0.142430
+Motor/seed-43: epoch 1/12 normal loss=0.189625
+Motor/seed-43: epoch 2/12 normal loss=0.176370
+Motor/seed-43: epoch 3/12 normal loss=0.162736
+Motor/seed-43: epoch 4/12 normal loss=0.156721
+Motor/seed-43: epoch 5/12 normal loss=0.153070
+Motor/seed-43: epoch 6/12 normal loss=0.150522
+Motor/seed-43: epoch 7/12 normal loss=0.148446
+Motor/seed-43: epoch 8/12 normal loss=0.146595
+Motor/seed-43: epoch 9/12 normal loss=0.145243
+Motor/seed-43: epoch 10/12 normal loss=0.143907
+Motor/seed-43: epoch 11/12 normal loss=0.143094
+Motor/seed-43: epoch 12/12 normal loss=0.142165
+Motor/seed-44: epoch 1/12 normal loss=0.189968
+Motor/seed-44: epoch 2/12 normal loss=0.176252
+Motor/seed-44: epoch 3/12 normal loss=0.163263
+Motor/seed-44: epoch 4/12 normal loss=0.157061
+Motor/seed-44: epoch 5/12 normal loss=0.153678
+Motor/seed-44: epoch 6/12 normal loss=0.151093
+Motor/seed-44: epoch 7/12 normal loss=0.148775
+Motor/seed-44: epoch 8/12 normal loss=0.147070
+Motor/seed-44: epoch 9/12 normal loss=0.145404
+Motor/seed-44: epoch 10/12 normal loss=0.144322
+Motor/seed-44: epoch 11/12 normal loss=0.143233
+Motor/seed-44: epoch 12/12 normal loss=0.142382
+Motor/test-features: encoded 600/8400
+Motor/test-features: encoded 1200/8400
+Motor/test-features: encoded 1800/8400
+Motor/test-features: encoded 2400/8400
+Motor/test-features: encoded 3000/8400
+Motor/test-features: encoded 3600/8400
+Motor/test-features: encoded 4200/8400
+Motor/test-features: encoded 4800/8400
+Motor/test-features: encoded 5400/8400
+Motor/test-features: encoded 6000/8400
+Motor/test-features: encoded 6600/8400
+Motor/test-features: encoded 7200/8400
+Motor/test-features: encoded 7800/8400
+Motor/test-features: encoded 8400/8400
+Motor/42/v1_A4: [49.1, 51.35209326231194, 49.88084046945468]
+Motor/42/selected: [90.10000000000001, 73.14678534716381, 94.6288363159727]
+Motor/43/v1_A4: [49.5, 51.38421642837119, 47.748145703411275]
+Motor/43/selected: [91.30000000000001, 73.1245911597047, 94.66718059595615]
+Motor/44/v1_A4: [48.8, 51.39589757966545, 48.54131213421731]
+Motor/44/selected: [90.10000000000001, 72.34429025324737, 94.62724163682515]
+2026-11-24T08:10:01.0764423+08:00 finished Motor
+2026-11-24T08:10:01.0898510+08:00 staging Teapot with 360561893376 C bytes and 148212199424 D bytes free
+Teapot: staging fixed publication via lfs
+Teapot: 8/235 complete ranges
+Teapot: 16/235 complete ranges
+Teapot: 24/235 complete ranges
+Teapot: 32/235 complete ranges
+Teapot: 40/235 complete ranges
+Teapot: 48/235 complete ranges
+Teapot: 56/235 complete ranges
+Teapot: 64/235 complete ranges
+Teapot: 72/235 complete ranges
+Teapot: 80/235 complete ranges
+Teapot: 88/235 complete ranges
+Teapot: 96/235 complete ranges
+Teapot: 104/235 complete ranges
+Teapot: 112/235 complete ranges
+Teapot: 120/235 complete ranges
+Teapot: 128/235 complete ranges
+Teapot: 136/235 complete ranges
+Teapot: 144/235 complete ranges
+Teapot: 152/235 complete ranges
+Teapot: 160/235 complete ranges
+Teapot: 168/235 complete ranges
+Teapot: 176/235 complete ranges
+Teapot: 184/235 complete ranges
+Teapot: 192/235 complete ranges
+Teapot: 200/235 complete ranges
+range 13421772800-13488881663: attempt 1 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 1 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 1 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 1 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 1 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 1 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 1 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 1 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 1 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 1 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 1 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 1 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 1 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 1 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 1 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 1 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 1 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 1 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 1 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 1 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 1 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 1 SSLError, retained 9437184 bytes
+range 13421772800-13488881663: attempt 2 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 2 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 2 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 2 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 2 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 2 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 2 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 2 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 2 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 2 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 2 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 2 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 2 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 2 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 2 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 2 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 2 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 2 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 2 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 2 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 2 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 2 SSLError, retained 9437184 bytes
+range 13421772800-13488881663: attempt 3 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 3 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 3 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 3 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 3 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 3 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 3 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 3 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 3 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 3 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 3 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 3 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 3 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 3 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 3 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 3 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 3 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 3 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 3 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 3 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 3 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 3 SSLError, retained 9437184 bytes
+range 13421772800-13488881663: attempt 4 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 4 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 4 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 4 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 4 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 4 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 4 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 4 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 4 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 4 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 4 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 4 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 4 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 4 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 4 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 4 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 4 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 4 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 4 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 4 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 4 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 4 SSLError, retained 9437184 bytes
+range 13421772800-13488881663: attempt 5 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 5 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 5 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 5 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 5 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 5 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 5 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 5 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 5 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 5 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 5 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 5 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 5 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 5 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 5 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 5 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 5 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 5 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 5 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 5 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 5 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 5 SSLError, retained 9437184 bytes
+range 13421772800-13488881663: attempt 6 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 6 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 6 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 6 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 6 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 6 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 6 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 6 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 6 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 6 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 6 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 6 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 6 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 6 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 6 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 6 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 6 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 6 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 6 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 6 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 6 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 6 SSLError, retained 9437184 bytes
+range 13421772800-13488881663: attempt 7 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 7 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 7 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 7 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 7 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 7 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 7 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 7 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 7 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 7 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 7 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 7 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 7 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 7 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 7 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 7 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 7 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 7 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 7 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 7 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 7 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 7 SSLError, retained 9437184 bytes
+range 13421772800-13488881663: attempt 8 SSLError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 8 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 8 SSLError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 8 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 8 SSLError, retained 34603008 bytes
+range 14495514624-14562623487: attempt 8 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 8 SSLError, retained 36175872 bytes
+range 14763950080-14831058943: attempt 8 SSLError, retained 36962304 bytes
+range 14898167808-14965276671: attempt 8 SSLError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 8 SSLError, retained 44040192 bytes
+range 15099494400-15166603263: attempt 8 SSLError, retained 23855104 bytes
+range 14965276672-15032385535: attempt 8 SSLError, retained 26738688 bytes
+range 15032385536-15099494399: attempt 8 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 8 SSLError, retained 29884416 bytes
+range 15233712128-15300820991: attempt 8 SSLError, retained 35127296 bytes
+range 15300820992-15367929855: attempt 8 SSLError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 8 SSLError, retained 43778048 bytes
+range 15502147584-15569256447: attempt 8 SSLError, retained 12845056 bytes
+range 15435038720-15502147583: attempt 8 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 8 SSLError, retained 44826624 bytes
+range 15636365312-15703474175: attempt 8 SSLError, retained 9699328 bytes
+range 15703474176-15758841926: attempt 8 SSLError, retained 9437184 bytes
+Teapot: staging fixed publication via lfs
+Teapot: 8/235 complete ranges
+Teapot: 16/235 complete ranges
+Teapot: 24/235 complete ranges
+Teapot: 32/235 complete ranges
+Teapot: 40/235 complete ranges
+Teapot: 48/235 complete ranges
+Teapot: 56/235 complete ranges
+Teapot: 64/235 complete ranges
+Teapot: 72/235 complete ranges
+Teapot: 80/235 complete ranges
+Teapot: 88/235 complete ranges
+Teapot: 96/235 complete ranges
+Teapot: 104/235 complete ranges
+Teapot: 112/235 complete ranges
+Teapot: 120/235 complete ranges
+Teapot: 128/235 complete ranges
+Teapot: 136/235 complete ranges
+Teapot: 144/235 complete ranges
+Teapot: 152/235 complete ranges
+Teapot: 160/235 complete ranges
+Teapot: 168/235 complete ranges
+Teapot: 176/235 complete ranges
+Teapot: 184/235 complete ranges
+Teapot: 192/235 complete ranges
+Teapot: 200/235 complete ranges
+range 13421772800-13488881663: attempt 1 SSLError, retained 58458112 bytes
+range 13958643712-14025752575: attempt 1 SSLError, retained 66060288 bytes
+range 13891534848-13958643711: attempt 1 SSLError, retained 66322432 bytes
+range 14159970304-14227079167: attempt 1 SSLError, retained 61079552 bytes
+range 14294188032-14361296895: attempt 1 SSLError, retained 34603008 bytes
+range 14831058944-14898167807: attempt 1 SSLError, retained 44040192 bytes
+range 14562623488-14629732351: attempt 1 SSLError, retained 36175872 bytes
+range 14495514624-14562623487: attempt 1 SSLError, retained 34078720 bytes
+range 14763950080-14831058943: attempt 1 SSLError, retained 36962304 bytes
+range 14965276672-15032385535: attempt 1 SSLError, retained 26738688 bytes
+range 14898167808-14965276671: attempt 1 SSLError, retained 49283072 bytes
+range 15032385536-15099494399: attempt 1 SSLError, retained 25952256 bytes
+range 15099494400-15166603263: attempt 1 SSLError, retained 23855104 bytes
+Teapot: 208/235 complete ranges
+Teapot: 216/235 complete ranges
+Teapot: 224/235 complete ranges
+Teapot: 232/235 complete ranges
+Teapot: 235/235 complete ranges

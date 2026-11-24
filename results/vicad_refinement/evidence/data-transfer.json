@@ -1,0 +1,190 @@
+{
+  "category": "Bird",
+  "observed_at": "2026-11-24T11:15:29.659599+08:00",
+  "required_size": 15506344175,
+  "published_sha256": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
+  "ranges": {
+    ".part": {
+      "bytes": 0,
+      "count": 0
+    },
+    ".download": {
+      "bytes": 0,
+      "count": 0
+    }
+  },
+  "network_logs": {
+    "stage-Bird.log": {
+      "captured_source": {
+        "sha256": "688af98420fa0293d6f1d6652c9df5e1930e3d9919c608c89f44e14bffb32caa",
+        "bytes": 32
+      },
+      "git_text": {
+        "sha256": "688af98420fa0293d6f1d6652c9df5e1930e3d9919c608c89f44e14bffb32caa",
+        "bytes": 32
+      }
+    },
+    "stage-Bird-win.log": {
+      "captured_source": {
+        "sha256": "1b0ce27421d896b2c35a423c105e385ee2259829d0190eb8a402cfcd215a61b9",
+        "bytes": 33
+      },
+      "git_text": {
+        "sha256": "688af98420fa0293d6f1d6652c9df5e1930e3d9919c608c89f44e14bffb32caa",
+        "bytes": 32
+      }
+    },
+    "stage-Bird-resume.log": {
+      "captured_source": {
+        "sha256": "ee05d8e126f20ce92067369486ca68581a80ad221477242f99fc69bd8d19714f",
+        "bytes": 500
+      },
+      "git_text": {
+        "sha256": "ee2258795f79682a08d50fa37089da5251feac6f1a082caba5a3f66b36c53050",
+        "bytes": 492
+      }
+    },
+    "stage-Bird-lfs.log": {
+      "captured_source": {
+        "sha256": "d3d45c790765d70e1eec00e5a47baea0673c59c34734fb81891a9aaafd2958ff",
+        "bytes": 376
+      },
+      "git_text": {
+        "sha256": "eece4c74c123b5dce7b056055259227d690a9d711850c5debaad2258771cf5d1",
+        "bytes": 370
+      }
+    },
+    "stage-Bird-lfs24.log": {
+      "captured_source": {
+        "sha256": "c8a27cb562b170dad69de798c0613551219def77fb67cf92108c3984c8e948b7",
+        "bytes": 5898
+      },
+      "git_text": {
+        "sha256": "e9d74dd871fcd86dd312be153f8eb15da54f6e27ebcccfdd651cbc12888511d8",
+        "bytes": 5806
+      }
+    },
+    "stage-Teapot-local.log": {
+      "captured_source": {
+        "sha256": "45dd19fc49407532f5f97b5efcbfe5377b2e39703d2b964b3f5aa550bbe208dc",
+        "bytes": 464
+      },
+      "git_text": {
+        "sha256": "cef1515c15957d1147e840f97b5a06a4430aece5209054694d49d5d6a91b8c64",
+        "bytes": 455
+      }
+    },
+    "mirror-download.log": {
+      "captured_source": {
+        "sha256": "1b7be908f05e81990a19ce576b4b1e3222fb3ca79705aedf5c5a42379f6b422a",
+        "bytes": 523
+      },
+      "git_text": {
+        "sha256": "0dc461be9a98247f1cc1705de7011b26ba88b6b1867f5789304edd6b3ba9bfe9",
+        "bytes": 517
+      }
+    },
+    "stage-Tube-mirror.log": {
+      "captured_source": {
+        "sha256": "86342d9906009e88b61de430c1c767364cee7aac93751ac336f82edc111634cd",
+        "bytes": 1529
+      },
+      "git_text": {
+        "sha256": "f89a5f31b7e337eb23f871d963cf610d36cc85c3624ed69d6b075cb431bf6177",
+        "bytes": 1487
+      }
+    },
+    "stage-Dice-mirror.log": {
+      "captured_source": {
+        "sha256": "63e98f43b768fa01aea0e3df43af17dad238bdc3c85278c0819822d86e65b697",
+        "bytes": 1531
+      },
+      "git_text": {
+        "sha256": "53084a714bf86db0b3d3f2f671638ee3492e8ee2e511523eca2886668f444dac",
+        "bytes": 1489
+      }
+    },
+    "stage-Holder-mirror.log": {
+      "captured_source": {
+        "sha256": "57cf51bd13626a882825eb38d76ff76d7dc09ece940304abf21c99207297581c",
+        "bytes": 1500
+      },
+      "git_text": {
+        "sha256": "60400d8e746321c79744baad35d99dbd392db418f9627985dbec742b7645eb17",
+        "bytes": 1459
+      }
+    }
+  },
+  "source_test": {
+    "curl_exit": 28,
+    "range_bytes": 8388608,
+    "received": 8261662,
+    "seconds": 45.403218
+  },
+  "native_xet": "Zero archive bytes written before the inactive fallback was stopped.",
+  "ready": true,
+  "confirmed": [
+    "Bird",
+    "Motor",
+    "Teapot",
+    "Tube",
+    "Dice",
+    "Holder"
+  ],
+  "all_categories": {
+    "Bird": {
+      "order": 1,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 15506344175,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "129783014903a0b6a8760af99ad775fed7607779b0dc59940f77fa6daef042e1"
+    },
+    "Motor": {
+      "order": 2,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 14955220087,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "96668abce274d7207689b573f55c83d40fbae8e3ac21e9e4f43cd99433fb80a2"
+    },
+    "Teapot": {
+      "order": 3,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 15758841927,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "e1458da014ffb28be07c4aa58106958d76db044fb0c11369a500b21e4f5d6ec2"
+    },
+    "Tube": {
+      "order": 4,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 16709077850,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "5aec0cffc7c4609d2bacc81b0929e081e1f7038b0e0ff560c9f9fb0fb1f072cc"
+    },
+    "Dice": {
+      "order": 5,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 16681648758,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "5fc85264e2ccd4cd8dd731d816060c38eb1336b613d683a6df99024db4e95911"
+    },
+    "Holder": {
+      "order": 6,
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 17471748248,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "d3d0182c99eafe7147cc44c4ac4efcad9e139a1c14065a904b1793b0c8d54a2b"
+    }
+  }
+}

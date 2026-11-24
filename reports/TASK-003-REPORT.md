@@ -1,6 +1,6 @@
 # TASK-003 · VICAD-Syn 第一版
 
-**状态　实验完成，待独立验收。** TASK-002 已有限例外验收，普通 merge 与当时 main 均为 `d1ddbb9d698114ccb616ad96c23565f7f2b1e275`。七组原版通过、一组原版故障、独立稳定版和历史恢复版保持各自身份。[验收日志](../docs/ACCEPTANCE_LOG.md) · [TASK-002 结果](../results/baselines/README.md)
+**状态　ACCEPTED。** 独立验收覆盖可复现原型和真实负结果。PR #4 已合并至 `498d99652d3153f50a3113c7a8b363d088449c56`。[审查](https://github.com/xinnan369/anomaly/pull/4#pullrequestreview-6022362483) TASK-002 已有限例外验收，普通 merge 与当时 main 均为 `d1ddbb9d698114ccb616ad96c23565f7f2b1e275`。七组原版通过、一组原版故障、独立稳定版和历史恢复版保持各自身份。[验收日志](../docs/ACCEPTANCE_LOG.md) · [TASK-002 结果](../results/baselines/README.md)
 
 ## 执行矩阵
 
@@ -105,4 +105,4 @@ Car 的 A1 − A0 为 **-0.20 / -2.72 / +9.34** 个百分点。A4 − A1 使用�
 
 CPU 断点回归在第 1 epoch 后模拟中断并从已写入的状态恢复，最终预测器与连续训练逐值一致。最终总计 39 项单元测试通过。ADEval 在中间统计的空分母处产生运行时警告。已报告的全部指标通过有限性检查。执行顺序为 10 项新测试、19 项既有环境测试、9 项既有审计测试、真实 CPU/CUDA 烟测、CUDA 官方融合身份回归、Car 后顺序推进其余类别、最后独立复核大文件与指标。环境为 WSL2、PyTorch 2.2.2+cu121、RTX 3090。RTX 4090 未实测。配置 SHA-256 为 `7ba923b32acf7f85bda32415e6ce4429fa22612932f68978494a6ca661e012ab`，运行根目录为 `D:/vicad-syn/task-003-v1`。数据与权重借用 TASK-002 的已校验根目录。Git 归档保留小型图表和索引，完整权重、缓存、掩膜和预测数组在外部。
 
-各正式阶段无阻塞。 独立验收待完成，当前任务仍为 TASK-003。[执行命令与停止条件](../instructions/TASK-003.md) · [完整结果索引](../results/vicad_syn/README.md) · [日志节选](../results/vicad_syn/evidence/pipeline-excerpt.log)
+各正式阶段完成。TASK-003 已通过独立验收。[执行命令与停止条件](../instructions/TASK-003.md) · [完整结果索引](../results/vicad_syn/README.md) · [日志节选](../results/vicad_syn/evidence/pipeline-excerpt.log)

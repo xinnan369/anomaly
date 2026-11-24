@@ -8,7 +8,9 @@ VICAD-Syn 研究多视角、多光照条件下的工业视觉异常检测。项�
 
 - **TASK-001 数据集与实验协议审计已完成并通过项目负责人验收（ACCEPTED）。** [审计报告](reports/TASK-001-REPORT.md) · [PR #1](https://github.com/xinnan369/anomaly/pull/1)
 - **TASK-002 已有限例外验收（ACCEPTED_WITH_EXCEPTION）。** 七组原版通过，Dinomaly/Doll 原版故障和独立稳定版分别留存。RTX 4090 未实测。[报告](reports/TASK-002-REPORT.md) · [合并](https://github.com/xinnan369/anomaly/commit/d1ddbb9d698114ccb616ad96c23565f7f2b1e275)
-- **TASK-003 实验完成，待独立验收。** 4/4 类正式结果通过，Car 核心消融 A0–A4 完成。[报告](reports/TASK-003-REPORT.md) · [结果与图表](results/vicad_syn/README.md)
+- **TASK-003 已验收（ACCEPTED）。** VICAD-Syn v1 为可复现的研究原型，四类结果均低于可用原版基线。[报告](reports/TASK-003-REPORT.md) · [结果与图表](results/vicad_syn/README.md)
+
+- **TASK-004 整改已提交，待独立复验。** 已见类别 4/4、预留确认类别 6/6。44 条正式指标离线复评一致。历史六类事前审批未能核实，待项目负责人决定处置。[执行报告](reports/TASK-004-REPORT.md) · [下载审计](reports/TASK-004-DOWNLOAD-AUDIT.md)
 
 ## 项目文档
 

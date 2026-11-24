@@ -1,0 +1,232 @@
+2026-11-24T07:34:10.7313809+08:00 staging Teapot while GPU confirmation runs
+Teapot: staging fixed publication via lfs
+Teapot: 8/235 complete ranges
+Teapot: 16/235 complete ranges
+range 3959422976-4026531839: attempt 1 ChunkedEncodingError, retained 61341696 bytes
+Teapot: 24/235 complete ranges
+Teapot: 32/235 complete ranges
+Teapot: 40/235 complete ranges
+Teapot: 48/235 complete ranges
+Teapot: 56/235 complete ranges
+range 8187281408-8254390271: attempt 1 ConnectionError, retained 22806528 bytes
+range 8791261184-8858370047: attempt 1 ConnectionError, retained 17301504 bytes
+range 8522825728-8589934591: attempt 1 ConnectionError, retained 59506688 bytes
+range 8992587776-9059696639: attempt 1 ConnectionError, retained 60293120 bytes
+range 8724152320-8791261183: attempt 1 ConnectionError, retained 27787264 bytes
+range 8388608000-8455716863: attempt 1 ConnectionError, retained 31981568 bytes
+range 8858370048-8925478911: attempt 1 ConnectionError, retained 19922944 bytes
+range 7985954816-8053063679: attempt 1 ConnectionError, retained 66060288 bytes
+range 8925478912-8992587775: attempt 1 ConnectionError, retained 2621440 bytes
+range 7516192768-7583301631: attempt 1 ConnectionError, retained 20971520 bytes
+range 8657043456-8724152319: attempt 1 ConnectionError, retained 42729472 bytes
+range 8589934592-8657043455: attempt 1 ConnectionError, retained 17825792 bytes
+range 9126805504-9193914367: attempt 1 ConnectionError, retained 13631488 bytes
+range 9059696640-9126805503: attempt 1 ConnectionError, retained 3407872 bytes
+range 8187281408-8254390271: attempt 2 SSLError, retained 22806528 bytes
+range 8791261184-8858370047: attempt 2 SSLError, retained 17301504 bytes
+range 8522825728-8589934591: attempt 2 SSLError, retained 59506688 bytes
+range 8992587776-9059696639: attempt 2 SSLError, retained 60293120 bytes
+range 7985954816-8053063679: attempt 2 SSLError, retained 66060288 bytes
+range 8724152320-8791261183: attempt 2 SSLError, retained 27787264 bytes
+range 8858370048-8925478911: attempt 2 SSLError, retained 19922944 bytes
+range 8388608000-8455716863: attempt 2 SSLError, retained 31981568 bytes
+range 8925478912-8992587775: attempt 2 SSLError, retained 2621440 bytes
+range 7516192768-7583301631: attempt 2 SSLError, retained 20971520 bytes
+range 8657043456-8724152319: attempt 2 SSLError, retained 42729472 bytes
+range 8589934592-8657043455: attempt 2 SSLError, retained 17825792 bytes
+range 9126805504-9193914367: attempt 2 SSLError, retained 13631488 bytes
+range 9059696640-9126805503: attempt 2 SSLError, retained 3407872 bytes
+Teapot: 64/235 complete ranges
+Teapot: 72/235 complete ranges
+Teapot: 80/235 complete ranges
+Teapot: 88/235 complete ranges
+Teapot: 96/235 complete ranges
+Teapot: 104/235 complete ranges
+Teapot: 112/235 complete ranges
+Teapot: 120/235 complete ranges
+Teapot: 128/235 complete ranges
+Teapot: 136/235 complete ranges
+Teapot: 144/235 complete ranges
+Teapot: 152/235 complete ranges
+Teapot: 160/235 complete ranges
+Teapot: 168/235 complete ranges
+Teapot: 176/235 complete ranges
+Teapot: 184/235 complete ranges
+Teapot: 192/235 complete ranges
+Teapot: 200/235 complete ranges
+range 15636365312-15703474175: attempt 1 ConnectionError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 1 ConnectionError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 1 ConnectionError, retained 29884416 bytes
+range 14562623488-14629732351: attempt 1 ConnectionError, retained 36175872 bytes
+range 14495514624-14562623487: attempt 1 ConnectionError, retained 34078720 bytes
+range 15233712128-15300820991: attempt 1 ConnectionError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 1 ConnectionError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 1 ConnectionError, retained 58458112 bytes
+range 13891534848-13958643711: attempt 1 ConnectionError, retained 66322432 bytes
+range 15502147584-15569256447: attempt 1 ConnectionError, retained 12845056 bytes
+range 13958643712-14025752575: attempt 1 ConnectionError, retained 66060288 bytes
+range 14159970304-14227079167: attempt 1 ConnectionError, retained 61079552 bytes
+range 15300820992-15367929855: attempt 1 ConnectionError, retained 19398656 bytes
+range 15367929856-15435038719: attempt 1 ConnectionError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 1 ConnectionError, retained 49283072 bytes
+range 14831058944-14898167807: attempt 1 ConnectionError, retained 44040192 bytes
+range 14294188032-14361296895: attempt 1 ConnectionError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 1 ConnectionError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 1 ConnectionError, retained 36962304 bytes
+range 15569256448-15636365311: attempt 1 ConnectionError, retained 44826624 bytes
+range 15435038720-15502147583: attempt 1 ConnectionError, retained 10485760 bytes
+range 15099494400-15166603263: attempt 1 ConnectionError, retained 23855104 bytes
+range 15636365312-15703474175: attempt 2 SSLError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 2 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 2 SSLError, retained 29884416 bytes
+range 14495514624-14562623487: attempt 2 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 2 SSLError, retained 36175872 bytes
+range 15233712128-15300820991: attempt 2 SSLError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 2 SSLError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 2 SSLError, retained 58458112 bytes
+range 15502147584-15569256447: attempt 2 SSLError, retained 12845056 bytes
+range 13891534848-13958643711: attempt 2 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 2 SSLError, retained 66060288 bytes
+range 14831058944-14898167807: attempt 2 SSLError, retained 44040192 bytes
+range 15300820992-15367929855: attempt 2 SSLError, retained 19398656 bytes
+range 14159970304-14227079167: attempt 2 SSLError, retained 61079552 bytes
+range 15367929856-15435038719: attempt 2 SSLError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 2 SSLError, retained 49283072 bytes
+range 14294188032-14361296895: attempt 2 SSLError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 2 SSLError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 2 SSLError, retained 36962304 bytes
+range 15435038720-15502147583: attempt 2 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 2 SSLError, retained 44826624 bytes
+range 15099494400-15166603263: attempt 2 SSLError, retained 23855104 bytes
+range 15636365312-15703474175: attempt 3 SSLError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 3 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 3 SSLError, retained 29884416 bytes
+range 14495514624-14562623487: attempt 3 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 3 SSLError, retained 36175872 bytes
+range 15233712128-15300820991: attempt 3 SSLError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 3 SSLError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 3 SSLError, retained 58458112 bytes
+range 15502147584-15569256447: attempt 3 ConnectionError, retained 12845056 bytes
+range 13891534848-13958643711: attempt 3 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 3 SSLError, retained 66060288 bytes
+range 14831058944-14898167807: attempt 3 SSLError, retained 44040192 bytes
+range 15300820992-15367929855: attempt 3 SSLError, retained 19398656 bytes
+range 14159970304-14227079167: attempt 3 SSLError, retained 61079552 bytes
+range 15367929856-15435038719: attempt 3 SSLError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 3 SSLError, retained 49283072 bytes
+range 14294188032-14361296895: attempt 3 SSLError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 3 SSLError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 3 SSLError, retained 36962304 bytes
+range 15435038720-15502147583: attempt 3 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 3 SSLError, retained 44826624 bytes
+range 15099494400-15166603263: attempt 3 SSLError, retained 23855104 bytes
+range 15636365312-15703474175: attempt 4 SSLError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 4 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 4 SSLError, retained 29884416 bytes
+range 14495514624-14562623487: attempt 4 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 4 SSLError, retained 36175872 bytes
+range 15233712128-15300820991: attempt 4 SSLError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 4 SSLError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 4 SSLError, retained 58458112 bytes
+range 15502147584-15569256447: attempt 4 SSLError, retained 12845056 bytes
+range 13891534848-13958643711: attempt 4 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 4 SSLError, retained 66060288 bytes
+range 14831058944-14898167807: attempt 4 SSLError, retained 44040192 bytes
+range 15300820992-15367929855: attempt 4 SSLError, retained 19398656 bytes
+range 14159970304-14227079167: attempt 4 SSLError, retained 61079552 bytes
+range 15367929856-15435038719: attempt 4 SSLError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 4 SSLError, retained 49283072 bytes
+range 14294188032-14361296895: attempt 4 SSLError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 4 SSLError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 4 SSLError, retained 36962304 bytes
+range 15435038720-15502147583: attempt 4 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 4 SSLError, retained 44826624 bytes
+range 15099494400-15166603263: attempt 4 SSLError, retained 23855104 bytes
+range 15636365312-15703474175: attempt 5 SSLError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 5 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 5 SSLError, retained 29884416 bytes
+range 14495514624-14562623487: attempt 5 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 5 SSLError, retained 36175872 bytes
+range 15233712128-15300820991: attempt 5 SSLError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 5 SSLError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 5 SSLError, retained 58458112 bytes
+range 15502147584-15569256447: attempt 5 SSLError, retained 12845056 bytes
+range 13891534848-13958643711: attempt 5 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 5 SSLError, retained 66060288 bytes
+range 14831058944-14898167807: attempt 5 SSLError, retained 44040192 bytes
+range 15300820992-15367929855: attempt 5 SSLError, retained 19398656 bytes
+range 14159970304-14227079167: attempt 5 SSLError, retained 61079552 bytes
+range 15367929856-15435038719: attempt 5 SSLError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 5 SSLError, retained 49283072 bytes
+range 14294188032-14361296895: attempt 5 SSLError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 5 SSLError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 5 SSLError, retained 36962304 bytes
+range 15435038720-15502147583: attempt 5 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 5 SSLError, retained 44826624 bytes
+range 15099494400-15166603263: attempt 5 SSLError, retained 23855104 bytes
+range 15636365312-15703474175: attempt 6 SSLError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 6 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 6 SSLError, retained 29884416 bytes
+range 14495514624-14562623487: attempt 6 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 6 SSLError, retained 36175872 bytes
+range 15233712128-15300820991: attempt 6 SSLError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 6 SSLError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 6 SSLError, retained 58458112 bytes
+range 15502147584-15569256447: attempt 6 SSLError, retained 12845056 bytes
+range 13891534848-13958643711: attempt 6 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 6 SSLError, retained 66060288 bytes
+range 14831058944-14898167807: attempt 6 SSLError, retained 44040192 bytes
+range 15300820992-15367929855: attempt 6 SSLError, retained 19398656 bytes
+range 14159970304-14227079167: attempt 6 SSLError, retained 61079552 bytes
+range 15367929856-15435038719: attempt 6 SSLError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 6 SSLError, retained 49283072 bytes
+range 14294188032-14361296895: attempt 6 SSLError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 6 SSLError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 6 SSLError, retained 36962304 bytes
+range 15435038720-15502147583: attempt 6 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 6 SSLError, retained 44826624 bytes
+range 15099494400-15166603263: attempt 6 SSLError, retained 23855104 bytes
+range 15636365312-15703474175: attempt 7 SSLError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 7 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 7 SSLError, retained 29884416 bytes
+range 14495514624-14562623487: attempt 7 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 7 SSLError, retained 36175872 bytes
+range 15233712128-15300820991: attempt 7 SSLError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 7 SSLError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 7 SSLError, retained 58458112 bytes
+range 15502147584-15569256447: attempt 7 SSLError, retained 12845056 bytes
+range 13891534848-13958643711: attempt 7 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 7 SSLError, retained 66060288 bytes
+range 14831058944-14898167807: attempt 7 SSLError, retained 44040192 bytes
+range 15300820992-15367929855: attempt 7 SSLError, retained 19398656 bytes
+range 14159970304-14227079167: attempt 7 SSLError, retained 61079552 bytes
+range 15367929856-15435038719: attempt 7 SSLError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 7 SSLError, retained 49283072 bytes
+range 14294188032-14361296895: attempt 7 SSLError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 7 SSLError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 7 SSLError, retained 36962304 bytes
+range 15435038720-15502147583: attempt 7 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 7 SSLError, retained 44826624 bytes
+range 15099494400-15166603263: attempt 7 SSLError, retained 23855104 bytes
+range 15636365312-15703474175: attempt 8 SSLError, retained 9699328 bytes
+range 15032385536-15099494399: attempt 8 SSLError, retained 25952256 bytes
+range 15166603264-15233712127: attempt 8 SSLError, retained 29884416 bytes
+range 14495514624-14562623487: attempt 8 SSLError, retained 34078720 bytes
+range 14562623488-14629732351: attempt 8 SSLError, retained 36175872 bytes
+range 15233712128-15300820991: attempt 8 SSLError, retained 35127296 bytes
+range 14965276672-15032385535: attempt 8 SSLError, retained 26738688 bytes
+range 13421772800-13488881663: attempt 8 SSLError, retained 58458112 bytes
+range 15502147584-15569256447: attempt 8 SSLError, retained 12845056 bytes
+range 13891534848-13958643711: attempt 8 SSLError, retained 66322432 bytes
+range 13958643712-14025752575: attempt 8 ConnectionError, retained 66060288 bytes
+range 14831058944-14898167807: attempt 8 SSLError, retained 44040192 bytes
+range 15300820992-15367929855: attempt 8 SSLError, retained 19398656 bytes
+range 14159970304-14227079167: attempt 8 SSLError, retained 61079552 bytes
+range 15367929856-15435038719: attempt 8 SSLError, retained 43778048 bytes
+range 14898167808-14965276671: attempt 8 SSLError, retained 49283072 bytes
+range 14294188032-14361296895: attempt 8 SSLError, retained 34603008 bytes
+range 15703474176-15758841926: attempt 8 SSLError, retained 9437184 bytes
+range 14763950080-14831058943: attempt 8 SSLError, retained 36962304 bytes
+range 15435038720-15502147583: attempt 8 SSLError, retained 10485760 bytes
+range 15569256448-15636365311: attempt 8 SSLError, retained 44826624 bytes
+range 15099494400-15166603263: attempt 8 SSLError, retained 23855104 bytes

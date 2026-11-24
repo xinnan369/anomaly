@@ -1,0 +1,1 @@
+{"python": "3.11.11", "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35", "torch": "2.2.2+cu121", "torchvision": "0.17.2+cu121", "cuda": "12.1", "cudnn": 8902, "gpu": "NVIDIA GeForce RTX 3090", "adeval": "1.1.0", "matplotlib": "3.11.2", "sklearn": "1.5.2"}

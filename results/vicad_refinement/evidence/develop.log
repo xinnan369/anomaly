@@ -1,0 +1,121 @@
+Car/train-features: encoded 600/3600
+Car/train-features: encoded 1200/3600
+Car/train-features: encoded 1800/3600
+Car/train-features: encoded 2400/3600
+Car/train-features: encoded 3000/3600
+Car/train-features: encoded 3600/3600
+Car/fit: epoch 1/12 normal loss=0.177958
+Car/fit: epoch 2/12 normal loss=0.168089
+Car/fit: epoch 3/12 normal loss=0.158271
+Car/fit: epoch 4/12 normal loss=0.151959
+Car/fit: epoch 5/12 normal loss=0.148300
+Car/fit: epoch 6/12 normal loss=0.145673
+Car/fit: epoch 7/12 normal loss=0.143934
+Car/fit: epoch 8/12 normal loss=0.142407
+Car/fit: epoch 9/12 normal loss=0.141179
+Car/fit: epoch 10/12 normal loss=0.140190
+Car/fit: epoch 11/12 normal loss=0.139273
+Car/fit: epoch 12/12 normal loss=0.138512
+Car: completed normal-only synthetic view 1/12
+Car: completed normal-only synthetic view 2/12
+Car: completed normal-only synthetic view 3/12
+Car: completed normal-only synthetic view 4/12
+Car: completed normal-only synthetic view 5/12
+Car: completed normal-only synthetic view 6/12
+Car: completed normal-only synthetic view 7/12
+Car: completed normal-only synthetic view 8/12
+Car: completed normal-only synthetic view 9/12
+Car: completed normal-only synthetic view 10/12
+Car: completed normal-only synthetic view 11/12
+Car: completed normal-only synthetic view 12/12
+Cube/train-features: encoded 600/3600
+Cube/train-features: encoded 1200/3600
+Cube/train-features: encoded 1800/3600
+Cube/train-features: encoded 2400/3600
+Cube/train-features: encoded 3000/3600
+Cube/train-features: encoded 3600/3600
+Cube/fit: epoch 1/12 normal loss=0.144192
+Cube/fit: epoch 2/12 normal loss=0.134791
+Cube/fit: epoch 3/12 normal loss=0.127551
+Cube/fit: epoch 4/12 normal loss=0.123230
+Cube/fit: epoch 5/12 normal loss=0.121107
+Cube/fit: epoch 6/12 normal loss=0.119229
+Cube/fit: epoch 7/12 normal loss=0.117922
+Cube/fit: epoch 8/12 normal loss=0.116682
+Cube/fit: epoch 9/12 normal loss=0.115560
+Cube/fit: epoch 10/12 normal loss=0.114705
+Cube/fit: epoch 11/12 normal loss=0.113744
+Cube/fit: epoch 12/12 normal loss=0.112943
+Cube: completed normal-only synthetic view 1/12
+Cube: completed normal-only synthetic view 2/12
+Cube: completed normal-only synthetic view 3/12
+Cube: completed normal-only synthetic view 4/12
+Cube: completed normal-only synthetic view 5/12
+Cube: completed normal-only synthetic view 6/12
+Cube: completed normal-only synthetic view 7/12
+Cube: completed normal-only synthetic view 8/12
+Cube: completed normal-only synthetic view 9/12
+Cube: completed normal-only synthetic view 10/12
+Cube: completed normal-only synthetic view 11/12
+Cube: completed normal-only synthetic view 12/12
+Doll/train-features: encoded 600/3600
+Doll/train-features: encoded 1200/3600
+Doll/train-features: encoded 1800/3600
+Doll/train-features: encoded 2400/3600
+Doll/train-features: encoded 3000/3600
+Doll/train-features: encoded 3600/3600
+Doll/fit: epoch 1/12 normal loss=0.214531
+Doll/fit: epoch 2/12 normal loss=0.201232
+Doll/fit: epoch 3/12 normal loss=0.191860
+Doll/fit: epoch 4/12 normal loss=0.184487
+Doll/fit: epoch 5/12 normal loss=0.180323
+Doll/fit: epoch 6/12 normal loss=0.177325
+Doll/fit: epoch 7/12 normal loss=0.175457
+Doll/fit: epoch 8/12 normal loss=0.173728
+Doll/fit: epoch 9/12 normal loss=0.172157
+Doll/fit: epoch 10/12 normal loss=0.171290
+Doll/fit: epoch 11/12 normal loss=0.170254
+Doll/fit: epoch 12/12 normal loss=0.169397
+Doll: completed normal-only synthetic view 1/12
+Doll: completed normal-only synthetic view 2/12
+Doll: completed normal-only synthetic view 3/12
+Doll: completed normal-only synthetic view 4/12
+Doll: completed normal-only synthetic view 5/12
+Doll: completed normal-only synthetic view 6/12
+Doll: completed normal-only synthetic view 7/12
+Doll: completed normal-only synthetic view 8/12
+Doll: completed normal-only synthetic view 9/12
+Doll: completed normal-only synthetic view 10/12
+Doll: completed normal-only synthetic view 11/12
+Doll: completed normal-only synthetic view 12/12
+Ring/train-features: encoded 600/3600
+Ring/train-features: encoded 1200/3600
+Ring/train-features: encoded 1800/3600
+Ring/train-features: encoded 2400/3600
+Ring/train-features: encoded 3000/3600
+Ring/train-features: encoded 3600/3600
+Ring/fit: epoch 1/12 normal loss=0.163676
+Ring/fit: epoch 2/12 normal loss=0.148063
+Ring/fit: epoch 3/12 normal loss=0.138725
+Ring/fit: epoch 4/12 normal loss=0.132472
+Ring/fit: epoch 5/12 normal loss=0.127451
+Ring/fit: epoch 6/12 normal loss=0.124372
+Ring/fit: epoch 7/12 normal loss=0.122202
+Ring/fit: epoch 8/12 normal loss=0.120696
+Ring/fit: epoch 9/12 normal loss=0.119422
+Ring/fit: epoch 10/12 normal loss=0.118371
+Ring/fit: epoch 11/12 normal loss=0.117362
+Ring/fit: epoch 12/12 normal loss=0.116646
+Ring: completed normal-only synthetic view 1/12
+Ring: completed normal-only synthetic view 2/12
+Ring: completed normal-only synthetic view 3/12
+Ring: completed normal-only synthetic view 4/12
+Ring: completed normal-only synthetic view 5/12
+Ring: completed normal-only synthetic view 6/12
+Ring: completed normal-only synthetic view 7/12
+Ring: completed normal-only synthetic view 8/12
+Ring: completed normal-only synthetic view 9/12
+Ring: completed normal-only synthetic view 10/12
+Ring: completed normal-only synthetic view 11/12
+Ring: completed normal-only synthetic view 12/12
+Normal-only candidate: {'candidate': 'D_combined', 'fusion': 'patch_stability', 'macro_pixel_ap': 0.6501766319247565, 'views': 192}

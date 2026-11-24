@@ -1,0 +1,33 @@
+{
+  "version": "task-004-v1",
+  "development_categories": ["Car", "Cube", "Doll", "Ring"],
+  "confirmatory_order": ["Bird", "Motor", "Teapot", "Tube", "Dice", "Holder"],
+  "confirmatory_groups": {"Bird": [30, 70], "Motor": [30, 70], "Teapot": [30, 70], "Tube": [30, 70], "Dice": [29, 70], "Holder": [30, 69]},
+  "archive_sha256": {
+    "Bird": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
+    "Motor": "eeffdb29450b5ffc5cb9bbc85afa5010ee633eefb87c4515c0f20b74f93e3e0f",
+    "Teapot": "a64815a83adcc40db75407a64fc1dd7a6882f76553953c67ce24c4abaeca5ac7",
+    "Tube": "2cee61f6f72e24c9968995a657a76f0c2de525f854a7a48fb089c517513a1c9b",
+    "Dice": "02aa9b6edda16bc408b654e362f8929a75923dd4bb6b7c7073cf91523346d263",
+    "Holder": "9d172110971844de022a253dc1f0012117af2c7f48e797056f11a8bdeed0eab3"
+  },
+  "feature_blocks_one_based": [4, 8, 12],
+  "candidates": ["A_final", "B_multilayer", "C_normal", "D_combined"],
+  "fusion_modes": ["equal", "v1_global", "patch_both", "protected_both", "patch_stability", "patch_epistemic"],
+  "contexts": ["nine_direct", "normal_conditional", "nine_median", "four_subset"],
+  "synthetic": ["clean", "one_weak", "four_strong", "all_weak", "all_strong", "light_only"],
+  "alpha_strong": 0.65,
+  "alpha_weak": 0.25,
+  "protection": 0.25,
+  "seed": 42,
+  "confirmatory_seeds": [42, 43, 44],
+  "development_views": ["000", "180"],
+  "normal_fit_objects": 24,
+  "selection": {
+    "objective": "Macro average of per-view pixel average precision on four positive synthetic scenarios, equal weighting per category and scenario",
+    "candidate_order": "first in registered cartesian order for ties within 1e-12",
+    "cost": "Run one 12-epoch predictor on leaf layer, score all 24 candidates without additional training; two validation views per held-out object; confirmation repeats predictor at seeds 42, 43, 44, paired against v1 A4"
+  },
+  "execution_budget": "Confirm Bird first. Proceed in order with a 40 GiB free-space reserve before staging each new archive. Keep all actual runs. Exploratory comparison follows candidate freeze.",
+  "base_merge": "498d99652d3153f50a3113c7a8b363d088449c56"
+}

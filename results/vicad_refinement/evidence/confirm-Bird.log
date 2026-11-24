@@ -1,0 +1,63 @@
+2026-11-23T22:21:58+08:00
+Bird/train-features: encoded 600/3600
+Bird/train-features: encoded 1200/3600
+Bird/train-features: encoded 1800/3600
+Bird/train-features: encoded 2400/3600
+Bird/train-features: encoded 3000/3600
+Bird/train-features: encoded 3600/3600
+Bird/seed-42: epoch 1/12 normal loss=0.265260
+Bird/seed-42: epoch 2/12 normal loss=0.248457
+Bird/seed-42: epoch 3/12 normal loss=0.230992
+Bird/seed-42: epoch 4/12 normal loss=0.221544
+Bird/seed-42: epoch 5/12 normal loss=0.216804
+Bird/seed-42: epoch 6/12 normal loss=0.214066
+Bird/seed-42: epoch 7/12 normal loss=0.211921
+Bird/seed-42: epoch 8/12 normal loss=0.210425
+Bird/seed-42: epoch 9/12 normal loss=0.208951
+Bird/seed-42: epoch 10/12 normal loss=0.207786
+Bird/seed-42: epoch 11/12 normal loss=0.206678
+Bird/seed-42: epoch 12/12 normal loss=0.205769
+Bird/seed-43: epoch 1/12 normal loss=0.265260
+Bird/seed-43: epoch 2/12 normal loss=0.248634
+Bird/seed-43: epoch 3/12 normal loss=0.230738
+Bird/seed-43: epoch 4/12 normal loss=0.221546
+Bird/seed-43: epoch 5/12 normal loss=0.216844
+Bird/seed-43: epoch 6/12 normal loss=0.213927
+Bird/seed-43: epoch 7/12 normal loss=0.212203
+Bird/seed-43: epoch 8/12 normal loss=0.210526
+Bird/seed-43: epoch 9/12 normal loss=0.209195
+Bird/seed-43: epoch 10/12 normal loss=0.207983
+Bird/seed-43: epoch 11/12 normal loss=0.206961
+Bird/seed-43: epoch 12/12 normal loss=0.206036
+Bird/seed-44: epoch 1/12 normal loss=0.265771
+Bird/seed-44: epoch 2/12 normal loss=0.248389
+Bird/seed-44: epoch 3/12 normal loss=0.230823
+Bird/seed-44: epoch 4/12 normal loss=0.221736
+Bird/seed-44: epoch 5/12 normal loss=0.216741
+Bird/seed-44: epoch 6/12 normal loss=0.213965
+Bird/seed-44: epoch 7/12 normal loss=0.211763
+Bird/seed-44: epoch 8/12 normal loss=0.210136
+Bird/seed-44: epoch 9/12 normal loss=0.208688
+Bird/seed-44: epoch 10/12 normal loss=0.207513
+Bird/seed-44: epoch 11/12 normal loss=0.206411
+Bird/seed-44: epoch 12/12 normal loss=0.205479
+Bird/test-features: encoded 600/8400
+Bird/test-features: encoded 1200/8400
+Bird/test-features: encoded 1800/8400
+Bird/test-features: encoded 2400/8400
+Bird/test-features: encoded 3000/8400
+Bird/test-features: encoded 3600/8400
+Bird/test-features: encoded 4200/8400
+Bird/test-features: encoded 4800/8400
+Bird/test-features: encoded 5400/8400
+Bird/test-features: encoded 6000/8400
+Bird/test-features: encoded 6600/8400
+Bird/test-features: encoded 7200/8400
+Bird/test-features: encoded 7800/8400
+Bird/test-features: encoded 8400/8400
+Bird/42/v1_A4: [60.3, 52.31761117525746, 45.70283875847074]
+Bird/42/selected: [70.1, 63.94270878523136, 83.3818793351701]
+Bird/43/v1_A4: [59.699999999999996, 52.04063244588903, 45.30604446360712]
+Bird/43/selected: [69.7, 64.09554765035273, 83.30855427000769]
+Bird/44/v1_A4: [64.3, 52.99837817274129, 46.061092849034004]
+Bird/44/selected: [70.89999999999999, 63.90666817948222, 83.47598290744529]

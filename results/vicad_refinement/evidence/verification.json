@@ -1,0 +1,38 @@
+{
+  "diagnostic_artifacts": {
+    "v1-localization.csv": "575beb454abd0239608dc8be5b150531e7eadc02e2aa3548fcd20272e0ce8e98",
+    "v1-replay.csv": "05da71e4945ed7caf556fdf06f211bb0549c493435dd8e74ac7426bbeb75100a",
+    "normal-direction-diagnosis.csv": "faeba7aa7ddae6c0b8c8e5aa460f1e4aa43ba47275d356e6c3831ecb37dfac6e",
+    "normal-direction-summary.csv": "7d49a779b36a2238840fd29a88b302ab50655dfbabebe9a838fc0c6047da94d5",
+    "normal-feature-example.npz": "c5f3f8a512e4883c2b1d414892fa82f5467a1cb70b457d86b1232a4622668991",
+    "normal-layer-diagnosis.csv": "6e12e821eb075fe313f16eaec0f820d6e9052588493b0bf6a2f7178c29d74fa8",
+    "normal-layer-summary.csv": "c183914f86996abd8dab45d7223d84ac5cc083c6c2e6cf547cb68a81de4a4a39"
+  },
+  "formal_receipts": {
+    "exploratory/Car": "a0f17ab9c3c6cbf8c4ae64ff70d040347f0b6bac83c4f51b8e6284751406d366",
+    "exploratory/Cube": "ba83459d6f1a11de49e0cf5dcdf51da499d4138ebeb4872eec90e99dcbf1e985",
+    "exploratory/Doll": "fda7558a8a2cc11da7aba7358dbd91232cb48c711b5694f19cb0e7c064f85a6a",
+    "exploratory/Ring": "1487e95d4863aa5ee725e324296190efce6e4e5f69c751d5c401a5341e1f51e2",
+    "confirmatory/Bird": "bda35924f6019b0bbdec4929f9090544a56b16e99eb1f69c91269072d3e03639",
+    "confirmatory/Motor": "f823112a7a306f809cee1cb1cbac9a0bdaed4f46c4acce47e200d0d05e196885",
+    "confirmatory/Teapot": "6615e9e5010899cfd2f66ef56ba67ff39f0e021e95ef5c339e6028505ea5599f",
+    "confirmatory/Tube": "8367ef7442a8a9a0e3b80d6890cb2c114df3a0524bd63eb5c21deb3959ab0a14",
+    "confirmatory/Dice": "c17e4c3372b0a3cb25e361e3407af5f9c1c49a69e45b8d1c2afcb7f12ee81b5c",
+    "confirmatory/Holder": "14f27d1790154321062e01ae57e790c456223afe14f5f3eaf3282080640c5b6f"
+  },
+  "stages": {
+    "development": "PASS",
+    "freeze": "2026-11-23T14:06:50.847065+00:00"
+  },
+  "freeze_sha256": "41fb52634e61a5023cd8172c83d9982f075eedfc65a6cf807bdca8286b4e503f",
+  "sha256": {
+    "accepted-baseline-comparison.csv": "3811dd0f3eece1b9c8a26c03e079144e6ae2bf1c32549c64c8e16751b06e9403",
+    "contamination-rows.csv": "350561427a32f84f6180a882ed8a67a9bffc2e7ebdca5bc7cf1dc6ca6458194a",
+    "contamination-summary.csv": "51f69b5c8278047d8294fa115e29a820aca24879f05529ac4cab2793f7e45c6b",
+    "development-cells.csv": "9033c29f09d2615d46305ef0d750cda9e1af1f6152ed10a2ac296dc52deed40e",
+    "development-matrix.csv": "e31bf79a81c6884cc5eab2783d5c2d7f919aa461a7f7df7f0b8919bbdec4389d",
+    "development-rows.csv": "7794bf63b9de3b7ea5083f34ac0e8cd2c209c886d65930794e80c5645828fe89",
+    "formal-summary.csv": "c3a10aea8bf51823cf406b3cdd053a4d4791444c6f9871d7adee22120eac4d1c",
+    "formal.csv": "a0a718f5a177cd8e909728802d4712aff9176465bbc30e6e709be6ca2d9f362d"
+  }
+}

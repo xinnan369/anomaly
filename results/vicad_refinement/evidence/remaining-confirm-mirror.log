@@ -1,0 +1,256 @@
+2026-11-24T08:36:43.4520361+08:00 starting frozen evaluation Teapot
+Teapot/train-features: encoded 600/3600
+Teapot/train-features: encoded 1200/3600
+Teapot/train-features: encoded 1800/3600
+Teapot/train-features: encoded 2400/3600
+Teapot/train-features: encoded 3000/3600
+Teapot/train-features: encoded 3600/3600
+Teapot/seed-42: epoch 1/12 normal loss=0.216294
+Teapot/seed-42: epoch 2/12 normal loss=0.192487
+Teapot/seed-42: epoch 3/12 normal loss=0.175064
+Teapot/seed-42: epoch 4/12 normal loss=0.167198
+Teapot/seed-42: epoch 5/12 normal loss=0.163155
+Teapot/seed-42: epoch 6/12 normal loss=0.160245
+Teapot/seed-42: epoch 7/12 normal loss=0.158421
+Teapot/seed-42: epoch 8/12 normal loss=0.156848
+Teapot/seed-42: epoch 9/12 normal loss=0.155408
+Teapot/seed-42: epoch 10/12 normal loss=0.154400
+Teapot/seed-42: epoch 11/12 normal loss=0.153283
+Teapot/seed-42: epoch 12/12 normal loss=0.152230
+Teapot/seed-43: epoch 1/12 normal loss=0.216361
+Teapot/seed-43: epoch 2/12 normal loss=0.193879
+Teapot/seed-43: epoch 3/12 normal loss=0.175222
+Teapot/seed-43: epoch 4/12 normal loss=0.167207
+Teapot/seed-43: epoch 5/12 normal loss=0.162684
+Teapot/seed-43: epoch 6/12 normal loss=0.160156
+Teapot/seed-43: epoch 7/12 normal loss=0.158221
+Teapot/seed-43: epoch 8/12 normal loss=0.156542
+Teapot/seed-43: epoch 9/12 normal loss=0.155347
+Teapot/seed-43: epoch 10/12 normal loss=0.154155
+Teapot/seed-43: epoch 11/12 normal loss=0.153093
+Teapot/seed-43: epoch 12/12 normal loss=0.152212
+Teapot/seed-44: epoch 1/12 normal loss=0.216898
+Teapot/seed-44: epoch 2/12 normal loss=0.193655
+Teapot/seed-44: epoch 3/12 normal loss=0.175569
+Teapot/seed-44: epoch 4/12 normal loss=0.167044
+Teapot/seed-44: epoch 5/12 normal loss=0.162774
+Teapot/seed-44: epoch 6/12 normal loss=0.160162
+Teapot/seed-44: epoch 7/12 normal loss=0.158193
+Teapot/seed-44: epoch 8/12 normal loss=0.156755
+Teapot/seed-44: epoch 9/12 normal loss=0.155422
+Teapot/seed-44: epoch 10/12 normal loss=0.154221
+Teapot/seed-44: epoch 11/12 normal loss=0.153201
+Teapot/seed-44: epoch 12/12 normal loss=0.152363
+Teapot/test-features: encoded 600/8400
+Teapot/test-features: encoded 1200/8400
+Teapot/test-features: encoded 1800/8400
+Teapot/test-features: encoded 2400/8400
+Teapot/test-features: encoded 3000/8400
+Teapot/test-features: encoded 3600/8400
+Teapot/test-features: encoded 4200/8400
+Teapot/test-features: encoded 4800/8400
+Teapot/test-features: encoded 5400/8400
+Teapot/test-features: encoded 6000/8400
+Teapot/test-features: encoded 6600/8400
+Teapot/test-features: encoded 7200/8400
+Teapot/test-features: encoded 7800/8400
+Teapot/test-features: encoded 8400/8400
+Teapot/42/v1_A4: [81.0, 59.811831709427956, 19.892280971585528]
+Teapot/42/selected: [90.7, 78.48139255702282, 90.17090693852829]
+Teapot/43/v1_A4: [80.89999999999999, 59.222758870990255, 19.824226248891375]
+Teapot/43/selected: [89.60000000000001, 77.95234372818895, 90.8388959133272]
+Teapot/44/v1_A4: [80.69999999999999, 59.874298556631956, 20.80418102268853]
+Teapot/44/selected: [90.0, 78.51280046902482, 90.72086389055175]
+2026-11-24T09:14:56.9171259+08:00 finished Teapot
+2026-11-24T09:14:56.9281923+08:00 starting frozen evaluation Tube
+Tube/train-features: encoded 600/3600
+Tube/train-features: encoded 1200/3600
+Tube/train-features: encoded 1800/3600
+Tube/train-features: encoded 2400/3600
+Tube/train-features: encoded 3000/3600
+Tube/train-features: encoded 3600/3600
+Tube/seed-42: epoch 1/12 normal loss=0.155456
+Tube/seed-42: epoch 2/12 normal loss=0.142448
+Tube/seed-42: epoch 3/12 normal loss=0.132846
+Tube/seed-42: epoch 4/12 normal loss=0.127177
+Tube/seed-42: epoch 5/12 normal loss=0.123912
+Tube/seed-42: epoch 6/12 normal loss=0.121689
+Tube/seed-42: epoch 7/12 normal loss=0.120355
+Tube/seed-42: epoch 8/12 normal loss=0.119071
+Tube/seed-42: epoch 9/12 normal loss=0.117949
+Tube/seed-42: epoch 10/12 normal loss=0.117200
+Tube/seed-42: epoch 11/12 normal loss=0.116478
+Tube/seed-42: epoch 12/12 normal loss=0.115839
+Tube/seed-43: epoch 1/12 normal loss=0.155351
+Tube/seed-43: epoch 2/12 normal loss=0.142787
+Tube/seed-43: epoch 3/12 normal loss=0.132764
+Tube/seed-43: epoch 4/12 normal loss=0.127251
+Tube/seed-43: epoch 5/12 normal loss=0.123892
+Tube/seed-43: epoch 6/12 normal loss=0.121932
+Tube/seed-43: epoch 7/12 normal loss=0.120269
+Tube/seed-43: epoch 8/12 normal loss=0.118957
+Tube/seed-43: epoch 9/12 normal loss=0.118018
+Tube/seed-43: epoch 10/12 normal loss=0.117171
+Tube/seed-43: epoch 11/12 normal loss=0.116458
+Tube/seed-43: epoch 12/12 normal loss=0.115778
+Tube/seed-44: epoch 1/12 normal loss=0.155467
+Tube/seed-44: epoch 2/12 normal loss=0.142511
+Tube/seed-44: epoch 3/12 normal loss=0.133340
+Tube/seed-44: epoch 4/12 normal loss=0.127695
+Tube/seed-44: epoch 5/12 normal loss=0.124416
+Tube/seed-44: epoch 6/12 normal loss=0.122124
+Tube/seed-44: epoch 7/12 normal loss=0.120484
+Tube/seed-44: epoch 8/12 normal loss=0.119270
+Tube/seed-44: epoch 9/12 normal loss=0.118216
+Tube/seed-44: epoch 10/12 normal loss=0.117345
+Tube/seed-44: epoch 11/12 normal loss=0.116519
+Tube/seed-44: epoch 12/12 normal loss=0.115951
+Tube/test-features: encoded 600/8400
+Tube/test-features: encoded 1200/8400
+Tube/test-features: encoded 1800/8400
+Tube/test-features: encoded 2400/8400
+Tube/test-features: encoded 3000/8400
+Tube/test-features: encoded 3600/8400
+Tube/test-features: encoded 4200/8400
+Tube/test-features: encoded 4800/8400
+Tube/test-features: encoded 5400/8400
+Tube/test-features: encoded 6000/8400
+Tube/test-features: encoded 6600/8400
+Tube/test-features: encoded 7200/8400
+Tube/test-features: encoded 7800/8400
+Tube/test-features: encoded 8400/8400
+Tube/42/v1_A4: [64.4, 50.37639196954827, 15.965595851497849]
+Tube/42/selected: [83.6, 63.139114698858066, 65.99264049136731]
+Tube/43/v1_A4: [67.3, 51.180231337822434, 16.269098488738504]
+Tube/43/selected: [84.39999999999999, 63.061964272545225, 66.10022079064252]
+Tube/44/v1_A4: [62.6, 50.63847650599334, 16.82785012305835]
+Tube/44/selected: [83.3, 62.827676580874645, 66.36842039400419]
+2026-11-24T09:48:02.3859921+08:00 finished Tube
+2026-11-24T09:48:02.3942388+08:00 starting frozen evaluation Dice
+Dice/train-features: encoded 600/3480
+Dice/train-features: encoded 1200/3480
+Dice/train-features: encoded 1800/3480
+Dice/train-features: encoded 2400/3480
+Dice/train-features: encoded 3000/3480
+Dice/train-features: encoded 3480/3480
+Dice/seed-42: epoch 1/12 normal loss=0.139609
+Dice/seed-42: epoch 2/12 normal loss=0.129371
+Dice/seed-42: epoch 3/12 normal loss=0.122003
+Dice/seed-42: epoch 4/12 normal loss=0.117402
+Dice/seed-42: epoch 5/12 normal loss=0.114854
+Dice/seed-42: epoch 6/12 normal loss=0.112827
+Dice/seed-42: epoch 7/12 normal loss=0.111476
+Dice/seed-42: epoch 8/12 normal loss=0.110400
+Dice/seed-42: epoch 9/12 normal loss=0.109382
+Dice/seed-42: epoch 10/12 normal loss=0.108544
+Dice/seed-42: epoch 11/12 normal loss=0.107734
+Dice/seed-42: epoch 12/12 normal loss=0.107138
+Dice/seed-43: epoch 1/12 normal loss=0.139341
+Dice/seed-43: epoch 2/12 normal loss=0.129035
+Dice/seed-43: epoch 3/12 normal loss=0.121368
+Dice/seed-43: epoch 4/12 normal loss=0.117367
+Dice/seed-43: epoch 5/12 normal loss=0.114614
+Dice/seed-43: epoch 6/12 normal loss=0.112851
+Dice/seed-43: epoch 7/12 normal loss=0.111465
+Dice/seed-43: epoch 8/12 normal loss=0.110244
+Dice/seed-43: epoch 9/12 normal loss=0.109335
+Dice/seed-43: epoch 10/12 normal loss=0.108506
+Dice/seed-43: epoch 11/12 normal loss=0.107869
+Dice/seed-43: epoch 12/12 normal loss=0.107256
+Dice/seed-44: epoch 1/12 normal loss=0.139514
+Dice/seed-44: epoch 2/12 normal loss=0.129263
+Dice/seed-44: epoch 3/12 normal loss=0.121995
+Dice/seed-44: epoch 4/12 normal loss=0.117473
+Dice/seed-44: epoch 5/12 normal loss=0.114880
+Dice/seed-44: epoch 6/12 normal loss=0.112925
+Dice/seed-44: epoch 7/12 normal loss=0.111419
+Dice/seed-44: epoch 8/12 normal loss=0.110300
+Dice/seed-44: epoch 9/12 normal loss=0.109310
+Dice/seed-44: epoch 10/12 normal loss=0.108501
+Dice/seed-44: epoch 11/12 normal loss=0.107793
+Dice/seed-44: epoch 12/12 normal loss=0.107019
+Dice/test-features: encoded 600/8400
+Dice/test-features: encoded 1200/8400
+Dice/test-features: encoded 1800/8400
+Dice/test-features: encoded 2400/8400
+Dice/test-features: encoded 3000/8400
+Dice/test-features: encoded 3600/8400
+Dice/test-features: encoded 4200/8400
+Dice/test-features: encoded 4800/8400
+Dice/test-features: encoded 5400/8400
+Dice/test-features: encoded 6000/8400
+Dice/test-features: encoded 6600/8400
+Dice/test-features: encoded 7200/8400
+Dice/test-features: encoded 7800/8400
+Dice/test-features: encoded 8400/8400
+Dice/42/v1_A4: [41.8, 50.39829907866762, 47.27571075378831]
+Dice/42/selected: [98.29999999999998, 80.52048192771085, 79.24146246807945]
+Dice/43/v1_A4: [42.0, 50.38582565556343, 47.8316825114914]
+Dice/43/selected: [98.0, 81.01204819277108, 79.09398980121406]
+Dice/44/v1_A4: [41.5, 50.48107725017717, 48.472892088883775]
+Dice/44/selected: [98.2, 81.23543586109142, 79.33227787609809]
+2026-11-24T10:21:07.6487755+08:00 finished Dice
+2026-11-24T10:23:07.8345318+08:00 starting frozen evaluation Holder
+Holder/train-features: encoded 600/3600
+Holder/train-features: encoded 1200/3600
+Holder/train-features: encoded 1800/3600
+Holder/train-features: encoded 2400/3600
+Holder/train-features: encoded 3000/3600
+Holder/train-features: encoded 3600/3600
+Holder/seed-42: epoch 1/12 normal loss=0.196091
+Holder/seed-42: epoch 2/12 normal loss=0.188386
+Holder/seed-42: epoch 3/12 normal loss=0.179621
+Holder/seed-42: epoch 4/12 normal loss=0.173199
+Holder/seed-42: epoch 5/12 normal loss=0.169218
+Holder/seed-42: epoch 6/12 normal loss=0.166095
+Holder/seed-42: epoch 7/12 normal loss=0.164166
+Holder/seed-42: epoch 8/12 normal loss=0.162387
+Holder/seed-42: epoch 9/12 normal loss=0.160947
+Holder/seed-42: epoch 10/12 normal loss=0.159760
+Holder/seed-42: epoch 11/12 normal loss=0.158668
+Holder/seed-42: epoch 12/12 normal loss=0.157734
+Holder/seed-43: epoch 1/12 normal loss=0.196166
+Holder/seed-43: epoch 2/12 normal loss=0.188312
+Holder/seed-43: epoch 3/12 normal loss=0.179209
+Holder/seed-43: epoch 4/12 normal loss=0.173247
+Holder/seed-43: epoch 5/12 normal loss=0.168876
+Holder/seed-43: epoch 6/12 normal loss=0.166202
+Holder/seed-43: epoch 7/12 normal loss=0.163983
+Holder/seed-43: epoch 8/12 normal loss=0.162189
+Holder/seed-43: epoch 9/12 normal loss=0.160731
+Holder/seed-43: epoch 10/12 normal loss=0.159574
+Holder/seed-43: epoch 11/12 normal loss=0.158493
+Holder/seed-43: epoch 12/12 normal loss=0.157585
+Holder/seed-44: epoch 1/12 normal loss=0.196623
+Holder/seed-44: epoch 2/12 normal loss=0.187987
+Holder/seed-44: epoch 3/12 normal loss=0.179660
+Holder/seed-44: epoch 4/12 normal loss=0.173318
+Holder/seed-44: epoch 5/12 normal loss=0.169284
+Holder/seed-44: epoch 6/12 normal loss=0.166244
+Holder/seed-44: epoch 7/12 normal loss=0.163998
+Holder/seed-44: epoch 8/12 normal loss=0.162196
+Holder/seed-44: epoch 9/12 normal loss=0.160671
+Holder/seed-44: epoch 10/12 normal loss=0.159363
+Holder/seed-44: epoch 11/12 normal loss=0.158241
+Holder/seed-44: epoch 12/12 normal loss=0.157372
+Holder/test-features: encoded 600/8280
+Holder/test-features: encoded 1200/8280
+Holder/test-features: encoded 1800/8280
+Holder/test-features: encoded 2400/8280
+Holder/test-features: encoded 3000/8280
+Holder/test-features: encoded 3600/8280
+Holder/test-features: encoded 4200/8280
+Holder/test-features: encoded 4800/8280
+Holder/test-features: encoded 5400/8280
+Holder/test-features: encoded 6000/8280
+Holder/test-features: encoded 6600/8280
+Holder/test-features: encoded 7200/8280
+Holder/test-features: encoded 7800/8280
+Holder/test-features: encoded 8280/8280
+Holder/42/v1_A4: [79.48979591836735, 58.23404190149473, 20.642100257597246]
+Holder/42/selected: [97.14285714285712, 70.62760352854693, 82.9301184648733]
+Holder/43/v1_A4: [78.46938775510203, 57.31591521685861, 21.441911036729813]
+Holder/43/selected: [97.14285714285712, 70.6061627052193, 82.92850919631675]
+Holder/44/v1_A4: [78.57142857142857, 57.752006248468525, 21.491754377436333]
+Holder/44/selected: [97.0408163265306, 70.96759372702769, 82.98882847940602]
+2026-11-24T10:56:02.6557186+08:00 finished Holder

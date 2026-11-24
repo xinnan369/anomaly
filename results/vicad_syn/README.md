@@ -1,6 +1,6 @@
 # TASK-003 · VICAD-Syn 结果与证据
 
-**实验完成，待独立验收。** [实验报告](../../reports/TASK-003-REPORT.md) · [固定协议和命令](../../instructions/TASK-003.md)
+**ACCEPTED。** VICAD-Syn v1 为可复现原型和真实负结果。[后续机制诊断](../vicad_refinement/README.md) · [实验报告](../../reports/TASK-003-REPORT.md) · [固定协议和命令](../../instructions/TASK-003.md)
 
 ## 正式结果
 

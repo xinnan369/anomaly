@@ -1,0 +1,6 @@
+Bird: staging fixed publication via lfs
+Bird: 8/232 complete ranges
+range 805306368-872415231: attempt 1 SSLError, retained 28835840 bytes
+range 1476395008-1543503871: attempt 1 SSLError, retained 60817408 bytes
+range 1476395008-1543503871: attempt 2 SSLError, retained 60817408 bytes
+range 1207959552-1275068415: attempt 1 ChunkedEncodingError, retained 57409536 bytes

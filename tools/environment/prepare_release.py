@@ -1,18 +1,18 @@
-"""Download, verify and stage the four official M²AD-Synergy classes."""
+"""Plan or verify and stage four official M²AD-Synergy classes offline."""
 
 import argparse
-from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
 import shutil
 import sys
-import time
 import zipfile
 
-import requests
+from filelock import FileLock
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "audit"))
+from tools.download_policy import assemble_local, describe
 from manifest import check_manifest, load_manifest
 from sources import ARCHIVES, CANDIDATES, RELEASE_REVISION, RELEASE_URL, require
 
@@ -23,75 +23,21 @@ ARCHIVE_SHA256 = {
     "Doll": "1fd27c8aaf89d6bdde1d5061edcc5e45a5c8d7241c9d287402807a1985f8bcb3",
     "Ring": "20b2b0f12c338747208a914aa98e4f175eef7fa0e26de8eae0bc1f8ac7a27d7c",
 }
-CHUNK = 64 * 1024 * 1024
-
-
 def sha256(path):
     with path.open("rb") as source:
         return hashlib.file_digest(source, "sha256").hexdigest()
 
 
-def fetch_part(url, total, bounds, directory):
-    start, stop = bounds
-    part = directory / f"{start:012d}.part"
-    size = stop - start
-    if part.exists() and part.stat().st_size == size:
-        return part
-    headers = {"Range": f"bytes={start}-{stop-1}", "Accept-Encoding": "identity"}
-    temp = part.with_suffix(".download")
-    for attempt in range(5):
-        try:
-            with requests.get(url, headers=headers, stream=True, timeout=(20, 90)) as response:
-                response.raise_for_status()
-                require(response.status_code == 206, "server did not honor Range")
-                require(response.headers.get("Content-Range") == f"bytes {start}-{stop-1}/{total}",
-                        "incorrect Content-Range")
-                written = 0
-                with temp.open("wb") as output:
-                    for chunk in response.iter_content(1024 * 1024):
-                        written += len(chunk)
-                        require(written <= size, "oversized HTTP body")
-                        output.write(chunk)
-                require(written == size, "truncated HTTP body")
-            temp.replace(part)
-            return part
-        except (ValueError, requests.RequestException) as error:
-            if attempt == 4:
-                raise RuntimeError(f"Range {start}-{stop-1} failed ({type(error).__name__}): "
-                                   "rerun to resume completed parts") from None
-            time.sleep(2 ** attempt)
+def archive_item(root, category, checksum):
+    mirror = RELEASE_URL.replace("https://huggingface.co/", "https://hf-mirror.com/", 1)
+    name = f"{category}.zip"
+    return {"name": name, "version": RELEASE_REVISION, "size_bytes": ARCHIVES[category],
+            "sha256": checksum, "purpose": "M2AD-Synergy archive validation and evaluation",
+            "mirror": f"{mirror}/{name}", "redirect_chain": [], "route_status": "unverified",
+            "destination": str(root / "archives" / name)}
 
 
-def download(cls, root, workers):
-    archive = root / f"{cls}.zip"
-    size, digest = ARCHIVES[cls], ARCHIVE_SHA256[cls]
-    if archive.exists():
-        require(archive.stat().st_size == size and sha256(archive) == digest, f"{cls}: existing ZIP hash mismatch")
-        return archive
-    parts = root / f"{cls}-{RELEASE_REVISION}.parts"
-    parts.mkdir(exist_ok=True)
-    chunks = [(i, min(i + CHUNK, size)) for i in range(0, size, CHUNK)]
-    url = f"{RELEASE_URL}/{cls}.zip"
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        files = []
-        for count, part in enumerate(pool.map(lambda bounds: fetch_part(url, size, bounds, parts), chunks), 1):
-            files.append(part)
-            if count == len(chunks) or count % 8 == 0:
-                print(f"{cls}: downloaded or resumed {count}/{len(chunks)} chunks", flush=True)
-    pending = archive.with_suffix(".assembling")
-    with pending.open("wb") as output:
-        for path in files:
-            with path.open("rb") as source:
-                shutil.copyfileobj(source, output, 4 * 1024 * 1024)
-    require(pending.stat().st_size == size and sha256(pending) == digest, f"{cls}: assembled ZIP hash mismatch")
-    pending.replace(archive)
-    for path in files:
-        path.unlink()
-    parts.rmdir()
-    return archive
-
-
-def extract_and_audit(archive_path, data, cls, dataset):
+def extract_and_audit(archive_path, data, cls, dataset, checksum=None):
     rows = {split: data[split][cls] for split in ("train", "test")}
     images = {row["img_path"] for split in rows.values() for row in split}
     masks = {row["mask_path"] for split in rows.values() for row in split if row["mask_path"]}
@@ -119,7 +65,7 @@ def extract_and_audit(archive_path, data, cls, dataset):
                 print(f"{cls}: CRC-verified and extracted {number}/{len(files)} files", flush=True)
     require({p.relative_to(dataset).as_posix() for p in (dataset / cls).rglob("*") if p.is_file()} == expected,
             f"{cls}: extracted tree differs from manifest")
-    return {"archive_sha256": ARCHIVE_SHA256[cls], "archive_bytes": ARCHIVES[cls],
+    return {"archive_sha256": checksum or ARCHIVE_SHA256[cls], "archive_bytes": ARCHIVES[cls],
             "crc_verified_files": len(files), "images": len(images), "masks": len(masks), "segments": len(segments),
             "counts": check_manifest(data)["classes"][cls], "split_crc_size_overlap": 0}
 
@@ -130,30 +76,51 @@ def atomic_json(path, data):
     temp.replace(path)
 
 
+def stage_archive(root, cache, category, checksum):
+    archive = root / "archives" / f"{category}.zip"
+    dataset = root / "dataset"
+    marker = root / "data_audit" / f"{category}.json"
+    if marker.is_file():
+        receipt = json.loads(marker.read_text(encoding="utf-8"))
+        require(receipt["archive_sha256"] == checksum and receipt["release_revision"] == RELEASE_REVISION,
+                "existing receipt differs")
+        require((dataset / category).is_dir() and (dataset / "jsons/meta_unsupervised.json").is_file(),
+                "staged data missing; existing receipt preserved")
+        return
+    data = load_manifest(cache)
+    path = assemble_local(archive, RELEASE_REVISION, ARCHIVES[category], checksum)
+    manifest = dataset / "jsons/meta_unsupervised.json"
+    manifest.parent.mkdir(parents=True, exist_ok=True)
+    expected = (json.dumps(data, indent=2) + "\n").replace("\n", "\r\n").encode()
+    if not manifest.exists():
+        temp = manifest.with_suffix(".json.tmp")
+        temp.write_bytes(expected)
+        temp.replace(manifest)
+    require(manifest.read_bytes() == expected, "existing staged manifest differs")
+    marker.parent.mkdir(parents=True, exist_ok=True)
+    result = extract_and_audit(path, data, category, dataset, checksum)
+    atomic_json(marker, {"release_revision": RELEASE_REVISION, "category": category, **result})
+
+
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Plan or stage M2AD classes using local inputs")
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--classes", choices=CANDIDATES, nargs="+", default=list(CANDIDATES))
-    parser.add_argument("--workers", type=int, default=8, choices=range(1, 13))
+    parser.add_argument("--task-id", default="TASK-002")
+    parser.add_argument("--stage-local", action="store_true")
     args = parser.parse_args()
     root = args.root.resolve()
     require(not root.is_relative_to(Path(__file__).resolve().parents[2]), "use a data root outside the repository")
-    archives, dataset, audit = root / "archives", root / "dataset", root / "data_audit"
-    for folder in (archives, dataset / "jsons", audit):
-        folder.mkdir(parents=True, exist_ok=True)
-    data = load_manifest(root / "cache")
-    stats = check_manifest(data)
-    atomic_json(audit / "manifest-summary.json", stats)
-    atomic_json(dataset / "jsons" / "meta_unsupervised.json", data)
-    for cls in dict.fromkeys(args.classes):
-        print(f"{cls}: preparing {ARCHIVES[cls]} bytes from revision {RELEASE_REVISION}", flush=True)
-        path = download(cls, archives, args.workers)
-        marker = audit / f"{cls}.json"
-        if marker.exists():
-            marker.unlink()
-        result = extract_and_audit(path, data, cls, dataset)
-        atomic_json(marker, {"release_revision": RELEASE_REVISION, "category": cls, **result})
-        print(f"{cls}: verified, staged and ready", flush=True)
+    categories = list(dict.fromkeys(args.classes))
+    if args.stage_local:
+        root.mkdir(parents=True, exist_ok=True)
+        with FileLock(root / "staging.lock"):
+            for category in categories:
+                stage_archive(root, root / "cache", category, ARCHIVE_SHA256[category])
+    else:
+        plan = {"task_id": args.task_id, "files": [archive_item(root, cls, ARCHIVE_SHA256[cls])
+                for cls in categories if not (root / "data_audit" / f"{cls}.json").is_file()]}
+        print(json.dumps(describe(plan), indent=2))
 
 
 if __name__ == "__main__":
