@@ -1,0 +1,126 @@
+{
+  "version": "task-005-v1",
+  "task004_freeze": "41fb52634e61a5023cd8172c83d9982f075eedfc65a6cf807bdca8286b4e503f",
+  "release": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "download_budget_bytes": 0,
+  "baseline_order": [
+    "Bird",
+    "Motor",
+    "Teapot",
+    "Tube",
+    "Dice",
+    "Holder"
+  ],
+  "baseline_models": [
+    "dinomaly",
+    "inpformer"
+  ],
+  "official_baseline_seed": 42,
+  "ablation_order": [
+    "Bird",
+    "Motor",
+    "Teapot",
+    "Tube",
+    "Dice",
+    "Holder",
+    "Car",
+    "Cube",
+    "Doll",
+    "Ring"
+  ],
+  "primary_seed": 42,
+  "repeat_seeds": [
+    43,
+    44
+  ],
+  "repeated_settings": [
+    "B0",
+    "B2",
+    "B3",
+    "B4",
+    "B6",
+    "B7"
+  ],
+  "repeated_categories": [
+    "Bird",
+    "Motor",
+    "Teapot",
+    "Tube",
+    "Dice",
+    "Holder"
+  ],
+  "ablation": {
+    "B0": [
+      "A_final",
+      "v1_global"
+    ],
+    "B1": [
+      "C_leaf",
+      "equal"
+    ],
+    "B2": [
+      "C_normal",
+      "equal"
+    ],
+    "B3": [
+      "B_multilayer",
+      "equal"
+    ],
+    "B4": [
+      "D_combined",
+      "equal"
+    ],
+    "B5": [
+      "D_combined",
+      "v1_global"
+    ],
+    "B6": [
+      "D_combined",
+      "patch_stability"
+    ],
+    "B7": [
+      "D_combined",
+      "patch_epistemic"
+    ],
+    "B8": [
+      "D_combined",
+      "patch_both"
+    ],
+    "B9": [
+      "D_combined",
+      "protected_both"
+    ]
+  },
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 42005,
+    "confidence": 0.95,
+    "method": "paired percentile; normal/NG physical instance strata within category; retain all 12 views",
+    "primary_metrics": [
+      "O-AUROC",
+      "I-AUROC"
+    ],
+    "comparisons": [
+      [
+        "B2",
+        "B1"
+      ],
+      [
+        "B4",
+        "B2"
+      ],
+      [
+        "B6",
+        "B4"
+      ],
+      [
+        "B7",
+        "B4"
+      ]
+    ],
+    "intervals": "descriptive unadjusted 95% category-wise intervals; simultaneous Bonferroni 95% intervals across all planned categories x contrasts x metrics using the same bootstrap draws; no significance claims based on unadjusted intervals",
+    "AUPRO": "report official point estimates; no bootstrap CI unless official CUDA ADEval per-resample semantics and budget are verified",
+    "sampling": "one strata-aware draw matrix per category and seed; identical weights across methods and metric types"
+  },
+  "purpose": "Complementary exploratory evaluation on previously seen labels; no reselection of TASK-004"
+}
