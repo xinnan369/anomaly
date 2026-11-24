@@ -18,7 +18,7 @@
 
 ## 冻结正式评价
 
-**整改完成，待独立复验。** 已见类别 4/4，独立确认 6/6。
+**ACCEPTED_WITH_DOCUMENTED_HISTORICAL_EXCEPTION。** 已记录负责人对历史下载的事后处置。 已见类别 4/4，独立确认 6/6。
 
 [逐种子指标与成本](metrics/formal.csv) · [类别摘要](metrics/formal-summary.csv)
 
@@ -40,3 +40,5 @@
 - [六类配对逐种子差值](metrics/confirmatory-paired-seeds.csv) · [六类等权宏平均](metrics/confirmatory-macro.csv)
 - [作者公开参考](metrics/published-baseline-reference.csv) · [本机已验收基线对照](metrics/accepted-baseline-comparison.csv)。作者参考用于描述性对照。预留六类没有本机原版对照训练。
 - [本轮离线计划](evidence/rectification-local-plan.json) · [六类历史事实与审批缺口](../../reports/TASK-004-DOWNLOAD-AUDIT.md)
+
+TASK-005 复用本目录中的冻结检查点。在新结果目录统一列出补充消融和同环境基线。原有 TASK-004 指标、图表及确认性协议继续保留。[TASK-005 结果](../comprehensive_evaluation/README.md)

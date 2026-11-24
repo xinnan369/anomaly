@@ -28,13 +28,31 @@ from smoke_dinomaly import REVISION, WEIGHT_NAME, check_upstream, require
 
 
 WEIGHT_SHA = "73182a088cf94833c94b1666d1c99e02fe87e2007bff57b564fb6206e25dba71"
-CLASSES = ("Car", "Cube", "Doll", "Ring")
+REGISTRY = json.loads((Path(__file__).resolve().parents[2] / "vicad_syn/refinement/protocol.json").read_text())
+COUNTS = {category: (30, 70) for category in REGISTRY["development_categories"]}
+COUNTS.update(REGISTRY["confirmatory_groups"])
+CLASS_ARCHIVES = {**ARCHIVE_SHA256, **REGISTRY["archive_sha256"]}
+CLASSES = tuple(COUNTS)
 CONFIGS = {
     "dinomaly": "configs/benchmark/dinomaly/dinomaly_100e.py",
     "inpformer": "configs/benchmark/inpformer/inpformer_100e.py",
 }
 FINAL_EPOCH = 100
-FINAL_ITERATION = 30_000
+VIEWS_PER_OBJECT = 12
+LIGHTS_PER_VIEW = 10
+BATCH_SIZE = 12
+
+
+def official_counts(category):
+    train_objects, test_objects = COUNTS[category]
+    photos = VIEWS_PER_OBJECT * LIGHTS_PER_VIEW
+    train_rows = train_objects * photos
+    test_rows = test_objects * photos
+    return train_rows, test_rows, test_objects, train_rows // BATCH_SIZE, test_rows // BATCH_SIZE
+
+
+def expected_iterations(category):
+    return FINAL_EPOCH * official_counts(category)[3]
 
 
 def now():
@@ -79,13 +97,13 @@ def validate_checkpoint(checkpoint, model, category, upstream, attention_mode="o
     checksum = digest(checkpoint)
     require(status["status"] == "PASS" and status["mode"] == "train" and status["model"] == model
             and status["class"] == category and status["epochs_completed"] == FINAL_EPOCH
-            and status["optimization_steps"] == FINAL_ITERATION
+            and status["optimization_steps"] == expected_iterations(category)
             and completed.get("path") == checkpoint.relative_to(run_root).as_posix()
             and completed.get("bytes") == checkpoint.stat().st_size
             and completed.get("sha256") == checksum, "checkpoint does not match the recorded final training artifact")
     state = torch.load(checkpoint, map_location="cpu", weights_only=True)
-    require(state["epoch"] == FINAL_EPOCH and state["iter"] == FINAL_ITERATION,
-            "evaluation requires the final checkpoint at epoch 100 and iteration 30000")
+    require(state["epoch"] == FINAL_EPOCH and state["iter"] == expected_iterations(category),
+            f"evaluation requires epoch 100 and iteration {expected_iterations(category)}")
     return checksum
 
 
@@ -112,7 +130,10 @@ def run(args, result):
     check_upstream(args.upstream)
     attention_mode = getattr(args, "attention_mode", "official")
     variant = stability.metadata(attention_mode)
-    result.update(variant)
+    train_rows, test_rows, test_objects, train_batches, test_batches = official_counts(args.category)
+    test_views = test_objects * VIEWS_PER_OBJECT
+    final_iteration = expected_iterations(args.category)
+    result.update(variant, expected_optimization_steps=final_iteration)
     require(torch.cuda.is_available() and torch.cuda.device_count() == 1, "expose exactly one CUDA device")
     require(args.weight.name == WEIGHT_NAME and digest(args.weight) == WEIGHT_SHA, "backbone SHA-256 mismatch")
     if not args.preflight:
@@ -120,8 +141,8 @@ def run(args, result):
         require(marker_path.is_file(), f"{args.category}: no complete archive audit; run prepare_release.py first")
         marker = json.loads(marker_path.read_text(encoding="utf-8"))
         require(marker["release_revision"] == RELEASE_REVISION and marker["category"] == args.category
-                and marker["archive_sha256"] == ARCHIVE_SHA256[args.category]
-                and marker["images"] == 12_000 and marker["split_crc_size_overlap"] == 0,
+                and marker["archive_sha256"] == CLASS_ARCHIVES[args.category]
+                and marker["images"] == train_rows + test_rows and marker["split_crc_size_overlap"] == 0,
                 "verified, complete class is required")
     if args.checkpoint:
         result["evaluation_checkpoint_sha256"] = validate_checkpoint(args.checkpoint, args.model, args.category,
@@ -190,8 +211,8 @@ def run(args, result):
                 return output
 
             trainer.forward = checked_forward
-        require(len(trainer.train_set) == 3600 and len(trainer.test_set) == 8400, "official loader count mismatch")
-        require(len(trainer.train_loader) == 300 and len(trainer.test_loader) == 700,
+        require(len(trainer.train_set) == train_rows and len(trainer.test_set) == test_rows, "official loader count mismatch")
+        require(len(trainer.train_loader) == train_batches and len(trainer.test_loader) == test_batches,
                 "official batch count mismatch")
         result["parameters"] = sum(param.numel() for param in trainer.net.parameters())
         result["trainable_parameters"] = sum(param.numel() for param in trainer.net.parameters() if param.requires_grad)
@@ -248,33 +269,33 @@ def run(args, result):
 
     def fuse(**results):
         option = results.pop("fuse")
-        require(option == "add" and len(results["cls_names"]) == 8400, "unexpected official evaluation inputs")
+        require(option == "add" and len(results["cls_names"]) == test_rows, "unexpected official evaluation inputs")
         columns = ("obj_names", "object_anomalys", "view_list", "illumination_list", "image_anomalys")
         rows = list(zip(*(results[name] for name in columns)))
         manifest = args.release_root / "dataset" / "jsons" / "meta_unsupervised.json"
         records = json.loads(manifest.read_text(encoding="utf-8"))["test"][args.category]
         fields = ("object_name", "object_anomaly", "view", "illumination", "image_anomaly")
         expected = {tuple(row[name] for name in fields) for row in records}
-        require(len(set(rows)) == len(expected) == 8400 and set(rows) == expected
+        require(len(set(rows)) == len(expected) == test_rows and set(rows) == expected
                 and set(results["cls_names"]) == {args.category}, "evaluation rows differ from the audited manifest")
         require(set(results["view_list"]) == {f"{v:03d}" for v in range(0, 360, 30)}
                 and set(results["illumination_list"]) == {f"{l:02d}" for l in range(1, 11)},
                 "official configuration coverage mismatch")
         masks = results["imgs_masks"]
-        require(results["anomaly_scores"].shape == (8400,) and results["anomaly_maps"].shape == (8400, 224, 224),
+        require(results["anomaly_scores"].shape == (test_rows,) and results["anomaly_maps"].shape == (test_rows, 224, 224),
                 "unexpected official score or heatmap shape")
-        require(masks.shape == (8400, 1, 224, 224) and np.issubdtype(masks.dtype, np.integer)
+        require(masks.shape == (test_rows, 1, 224, 224) and np.issubdtype(masks.dtype, np.integer)
                 and masks.min() == 0 and masks.max() == 1,
                 "unexpected official mask shape or labels")
         result["inference_finished_utc"] = now()
         result["inference_through_concatenation_seconds"] = perf_counter() - infer_started
         evidence = {"raw": save_arrays(args.output / "raw", {**results, "imgs_masks": masks.astype(np.uint8)})}
         fused = original_fuse(**results, fuse=option)
-        require(len(fused["object_instance_names"]) == 70 and len(fused["view_instance_names"]) == 840,
+        require(len(fused["object_instance_names"]) == test_objects and len(fused["view_instance_names"]) == test_views,
                 "unexpected fused object or view count")
-        require(fused["object_instance_anomalys"].shape == fused["object_instance_anomaly_scores"].shape == (70,)
-                and fused["view_instance_anomalys"].shape == fused["view_instance_anomaly_scores"].shape == (840,)
-                and fused["view_instance_masks"].shape == fused["view_instance_anomaly_maps"].shape == (840, 224, 224),
+        require(fused["object_instance_anomalys"].shape == fused["object_instance_anomaly_scores"].shape == (test_objects,)
+                and fused["view_instance_anomalys"].shape == fused["view_instance_anomaly_scores"].shape == (test_views,)
+                and fused["view_instance_masks"].shape == fused["view_instance_anomaly_maps"].shape == (test_views, 224, 224),
                 "unexpected fused label, score, mask or heatmap shape")
         result["fusion_crosscheck"] = check_fusion(results, fused)
         evidence["fused"] = save_arrays(args.output / "fused", fused)
@@ -308,7 +329,7 @@ def run(args, result):
                 from model.dinomaly_utils.vision_transformer import LinearAttention2
 
                 attention_class = LinearAttention2
-                guard = stability.GuardCounts(700 if args.checkpoint else FINAL_ITERATION, "cuda")
+                guard = stability.GuardCounts(test_batches if args.checkpoint else final_iteration, "cuda")
                 amended = stability.install(attention_class, guard, resources)
                 file = args.output / "patched-forward.py.txt"
                 file.write_text(amended, encoding="utf-8")
@@ -323,14 +344,14 @@ def run(args, result):
             write_json(args.output / "attention-guards.json", guard_record)
             result["attention_guard_positions"] = guard_record["protected_positions"]
     if guard is not None:
-        require(guard.calls == (700 if args.checkpoint else FINAL_ITERATION) * 8,
+        require(guard.calls == (test_batches if args.checkpoint else final_iteration) * 8,
                 "incomplete guarded attention coverage")
     result["peak_allocated_bytes"] = torch.cuda.max_memory_allocated()
     result["peak_reserved_bytes"] = torch.cuda.max_memory_reserved()
     if args.checkpoint:
         result["diagnostics"] = save_diagnostics(args.output, args.category, use_adeval=True)
     elif not args.preflight:
-        require(epochs and epochs[-1]["epoch"] == FINAL_EPOCH and epochs[-1]["iteration"] == FINAL_ITERATION,
+        require(epochs and epochs[-1]["epoch"] == FINAL_EPOCH and epochs[-1]["iteration"] == final_iteration,
                 "training did not reach the frozen checkpoint")
 
 
@@ -345,7 +366,12 @@ def main():
     mode.add_argument("--preflight", action="store_true", help="build the official trainer from the manifest only")
     mode.add_argument("--diagnose-doll", action="store_true", help="probe a fresh Dinomaly/Doll training run")
     parser.add_argument("--attention-mode", choices=("official", "stabilized"), default="official")
+    parser.add_argument("--offline", action="store_true", help="refuse Python network access and lazy Git fetch")
     args = parser.parse_args()
+    if args.offline:
+        from tools.comprehensive.offline import enable_offline
+
+        enable_offline()
     if args.attention_mode == "stabilized" and ((args.model, args.category) != ("dinomaly", "Doll")
             or not (args.diagnose_doll or args.checkpoint)):
         parser.error("stabilized mode requires Dinomaly/Doll with diagnosis or a frozen checkpoint")

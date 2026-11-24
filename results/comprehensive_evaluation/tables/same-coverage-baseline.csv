@@ -1,0 +1,10 @@
+reference,metric,category_count,categories,frozen_mean,reference_mean,higher,lower,equal
+Dinomaly,O-AUROC,3,Car;Cube;Ring,81.16666666666667,92.06666666666666,0,3,0
+Dinomaly,I-AUROC,3,Car;Cube;Ring,68.89502524439838,84.1008287260305,0,3,0
+Dinomaly,AUPRO,3,Car;Cube;Ring,83.85403132582891,91.17014583128439,0,3,0
+INP-Former,O-AUROC,4,Car;Cube;Doll;Ring,73.60000000000001,78.275,2,2,0
+INP-Former,I-AUROC,4,Car;Cube;Doll;Ring,65.65403256261999,73.9654317903786,1,3,0
+INP-Former,AUPRO,4,Car;Cube;Doll;Ring,81.42242258507376,89.63750745717519,1,3,0
+Dinomaly-stabilized,O-AUROC,1,Doll,50.9,82.5,0,1,0
+Dinomaly-stabilized,I-AUROC,1,Doll,55.93105451728479,79.78742189235528,0,1,0
+Dinomaly-stabilized,AUPRO,1,Doll,74.1275963628083,92.17712333992768,0,1,0
