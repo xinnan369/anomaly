@@ -2,6 +2,8 @@
 
 目标环境为 WSL2 Ubuntu 22.04 x86_64、Python 3.11.11、RTX 3090。命令在仓库根目录执行，所有源码检出、图像、权重和 Python 环境都放在仓库之外。复现只使用官方 Car 训练划分的三个 PNG 和一个预训练骨干权重。
 
+> 本页带在线安装、源码获取、权重拉取、`--workers` 的命令属于历史记录，不可直接执行。依赖从本地已校验的 wheelhouse 离线安装，使用已经校验的源码、归档和权重。下载审批见[受控入口](../DOWNLOADS.md)。
+
 ## 建立环境
 
 ```bash
@@ -86,7 +88,7 @@ CUDA_VISIBLE_DEVICES=0 "$py" -B tools/audit/metric_smoke.py \
   --cache "$work/cache" --device cuda | tee "$stage/environment/adeval-cuda.json"
 ```
 
-### 下载与复核
+### 历史下载命令（不可直接执行）
 
 从 Windows PowerShell 执行。此脚本在 Windows 侧用 Python 3.11 或更高版本和 `requests`，下载与数据校验无需 GPU。一次只运行一个下载进程。重跑可复用已完整下载的分块；每类在校验发布 SHA-256、CRC 和清单覆盖后才写入该类的就绪记录。
 

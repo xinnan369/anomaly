@@ -1,0 +1,15 @@
+{
+  "task_id": "TASK-004",
+  "mode": "offline_only",
+  "files": [],
+  "expected_new_network_payload_bytes": 0,
+  "data_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "local_inputs": {
+    "Bird": "::/date/task-004-bird/dataset",
+    "Motor_Teapot_Tube_Dice_Holder": "::/date/task-004-holdout",
+    "accepted_baselines": "::/date/task-002-stage2",
+    "frozen_experiment_outputs": "D:/vicad-syn/task-004/run-v2"
+  },
+  "approval_index": [],
+  "scope": ":xisting extraction receipts, cached manifest, frozen checkpoints and prediction arrays only."
+}

@@ -1,0 +1,147 @@
+{
+  "formal_rows": 44,
+  "grouped_summary_rows": 20,
+  "paired_rows": 18,
+  "max_official_replay_difference_pp": {
+    "O-AUROC": 0.0,
+    "I-AUROC": 0.0,
+    "AUPRO": 0.0
+  },
+  "source_formal_sha256": "a0a718f5a177cd8e909728802d4712aff9176465bbc30e6e709be6ca2d9f362d",
+  "replay_sha256": "1f503fe6468a5ef1464fd5ab9fa69d7041f66101d85c4af9e4bd872528949889",
+  "freeze_sha256": "41fb52634e61a5023cd8172c83d9982f075eedfc65a6cf807bdca8286b4e503f",
+  "pretest_checkpoints": {
+    "Bird": {
+      "pretest_utc": "2026-11-23T15:54:25.289110+00:00",
+      "pretest_sha256": "2ef24f4ea0c694a10243092f493c6bcbf6eecc0dd5685fcddc40187a64a601d9",
+      "checkpoints": {
+        "42": "b1c07fd075a855d629ed2777d5048fedf2ded33c93590ffa02f5de2579533614",
+        "43": "e9ad8c244383974abc3d21f7f8ce946e29b1eba01188b7af630245095a8140ec",
+        "44": "8056bd0fad53a8650eed13ffeac73defa1a98f1ee826ad5df979bc7a581b76b5"
+      }
+    },
+    "Motor": {
+      "pretest_utc": "2026-11-23T23:44:06.871014+00:00",
+      "pretest_sha256": "c3ea98f2fb0e9cde312e34b520c7651b91f8a8049794f216f66c757c17ef824e",
+      "checkpoints": {
+        "42": "6ce53fbc0f79076a9fe332e9c1cc99662864d5da3d0ec774aed2e46f562c552d",
+        "43": "288698b7a8054b3a4026a36d77ba6d389063e290385f3a9bb5e678448d47e0ad",
+        "44": "d33d32f7fe091c93c9b3ef2adde470abb40e690c61f0e4d4b1ba6877e1418ac9"
+      }
+    },
+    "Teapot": {
+      "pretest_utc": "2026-11-24T00:47:57.285885+00:00",
+      "pretest_sha256": "4a55186a315a32b2dd3ec136f1e563b770eb0d9ea738e283d7db4597d24326d3",
+      "checkpoints": {
+        "42": "88ea1327f09ce5118b27844c5f7ca3b8f52d544257323b5332e641c584390849",
+        "43": "83d15d316dd279f03051dc0f2494ef1bc0cdd669abcbf379b0718616621d74da",
+        "44": "b5107a64757f441dbd45e619434d14ece5d04a8a0a5098438afd5461c676c3b8"
+      }
+    },
+    "Tube": {
+      "pretest_utc": "2026-11-24T01:24:52.978674+00:00",
+      "pretest_sha256": "83b75ad4f022cc46fa9b88c50048febd28eb3fe0f6eb23b81401395138ada315",
+      "checkpoints": {
+        "42": "3a53fbbcd4abd6618bd5252eb71ebd014d959b0559588c96a4dece1a75538bcf",
+        "43": "8017f5dd68cefe9bb148ca85438cce44a875e7d5a4d96af9d715f36bfd6ccd9c",
+        "44": "3ef83c585079f51aab919b5039d1971b887f543ba484f023e99d56448a67276b"
+      }
+    },
+    "Dice": {
+      "pretest_utc": "2026-11-24T01:57:26.363931+00:00",
+      "pretest_sha256": "eec72a33e2038086408f1c9a50b6d6d5178b63f5f672c7e4591f70bb4f095417",
+      "checkpoints": {
+        "42": "8b04f7725f84f77ff4627bae584e37cb1f52159f0afddbaff4d3841f8292be1f",
+        "43": "8038d193a1ab3da29abf7c827c21a18a390b0b8c07c935af5f17d86571a686c1",
+        "44": "d4710f5cc4a44d7fa991a7d66fa0955f1e356695ec5c126bce14d5cd747a37be"
+      }
+    },
+    "Holder": {
+      "pretest_utc": "2026-11-24T02:33:36.995209+00:00",
+      "pretest_sha256": "6b0c5aa1b16bf27599255b665e529ab9b4c92000d37750a5f84c8d7820fa5b10",
+      "checkpoints": {
+        "42": "5b66c42336276eef209238bf64e05c9e938897ed6a050efad0838318b9f305ad",
+        "43": "ee48bb871afb1cf7c594a803db926c4e5b41a7b94a2097ac59e6604dbd5ce277",
+        "44": "d4828c62bca5f7514030655aa6f41366c6264a0ae2883f4b08afa005c66a2bdf"
+      }
+    }
+  },
+  "category_changes": {
+    "exploratory": {
+      "O-AUROC": {
+        "improved": 3,
+        "decreased": 1,
+        "unchanged": 0,
+        "category_deltas_pp": {
+          "Car": 11.400000000000006,
+          "Cube": 25.299999999999997,
+          "Doll": -9.100000000000001,
+          "Ring": 29.60000000000001
+        }
+      },
+      "I-AUROC": {
+        "improved": 4,
+        "decreased": 0,
+        "unchanged": 0,
+        "category_deltas_pp": {
+          "Car": 11.797177715936584,
+          "Cube": 14.553547423450333,
+          "Doll": 6.866067817656749,
+          "Ring": 18.54178807303807
+        }
+      },
+      "AUPRO": {
+        "improved": 4,
+        "decreased": 0,
+        "unchanged": 0,
+        "category_deltas_pp": {
+          "Car": 58.9237064251095,
+          "Cube": 25.157046655752026,
+          "Doll": 38.56288936883771,
+          "Ring": 36.22937847170396
+        }
+      }
+    },
+    "confirmatory": {
+      "O-AUROC": {
+        "improved": 6,
+        "decreased": 0,
+        "unchanged": 0,
+        "category_deltas_pp": {
+          "Bird": 8.800000000000004,
+          "Dice": 56.39999999999999,
+          "Holder": 18.265306122448976,
+          "Motor": 41.36666666666668,
+          "Teapot": 9.233333333333348,
+          "Tube": 19.0
+        }
+      },
+      "I-AUROC": {
+        "improved": 6,
+        "decreased": 0,
+        "unchanged": 0,
+        "category_deltas_pp": {
+          "Bird": 11.529434273726174,
+          "Dice": 30.500921332388366,
+          "Holder": 12.966465531324019,
+          "Motor": 21.494486496589104,
+          "Teapot": 18.67921587239548,
+          "Tube": 12.277885246304628
+        }
+      },
+      "AUPRO": {
+        "improved": 6,
+        "decreased": 0,
+        "unchanged": 0,
+        "category_deltas_pp": {
+          "Bird": 37.69881348050374,
+          "Dice": 31.362481597076034,
+          "Holder": 61.75723015627757,
+          "Motor": 45.91765341389025,
+          "Teapot": 70.40332616641393,
+          "Tube": 49.79957907090643
+        }
+      }
+    }
+  }
+}

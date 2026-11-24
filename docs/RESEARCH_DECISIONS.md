@@ -77,3 +77,9 @@
 [任务与预登记](../instructions/TASK-004.md) · [执行报告](../reports/TASK-004-REPORT.md)
 
 正常代理固定选择 D_combined / patch_stability。65.02% 的宏平均像素 AP 用于开发选型。冻结 SHA 为 `91ec34558507cb6d9a23aeed6dc51ca51d21e50a`。已见类别 4/4，独立确认 6/6。根据独立确认结果评估方法贡献。 [冻结证据](../results/vicad_refinement/evidence/freeze.json)
+
+## 2026-11-24 · TASK-004 审查后的证据与传输决策
+
+- 维持预登记方案、24 项正常代理候选及冻结的 D_combined / patch_stability。复评读取已存融合数组。正式确认是同一检查点的组合改动，不能独立归因给多层特征、正常原型或 patch 级融合。三个组件的拆分证据仍来自正常代理实验。
+- 六类以类别等权计算每种子宏平均，报告跨 42、43、44 的样本标准差。作者表格与本机实验分列。评估结论限于 M²AD 当前固定发布，论文定位为机制研究。计划中的同环境基线留待进一步授权。
+- 网络获取集中到签名审批入口，记录单文件及任务累计预算、分块和绑定端点。旧的境外 CDN 记录作历史证据保留。本轮零下载、零正式训练。[科研核验](../results/vicad_refinement/evidence/formal-audit.json) · [下载事实审计](../reports/TASK-004-DOWNLOAD-AUDIT.md)

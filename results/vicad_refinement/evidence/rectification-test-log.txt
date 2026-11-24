@@ -1,0 +1,34 @@
+TASK-004 review 6033672223 | 2026-11-24 Asia/Shanghai
+Environment: WSL2 Ubuntu 22.04, Python 3.11.11 from the locked baseline venv.
+Metric replay: RTX 3090, CUDA ADEval 1.1.0, upstream a606aa0e1614f23dad70da26430dd66095192141.
+Unit test HTTP responses, signing, and routes were mocked. No new network file downloads or full training took place.
+
+python -B -m unittest discover -s tests/vicad_refinement -p test_*.py   26 passed
+python -B -m unittest discover -s tests/vicad_syn -p test_*.py          11 passed
+python -B -m unittest discover -s tools/environment -p test_*.py      19 passed
+python -B -m unittest discover -s tools/audit -p test_*.py              9 passed
+Total: 65 passed, including 16 managed transfer mock tests. Tests of the removed HTTP reader are covered by the managed range validation tests.
+
+Offline data: the plan for this review, the staged Holder receipt and the staged TASK-002 four-class root each projected zero new bytes.
+Offline Car smoke prep copied three official normal images from local extraction, 0 download bytes.
+Local manifest SHA-256: 7ac578bf7bef5148edccd318a55a73694eb9d216c87b7f9186a45e112ea27e43.
+Dice: training 29 / 3480; testing 70 / 8400 (objects / images).
+Holder: training 30 / 3600; testing 69 / 8280 (objects / images); 828 fused views.
+Train/test intersections across full instance keys, paths and class/id: 0, 0, 0.
+
+Official metric replay: 44/44, maximum difference 0.0 percentage points on all metrics.
+Summary independently recomputed: 20/20 groups, sample SD only where n > 1; 18 paired seed comparisons.
+Full artifact verification re-ran tools.vicad_syn.export_refinement on the original run-v2 and diagnostics.
+22 checkpoint byte hashes, frozen receipts, feature caches, fused results and prediction arrays passed.
+Comparison of regenerated and original SHA-256 values:
+formal.csv                       a0a718f5a177cd8e909728802d4712aff9176465bbc30e6e709be6ca2d9f362d MATCH
+formal-summary.csv               c3a10aea8bf51823cf406b3cdd053a4d4791444c6f9871d7adee22120eac4d1c MATCH
+development-matrix.csv           e31bf79a81c6884cc5eab2783d5c2d7f919aa461a7f7df7f0b8919bbdec4389d MATCH
+development-cells.csv            9033c29f09d2615d46305ef0d750cda9e1af1f6152ed10a2ac296dc52deed40e MATCH
+accepted-baseline-comparison.csv 3811dd0f3eece1b9c8a26c03e079144e6ae2bf1c32549c64c8e16751b06e9403 MATCH
+contamination-summary.csv        51f69b5c8278047d8294fa115e29a820aca24879f05529ac4cab2793f7e45c6b MATCH
+verification.json                5053bc4a98fed1df1a33a2248c4c58b09a70d98ba88880e05c96a347c7a3bbdf MATCH
+Markdown relative links: 360 across 22 files, 0 broken.
+git diff --check and git diff --cached --check: pass.
+Staged artifact and secret-pattern scan: 32 paths, no prohibited binary extensions or key/token patterns.
+TASK-004 frozen reference files and all accepted TASK-001/TASK-002/TASK-003 result references were unchanged.

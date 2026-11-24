@@ -1,6 +1,6 @@
 # TASK-004 · VICAD-Syn 失效诊断与验证
 
-**状态　待独立验收。** [任务与协议](../instructions/TASK-004.md) · [结果索引](../results/vicad_refinement/README.md)
+**状态　整改完成，待独立复验及项目负责人决定。** [任务与协议](../instructions/TASK-004.md) · [结果索引](../results/vicad_refinement/README.md)
 
 TASK-003 通过独立验收。它提供可复现的研究原型和真实负结果。PR #4 由批准提交 `4982849e4907e22df1dd036adfdfdb9b4ac3e750` 普通合并到 `498d99652d3153f50a3113c7a8b363d088449c56`。[Review 6022362483](https://github.com/xinnan369/anomaly/pull/4#pullrequestreview-6022362483) · [合并提交](https://github.com/xinnan369/anomaly/commit/498d99652d3153f50a3113c7a8b363d088449c56)
 
@@ -73,9 +73,7 @@ Car A4 的掩膜内外均值为 0.134412 与 0.134098，差值仅 0.000315。A1 
 
 ## 数据下载与流量复核
 
-首轮官方传输中断前，Bird 和 Motor 完整归档加 Teapot 可复用分块共落盘 46,220,406,189 字节。该值为本地载荷，实际 VPN 流量未从供应商核验。Teapot 的 235 个分块通过离线模式合并和审计，避免重复传输。
-
-2026-11-24 对同一 release 检查了 HF-Mirror 和精确 ModelScope 路径。ModelScope 返回 HTTP 404。HF-Mirror 上三个未下载类别均返回 HTTP 206 及匹配的全档大小，最终端点为 Hugging Face CDN。Windows 对镜像与该 CDN 均使用 WLAN。Tube 的 1 MiB 实测中，VPN 接口 vgate0 的接收和发送增量均为 0。Tube、Dice、Holder 随后均由镜像直连收齐，三类共 50,862,474,856 字节，逐类通过 SHA-256、成员 CRC 和实例隔离审计。传输前后 VPN 接口计数无变化，守卫进程正常退出。这些都是本机接口实测。大文件续传禁用客户端代理继承，监测本机路由和 VPN 接口，并关闭自动回退。实验配置与数据版本未变。[HF-Mirror](https://hf-mirror.com/) · [探测证据](../results/vicad_refinement/evidence/mirror-probe.json)
+本轮在 Windows 和 WSL 检查项目下载进程，未发现运行项。未启动下载、探测或新训练。本地原始发布数据、缓存、断点和既有科学结果保留。六类归档完整载荷合计 97,082,881,045 字节。历史传输的新增、重复和 VPN 供应商计费字节均不可从现存日志完整复原。Teapot 235 段全部来自已有本地缓存，离线组装新增下载为 0 字节。HF-Mirror 的三个数据端点为境外 CDN，保存的 WLAN 和 VPN 接口观测只描述本机网络行为。六类事前审批均未能核实。负责人对历史事实的处置单独待定。[历史事实审计](TASK-004-DOWNLOAD-AUDIT.md) · [本轮零下载计划](../results/vicad_refinement/evidence/rectification-local-plan.json) · [审批入口使用说明](../tools/DOWNLOADS.md)
 
 ## 冻结后的正式结果与限制
 
@@ -174,10 +172,44 @@ python -B -m vicad_refinement.run explore --inputs /mnt/d/vicad-syn/task-002-sta
 python -B -m vicad_refinement.run confirm --inputs /mnt/d/vicad-syn/task-002-stage2 --output /mnt/d/vicad-syn/task-004/run-v2 --holdout /mnt/d/vicad-syn/task-004/holdout --category Bird
 ```
 
-实际逐类探索命令依次替换 Car、Cube、Doll、Ring。使用 Windows Git worktree 时，为冻结命令传入映射至 WSL 的 GIT_DIR 与 GIT_WORK_TREE。原回执存在时从该点恢复。Bird 使用 D 盘归档。Motor、Teapot、Tube、Dice、Holder 的归档准备切换到 C 盘独立数据根，该选择保留 D 盘上的缓存空间与 40 GiB 的预留。以下续传入口以 Tube 为例，运行前核验镜像与 CDN 均走 WLAN。
+实际逐类探索命令依次替换 Car、Cube、Doll、Ring。使用 Windows Git worktree 时，为冻结命令传入映射至 WSL 的 GIT_DIR 与 GIT_WORK_TREE。原回执存在时从该点恢复。Bird 使用 D 盘归档。Motor、Teapot、Tube、Dice、Holder 的归档准备切换到 C 盘独立数据根，该选择保留 D 盘上的缓存空间与 40 GiB 的预留。以下 Tube 命令是旧阶段的历史记录，禁止直接执行。现行流程只从既有许可路径和签名计划进入。
 
 ```powershell
 python -B -m tools.vicad_syn.stage_refinement --root C:/Users/xinnan/vicad-data/task-004-holdout --manifest-cache D:/vicad-syn/task-002-stage2/cache --category Tube --transport mirror --workers 12
 ```
 
 数据版本见 [官方发布](https://huggingface.co/datasets/ChengYuQi99/M2AD/commit/05abc5d03167354a7ef98541236b5c0bd00abadf)、[论文](https://arxiv.org/html/2505.10996v1)及[固定上游](https://github.com/hustCYQ/M2AD/tree/a606aa0e1614f23dad70da26430dd66095192141)。完整实验位于 `D:/vicad-syn/task-004`。原版指标、原预测和模型保持原路径。 [核验清单](../results/vicad_refinement/evidence/verification.json) · [图表、证据和命令索引](../results/vicad_refinement/README.md) · [PR #5](https://github.com/xinnan369/anomaly/pull/5)
+
+## Review 6033672223 整改与只读复评
+
+正式 CSV 保留 44 行。按 scope、类别和方法重算 20 组均值及样本标准差，逐值与原摘要一致（容差 1e-10 个百分点）。四类探索性设定各只有一个种子，样本标准差留空。冻结回执为北京时间 2026-11-23 22:06:50，SHA-256 为 `41fb52634e61a5023cd8172c83d9982f075eedfc65a6cf807bdca8286b4e503f`。六类 18 个配对检查点均有早于该次测试的预检，且晚于冻结、绑定同一冻结摘要。每对中的 v1_A4 和选定方案使用同一检查点。使用固定版源代码和 CUDA ADEval 重新读取 44 套 SHA-256 匹配的已保存融合数组。三项指标逐项差值均为 0.0 个百分点。[正式复评](../results/vicad_refinement/metrics/official-replay.csv) · [汇总复算](../results/vicad_refinement/metrics/formal-recomputed-summary.csv) · [冻结与绑定核对](../results/vicad_refinement/evidence/formal-audit.json)
+
+重读固定发布的本地清单。Dice 正常训练 29 件、3,480 张。Holder 测试 69 件（正常 20、异常 49）、8,280 张，对应 828 个融合视角。Holder 仍保留与公开论文的发布差异。跨划分的完整实例键、图像路径及类别加实例编号交集均为 0。裸编号的跨类别重复为 8。[类别覆盖](../results/vicad_refinement/metrics/confirmatory-coverage.csv)
+
+| 指标 | 配对 v1 宏平均 ± SD（%） | 冻结改进版宏平均 ± SD（%） | 配对差 ± SD（百分点） | 六类升／降 |
+|---|---:|---:|---:|---:|
+| O-AUROC | 62.80 ± 0.16 | 88.31 ± 0.05 | +25.51 ± 0.13 | 6／0 |
+| I-AUROC | 53.73 ± 0.14 | 71.64 ± 0.01 | +17.91 ± 0.14 | 6／0 |
+| AUPRO | 33.33 ± 0.33 | 82.82 ± 0.10 | +49.49 ± 0.27 | 6／0 |
+
+每个种子对六类等权，三个种子宏值再取均值及样本标准差。该 SD 描述训练种子波动。同一测试集重复评估的种子结果无法估算对其他工业域的泛化误差。已见四类中，O-AUROC 3 类升、1 类降（Doll），I-AUROC 与 AUPRO 均 4 类升、0 类降。[逐类逐种子差值](../results/vicad_refinement/metrics/confirmatory-paired-seeds.csv) · [逐种子宏值](../results/vicad_refinement/metrics/confirmatory-macro.csv)
+
+- **机制证据。** 正常代理与可控结构扰动支持跨光照共享异常被预测器重建、导致预测残差减弱的解释。多层特征、正常原型和局部融合的单独效果只在正常代理实验中估计。正式确认同时改变这些因素，现有正式比较只估计整个组合的效果。
+- **已验证的性能结论。** 在 M²AD 固定发布上，六个此前未用于选型的类别、全部三个种子均报告。冻结组合在三项六类别宏指标上均高于配对 v1，正式核查已复现。
+- **描述性比较。** 作者公开参考与本机复现分列。确认类没有同环境的原版基线。按两条作者公开基线的较高项对照，O-AUROC、I-AUROC、AUPRO 分别 1／0／1 类领先，剩余 5／6／5 类落后。最多只支持小幅个别领先。已见四类本机对照保留原版失败与数值稳定变体身份。[作者参考](../results/vicad_refinement/metrics/published-baseline-reference.csv) · [本机对照](../results/vicad_refinement/metrics/accepted-baseline-comparison.csv)
+- **论文建议。** 可形成围绕跨光照异常传播及局部保护机制的论文。若要把与原版基线的差异作为方法领先证据，需同环境原版基线及新的独立评估，优先复验预留类别及正式因子拆分。当前范围不足以支持 SOTA。
+
+### 本轮环境与实际命令
+
+WSL2 Ubuntu 22.04、锁定 Python 3.11.11、PyTorch 2.2.2+cu121、CUDA ADEval 1.1.0、RTX 3090。复评无新增种子；只重读探索种子 42 与确认种子 42、43、44 的历史结果。原协议、24 项正常代理、已见四类、六类确认原记录和 TASK-003 结果均保留。本轮镜像、签名、累计预算、重试、断点、重定向、路由的验证仅为模拟。Windows 路由应用、真实签名信任文件及任何下载均未启用。
+
+```bash
+python -B -m tools.download_policy results/vicad_refinement/evidence/rectification-local-plan.json
+python -B tools/audit/manifest.py --cache /mnt/d/vicad-syn/task-002-stage2/cache
+GIT_NO_LAZY_FETCH=1 python -B -m tools.vicad_syn.reaudit_refinement --run /mnt/d/vicad-syn/task-004/run-v2 --upstream /mnt/d/vicad-syn/task-002-stage2/inputs/upstream --formal results/vicad_refinement/metrics/formal.csv --output /mnt/d/vicad-syn/task-004/rectification/official-replay.csv
+python -B -m tools.vicad_syn.summarize_refinement_audit --replay /mnt/d/vicad-syn/task-004/rectification/official-replay.csv --output /mnt/d/vicad-syn/task-004/rectification/audit-tables
+```
+
+另用原导出器只读重验 22 个训练检查点的实际 SHA-256（确认 18 个、探索 4 个）、前置回执、正常训练与测试特征、每组预测结构、掩膜及数组哈希。重新导出的 formal.csv、formal-summary.csv、开发矩阵及核验回执与原件 SHA-256 完全一致。输出在 `D:/vicad-syn/task-004/rectification/reverified`。[重新校验记录](../results/vicad_refinement/evidence/rectification-test-log.txt)
+
+原有数据位于 `E:/date/task-002-stage2`、`E:/date/task-004-bird`、`E:/date/task-004-holdout`。冻结的运行输出仍位于 `D:/vicad-syn/task-004/run-v2`。本次复评的原始 stdout/stderr 位于 `D:/vicad-syn/task-004/rectification/replay.log` 和 `replay.stderr`。历史询问与复验仍保留在原 PR #5。

@@ -2,6 +2,8 @@
 
 从仓库根目录运行以下命令。缓存放在仓库外，可在 Windows 与 WSL 间共享。脚本输出只包含元数据统计、抽样测量和合成测试，范围读取的图像不落盘。
 
+> 在线依赖安装与远程 Range 用法属于 TASK-001 历史记录，不可直接执行。现用入口只读取经过验证的本地缓存和 ZIP。[下载审批](../DOWNLOADS.md)
+
 ## 依赖
 
 - 清单、归档目录和离线测试需要 Python 3.9+ 与 `requests`。
@@ -31,10 +33,11 @@ python -m pip install requests==2.33.1 numpy==1.26.4 opencv-python==4.9.0.80
 ## 命令与断言
 
 ```bash
-cache="$(mktemp -d)"
+cache="/path/to/existing-verified-cache"
+archives="/path/to/existing-verified-zips"
 python -B -m unittest discover -s tools/audit -p 'test_*.py' -v
 python -B tools/audit/manifest.py --cache "$cache"
-python -B tools/audit/archives.py --cache "$cache" --alignment
+python -B tools/audit/archives.py --cache "$cache" --archives "$archives" --alignment
 python -B tools/audit/metric_smoke.py --cache "$cache" --device cpu
 python -B tools/audit/metric_smoke.py --cache "$cache" --device cuda
 ```
@@ -43,7 +46,7 @@ PowerShell 中用 `$cache = Join-Path $env:TEMP 'm2ad-task-001'` 代替首行。
 
 1. **离线测试**预期 9 项通过。覆盖完整网格、缺组、重复配置、跨划分实例、官方划分不一致、错误缓存和 HTTP 范围/大小约束。
 2. **清单**预期 `train=299/35880`、`test=699/83880`（实例/图像），共 `998/119760`。实例完整键、图像路径及类别+实例 ID 的跨划分交集为 0，裸 ID 交集为 8。每个实例恰有 12×10。对排序的每类正常 ID 以 seed 42 和比例 0.6 复算官方划分，训练 ID 对称差须为 0。与预印本图 3(a) 的物件数相比，唯一差项为 Holder NG（50→49）。查看[机器可读清单摘要](../../reports/evidence/TASK-001/manifest-summary.json)。
-3. **归档**默认检查十类，可用 `--classes Car Cube Doll Ring` 只查指定类。程序拒绝忽略 Range 的服务器，每次请求至多 5 MB，每个归档的请求预算 24 MB（含重试）。缺失清单路径、额外文件或跨集 CRC32+成员大小交集非零会报错。加 `--alignment` 后，仅对所选候选类各解码 3 张 1024² PNG，检查 ZIP 成员 CRC 和 PNG 解码，输出每类正常实例 `Good/000` 单一视角 `000` 的 I01→I05 和 I01→I10 相位相关位移及响应。响应是估计质量线索，数值可因 OpenCV 版本有小幅变化。
+3. **归档**默认检查十类，可用 `--classes Car Cube Doll Ring` 只查指定类。当前仅接受本地归档，不发送 Range 请求。缺失清单路径、额外文件或跨集 CRC32+成员大小交集非零会报错。加 `--alignment` 后，仅对所选候选类各解码 3 张 1024² PNG，检查 ZIP 成员 CRC 和 PNG 解码，输出每类正常实例 `Good/000` 单一视角 `000` 的 I01→I05 和 I01→I10 相位相关位移及响应。响应是估计质量线索，数值可因 OpenCV 版本有小幅变化。
 4. **指标**断言官方 `fuse='add'` 的物件分数为 4 和 5/3，四个视角分数为 2、8、1.5、2，热图均值和掩膜并集通过。ADEval 以 `nstrips=50` 对三个 2×2 样本运行，完美案例的 I-AUROC、像素 AUROC、AUPRO 均为 1.0，只有一区域正确定位的案例依次为 1.0、0.5、0.5。CPU 作为辅助检查，CUDA 是官方配置使用的后端。
 
 只有划分复算使用 seed 42。图像抽样和指标输入由固定选择或合成数组给出，无随机种子。输出按[执行日志](../../reports/evidence/TASK-001/test-log.txt)标注实际环境和证据。失败时根据非零退出码和错误消息排查 `--cache`、网络 Range 支持或 CUDA。
