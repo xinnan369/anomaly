@@ -32,5 +32,19 @@
   "modelscope_exact_dataset_probe": {
     "http_status": 404
   },
-  "policy": "Use the verified mirror with proxy inheritance disabled. No automatic fallback. Pause if the confirmed route changes or the VPN adapter shows material traffic."
+  "policy": "Use the verified mirror with proxy inheritance disabled. No automatic fallback. Pause if the confirmed route changes or the VPN adapter shows material traffic.",
+  "tube_full_transfer": {
+    "started_local": "2026-11-24T08:35:15+08:00",
+    "archive_audited_local": "2026-11-24T09:07:45+08:00",
+    "archive_bytes": 16709077850,
+    "archive_sha256": "2cee61f6f72e24c9968995a657a76f0c2de525f854a7a48fb089c517513a1c9b",
+    "crc_verified_files": 13010,
+    "vpn_received_delta": 0,
+    "vpn_sent_delta": 0
+  },
+  "transfer_guard": {
+    "workers": 12,
+    "route_check_seconds": 15,
+    "vpn_rx_plus_tx_pause_bytes": 2097152
+  }
 }

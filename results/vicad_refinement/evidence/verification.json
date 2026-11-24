@@ -14,7 +14,8 @@
     "exploratory/Doll": "fda7558a8a2cc11da7aba7358dbd91232cb48c711b5694f19cb0e7c064f85a6a",
     "exploratory/Ring": "1487e95d4863aa5ee725e324296190efce6e4e5f69c751d5c401a5341e1f51e2",
     "confirmatory/Bird": "bda35924f6019b0bbdec4929f9090544a56b16e99eb1f69c91269072d3e03639",
-    "confirmatory/Motor": "f823112a7a306f809cee1cb1cbac9a0bdaed4f46c4acce47e200d0d05e196885"
+    "confirmatory/Motor": "f823112a7a306f809cee1cb1cbac9a0bdaed4f46c4acce47e200d0d05e196885",
+    "confirmatory/Teapot": "6615e9e5010899cfd2f66ef56ba67ff39f0e021e95ef5c339e6028505ea5599f"
   },
   "stages": {
     "development": "PASS",
@@ -28,7 +29,7 @@
     "development-cells.csv": "9033c29f09d2615d46305ef0d750cda9e1af1f6152ed10a2ac296dc52deed40e",
     "development-matrix.csv": "e31bf79a81c6884cc5eab2783d5c2d7f919aa461a7f7df7f0b8919bbdec4389d",
     "development-rows.csv": "7794bf63b9de3b7ea5083f34ac0e8cd2c209c886d65930794e80c5645828fe89",
-    "formal-summary.csv": "f832ef6ff042a57644f78107c4da044b9fb677272058a9ba1f27fc536a50439d",
-    "formal.csv": "f9b7c4f50d1963293226d0c9824243a50ac3e5ce87af8681af6c90fec2bf6b82"
+    "formal-summary.csv": "ad3a3b98dbbcb6761a830e85a02a3a4176399b68b6167c778a0272c2028e7d29",
+    "formal.csv": "cff48fe221f81638e33d8cc31619e6c87469670abb92bfb2ab45d696856163aa"
   }
 }

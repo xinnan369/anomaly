@@ -45,3 +45,74 @@ Teapot/test-features: encoded 600/8400
 Teapot/test-features: encoded 1200/8400
 Teapot/test-features: encoded 1800/8400
 Teapot/test-features: encoded 2400/8400
+Teapot/test-features: encoded 3000/8400
+Teapot/test-features: encoded 3600/8400
+Teapot/test-features: encoded 4200/8400
+Teapot/test-features: encoded 4800/8400
+Teapot/test-features: encoded 5400/8400
+Teapot/test-features: encoded 6000/8400
+Teapot/test-features: encoded 6600/8400
+Teapot/test-features: encoded 7200/8400
+Teapot/test-features: encoded 7800/8400
+Teapot/test-features: encoded 8400/8400
+Teapot/42/v1_A4: [81.0, 59.811831709427956, 19.892280971585528]
+Teapot/42/selected: [90.7, 78.48139255702282, 90.17090693852829]
+Teapot/43/v1_A4: [80.89999999999999, 59.222758870990255, 19.824226248891375]
+Teapot/43/selected: [89.60000000000001, 77.95234372818895, 90.8388959133272]
+Teapot/44/v1_A4: [80.69999999999999, 59.874298556631956, 20.80418102268853]
+Teapot/44/selected: [90.0, 78.51280046902482, 90.72086389055175]
+2026-11-24T09:14:56.9171259+08:00 finished Teapot
+2026-11-24T09:14:56.9281923+08:00 starting frozen evaluation Tube
+Tube/train-features: encoded 600/3600
+Tube/train-features: encoded 1200/3600
+Tube/train-features: encoded 1800/3600
+Tube/train-features: encoded 2400/3600
+Tube/train-features: encoded 3000/3600
+Tube/train-features: encoded 3600/3600
+Tube/seed-42: epoch 1/12 normal loss=0.155456
+Tube/seed-42: epoch 2/12 normal loss=0.142448
+Tube/seed-42: epoch 3/12 normal loss=0.132846
+Tube/seed-42: epoch 4/12 normal loss=0.127177
+Tube/seed-42: epoch 5/12 normal loss=0.123912
+Tube/seed-42: epoch 6/12 normal loss=0.121689
+Tube/seed-42: epoch 7/12 normal loss=0.120355
+Tube/seed-42: epoch 8/12 normal loss=0.119071
+Tube/seed-42: epoch 9/12 normal loss=0.117949
+Tube/seed-42: epoch 10/12 normal loss=0.117200
+Tube/seed-42: epoch 11/12 normal loss=0.116478
+Tube/seed-42: epoch 12/12 normal loss=0.115839
+Tube/seed-43: epoch 1/12 normal loss=0.155351
+Tube/seed-43: epoch 2/12 normal loss=0.142787
+Tube/seed-43: epoch 3/12 normal loss=0.132764
+Tube/seed-43: epoch 4/12 normal loss=0.127251
+Tube/seed-43: epoch 5/12 normal loss=0.123892
+Tube/seed-43: epoch 6/12 normal loss=0.121932
+Tube/seed-43: epoch 7/12 normal loss=0.120269
+Tube/seed-43: epoch 8/12 normal loss=0.118957
+Tube/seed-43: epoch 9/12 normal loss=0.118018
+Tube/seed-43: epoch 10/12 normal loss=0.117171
+Tube/seed-43: epoch 11/12 normal loss=0.116458
+Tube/seed-43: epoch 12/12 normal loss=0.115778
+Tube/seed-44: epoch 1/12 normal loss=0.155467
+Tube/seed-44: epoch 2/12 normal loss=0.142511
+Tube/seed-44: epoch 3/12 normal loss=0.133340
+Tube/seed-44: epoch 4/12 normal loss=0.127695
+Tube/seed-44: epoch 5/12 normal loss=0.124416
+Tube/seed-44: epoch 6/12 normal loss=0.122124
+Tube/seed-44: epoch 7/12 normal loss=0.120484
+Tube/seed-44: epoch 8/12 normal loss=0.119270
+Tube/seed-44: epoch 9/12 normal loss=0.118216
+Tube/seed-44: epoch 10/12 normal loss=0.117345
+Tube/seed-44: epoch 11/12 normal loss=0.116519
+Tube/seed-44: epoch 12/12 normal loss=0.115951
+Tube/test-features: encoded 600/8400
+Tube/test-features: encoded 1200/8400
+Tube/test-features: encoded 1800/8400
+Tube/test-features: encoded 2400/8400
+Tube/test-features: encoded 3000/8400
+Tube/test-features: encoded 3600/8400
+Tube/test-features: encoded 4200/8400
+Tube/test-features: encoded 4800/8400
+Tube/test-features: encoded 5400/8400
+Tube/test-features: encoded 6000/8400
+Tube/test-features: encoded 6600/8400

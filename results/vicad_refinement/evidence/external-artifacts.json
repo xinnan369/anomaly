@@ -1,7 +1,7 @@
 {
   "external_root": "D:/vicad-syn/task-004",
   "run": "run-v2",
-  "capture_local": "2026-11-24T08:52:30.419963+08:00",
+  "capture_local": "2026-11-24T09:35:30.898320+08:00",
   "replay_and_development_hashes": {
     "run-v2/exploratory/Car/category.json": {
       "sha256": "a0f17ab9c3c6cbf8c4ae64ff70d040347f0b6bac83c4f51b8e6284751406d366",
@@ -49,6 +49,14 @@
     },
     "run-v2/confirmatory/Motor/pretest.json": {
       "sha256": "c3ea98f2fb0e9cde312e34b520c7651b91f8a8049794f216f66c757c17ef824e",
+      "bytes": 429
+    },
+    "run-v2/confirmatory/Teapot/category.json": {
+      "sha256": "6615e9e5010899cfd2f66ef56ba67ff39f0e021e95ef5c339e6028505ea5599f",
+      "bytes": 37377
+    },
+    "run-v2/confirmatory/Teapot/pretest.json": {
+      "sha256": "4a55186a315a32b2dd3ec136f1e563b770eb0d9ea738e283d7db4597d24326d3",
       "bytes": 429
     },
     "after-Bird-stage.sh": {
@@ -100,6 +108,14 @@
       "bytes": 0
     },
     "delivery-motor.stderr": {
+      "sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
+      "bytes": 132
+    },
+    "delivery-teapot.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "delivery-teapot.stderr": {
       "sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
       "bytes": 132
     },
@@ -184,8 +200,8 @@
       "bytes": 132
     },
     "mirror-download.log": {
-      "sha256": "dc8f8e241d8b6366574ff46cae2e6b8799542761a20c610f577b4682026a5adb",
-      "bytes": 103
+      "sha256": "6770d146093acc0c89a7506c5999dc1fbd2495746a2eb044df94bca6e7f62138",
+      "bytes": 276
     },
     "mirror-download.ps1": {
       "sha256": "48b8fbb5b13b849c4f4bf079ca56e5373690a3baaad4b29a57127afaf65dbf24",
@@ -212,16 +228,16 @@
       "bytes": 2818
     },
     "remaining-confirm-mirror.log": {
-      "sha256": "78d821c875875982c07738854a2b33f62eac996f4242f4cbbe4ec683e2dc638b",
-      "bytes": 2210
+      "sha256": "bec943e87b84f6172f44e7a4478e45c348c647e21f27e90d7d9e3f4f9507baa8",
+      "bytes": 5467
     },
     "remaining-confirm-mirror.ps1": {
       "sha256": "4b3a8114758746d19a43605770f4c98257578cfc3398a9fd16a7ecc264d179b8",
       "bytes": 1775
     },
     "remaining-confirm-mirror.stderr": {
-      "sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
-      "bytes": 132
+      "sha256": "3e874cf6983a5db24ec8b7b94f0a5bb937f13f830cfa86ca70ca6742681c7607",
+      "bytes": 3720
     },
     "remaining-confirm.log": {
       "sha256": "a09bb7dbefb87f104d2693b3ee20e83a28da030e85aad00c5bab636dd442d335",
@@ -287,6 +303,14 @@
       "sha256": "b280c454d6f559e56eb3f5ed39f3ba084b8d1744a3ff7fe016b21ff86dea1aca",
       "bytes": 132
     },
+    "stage-Dice-mirror.log": {
+      "sha256": "bb1ea0b9be676af0532788506544a82414672740924d48403b487a7610e0fcf4",
+      "bytes": 847
+    },
+    "stage-Dice-mirror.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
     "stage-Teapot-local.log": {
       "sha256": "45dd19fc49407532f5f97b5efcbfe5377b2e39703d2b964b3f5aa550bbe208dc",
       "bytes": 464
@@ -296,8 +320,8 @@
       "bytes": 0
     },
     "stage-Tube-mirror.log": {
-      "sha256": "39a2a962de1e82d305f0111bcae87935ae2755ba4aff4fd1ee7fc0bb6178f09e",
-      "bytes": 597
+      "sha256": "86342d9906009e88b61de430c1c767364cee7aac93751ac336f82edc111634cd",
+      "bytes": 1529
     },
     "stage-Tube-mirror.stderr": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -392,16 +416,16 @@
       "bytes": 1104505
     },
     "delivery/formal-summary.csv": {
-      "sha256": "f832ef6ff042a57644f78107c4da044b9fb677272058a9ba1f27fc536a50439d",
-      "bytes": 1267
+      "sha256": "ad3a3b98dbbcb6761a830e85a02a3a4176399b68b6167c778a0272c2028e7d29",
+      "bytes": 1550
     },
     "delivery/formal.csv": {
-      "sha256": "f9b7c4f50d1963293226d0c9824243a50ac3e5ce87af8681af6c90fec2bf6b82",
-      "bytes": 5575
+      "sha256": "cff48fe221f81638e33d8cc31619e6c87469670abb92bfb2ab45d696856163aa",
+      "bytes": 7200
     },
     "delivery/verification.json": {
-      "sha256": "39b93674968c47c03acc527340fbb528167f548232ca2b3c2ae3075367e73e7d",
-      "bytes": 2292
+      "sha256": "4a07cc5c2f4c39d0bc1f38dd806e07cc8d116bcf4ffbec699bd5f7cf125034b6",
+      "bytes": 2387
     },
     "run-v2/development/development.json": {
       "sha256": "32b3abb0cf116117e99ef0f9706add9572d4d31923f0a2e5706a7098ae316a20",
@@ -425,7 +449,8 @@
     ],
     "confirmatory": [
       "Bird",
-      "Motor"
+      "Motor",
+      "Teapot"
     ]
   }
 }
