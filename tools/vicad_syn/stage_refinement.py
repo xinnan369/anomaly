@@ -3,6 +3,7 @@
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
+import hashlib
 import json
 import shutil
 import sys
@@ -68,6 +69,26 @@ def mirror_get(target, **kwargs):
                 yield response
                 return
     raise ValueError("too many mirror redirects")
+
+
+
+def cache_mirror_manifest(cache):
+    cache.mkdir(parents=True, exist_ok=True)
+    path = cache / MANIFEST.name
+    with FileLock(path.with_suffix(".lock")):
+        if path.exists():
+            return
+        with mirror_get(
+            f"{MIRROR}/{MANIFEST.name}", headers={"Accept-Encoding": "identity"},
+            stream=True, timeout=(10, 25),
+        ) as response:
+            response.raise_for_status()
+            data = response.raw.read(MANIFEST.max_bytes + 1)
+        check(len(data) <= MANIFEST.max_bytes and hashlib.sha256(data).hexdigest() == MANIFEST.sha256,
+              "mirror manifest size/SHA-256 mismatch")
+        pending = path.with_suffix(".mirror.tmp")
+        pending.write_bytes(data)
+        pending.replace(path)
 
 
 def get_part(url, total, bounds, location, get=None):
@@ -180,9 +201,11 @@ def stage(args, root, checksum):
     archives, dataset = root / "archives", root / "dataset"
     for directory in (archives, dataset / "jsons", marker.parent):
         directory.mkdir(parents=True, exist_ok=True)
-    if args.transport in {"mirror", "local"}:
+    if args.transport == "local":
         check((args.manifest_cache / MANIFEST.name).is_file(),
-              "reuse the locally verified manifest archive for mirror or offline staging")
+              "offline staging requires a local manifest archive")
+    if args.transport == "mirror":
+        cache_mirror_manifest(args.manifest_cache)
     rows = load_manifest(args.manifest_cache)
     manifest = dataset / "jsons/meta_unsupervised.json"
     if not manifest.exists():

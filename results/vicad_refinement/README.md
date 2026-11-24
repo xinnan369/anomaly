@@ -13,9 +13,10 @@
 - 同坐标结构扰动对照、方向性污染、各特征深度及信号。[扰动幅度](metrics/contamination-summary.csv) · [方向投影](metrics/normal-direction-summary.csv) · [特征深度](metrics/normal-layer-summary.csv)
 - [结构图 PDF](figures/method-structure.pdf) · [开发与污染 PDF](figures/normal-development-and-contamination.pdf) · [分层残差与可靠性 PDF](figures/car-synthetic-feature-and-reliability.pdf) · [共享特征投影 PDF](figures/car-feature-prediction.pdf)
 
+
 ## 冻结正式评价
 
-已见类别 4/4，预留类别 1/6。当前为扩展阶段的实测快照。
+已见类别 4/4，预留类别 2/6。当前为扩展阶段的实测快照。
 
 [逐种子指标与成本](metrics/formal.csv) · [类别均值和样本标准差](metrics/formal-summary.csv) · [确认覆盖](metrics/confirmatory-coverage.csv) · [作者参考](metrics/published-baseline-reference.csv)
 

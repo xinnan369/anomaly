@@ -92,6 +92,9 @@ Car A4 的掩膜内外均值为 0.134412 与 0.134098，差值仅 0.000315。A1 
 | confirmatory | Bird | 42 | 60.30 / 52.32 / 45.70 | 70.10 / 63.94 / 83.38 |
 | confirmatory | Bird | 43 | 59.70 / 52.04 / 45.31 | 69.70 / 64.10 / 83.31 |
 | confirmatory | Bird | 44 | 64.30 / 53.00 / 46.06 | 70.90 / 63.91 / 83.48 |
+| confirmatory | Motor | 42 | 49.10 / 51.35 / 49.88 | 90.10 / 73.15 / 94.63 |
+| confirmatory | Motor | 43 | 49.50 / 51.38 / 47.75 | 91.30 / 73.12 / 94.67 |
+| confirmatory | Motor | 44 | 48.80 / 51.40 / 48.54 | 90.10 / 72.34 / 94.63 |
 
 [逐组指标与资源](../results/vicad_refinement/metrics/formal.csv) · [类别均值及样本标准差](../results/vicad_refinement/metrics/formal-summary.csv)
 
@@ -108,12 +111,14 @@ Car A4 的掩膜内外均值为 0.134412 与 0.134098，差值仅 0.000315。A1 
 
 ## 独立确认和科学边界
 
-独立确认覆盖 1/6 个此前未用于本项目模型选择的类别。各次冻结运行均使用 42、43、44 三个种子。正选方法和配对 v1 仅改变评分及融合路径，按类别重新在同一发布的正常训练物件上拟合。该设计验证流程向未见类别的迁移，样本覆盖限于 M²AD。样本标准差反映同一测试集上跨训练种子的波动。
+独立确认覆盖 2/6 个此前未用于本项目模型选择的类别。各次冻结运行均使用 42、43、44 三个种子。正选方法和配对 v1 仅改变评分及融合路径，按类别重新在同一发布的正常训练物件上拟合。该设计验证流程向未见类别的迁移，样本覆盖限于 M²AD。样本标准差反映同一测试集上跨训练种子的波动。
 
 | 类别 | 方法 | O-AUROC 均值 ± SD | I-AUROC 均值 ± SD | AUPRO 均值 ± SD |
 | --- | --- | ---: | ---: | ---: |
 | Bird | selected | 70.23 ± 0.61 | 63.98 ± 0.10 | 83.39 ± 0.08 |
 | Bird | v1_A4 | 61.43 ± 2.50 | 52.45 ± 0.49 | 45.69 ± 0.38 |
+| Motor | selected | 90.50 ± 0.69 | 72.87 ± 0.46 | 94.64 ± 0.02 |
+| Motor | v1_A4 | 49.13 ± 0.35 | 51.38 ± 0.02 | 48.72 ± 1.08 |
 
 Bird 的三种子平均改进为 +8.80 / +11.53 / +37.70 个百分点。按 M²AD 预印本表 2 的 224 输入参考，Bird 的 Dinomaly 为 75.1 / 74.9 / 86.9，INP-Former 为 80.0 / 67.2 / 84.1。三项 Bird 平均结果仍低于这两个作者公布的基线。已发表参考单独标记，当前试验没有在确认类另行训练这两个原版基线。Holder 的预印本与固定发布有一件异常物件差异。[作者公开结果](https://arxiv.org/html/2505.10996v1#S3.T2) · [作者参考数据](../results/vicad_refinement/metrics/published-baseline-reference.csv)
 
@@ -121,11 +126,13 @@ Bird 的三种子平均改进为 +8.80 / +11.53 / +37.70 个百分点。按 M²A
 
 [确认覆盖与归档状态](../results/vicad_refinement/metrics/confirmatory-coverage.csv) · [各类归档审计](../results/vicad_refinement/evidence/data-transfer.json)
 
+当前确认范围中，三项均值分别在 2/2、2/2、2/2 类高于配对 v1。按作者公布两者中分数较高的一项对照，改进方法分别在 0/2、0/2、1/2 类超过该参考。全部类别和种子同时保留。冻结对比同时改变了评分表示和融合。局部权重的单独贡献由正常代理消融估计。公开对照缺少同一环境的逐种子基线，论文性能结论应逐指标限于当前发布及已跑范围。
+
 ## 环境、命令与自检
 
 Windows 主机使用 Python 下载。拟合、诊断和评价使用 WSL2 Ubuntu 22.04、Python 3.11.11、PyTorch 2.2.2+cu121、CUDA 12.1、ADEval 1.1.0、RTX 3090。首次多层提取发现固定上游的接口只接受末层数量，工程烟测修复后，用同一固定原版 block 循环选取第 4、8、12 块。CPU/CUDA 再核验末层结果逐值相同及主干无梯度。首次运行没有形成代理或正式指标。官方 CUDA ADEval 的中间除法可出现空分母警告，实际报告指标均通过有限性检查。Windows 环境的报告导出因缺少 sklearn 未运行，使用锁定 WSL 环境完成导出。
 
-运行核对覆盖新旧 53 项单元测试、官方融合身份回归、目标光照排除、训练与开发／测试物件隔离、逐组融合身份、冻结时序、检查点和预测关联、相对链接、Git 差异空白及敏感信息与超大文件。阶段命令按下列入口执行。
+运行核对覆盖新旧 56 项单元测试、官方融合身份回归、目标光照排除、训练与开发／测试物件隔离、逐组融合身份、冻结时序、检查点和预测关联、相对链接、Git 差异空白及敏感信息与超大文件。阶段命令按下列入口执行。
 
 ```bash
 python -B -m vicad_refinement.run develop --inputs /mnt/d/vicad-syn/task-002-stage2 --output /mnt/d/vicad-syn/task-004/run-v2
@@ -134,10 +141,10 @@ python -B -m vicad_refinement.run explore --inputs /mnt/d/vicad-syn/task-002-sta
 python -B -m vicad_refinement.run confirm --inputs /mnt/d/vicad-syn/task-002-stage2 --output /mnt/d/vicad-syn/task-004/run-v2 --holdout /mnt/d/vicad-syn/task-004/holdout --category Bird
 ```
 
-实际逐类探索命令依次替换 Car、Cube、Doll、Ring。使用 Windows Git worktree 时，为冻结命令传入映射至 WSL 的 GIT_DIR 与 GIT_WORK_TREE。原回执存在时从该点恢复。Bird 使用 D 盘归档。Motor、Teapot、Tube、Dice、Holder 的归档准备切换到 C 盘独立数据根，该选择保留 D 盘上的缓存空间与 40 GiB 的预留。以下续传入口以 Bird 为例。
+实际逐类探索命令依次替换 Car、Cube、Doll、Ring。使用 Windows Git worktree 时，为冻结命令传入映射至 WSL 的 GIT_DIR 与 GIT_WORK_TREE。原回执存在时从该点恢复。Bird 使用 D 盘归档。Motor、Teapot、Tube、Dice、Holder 的归档准备切换到 C 盘独立数据根，该选择保留 D 盘上的缓存空间与 40 GiB 的预留。以下续传入口以 Tube 为例，运行前核验镜像与 CDN 均走 WLAN。
 
 ```powershell
-python -B -m tools.vicad_syn.stage_refinement --root D:/vicad-syn/task-004/holdout --manifest-cache D:/vicad-syn/task-002-stage2/cache --category Bird --transport lfs --workers 24
+python -B -m tools.vicad_syn.stage_refinement --root C:/Users/xinnan/vicad-data/task-004-holdout --manifest-cache D:/vicad-syn/task-002-stage2/cache --category Tube --transport mirror --workers 12
 ```
 
 数据版本见 [官方发布](https://huggingface.co/datasets/ChengYuQi99/M2AD/commit/05abc5d03167354a7ef98541236b5c0bd00abadf)、[论文](https://arxiv.org/html/2505.10996v1)及[固定上游](https://github.com/hustCYQ/M2AD/tree/a606aa0e1614f23dad70da26430dd66095192141)。完整实验位于 `D:/vicad-syn/task-004`。原版指标、原预测和模型保持原路径。 [核验清单](../results/vicad_refinement/evidence/verification.json) · [图表、证据和命令索引](../results/vicad_refinement/README.md) · [PR #5](https://github.com/xinnan369/anomaly/pull/5)

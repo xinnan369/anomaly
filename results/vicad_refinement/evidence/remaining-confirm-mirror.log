@@ -1,0 +1,47 @@
+2026-11-24T08:36:43.4520361+08:00 starting frozen evaluation Teapot
+Teapot/train-features: encoded 600/3600
+Teapot/train-features: encoded 1200/3600
+Teapot/train-features: encoded 1800/3600
+Teapot/train-features: encoded 2400/3600
+Teapot/train-features: encoded 3000/3600
+Teapot/train-features: encoded 3600/3600
+Teapot/seed-42: epoch 1/12 normal loss=0.216294
+Teapot/seed-42: epoch 2/12 normal loss=0.192487
+Teapot/seed-42: epoch 3/12 normal loss=0.175064
+Teapot/seed-42: epoch 4/12 normal loss=0.167198
+Teapot/seed-42: epoch 5/12 normal loss=0.163155
+Teapot/seed-42: epoch 6/12 normal loss=0.160245
+Teapot/seed-42: epoch 7/12 normal loss=0.158421
+Teapot/seed-42: epoch 8/12 normal loss=0.156848
+Teapot/seed-42: epoch 9/12 normal loss=0.155408
+Teapot/seed-42: epoch 10/12 normal loss=0.154400
+Teapot/seed-42: epoch 11/12 normal loss=0.153283
+Teapot/seed-42: epoch 12/12 normal loss=0.152230
+Teapot/seed-43: epoch 1/12 normal loss=0.216361
+Teapot/seed-43: epoch 2/12 normal loss=0.193879
+Teapot/seed-43: epoch 3/12 normal loss=0.175222
+Teapot/seed-43: epoch 4/12 normal loss=0.167207
+Teapot/seed-43: epoch 5/12 normal loss=0.162684
+Teapot/seed-43: epoch 6/12 normal loss=0.160156
+Teapot/seed-43: epoch 7/12 normal loss=0.158221
+Teapot/seed-43: epoch 8/12 normal loss=0.156542
+Teapot/seed-43: epoch 9/12 normal loss=0.155347
+Teapot/seed-43: epoch 10/12 normal loss=0.154155
+Teapot/seed-43: epoch 11/12 normal loss=0.153093
+Teapot/seed-43: epoch 12/12 normal loss=0.152212
+Teapot/seed-44: epoch 1/12 normal loss=0.216898
+Teapot/seed-44: epoch 2/12 normal loss=0.193655
+Teapot/seed-44: epoch 3/12 normal loss=0.175569
+Teapot/seed-44: epoch 4/12 normal loss=0.167044
+Teapot/seed-44: epoch 5/12 normal loss=0.162774
+Teapot/seed-44: epoch 6/12 normal loss=0.160162
+Teapot/seed-44: epoch 7/12 normal loss=0.158193
+Teapot/seed-44: epoch 8/12 normal loss=0.156755
+Teapot/seed-44: epoch 9/12 normal loss=0.155422
+Teapot/seed-44: epoch 10/12 normal loss=0.154221
+Teapot/seed-44: epoch 11/12 normal loss=0.153201
+Teapot/seed-44: epoch 12/12 normal loss=0.152363
+Teapot/test-features: encoded 600/8400
+Teapot/test-features: encoded 1200/8400
+Teapot/test-features: encoded 1800/8400
+Teapot/test-features: encoded 2400/8400

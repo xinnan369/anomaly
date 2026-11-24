@@ -1,6 +1,6 @@
 {
   "category": "Bird",
-  "observed_at": "2026-11-24T07:30:54.289618+08:00",
+  "observed_at": "2026-11-24T08:52:30.419963+08:00",
   "required_size": 15506344175,
   "published_sha256": "b5bb22a976440d8739e84724eb864b290f23eee053511ab47f8a4c200fabace7",
   "ranges": {
@@ -63,6 +63,36 @@
         "sha256": "e9d74dd871fcd86dd312be153f8eb15da54f6e27ebcccfdd651cbc12888511d8",
         "bytes": 5806
       }
+    },
+    "stage-Teapot-local.log": {
+      "captured_source": {
+        "sha256": "45dd19fc49407532f5f97b5efcbfe5377b2e39703d2b964b3f5aa550bbe208dc",
+        "bytes": 464
+      },
+      "git_text": {
+        "sha256": "cef1515c15957d1147e840f97b5a06a4430aece5209054694d49d5d6a91b8c64",
+        "bytes": 455
+      }
+    },
+    "mirror-download.log": {
+      "captured_source": {
+        "sha256": "dc8f8e241d8b6366574ff46cae2e6b8799542761a20c610f577b4682026a5adb",
+        "bytes": 103
+      },
+      "git_text": {
+        "sha256": "359469fa65e6dfcaef9a33dcc7eadb28d89f7f2b909f2db0527e5980fc1de481",
+        "bytes": 102
+      }
+    },
+    "stage-Tube-mirror.log": {
+      "captured_source": {
+        "sha256": "39a2a962de1e82d305f0111bcae87935ae2755ba4aff4fd1ee7fc0bb6178f09e",
+        "bytes": 597
+      },
+      "git_text": {
+        "sha256": "bc79c61a31017aeaba7e439bcc4f8029e8791faf2a8e9a6fb839671262e369d8",
+        "bytes": 579
+      }
     }
   },
   "source_test": {
@@ -74,7 +104,8 @@
   "native_xet": "Zero archive bytes written before the inactive fallback was stopped.",
   "ready": true,
   "confirmed": [
-    "Bird"
+    "Bird",
+    "Motor"
   ],
   "all_categories": {
     "Bird": {
@@ -88,27 +119,29 @@
     },
     "Motor": {
       "order": 2,
-      "passes_archive_audit": false,
-      "passes_confirmation": false,
-      "complete_archive_bytes": null,
-      "complete_range_count": 194,
-      "complete_range_bytes": 13019119616
+      "passes_archive_audit": true,
+      "passes_confirmation": true,
+      "complete_archive_bytes": 14955220087,
+      "complete_range_count": 0,
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "96668abce274d7207689b573f55c83d40fbae8e3ac21e9e4f43cd99433fb80a2"
     },
     "Teapot": {
       "order": 3,
-      "passes_archive_audit": false,
+      "passes_archive_audit": true,
       "passes_confirmation": false,
-      "complete_archive_bytes": null,
+      "complete_archive_bytes": 15758841927,
       "complete_range_count": 0,
-      "complete_range_bytes": 0
+      "complete_range_bytes": 0,
+      "archive_receipt_sha256": "e1458da014ffb28be07c4aa58106958d76db044fb0c11369a500b21e4f5d6ec2"
     },
     "Tube": {
       "order": 4,
       "passes_archive_audit": false,
       "passes_confirmation": false,
       "complete_archive_bytes": null,
-      "complete_range_count": 0,
-      "complete_range_bytes": 0
+      "complete_range_count": 135,
+      "complete_range_bytes": 9059696640
     },
     "Dice": {
       "order": 5,

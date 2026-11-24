@@ -1,0 +1,27 @@
+{
+  "category": "Teapot",
+  "release_revision": "05abc5d03167354a7ef98541236b5c0bd00abadf",
+  "archive_sha256": "a64815a83adcc40db75407a64fc1dd7a6882f76553953c67ce24c4abaeca5ac7",
+  "archive_bytes": 15758841927,
+  "crc_verified_files": 13014,
+  "images": 12000,
+  "masks": 507,
+  "segments": 507,
+  "counts": {
+    "train_good": {
+      "objects": 30,
+      "images": 3600
+    },
+    "test_good": {
+      "objects": 20,
+      "images": 2400
+    },
+    "test_ng": {
+      "objects": 50,
+      "images": 6000,
+      "positive_images": 5070,
+      "undetectable_positive_images": 309
+    }
+  },
+  "split_crc_size_overlap": 0
+}

@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from tools.vicad_syn.stage_refinement import download, get_part, lfs_download_source, mirror_get
+from tools.vicad_syn.stage_refinement import cache_mirror_manifest, download, get_part, lfs_download_source, mirror_get
 
 
 MODULE = "tools.vicad_syn.stage_refinement"
@@ -99,3 +99,26 @@ class TransferTests(unittest.TestCase):
                 archive = download("Demo", root, hashlib.sha256(b"abc").hexdigest(), 1, "local")
                 self.assertEqual(archive.read_bytes(), b"abc")
                 get.assert_not_called()
+
+
+    def test_missing_manifest_uses_only_the_bounded_verified_mirror(self):
+        with tempfile.TemporaryDirectory() as temp:
+            folder = Path(temp)
+            descriptor = MagicMock(name="manifest")
+            descriptor.name = "manifest.zip"
+            descriptor.max_bytes = 3
+            descriptor.sha256 = hashlib.sha256(b"abc").hexdigest()
+            with patch(MODULE + ".MANIFEST", descriptor), patch(MODULE + ".mirror_get") as get:
+                response = get.return_value.__enter__.return_value
+                response.raw.read.return_value = b"bad"
+                with self.assertRaisesRegex(ValueError, "mirror manifest size/SHA-256 mismatch"):
+                    cache_mirror_manifest(folder)
+                self.assertFalse((folder/descriptor.name).exists())
+                response.raw.read.return_value = b"abc"
+                cache_mirror_manifest(folder)
+                response.raw.read.assert_called_with(4)
+                self.assertEqual((folder/descriptor.name).read_bytes(), b"abc")
+                self.assertIn("https://hf-mirror.com/", get.call_args.args[0])
+                count = get.call_count
+                cache_mirror_manifest(folder)
+                self.assertEqual(get.call_count, count)
