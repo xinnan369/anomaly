@@ -4,10 +4,13 @@ import tempfile
 import unittest
 
 import numpy as np
+from PIL import Image
+from unittest.mock import patch
 import torch
 
-from tools.comprehensive.ablation import ABLATION_SOURCES, PROTOCOL, ablation_fields, canonical_scores
+from tools.comprehensive.ablation import ABLATION_SOURCES, PROTOCOL, ablation_fields, canonical_scores, evaluation_metadata
 from vicad_syn.data.manifest import Group
+from vicad_syn.evaluation.synergy import official_inputs
 from tools.comprehensive.historical_intervals import frozen_labels
 from vicad_syn.experiment import digest, read_json
 
@@ -54,3 +57,18 @@ class AblationTests(unittest.TestCase):
                 receipt["scores"][setting] = {"fused_and_patch_inputs": {
                     file.name: {"sha256": digest(file)} for file in folder.glob("*.npy")}}
             self.assertEqual(frozen_labels(groups, root, receipt).tolist(), [True, False])
+
+
+    def test_mask_cache_reuses_paths_and_preserves_official_resize(self):
+        with tempfile.TemporaryDirectory() as path:
+            root = Path(path)
+            Image.fromarray(np.array([[0, 255], [0, 255]], dtype=np.uint8)).save(root / "defect.png")
+            row = {"object_name": "003", "cls_name": "Bird", "illumination": "01",
+                   "view": "000", "object_anomaly": 1, "image_anomaly": 1, "mask_path": "defect.png"}
+            groups = [Group("id", "000", (row, {**row, "illumination": "02"}))]
+            original = official_inputs(groups, root, np.zeros((2, 1, 1)))
+            with patch("tools.comprehensive.ablation.Image.open", wraps=Image.open) as source:
+                checked = evaluation_metadata(groups, root)
+            source.assert_called_once_with(root / "defect.png")
+            for key, value in checked.items():
+                self.assertTrue(np.array_equal(value, original[key]), key)

@@ -7,14 +7,15 @@ from pathlib import Path
 from time import perf_counter
 
 import numpy as np
+from PIL import Image
 import torch
 
 from tools.comprehensive.offline import enable_offline
 from tools.comprehensive.resources import FREEZE, REPO, UPSTREAM, roots, scope_for
-from vicad_refinement.data import as_tensor, load_features, load_groups, view_indices
+from vicad_refinement.data import as_tensor, load_groups, view_indices
 from vicad_refinement.formal import official_evaluation
 from vicad_refinement.model import residuals, upsample, weighted_lights
-from vicad_syn.evaluation.synergy import METRICS, official_inputs
+from vicad_syn.evaluation.synergy import MASK_RESIZE, METRICS
 from vicad_syn.experiment import check, digest, pinned_upstream, read_json, write_json
 from vicad_syn.training.train import build_predictor
 
@@ -40,6 +41,8 @@ def predict(features, views, reference, model, settings, protection, device):
             result = weighted_lights(fields[candidate], stability, epistemic, fusion, protection)
             check(bool(result.isfinite().all()), f"nonfinite {key} at {offset}")
             contributions[key].append(result.cpu().numpy())
+        if offset and offset % 120 == 0:
+            print(f"cached scoring: {offset}/{len(features)} groups", flush=True)
     torch.cuda.synchronize()
     return {key: np.concatenate(value) for key, value in contributions.items()}, {
         "shared_seconds": perf_counter() - started,
@@ -70,6 +73,23 @@ def canonical_scores(groups, mask_labels, scores):
     objects = [{"identity": list(identity), "label": identity[2], "score": float(np.concatenate(scores).mean())}
                for identity, scores in sorted(items.items())]
     return {"objects": objects, "views": views}
+
+
+def evaluation_metadata(groups, dataset):
+    rows = [row for group in groups for row in group.records]
+    masks = np.zeros((len(rows), 1, 224, 224), dtype=np.uint8)
+    by_path = {}
+    for i, row in enumerate(rows):
+        if row["image_anomaly"]:
+            path = row["mask_path"]
+            if path not in by_path:
+                with Image.open(dataset / path) as image:
+                    pixels = (np.asarray(image.convert("L")) > 0).astype(np.uint8) * 255
+                    by_path[path] = np.asarray(MASK_RESIZE(Image.fromarray(pixels))) == 255
+            masks[i, 0] = by_path[path]
+    fields = (("obj_names", "object_name"), ("cls_names", "cls_name"), ("illumination_list", "illumination"),
+              ("view_list", "view"), ("image_anomalys", "image_anomaly"), ("object_anomalys", "object_anomaly"))
+    return {**{key: np.array([row[field] for row in rows]) for key, field in fields}, "imgs_masks": masks}
 
 
 def mask_binding(metadata):
@@ -121,11 +141,7 @@ def one_seed(root, directory, category, seed, settings, groups, features, views,
                           registry["protection"], views.device)
     destination.mkdir(parents=True, exist_ok=False)
     score_rows = {}
-    metadata = None
-    # Build masks in precisely the frozen feature order, once for all settings.
-    fake_scores = np.zeros((len(groups)*10, 1, 1), dtype=np.float32)
-    raw = official_inputs(groups, root / "dataset", fake_scores)
-    metadata = {key: value for key, value in raw.items() if key not in ("anomaly_maps", "anomaly_scores")}
+    metadata = evaluation_metadata(groups, root / "dataset")
     labels, masks_hash = mask_binding(metadata)
     for key in settings:
         if key in ABLATION_SOURCES:
@@ -178,8 +194,16 @@ def execute(args):
             order = "\n".join(path for group in groups for path in group.paths) + "\n"
             check(sha256(order.encode()).hexdigest() == cache_link["binding"]["order_sha256"],
                   "cached feature identities differ")
-            check(digest(cache / "features.npy") == cache_link["sha256"], "feature cache content differs")
-            features = load_features(cache)
+            feature_file = cache / "features.npy"
+            print(f"{category}: checking cache bytes", flush=True)
+            check(digest(feature_file) == cache_link["sha256"], "feature cache content differs")
+            # Sequential reads avoid repeated small DriveFS faults over the Windows data volume.
+            with Path("/proc/meminfo").open() as memory:
+                available = next(int(line.split()[1]) * 1024 for line in memory if line.startswith("MemAvailable:"))
+            check(available > feature_file.stat().st_size + 4 * 1024**3,
+                  "insufficient WSL memory for one category; preserve existing cache and retry after memory frees")
+            features = np.load(feature_file, allow_pickle=False).reshape(-1, 10, 3, 256, 768)
+            print(f"{category}: cached feature array ready, {len(features)} groups", flush=True)
             views = view_indices(groups, gpu)
             if args.repeat and category in protocol["repeated_categories"]:
                 for seed in protocol["repeat_seeds"]:
@@ -188,6 +212,7 @@ def execute(args):
             elif not args.repeat:
                 one_seed(root, directory, category, protocol["primary_seed"], protocol["ablation"], groups, features,
                          views, base, registry, cache_link["sha256"], args)
+            del features
 
 
 def main():

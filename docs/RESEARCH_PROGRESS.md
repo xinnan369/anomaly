@@ -10,4 +10,4 @@
 | TASK-004 方法改进与严格验证 | ACCEPTED_WITH_DOCUMENTED_HISTORICAL_EXCEPTION。历史审计保留，已有成果继续使用。 | [执行报告](../reports/TASK-004-REPORT.md) · [预登记](../instructions/TASK-004.md) |
 
 更新本页时记录变更日期、任务 ID、状态与可核查的报告链接。重要算法变更另记入[研究决策](RESEARCH_DECISIONS.md)。
-| TASK-005 完整基线和正式消融 | PARTIAL。十类本地输入通过核对，基线和只读消融按登记顺序执行。 | [执行报告](../reports/TASK-005-REPORT.md) · [结果索引](../results/comprehensive_evaluation/README.md) |
+| TASK-005 完整基线和正式消融 | PARTIAL。十类本地输入通过核对，44 条历史物件级重采样区间已生成。首组正式基线和只读消融正在执行。 | [执行报告](../reports/TASK-005-REPORT.md) · [结果索引](../results/comprehensive_evaluation/README.md) |

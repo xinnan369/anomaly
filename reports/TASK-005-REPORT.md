@@ -28,7 +28,7 @@ TASK-004 冻结组合相对配对 v1 的既有收益支持研究失效机制。�
 
 以 seed 42 比较十类已保存配对结果，冻结改进版的 O-AUROC／I-AUROC／AUPRO 宏平均为 **82.43／69.25／82.20%**，配对 v1 为 **61.33／53.33／36.62%**。与已验收的本机原版 Dinomaly 比较，三个共同已完成类别的三项均值均落后。与本机 INP-Former 的四个共同类别比较，三项宏平均也均较低，逐项领先类别数为 2／1／1。Doll 的原版 Dinomaly 保持失败，稳定版单列。当前依据支持机制研究和组合相对 v1 的提升。强基线领先、论文泛化范围与部署价值仍受后续完整对照约束。[同覆盖范围对照](../results/comprehensive_evaluation/tables/same-coverage-baseline.csv) · [三种子图](../results/comprehensive_evaluation/figures/historical-seed-stability.pdf)
 
-Bird 的历史 B6/B0 seed 42 配对结果中，O-AUROC 为 +9.80 个百分点，普通 95% 区间为 [−1.60, 20.80]。I-AUROC 为 +11.63 个百分点，普通区间为 [5.51, 17.45]。约定的 Bonferroni 区间也一并公开。2,000 抽样下校正区间靠近经验尾部极端秩，适合作保守核查。这是分层配对分析，评价数据来自 TASK-004 已完成的历史运行。[区间及覆盖快照](../results/comprehensive_evaluation/tables/historical-paired-ci.csv)
+已覆盖六类的 3 个种子和四类的 seed 42，共 44 条 B6/B0 物件级区间，每条 2,000 次有效抽样。22 个配对运行中，O-AUROC 有 21 个正点估计，11 个校正区间全为正。I-AUROC 分别为 22 和 19。首次 Bird 区间从原 PNG 掩膜复算，后用冻结掩膜哈希及身份重绑重跑；两种入口的 Bird 结果完全一致。Bird 的历史 B6/B0 seed 42 配对结果中，O-AUROC 为 +9.80 个百分点，普通 95% 区间为 [−1.60, 20.80]。I-AUROC 为 +11.63 个百分点，普通区间为 [5.51, 17.45]。约定的 Bonferroni 区间也一并公开。2,000 抽样下校正区间靠近经验尾部极端秩，适合作保守核查。这是分层配对分析，评价数据来自 TASK-004 已完成的历史运行。[区间及覆盖快照](../results/comprehensive_evaluation/tables/historical-paired-ci.csv)
 
 Bird 的单物件时延探针同时记录两个设置。冻结主干 86,583,552 参数，可训练预测头 478,656 参数，三层类别原型占 283,115,520 字节（270 MiB）。在缓存条件下，对同一个 120 图物件，B2 和 B6 的时延中位数约为 0.15 和 0.43 秒。端到端从本地 PNG 读取起计，两个 120 图中位数为 22.64 和 70.28 秒；GPU 和磁盘由多个进程共享，分段测量受负载变化影响，只作为一次实测探针。单视角十光照时延、增量显存、耗时原始重复值列入 JSON。[资源探针](../results/comprehensive_evaluation/evidence/bird-runtime.json) · [性能图](../results/comprehensive_evaluation/figures/bird-runtime.pdf)
 
@@ -50,4 +50,4 @@ export CUDA_VISIBLE_DEVICES=0
 "$py" -B -m tools.comprehensive.collect --work "$work" --output "$work/export-next"
 ```
 
-实验进程禁止 Python 的网络连接、DNS 和模型资源自动获取，Git 固定源码禁用懒加载。没有在线安装、镜像探测、模型或数据下载、真实签名测试。新增实验资源下载为 **0 字节**。GitHub 请求用于合并元数据和代码发布。既有 65 项及新增 8 项单元测试通过，下载相关测试仅使用模拟。[验证记录](../results/comprehensive_evaluation/evidence/verification.md)
+实验进程禁止 Python 的网络连接、DNS 和模型资源自动获取，Git 固定源码禁用懒加载。没有在线安装、镜像探测、模型或数据下载、真实签名测试。新增实验资源下载为 **0 字节**。GitHub 请求用于合并元数据和代码发布。既有 65 项及新增 9 项单元测试通过，下载相关测试仅使用模拟。[验证记录](../results/comprehensive_evaluation/evidence/verification.md)
